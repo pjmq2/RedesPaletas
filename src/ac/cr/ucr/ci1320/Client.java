@@ -23,12 +23,7 @@ public class Client extends Connection {
     boolean isLocal(String ip){
         boolean isLocal;
         String[] host = ip.split(".");
-        if(host[1].equalsIgnoreCase("165")){
-            isLocal = true;
-        }
-        else{
-            isLocal = false;
-        }
+        isLocal = host[1].equalsIgnoreCase("165");
         return isLocal;
     }
 
@@ -65,7 +60,7 @@ public class Client extends Connection {
                         answerMessage = pair.getKey() + "\n" + arrayMessage[0] + "\n" +
                                 '4' + "\n" + "" + "\n" + arrayMessage[4] + "\n" + arrayMessage[5];
                     }
-                    else{ //mensaje de error, no conozco la ruta al mae
+                    else{ //ensaje de error, no conozco la ruta al mae
                         answerMessage = pair.getKey() + "\n" + arrayMessage[0] + "\n" +
                                 '5' + "\n" + "" + "\n" + arrayMessage[4] + "\n" + arrayMessage[5];
                     }
