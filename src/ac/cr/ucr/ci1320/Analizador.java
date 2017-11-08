@@ -14,11 +14,12 @@ public class Analizador {
         this.mensaje = mensaje;
         this.miIp = miIp;
     }
-
+    
     public Paquete empaquetar(){
-        Paquete paquete = new Paquete(mensaje,miIp,);
+        TablaDirecciones tabla=tablaD.get(mensaje.getIpDestino());
+        String ipFuturo = tablaIp.get(tabla.getATraves());
+        Paquete paquete = new Paquete(mensaje,miIp,ipFuturo); //La tercera es a ip de destino
         return paquete;
     }
-
 
 }
