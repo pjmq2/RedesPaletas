@@ -27,7 +27,7 @@ public class Nodo {
             mensaje = analiza.stringToMensaje(entrada);
             paquete = analiza.empaquetar(mensaje);
             Solicitante solicitante = new Solicitante();
-            solicitante.sendMesage(paquete.toString(),paquete.getIpDestinPaquete(),tablaD.get(paquete.getIpDestinPaquete()).getPuerto());
+            solicitante.sendMessage(paquete.toString(),paquete.getIpDestinPaquete(),tablaD.get(paquete.getIpDestinPaquete()).getPuerto());
         }
     }
 
@@ -40,19 +40,19 @@ public class Nodo {
                 Paquete paquete2=analiza.empaquetar(paquete.getMensaje());
                 if(paquete.getMensaje().getIpDestino().equals(miIp)) imprimirMensaje(paquete.getMensaje());
                 else{
-                    solicitante.sendMesage(paquete2.toString(),paquete2.getIpDestinPaquete(),tablaD.get(paquete2.getIpDestinPaquete()).getPuerto());
+                    solicitante.sendMessage(paquete2.toString(),paquete2.getIpDestinPaquete(),tablaD.get(paquete2.getIpDestinPaquete()).getPuerto());
                 }
 
                 break;
             case 1:
                 if(paquete.getMensaje().getIpMensaje().equals(miIp)){
                     Paquete paquete1 = analiza.responder3(paquete.getMensaje().getIpFuente());
-                    solicitante.sendMesage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
+                    solicitante.sendMessage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
                 }
                 break;
             case 2:
                 Paquete paquete1 = analiza.responder4(paquete.getMensaje().getIpFuente());
-                solicitante.sendMesage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
+                solicitante.sendMessage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
                 break;
         }
     }
