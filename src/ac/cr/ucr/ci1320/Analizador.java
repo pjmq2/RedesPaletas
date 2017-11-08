@@ -33,4 +33,16 @@ public class Analizador {
         return paquete;
     }
 
+    public Paquete responder3(String ipDestino){
+        Mensaje mensaje = new Mensaje(miIp,ipDestino,3,miIp);
+        Paquete paquete = new Paquete(mensaje,miIp,ipDestino);
+        return paquete;
+    }
+
+    public Paquete responder4(String ipDestino){
+        Mensaje mensaje = new Mensaje(miIp,ipDestino,4,Integer.toString(tablaD.get(ipDestino).getDistancia()));
+        Paquete paquete = new Paquete(mensaje,miIp,ipDestino);
+        return paquete;
+    }
+
 }
