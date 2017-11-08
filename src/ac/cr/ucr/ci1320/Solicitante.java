@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.DataOutputStream;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Solicitante {
     int port[];
     Socket sock;
     BufferedReader reader;
-    PrintWriter writer;
+    DataOutputStream writer;
     String response[];
 
     public void iniciar(String addr[], int por[], String message){
@@ -44,7 +45,7 @@ public class Solicitante {
         }
     }
 
-    public void sendMesage(String message,String addr, int por){
+    public void sendMessage(String message,String addr, int por){
         port = new int[1];
         port[0]=por;
         address = new String[1];
@@ -74,8 +75,8 @@ public class Solicitante {
                 sock = new Socket(address[integer], port[integer]);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
-                writer = new PrintWriter(sock.getOutputStream());
-                writer.println(message);
+                writer = new DataOutputStream(sock.getOutputStream());
+                writer.writeUTF(message);
                 writer.flush();
                 if (message.equalsIgnoreCase("Dispatch")){
                     response[integer] = reader.readLine();
@@ -83,10 +84,8 @@ public class Solicitante {
 
             }
             catch (Exception ex) {
-                System.out.println("Message was not sent. \n");
+                System.out.println("Message was not sent.\n");
             }
         }
     }
-
-
 }
