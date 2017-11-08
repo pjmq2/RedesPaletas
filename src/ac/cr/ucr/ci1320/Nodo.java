@@ -31,7 +31,7 @@ public class Nodo {
                 paquete = analiza.empaquetar(mensaje);
                 String ipReal = analiza.getIpDestino(paquete.getIpDestinPaquete());
                 Solicitante solicitante = new Solicitante();
-                solicitante.sendMesage(paquete.toString(),ipReal,tablaD.get(paquete.getIpDestinPaquete()).getPuerto());
+                solicitante.sendMessage(paquete.toString(),ipReal,tablaD.get(paquete.getIpDestinPaquete()).getPuerto());
             }
         }
     }
@@ -46,7 +46,7 @@ public class Nodo {
                 if(paquete.getMensaje().getIpDestino().equals(miIp)) imprimirMensaje(paquete.getMensaje());
                 else{
                     String ipReal = analiza.getIpDestino(paquete.getIpDestinPaquete());
-                    solicitante.sendMesage(paquete2.toString(),ipReal,tablaD.get(paquete2.getIpDestinPaquete()).getPuerto());
+                    solicitante.sendMessage(paquete2.toString(),ipReal,tablaD.get(paquete2.getIpDestinPaquete()).getPuerto());
                 }
 
                 break;
@@ -54,13 +54,13 @@ public class Nodo {
                 if(paquete.getMensaje().getIpMensaje().equals(miIp)){
                     Paquete paquete1 = analiza.responder3(paquete.getMensaje().getIpFuente());
                     String ipReal = analiza.getIpDestino(paquete.getIpDestinPaquete());
-                    solicitante.sendMesage(paquete1.toString(),ipReal,tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
+                    solicitante.sendMessage(paquete1.toString(),ipReal,tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
                 }
                 break;
             case 2:
                 Paquete paquete1 = analiza.responder4(paquete.getMensaje().getIpFuente());
                 String ipReal = analiza.getIpDestino(paquete.getIpDestinPaquete());
-                solicitante.sendMesage(paquete1.toString(),ipReal,tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
+                solicitante.sendMessage(paquete1.toString(),ipReal,tablaD.get(paquete1.getIpDestinPaquete()).getPuerto());
                 break;
         }
     }
