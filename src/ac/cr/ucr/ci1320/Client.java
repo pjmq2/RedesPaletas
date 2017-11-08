@@ -14,10 +14,12 @@ public class Client extends Connection {
     private Pair<String,String> pair;
     private Map<String, String> relation;
 
-    public  Client(Dispatcher dispatcher,Pair<String,String> pair, Map<String, String> relation) throws IOException {
-        this.dispatcher = dispatcher;
-        this.pair = pair;
-        this.relation = relation;
+    public  Client(){
+    }
+
+    public String getMesage(){
+        String mensaje="";
+        return mensaje;
     }
 
     boolean isLocal(String ip){

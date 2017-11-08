@@ -6,7 +6,7 @@ public class Mensaje {
     private int accion;
     private String ipMensaje;
 
-    public Mensaje(String ipFuente, String ipDestino, char accion, String ipMensaje) {
+    public Mensaje(String ipFuente, String ipDestino, int accion, String ipMensaje) {
         this.ipFuente = ipFuente;
         this.ipDestino = ipDestino;
         this.accion = accion;
