@@ -20,7 +20,6 @@ public class Solicitante {
 
     String[] address;
     int port[];
-    Boolean isConnected = false;
     Socket sock;
     BufferedReader reader;
     PrintWriter writer;
