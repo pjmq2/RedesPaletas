@@ -7,12 +7,14 @@ import java.util.Map;
 public class Main {
     public static void main(String args[])
     {
-
+        Servidor servidor = new Servidor(pablo());
+        servidor.iniciar();
     }
 
 
-    public static void pablo(){
-        Map<String,TablaDirecciones> tablaD= new HashMap<>();
+    public static Nodo pablo(){
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        Map<String,String> tablaIP = new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
         TablaDirecciones tabla2 = new TablaDirecciones("CRR2","165.8.6.25",0,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("CRR3","165.8.6.25",0,5555);
@@ -27,7 +29,11 @@ public class Main {
         tablaD.put("201.6.0.2",tabla5);
         tablaD.put("140.90.0.20",tabla6);
         tablaD.put("200.5.0.2",tabla7);
-        Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
+        tablaIP.put("12.0.0.8","192.168.0.136");
+        tablaIP.put("12.0.20.2","192.168.0.166");
+        tablaIP.put("165.8.6.25","192.168.0.136");
+        Nodo nodoPablo = new Nodo(tablaD,"12.0.0.7",7777,tablaIP);
+        return nodoPablo;
     }
 
     public static void julian(){
@@ -46,7 +52,7 @@ public class Main {
         tablaD.put("201.6.0.2",tabla5);
         tablaD.put("140.90.0.20",tabla6);
         tablaD.put("200.5.0.2",tabla7);
-        Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
+        //Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
     }
 
     public static void sebastian(){
@@ -65,7 +71,7 @@ public class Main {
         tablaD.put("201.6.0.2",tabla5);
         tablaD.put("140.90.0.20",tabla6);
         tablaD.put("200.5.0.2",tabla7);
-        Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
+        //Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
     }
 }
 

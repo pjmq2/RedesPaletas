@@ -8,10 +8,11 @@ public class Nodo {
     private String miIp;
     private int miPuerto;
 
-    public Nodo(Map<String, TablaDirecciones> tablaD, String miIp, int miPuerto) {
+    public Nodo(Map<String, TablaDirecciones> tablaD, String miIp, int miPuerto, Map<String,String>tablaIP) {
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;
+        this.tablaIP = tablaIP;
     }
 
     public void recibirTransmicion(String entrada){
