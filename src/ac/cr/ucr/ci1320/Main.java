@@ -7,15 +7,7 @@ import java.util.Map;
 public class Main {
     public static void main(String args[])
     {
-        Client controlador;
-        controlador = new Client();
-        try{
-            controlador.startClient("Hola Julian");
-        }
-        catch(Exception ex)
-        {
-            System.out.println("Message was not sent. \n");
-        }
+
     }
 
 
@@ -35,7 +27,7 @@ public class Main {
         tablaD.put("201.6.0.2",tabla5);
         tablaD.put("140.90.0.20",tabla6);
         tablaD.put("200.5.0.2",tabla7);
-        Nodo nodoPablo = new Nodo(tablaD,"",7777);
+        Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
     }
 
 }

@@ -78,8 +78,10 @@ public class Solicitante {
                 writer = new PrintWriter(sock.getOutputStream());
                 writer.println(message);
                 writer.flush();
-                //response[integer] = reader.readLine();
-                //System.out.println(response[integer]);
+                if (message.equalsIgnoreCase("Dispatch")){
+                    response[integer] = reader.readLine();
+                }
+
             }
             catch (Exception ex) {
                 System.out.println("Message was not sent. \n");
