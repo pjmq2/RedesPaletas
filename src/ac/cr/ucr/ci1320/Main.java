@@ -7,10 +7,17 @@ import java.util.Map;
 public class Main {
     public static void main(String args[])
     {
-        Servidor controlador;
-        controlador = new Servidor();
-        controlador.iniciar();
+        Client controlador;
+        controlador = new Client();
+        try{
+            controlador.startClient("Hola Julian");
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Message was not sent. \n");
+        }
     }
+
 
     public static void pablo(){
         Map<String,TablaDirecciones> tablaD= new HashMap<>();

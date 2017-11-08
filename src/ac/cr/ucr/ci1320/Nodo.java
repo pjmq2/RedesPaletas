@@ -62,8 +62,4 @@ public class Nodo {
         System.out.println(mensaje.getIpMensaje());
     }
 
-    /*public void pedirEnRed(){
-
-    }*/
-
 }
