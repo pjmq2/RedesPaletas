@@ -3,7 +3,7 @@ package ac.cr.ucr.ci1320;
 public class Mensaje {
     private String ipFuente;
     private String ipDestino;
-    private char accion;
+    private int accion;
     private String ipMensaje;
 
     public Mensaje(String ipFuente, String ipDestino, char accion, String ipMensaje) {
@@ -21,11 +21,23 @@ public class Mensaje {
         return ipDestino;
     }
 
-    public char getAccion() {
+    public int getAccion() {
         return accion;
     }
 
     public String getIpMensaje() {
         return ipMensaje;
+    }
+
+    public String toString(){
+        String result = "";
+        result.concat(ipFuente);
+        result.concat("\n");
+        result.concat(ipDestino);
+        result.concat("\n");
+        result.concat(Integer.toString(accion));
+        result.concat("\n");
+        result.concat(ipMensaje);
+        return result;
     }
 }

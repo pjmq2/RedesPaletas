@@ -7,6 +7,5 @@ public class Nodo {
     private Map<String,String> tablaIP;
 
     public void getMessage(){
-
     }
 }

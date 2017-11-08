@@ -5,14 +5,20 @@ import java.util.Map;
 public class Analizador {
     private Map<String,TablaDirecciones> tablaD ;
     private Map<String,String> tablaIP;
+    private Mensaje mensaje;
+    private String miIp;
 
-    Analizador(Map<String,TablaDirecciones> tablaD2, Map<String,String> tablaIP2){
-        tablaD=tablaD2;
-        tablaIP=tablaIP2;
+    public Analizador(Map<String, TablaDirecciones> tablaD, Map<String, String> tablaIP, Mensaje mensaje, String miIp) {
+        this.tablaD = tablaD;
+        this.tablaIP = tablaIP;
+        this.mensaje = mensaje;
+        this.miIp = miIp;
     }
 
-    public String calcularCamino(){
-        String resultado="";
-        return resultado;
+    public Paquete empaquetar(){
+        Paquete paquete = new Paquete(mensaje,miIp,);
+        return paquete;
     }
+
+
 }
