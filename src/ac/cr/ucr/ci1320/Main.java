@@ -55,8 +55,9 @@ public class Main {
         //Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
     }
 
-    public static void sebastian(){
+    public static Nodo sebastian(){
         Map<String,TablaDirecciones> tablaD= new HashMap<>();
+        Map<String,String> tablaIP = new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
         TablaDirecciones tabla2 = new TablaDirecciones("CRR2","12.0.0.7",1,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("CRR3","12.0.0.7",1,5555);
@@ -71,7 +72,11 @@ public class Main {
         tablaD.put("201.6.0.2",tabla5);
         tablaD.put("140.90.0.20",tabla6);
         tablaD.put("200.5.0.2",tabla7);
-        //Nodo nodoPablo = new Nodo(tablaD,"192.168.0.121",7777);
+        tablaIP.put("12.0.0.8","192.168.0.136");
+        tablaIP.put("12.0.20.2","192.168.0.166");
+        tablaIP.put("12.0.0.7","192.168.0.161");
+        Nodo nodoSebastian = new Nodo(tablaD,"12.0.20.2",7777,tablaIP);
+        return nodoSebastian;
     }
 }
 

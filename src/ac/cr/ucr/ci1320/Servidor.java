@@ -19,10 +19,16 @@ import java.net.Socket;
 
 public class Servidor
 {
+
     Nodo nodo;
+    int portz;
     public Servidor(Nodo nodo) {
         this.nodo = nodo;
+        portz = nodo.miPuerto;
     }
+
+
+
 
     public void iniciar() {
         Thread starter = new Thread(new Starter());
@@ -35,7 +41,7 @@ public class Servidor
         public void run(){
             try
             {
-                ServerSocket servidor = new ServerSocket(7777);
+                ServerSocket servidor = new ServerSocket(portz);
                 while (true){
                     Socket cliente = servidor.accept();
                     PrintWriter writer = new PrintWriter(cliente.getOutputStream());
