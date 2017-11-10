@@ -13,6 +13,7 @@ public class Main {
 
 
     public static Nodo pablo(){
+        Dispatcher dispatcher = new Dispatcher();
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
         Map<String,String> tablaIP = new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
@@ -29,9 +30,7 @@ public class Main {
         tablaD.put("25.0.0.0",tabla5);
         tablaD.put("201.6.0.0",tabla6);
         tablaD.put("140.90.0.0",tabla7);
-        tablaIP.put("12.0.0.8","192.168.0.136");
-        tablaIP.put("12.0.20.2","192.168.0.166");
-        tablaIP.put("165.8.6.25","192.168.0.136");
+        tablaIP=dispatcher.getTablaIP();
         Nodo nodoPablo = new Nodo(tablaD,"12.0.0.7",7777,tablaIP);
         return nodoPablo;
     }
