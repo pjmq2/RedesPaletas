@@ -19,33 +19,34 @@ import java.net.Socket;
 
 public class Servidor
 {
-
-    Nodo nodo;
     int portz;
-    public Servidor(Nodo nodo) {
-        this.nodo = nodo;
-        portz = nodo.miPuerto;
+    Nodo nodo;
+    public Servidor(Nodo node) {
+        portz = node.miPuerto;
+        this.nodo = node;
     }
 
-
-
-
     public void iniciar() {
-        Thread starter = new Thread(new Starter());
+        Thread starter = new Thread(new Starter(nodo));
         starter.start();
         System.out.println("\nServidor esperando...");
     }
 
     public class Starter implements Runnable
     {
+        int puerto;
+        public Starter(Nodo node) {
+            puerto = node.miPuerto;
+        }
+
         public void run(){
             try
             {
-                ServerSocket servidor = new ServerSocket(portz);
+                ServerSocket servidor = new ServerSocket(puerto);
                 while (true){
                     Socket cliente = servidor.accept();
                     PrintWriter writer = new PrintWriter(cliente.getOutputStream());
-                    Thread listener = new Thread(new Manejador(cliente,nodo));
+                    Thread listener = new Thread(new Manejador(cliente, nodo));
                     listener.start();
                     System.out.println("\nConexión recibida");
                 }
@@ -62,12 +63,11 @@ public class Servidor
         BufferedReader reader;
         PrintWriter writer;
         Socket sock;
-
         Nodo nodo;
 
-        public Manejador(Socket clientSocket, Nodo nod)
+        public Manejador(Socket clientSocket, Nodo node)
         {
-            nodo = nod;
+            nodo = node;
             try
             {
                 sock = clientSocket;
@@ -99,5 +99,4 @@ public class Servidor
             }
         }
     }
-
 }
