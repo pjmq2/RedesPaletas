@@ -3,6 +3,8 @@ package ac.cr.ucr.ci1320;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Main {
     public static void main(String args[])

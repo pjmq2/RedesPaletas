@@ -12,7 +12,8 @@ public class Analizador {
         this.tablaIP = tablaIP;
         this.miIp = miIp;
     }
-    
+
+    // Crea el paquete físico usando el mensaje creado con los valores de red.
     public Paquete empaquetar(Mensaje mensaje){
         TablaDirecciones tabla=tablaD.get(mensaje.getIpDestino());
         String ipFuturo = tablaIP.get(tabla.getaTraves());
@@ -47,16 +48,16 @@ public class Analizador {
 
     public String getIpDestino(String ipInicial){
         String ipDestino="";
-        String cadena[] = ipInicial.split(".");
+        String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
             default:
-                ipDestino = tablaD.get("165.8.0.0").getaTraves();
+                ipDestino = tablaD.get("165.8.2.0").getaTraves();
                 break;
             case 12:
                 ipDestino = ipInicial;
                 break;
             case 200:
-                ipDestino = tablaD.get("200.5.0.0").getaTraves();
+                ipDestino = tablaD.get("200.5.0.2").getaTraves();
                 break;
             case 25:
                 ipDestino = tablaD.get("25.0.0.0").getaTraves();
@@ -70,6 +71,4 @@ public class Analizador {
         }
         return ipDestino;
     }
-
-
 }

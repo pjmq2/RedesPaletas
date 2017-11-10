@@ -21,21 +21,25 @@ public class Solicitante {
 
     String[] address;
     int port[];
+    Boolean isConnected = false;
     Socket sock;
     BufferedReader reader;
     DataOutputStream writer;
     String response[];
+    Analizador analizador;
+    String miIP;
 
-    public void iniciar(String addr[], int por[], String message){
+    public void iniciar(String addr[], int por[], String message, String IP, Analizador analisis){
         port = por;
         address = addr;
         response = new String[addr.length];
-
+        analizador = analisis;
+        miIP = IP;
         try
         {
             for(int i = 0; i < address.length; ++i)
             {
-                Thread writer = new Thread(new Writer(message, i));
+                Thread writer = new Thread(new Writer(message, i,analizador));
                 writer.start();
             }
         }
@@ -45,13 +49,14 @@ public class Solicitante {
         }
     }
 
-    public void sendMessage(String message,String addr, int por){
+    public void sendMessage(String message,String addr, int por, String IP, Analizador analisis){
         port = new int[1];
         port[0]=por;
         address = new String[1];
         address[0]=addr;
+        miIP = IP;
         try{
-            Thread writer = new Thread(new Writer(message, 0));
+            Thread writer = new Thread(new Writer(message, 0, analisis));
             writer.start();
         }
         catch (Exception ex)
@@ -63,10 +68,12 @@ public class Solicitante {
     public class Writer extends Thread {
         String message;
         int integer;
+        Analizador analizador;
 
-        public Writer(String text, int number) {
+        public Writer(String text, int number, Analizador analisis) {
             message = text;
             integer = number;
+            analizador = analisis;
         }
 
         public void run(){
@@ -76,12 +83,13 @@ public class Solicitante {
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new DataOutputStream(sock.getOutputStream());
-                writer.writeUTF(message);
+                Mensaje mensaje = new Mensaje(miIP, address[integer], 0, message);
+                String envio = mensaje.toString();
+                writer.writeUTF(envio);
                 writer.flush();
                 if (message.equalsIgnoreCase("Dispatch")){
                     response[integer] = reader.readLine();
                 }
-
             }
             catch (Exception ex) {
                 System.out.println("Message was not sent.\n");

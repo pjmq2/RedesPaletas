@@ -35,15 +35,15 @@ public class Mensaje {
 
     public String toString(){
         String result = "";
-        result.concat(ipFuente);
-        result.concat("\n");
-        result.concat(ipDestino);
-        result.concat("\n");
-        result.concat(Integer.toString(accion));
-        result.concat("\n");
-        result.concat(Integer.toString(tamano));
-        result.concat("\n");
-        result.concat(ipMensaje);
+        result = result.concat(ipFuente);
+        result = result.concat("\n");
+        result = result.concat(ipDestino);
+        result = result.concat("\n");
+        result = result.concat(Integer.toString(accion));
+        result = result.concat("\n");
+        result = result.concat(Integer.toString(tamano));
+        result = result.concat("\n");
+        result = result.concat(ipMensaje);
         return result;
     }
 }
