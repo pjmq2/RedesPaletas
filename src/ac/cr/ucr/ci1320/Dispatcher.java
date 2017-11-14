@@ -17,16 +17,21 @@ import java.util.Map;
 
 public class Dispatcher {
     private Map<String,String> tablaIP;
+    String localIP;
 
-    public Dispatcher() {
+    public Dispatcher(String miIP) {
         this.tablaIP = new HashMap<>();
-        tablaIP.put("12.0.0.8","192.168.0.136");
-        tablaIP.put("12.0.20.2","192.168.0.166");
-        tablaIP.put("165.8.6.25","192.168.0.136");
-        tablaIP.toString();
+        tablaIP.put("12.0.0.7","000.000.0.000"); // P
+        tablaIP.put("12.0.20.2","000.000.0.000"); // S
+        tablaIP.put("12.0.0.8",miIP); // J
+        localIP = miIP;
     }
 
-    public Map<String, String> getTablaIP() {
+    public String getTablaIPString() {
+        return tablaIP.toString();
+    }
+
+    public Map<String,String> getTablaIP() {
         return tablaIP;
     }
 
