@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashMap;
-import java.util.Map;
 
 public class DEMO {
     public static void main(String args[])
@@ -19,7 +18,7 @@ public class DEMO {
         String mensaje3 = "12.0.20.2\n12.0.0.8\n1\n10\n1Hola Mundo";
         String mensaje4 = "12.0.0.8\n12.0.0.8\n1\n10\nHola Mundo";
 
-        Map<String,TablaDirecciones> tablaD= new HashMap<>();
+        HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
 
         TablaDirecciones tabla2 = new TablaDirecciones("CRR2","12.0.0.7",1,5555); // P
         TablaDirecciones tabla3 = new TablaDirecciones("CRR3","12.0.0.7",1,5555); // P
@@ -35,7 +34,7 @@ public class DEMO {
         tablaD.put("140.90.0.20",tabla6); // S
         tablaD.put("200.5.0.2",tabla7); // S
 
-        Map<String,String> tablaIP = new HashMap<>();
+        HashMap<String,String> tablaIP = new HashMap<>();
         tablaIP.put("12.0.0.7","192.168.0.161"); // P
         tablaIP.put("12.0.20.2","10.1.130.211"); // S
         tablaIP.put("12.0.0.8","10.1.130.84"); // J
