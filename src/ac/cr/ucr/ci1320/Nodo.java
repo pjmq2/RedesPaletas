@@ -1,21 +1,23 @@
 package ac.cr.ucr.ci1320;
 
-import java.util.Map;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Nodo {
-    private Map<String,TablaDirecciones> tablaD ;
-    private Map<String,String> tablaIP;
+    private HashMap<String,TablaDirecciones> tablaD ;
+    private HashMap<String,String> tablaIP;
+    private Dispatcher dispon;
     private String miIp;
     public int miPuerto;
     private Analizador analisis;
 
-    public Nodo(Map<String, TablaDirecciones> tablaD, String miIp, int miPuerto, Map<String,String>tablaIP) {
+    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, Dispatcher dis) {
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
+        this.dispon = dis;
     }
 
     public void iniciar()
