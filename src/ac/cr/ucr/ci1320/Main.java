@@ -2,20 +2,19 @@ package ac.cr.ucr.ci1320;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class Main {
     public static void main(String args[])
     {
-        Servidor servidor = new Servidor(pablo());
+        Nodo servidor = julian();
         servidor.iniciar();
     }
 
 
     public static Nodo pablo(){
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        HashMap<String,TablaDirecciones> tablaD = new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
         TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
@@ -38,10 +37,10 @@ public class Main {
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            Map<String,String> tablaIP = new HashMap<>();
-            Dispatcher dispatcher = new Dispatcher(IP);
+            HashMap<String,String> tablaIP = new HashMap<>();
+            Dispatcher dispatcher = new Dispatcher(IP, 9999);
             tablaIP=dispatcher.getTablaIP();
-            nodoPablo = new Nodo(tablaD,IP,7777, tablaIP);
+            nodoPablo = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
             return nodoPablo;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
@@ -50,7 +49,7 @@ public class Main {
     }
 
     public static Nodo julian(){
-        Map<String,TablaDirecciones> tablaD= new HashMap<>();
+        HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
 
         TablaDirecciones tabla2 = new TablaDirecciones("CRR2","12.0.0.7",1,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("CRR3","12.0.0.7",1,5555);
@@ -72,10 +71,10 @@ public class Main {
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            Map<String,String> tablaIP = new HashMap<>();
-            Dispatcher dispatcher = new Dispatcher(IP);
+            HashMap<String,String> tablaIP = new HashMap<>();
+            Dispatcher dispatcher = new Dispatcher(IP, 9999);
             tablaIP=dispatcher.getTablaIP();
-            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP);
+            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
             return nodoJulian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
@@ -84,7 +83,7 @@ public class Main {
     }
 
     public static Nodo sebastian(){
-        Map<String,TablaDirecciones> tablaD= new HashMap<>();
+        HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
         TablaDirecciones tabla2 = new TablaDirecciones("CRR2","12.0.0.7",1,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("CRR3","12.0.0.7",1,5555);
@@ -107,10 +106,10 @@ public class Main {
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            Map<String,String> tablaIP = new HashMap<>();
-            Dispatcher dispatcher = new Dispatcher(IP);
+            HashMap<String,String> tablaIP = new HashMap<>();
+            Dispatcher dispatcher = new Dispatcher(IP, 9999);
             tablaIP=dispatcher.getTablaIP();
-            nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP);
+            nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
             return nodoSebastian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
