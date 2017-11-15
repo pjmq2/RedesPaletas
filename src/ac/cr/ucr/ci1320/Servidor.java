@@ -43,7 +43,7 @@ public class Servidor
                     PrintWriter writer = new PrintWriter(cliente.getOutputStream());
                     Thread listener = new Thread(new Manejador(cliente, nodo));
                     listener.start();
-                    System.out.println("\nConexión recibida");
+                    System.out.println("\nConexión recibida, Servidor");
                 }
             }
             catch (Exception ex)

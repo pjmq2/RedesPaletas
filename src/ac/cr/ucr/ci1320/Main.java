@@ -16,21 +16,22 @@ public class Main {
     public static Nodo pablo(){
         HashMap<String,TablaDirecciones> tablaD = new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,5555);
-        TablaDirecciones tabla3 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
-        TablaDirecciones tabla5 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
-        TablaDirecciones tabla6 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
-        TablaDirecciones tabla7 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777);
+        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555);
+        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
+        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
+        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
+        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
+        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
 
         tablaD.put("12.0.0.8",tabla1);
         tablaD.put("12.0.20.2",tabla2);
-        tablaD.put("165.8.0.0",tabla3);
-        tablaD.put("200.5.0.0",tabla4);
-        tablaD.put("25.0.0.0",tabla5);
-        tablaD.put("201.6.0.0",tabla6);
-        tablaD.put("140.90.0.0",tabla7);
-
+        tablaD.put("12.0.0.7",tabla3);
+        tablaD.put("165.8.0.0",tabla4);
+        tablaD.put("200.5.0.0",tabla5);
+        tablaD.put("25.0.0.0",tabla6);
+        tablaD.put("201.6.0.0",tabla7);
+        tablaD.put("140.90.0.0",tabla8);
         InetAddress ipAddr;
         Nodo nodoPablo;
 
@@ -53,19 +54,23 @@ public class Main {
     public static Nodo julian(){
         HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
 
-        TablaDirecciones tabla2 = new TablaDirecciones("CRR2","12.0.0.7",1,5555);
-        TablaDirecciones tabla3 = new TablaDirecciones("CRR3","12.0.0.7",1,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("TELO1","12.0.0.7",2,5555);
-        TablaDirecciones tabla5 = new TablaDirecciones("LEOG2","12.0.20.2",3,5555);
-        TablaDirecciones tabla6 = new TablaDirecciones("Bolinchas.Jorge","12.0.20.2",2,2222);
-        TablaDirecciones tabla7 = new TablaDirecciones("P2","12.0.20.2",1,2222);
+        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777);
+        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555);
+        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
+        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
+        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
+        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
+        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
 
-        tablaD.put("165.8.2.0",tabla2);
-        tablaD.put("165.8.48.2",tabla3);
-        tablaD.put("25.0.2.5",tabla4);
-        tablaD.put("201.6.0.2",tabla5);
-        tablaD.put("140.90.0.20",tabla6);
-        tablaD.put("200.5.0.2",tabla7);
+        tablaD.put("12.0.0.8",tabla1);
+        tablaD.put("12.0.20.2",tabla2);
+        tablaD.put("12.0.0.7",tabla3);
+        tablaD.put("165.8.0.0",tabla4);
+        tablaD.put("200.5.0.0",tabla5);
+        tablaD.put("25.0.0.0",tabla6);
+        tablaD.put("201.6.0.0",tabla7);
+        tablaD.put("140.90.0.0",tabla8);
 
         InetAddress ipAddr;
         Nodo nodoJulian;
@@ -77,7 +82,7 @@ public class Main {
             String fake1 = "12.0.0.7";
             String fake2 = "12.0.20.2";
             String fake3 = "12.0.0.8";
-            tablaIP=getIPtable(fake1, "000.000.0.000", fake2, IP, fake3, "000.000.0.000");
+            tablaIP=getIPtable(fake1, "000.000.0.000", fake2, "000.000.0.000", fake3, IP);
             nodoJulian = new Nodo(tablaD,IP,7777, tablaIP, fake1, fake2, fake3, 9999);
             return nodoJulian;
         } catch (UnknownHostException ex) {
@@ -89,19 +94,22 @@ public class Main {
     public static Nodo sebastian(){
         HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
-        TablaDirecciones tabla2 = new TablaDirecciones("CRR2","12.0.0.7",1,5555);
-        TablaDirecciones tabla3 = new TablaDirecciones("CRR3","12.0.0.7",1,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("TELO1","12.0.0.7",2,5555);
-        TablaDirecciones tabla5 = new TablaDirecciones("LEOG2","200.5.0.1",2,5555);
-        TablaDirecciones tabla6 = new TablaDirecciones("Bolinchas.Jorge","200.5.0.1",1,2222);
-        TablaDirecciones tabla7 = new TablaDirecciones("P2","200.5.0.1",0,2222);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777);
+        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555);
+        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
+        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
+        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
+        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
+        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
+
         tablaD.put("12.0.0.8",tabla1);
-        tablaD.put("165.8.2.0",tabla2);
-        tablaD.put("165.8.48.2",tabla3);
-        tablaD.put("25.0.2.5",tabla4);
-        tablaD.put("201.6.0.2",tabla5);
-        tablaD.put("140.90.0.20",tabla6);
-        tablaD.put("200.5.0.2",tabla7);
+        tablaD.put("12.0.20.2",tabla2);
+        tablaD.put("12.0.0.7",tabla3);
+        tablaD.put("165.8.0.0",tabla4);
+        tablaD.put("200.5.0.0",tabla5);
+        tablaD.put("25.0.0.0",tabla6);
+        tablaD.put("201.6.0.0",tabla7);
+        tablaD.put("140.90.0.0",tabla8);
 
         InetAddress ipAddr;
 

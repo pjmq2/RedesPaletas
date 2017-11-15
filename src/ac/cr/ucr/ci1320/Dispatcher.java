@@ -14,6 +14,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
+import static java.lang.Integer.signum;
+import static java.lang.Integer.valueOf;
+
 public class Dispatcher {
     private HashMap<String,String> tablaIP;
     String localIP;
@@ -70,10 +73,12 @@ public class Dispatcher {
                 ServerSocket servidor = new ServerSocket(puerto);
                 while (true){
                     Socket cliente = servidor.accept();
+                    String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
+                    String clientIPRevealed = clientIP.split("/")[1];
                     PrintWriter writer = new PrintWriter(cliente.getOutputStream());
-                    Thread listener = new Thread(new Dispatcher.Manejador(cliente));
+                    Thread listener = new Thread(new Dispatcher.Manejador(cliente, clientIPRevealed));
                     listener.start();
-                    System.out.println("\nConexión recibida");
+                    System.out.println("\nConexión recibida, Dispatcher");
                 }
             }
             catch (Exception ex)
@@ -88,8 +93,9 @@ public class Dispatcher {
         BufferedReader reader;
         PrintWriter writer;
         Socket sock;
+        String lastClientRealIP;
 
-        public Manejador(Socket clientSocket)
+        public Manejador(Socket clientSocket, String clientFakeIP)
         {
             try
             {
@@ -97,6 +103,7 @@ public class Dispatcher {
                 InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(isReader);
                 writer = new PrintWriter(sock.getOutputStream());
+                lastClientRealIP = clientFakeIP;
             }
             catch (Exception ex)
             {
@@ -113,7 +120,30 @@ public class Dispatcher {
                 DataInputStream outClient;
                 outClient = new DataInputStream(sock.getInputStream());
                 String mensaje = outClient.readUTF();
-                System.out.println(getTablaIPString());
+
+                // El mensaje debe ser el IP FALSO!!!
+
+                String[] mensajeSeparado = mensaje.split("\\n");
+                Mensaje objmensaje = new Mensaje(mensajeSeparado[0],mensajeSeparado[1],valueOf(mensajeSeparado[2]),mensajeSeparado[4]);
+                String mensajeDespejado = objmensaje.getIpMensaje();
+                String[] mensajeCantidad = mensajeDespejado.split("\\.");
+                int numfin = mensajeCantidad.length;
+                if(numfin == 4) {
+                    boolean success = nodo.modifyIPTableEntry(mensajeDespejado, lastClientRealIP);
+
+                    if (success == true) {
+                        System.out.println("Se ha guardado " + mensajeDespejado + " con " + lastClientRealIP);
+                    }
+                    else
+                    {
+                        System.out.println("ERROR! Dirección falsa otorgada no existe");
+                    }
+                }
+                else
+                {
+                    System.out.println("La dirección falsa asignada no sigue el formato adecuado");
+                }
+                lastClientRealIP = null;
             }
             catch (Exception ex)
             {

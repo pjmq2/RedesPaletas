@@ -3,12 +3,15 @@ package ac.cr.ucr.ci1320;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import static java.lang.Integer.valueOf;
+
 public class Nodo {
     private HashMap<String,TablaDirecciones> tablaD ;
     private HashMap<String,String> tablaIP;
     private Dispatcher dispon;
     private String miIp;
     public int miPuerto;
+    public int backlogport;
     private Analizador analisis;
 
     public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, int backport) {
@@ -17,7 +20,26 @@ public class Nodo {
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
-        this.dispon = new Dispatcher(fake1, this.tablaIP.get(fake1), fake2, this.tablaIP.get(fake2), fake3, this.tablaIP.get(fake3), backport, this);;
+        this.dispon = new Dispatcher(fake1, this.tablaIP.get(fake1), fake2, this.tablaIP.get(fake2), fake3, this.tablaIP.get(fake3), backport, this);
+        this.backlogport = backport;
+    }
+
+    public boolean isNumeric(String s) {
+        return s != null && s.matches("[-+]?\\d*\\.?\\d+");
+    }
+
+    public boolean modifyIPTableEntry(String fake, String real)
+    {
+        String faker = tablaIP.get(fake);
+        if(faker == null)
+        {
+            return false;
+        }
+        else
+        {
+            tablaIP.put(fake, real);
+            return true;
+        }
     }
 
     public void iniciar()
@@ -33,7 +55,7 @@ public class Nodo {
 
         // Leer línea de la terminal.
 
-        System.out.println("Escriba -> IPDESTINO \\n MENSAJE"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
+        System.out.println("Escriba -> IPDESTINO \\n PORT \\n MENSAJE"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
         Scanner scanner = new Scanner(System.in);
         String entrada = "";
         while(!(entrada.equals("BYE")))
@@ -45,12 +67,25 @@ public class Nodo {
                 // Enviar el mensaje
                 Solicitante solicitante = new Solicitante(this);
 
-                if(array.length == 2)
+                if(array.length == 3 && isNumeric(array[1]))
                 {
-                    String ipDestino = tablaD.get(array[0]).getaTraves();
-                    String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
-                    TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
-                    solicitante.sendMessage(array[1], direccionReal, tabla.getPuerto(), miIp, analisis); // Address Port Menssage
+                    int porte = valueOf(array[1]);
+                    TablaDirecciones tdir = tablaD.get(array[0]);
+                    if(tdir == null)
+                    {
+                        System.out.println("Dirección IP inválida");
+                    }
+                    else
+                    {
+                        String ipDestino = tdir.getaTraves();
+                        String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
+                        TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
+                        solicitante.sendMessage(array[2], direccionReal, porte, miIp, analisis); // Address Port Menssage
+                    }
+                }
+                else
+                {
+                    System.out.println("Mensaje Inválido");
                 }
             }
         }
