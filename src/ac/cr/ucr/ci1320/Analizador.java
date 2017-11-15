@@ -1,13 +1,13 @@
 package ac.cr.ucr.ci1320;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Analizador {
-    private Map<String,TablaDirecciones> tablaD ;
-    private Map<String,String> tablaIP;
+    private HashMap<String,TablaDirecciones> tablaD ;
+    private HashMap<String,String> tablaIP;
     private String miIp;
 
-    public Analizador(Map<String, TablaDirecciones> tablaD, Map<String, String> tablaIP, String miIp) {
+    public Analizador(HashMap<String, TablaDirecciones> tablaD, HashMap<String, String> tablaIP, String miIp) {
         this.tablaD = tablaD;
         this.tablaIP = tablaIP;
         this.miIp = miIp;
