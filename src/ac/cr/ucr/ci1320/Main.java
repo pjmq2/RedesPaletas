@@ -38,8 +38,11 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            tablaIP=getIPtable("12.0.0.7", IP, "12.0.20.2", "000.000.0.000", "12.0.0.8", "000.000.0.000");
-            nodoPablo = new Nodo(tablaD,IP,7777, tablaIP);
+            String fake1 = "12.0.0.7";
+            String fake2 = "12.0.20.2";
+            String fake3 = "12.0.0.8";
+            tablaIP=getIPtable(fake1, "000.000.0.000", fake2, IP, fake3, "000.000.0.000");
+            nodoPablo = new Nodo(tablaD,IP,7777, tablaIP, fake1, fake2, fake3, 9999);
             return nodoPablo;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
@@ -71,8 +74,11 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            tablaIP=getIPtable("12.0.0.7", "000.000.0.000", "12.0.20.2", "000.000.0.000", "12.0.0.8", IP);
-            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP);
+            String fake1 = "12.0.0.7";
+            String fake2 = "12.0.20.2";
+            String fake3 = "12.0.0.8";
+            tablaIP=getIPtable(fake1, "000.000.0.000", fake2, IP, fake3, "000.000.0.000");
+            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP, fake1, fake2, fake3, 9999);
             return nodoJulian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
@@ -105,8 +111,11 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            tablaIP=getIPtable("12.0.0.7", "000.000.0.000", "12.0.20.2", IP, "12.0.0.8", "000.000.0.000");
-            nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP);
+            String fake1 = "12.0.0.7";
+            String fake2 = "12.0.20.2";
+            String fake3 = "12.0.0.8";
+            tablaIP=getIPtable(fake1, "000.000.0.000", fake2, IP, fake3, "000.000.0.000");
+            nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP, fake1, fake2, fake3, 9999);
             return nodoSebastian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
