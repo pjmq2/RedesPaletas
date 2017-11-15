@@ -19,12 +19,11 @@ public class Dispatcher {
     String localIP;
     int port;
 
-    public Dispatcher(String miIP, int backport) {
+    public Dispatcher(String fake1, String real1, String fake2, String real2, String fake3, String miIP, int backport) {
         this.tablaIP = new HashMap<>();
-        this.tablaIP.put("12.0.0.7","000.000.0.000"); // P
-        this.tablaIP.put("12.0.20.2","000.000.0.000"); // S
-        this.tablaIP.put("12.0.0.8","000.000.0.000"); // J
-        this.tablaIP.put("12.0.0.8",miIP); // CON IP FALSA DE JULIÁN
+        this.tablaIP.put(fake1,real1); // P
+        this.tablaIP.put(fake2,real2); // S
+        this.tablaIP.put(fake3,miIP); // J
         this.localIP = miIP;
         this.port = backport;
     }
