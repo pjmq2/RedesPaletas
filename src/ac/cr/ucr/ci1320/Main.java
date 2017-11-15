@@ -15,14 +15,14 @@ public class Main {
 
     public static Nodo pablo(){
         HashMap<String,TablaDirecciones> tablaD = new HashMap<>();
-        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777);
-        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
-        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
-        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
-        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
-        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
+        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333, 9999);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777, 9999);
+        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555, 9999);
+        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555, 9999);
+        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555, 9999);
+        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555, 9999);
+        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222, 9999);
+        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222, 9999);
 
         tablaD.put("12.0.0.8",tabla1);
         tablaD.put("12.0.20.2",tabla2);
@@ -54,14 +54,14 @@ public class Main {
     public static Nodo julian(){
         HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
 
-        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777);
-        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
-        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
-        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
-        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
-        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
+        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333, 9999);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777, 9999);
+        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555, 9999);
+        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555, 9999);
+        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555, 9999);
+        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555, 9999);
+        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222, 9999);
+        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222, 9999);
 
         tablaD.put("12.0.0.8",tabla1);
         tablaD.put("12.0.20.2",tabla2);
@@ -93,14 +93,14 @@ public class Main {
 
     public static Nodo sebastian(){
         HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
-        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777);
-        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555);
-        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555);
-        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555);
-        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222);
-        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222);
+        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,3333, 9999);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777, 9999);
+        TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",0,5555, 9999);
+        TablaDirecciones tabla4 = new TablaDirecciones("Carrito","165.8.6.25",0,5555, 9999);
+        TablaDirecciones tabla5 = new TablaDirecciones("Paletas","165.8.6.25",1,5555, 9999);
+        TablaDirecciones tabla6 = new TablaDirecciones("Luces","165.8.6.25",2,5555, 9999);
+        TablaDirecciones tabla7 = new TablaDirecciones("Legos","12.0.20.2",2,2222, 9999);
+        TablaDirecciones tabla8 = new TablaDirecciones("Bolinchas","12.0.20.2",1,2222, 9999);
 
         tablaD.put("12.0.0.8",tabla1);
         tablaD.put("12.0.20.2",tabla2);

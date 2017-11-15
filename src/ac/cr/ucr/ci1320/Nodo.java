@@ -55,7 +55,7 @@ public class Nodo {
 
         // Leer línea de la terminal.
 
-        System.out.println("Escriba -> IPDESTINO \\n PORT \\n MENSAJE"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
+        System.out.println("Escriba -> IPDESTINO \\n MENSAJE"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
         Scanner scanner = new Scanner(System.in);
         String entrada = "";
         while(!(entrada.equals("BYE")))
@@ -67,21 +67,27 @@ public class Nodo {
                 // Enviar el mensaje
                 Solicitante solicitante = new Solicitante(this);
 
-                if(array.length == 3 && isNumeric(array[1]))
+                if(array.length == 2)
                 {
-                    int porte = valueOf(array[1]);
-                    TablaDirecciones tdir = tablaD.get(array[0]);
-                    if(tdir == null)
-                    {
-                        System.out.println("Dirección IP inválida");
-                    }
-                    else
-                    {
-                        String ipDestino = tdir.getaTraves();
-                        String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
-                        TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
-                        solicitante.sendMessage(array[2], direccionReal, porte, miIp, analisis); // Address Port Menssage
-                    }
+
+                        TablaDirecciones tdir = tablaD.get(array[0]);
+                        if (tdir == null) {
+                            System.out.println("Dirección IP inválida");
+                        } else {
+                            String ipDestino = tdir.getaTraves();
+                            String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
+                            TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
+                            int porte = 0000;
+                            if(entrada.equalsIgnoreCase("DISPATCH"))
+                            {
+                                porte = tabla.getBackPuerto();
+                            }
+                            else{
+                                porte = tabla.getPuerto();
+                            }
+                            solicitante.sendMessage(array[1], direccionReal, porte, miIp, analisis); // Address Port Menssage
+                        }
+
                 }
                 else
                 {
