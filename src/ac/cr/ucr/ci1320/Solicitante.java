@@ -13,10 +13,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.DataOutputStream;
 
-/**
- *
- * @author Selene
- */
 public class Solicitante {
 
     String[] address;
