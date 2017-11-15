@@ -18,14 +18,16 @@ public class Dispatcher {
     private HashMap<String,String> tablaIP;
     String localIP;
     int port;
+    Nodo nodo;
 
-    public Dispatcher(String fake1, String real1, String fake2, String real2, String fake3, String miIP, int backport) {
+    public Dispatcher(String fake1, String real1, String fake2, String real2, String fake3, String miIP, int backport, Nodo node) {
         this.tablaIP = new HashMap<>();
         this.tablaIP.put(fake1,real1); // P
         this.tablaIP.put(fake2,real2); // S
         this.tablaIP.put(fake3,miIP); // J
         this.localIP = miIP;
         this.port = backport;
+        this.nodo = node;
     }
 
     public HashMap<String,String> BuildIPTable(String fake1, String real1, String fake2, String real2, String fake3, String real3) {
