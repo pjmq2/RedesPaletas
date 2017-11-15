@@ -23,7 +23,12 @@ public class Solicitante {
     DataOutputStream writer;
     String response[];
     Analizador analizador;
+    Nodo nodo;
     String miIP;
+
+    public Solicitante(Nodo node) {
+        this.nodo = node;
+    }
 
     public void iniciar(String addr[], int por[], String message, String IP, Analizador analisis){
         port = por;
