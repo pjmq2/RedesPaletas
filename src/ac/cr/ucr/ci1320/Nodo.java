@@ -33,7 +33,7 @@ public class Nodo {
 
         // Leer línea de la terminal.
 
-        System.out.println("Escriba -> IPDESTINO \\n MENSAJE");
+        System.out.println("Escriba -> IPDESTINO \\n MENSAJE"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
         Scanner scanner = new Scanner(System.in);
         String entrada = "";
         while(!(entrada.equals("BYE")))
@@ -43,12 +43,12 @@ public class Nodo {
             {
                 String[] array = entrada.split("\\\\n");
                 // Enviar el mensaje
-                Solicitante solicitante = new Solicitante();
+                Solicitante solicitante = new Solicitante(this);
 
                 if(array.length == 2)
                 {
                     String ipDestino = tablaD.get(array[0]).getaTraves();
-                    String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional
+                    String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
                     TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
                     solicitante.sendMessage(array[1], direccionReal, tabla.getPuerto(), miIp, analisis); // Address Port Menssage
                 }
@@ -75,7 +75,7 @@ public class Nodo {
                 paquete = analiza.empaquetar(mensaje);
                 String ipFalsa = analiza.getIpDestino(paquete.getIpDestinPaquete());
                 String ipReal = tablaIP.get(ipFalsa);
-                Solicitante solicitante = new Solicitante();
+                Solicitante solicitante = new Solicitante(this);
                 solicitante.sendMessage(paquete.toString(),ipReal,tablaD.get(paquete.getIpDestinPaquete()).getPuerto(),miIp,analisis);
             }
         }
@@ -91,7 +91,7 @@ public class Nodo {
     private void casosDeMensajes(Paquete paquete){
         int accion = paquete.getMensaje().getAccion();
         Analizador analiza = new Analizador(tablaD,tablaIP,miIp); //
-        Solicitante solicitante = new Solicitante(); // Cliente
+        Solicitante solicitante = new Solicitante(this); // Cliente
         switch (accion){
             case 0:
                 Paquete paquete2=analiza.empaquetar(paquete.getMensaje());
