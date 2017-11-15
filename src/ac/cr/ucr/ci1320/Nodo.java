@@ -11,13 +11,13 @@ public class Nodo {
     public int miPuerto;
     private Analizador analisis;
 
-    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, Dispatcher dis) {
+    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP) {
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
-        this.dispon = dis;
+        this.dispon = new Dispatcher("12.0.0.7", this.tablaIP.get("12.0.0.7"), "12.0.20.2", this.tablaIP.get("12.0.20.2"), "12.0.0.8", this.tablaIP.get("12.0.0.8"), 9999, this);;
     }
 
     public void iniciar()
