@@ -34,23 +34,29 @@ public class DEMO {
         tablaD.put("140.90.0.20",tabla6); // S
         tablaD.put("200.5.0.2",tabla7); // S
 
-        HashMap<String,String> tablaIP = new HashMap<>();
-        tablaIP.put("12.0.0.7","192.168.0.161"); // P
-        tablaIP.put("12.0.20.2","10.1.130.211"); // S
-        tablaIP.put("12.0.0.8","10.1.130.84"); // J
-
         InetAddress ipAddr;
-
         Nodo nodoJulian;
 
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            Solicitante cliente = new Solicitante();
-            Analizador analizador = new Analizador(tablaD,tablaIP,IP);
-            cliente.sendMessage(mensaje2,"192.168.0.166",7777,IP,analizador);
+            HashMap<String,String> tablaIP;
+            String fake1 = "12.0.0.7";
+            String fake2 = "12.0.20.2";
+            String fake3 = "12.0.0.8";
+            tablaIP=getIPtable(fake1, "000.000.0.000", fake2, IP, fake3, "000.000.0.000");
+            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP, fake1, fake2, fake3, 9999);
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static HashMap<String, String> getIPtable(String fake1, String real1, String fake2, String real2, String fake3, String real3)
+    {
+        HashMap<String,String> tablonIP = new HashMap<>();
+        tablonIP.put(fake1,real1); // P
+        tablonIP.put(fake2,real2); // S
+        tablonIP.put(fake3,real3); // J
+        return tablonIP;
     }
 }
