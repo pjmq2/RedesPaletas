@@ -27,6 +27,10 @@ public class Nodo {
         Servidor server = new Servidor(this);
         server.iniciar();
 
+        // Abrir el Dispatcher
+
+        dispon.iniciar();
+
         // Leer línea de la terminal.
 
         System.out.println("Escriba -> IPDESTINO \\n MENSAJE");
