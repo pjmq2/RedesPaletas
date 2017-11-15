@@ -16,19 +16,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Dispatcher {
-    private Map<String,String> tablaIP;
+    private Map<String,TablaIp> tablaIP;
 
     public Dispatcher() {
         this.tablaIP = new HashMap<>();
-        tablaIP.put("12.0.0.8","192.168.0.136");
-        tablaIP.put("12.0.20.2","192.168.0.166");
-        tablaIP.put("165.8.6.25","192.168.0.136");
+        TablaIp tabla1 = new TablaIp("192.168.0.136",5555);
+        TablaIp tabla2 = new TablaIp("192.168.0.166",5555);
+        TablaIp tabla3 = new TablaIp("localhost",5555);
+        tablaIP.put("12.0.0.8",tabla1);
+        tablaIP.put("12.0.20.2",tabla2);
+        tablaIP.put("165.8.6.25",tabla3);
         tablaIP.toString();
     }
 
-    public Map<String, String> getTablaIP() {
+    public Map<String, TablaIp> getTablaIP() {
         return tablaIP;
     }
+
+
+
+
 
     public void iniciar() {
         Thread starter = new Thread(new Dispatcher.Starter());

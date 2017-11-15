@@ -4,10 +4,10 @@ import java.util.Map;
 
 public class Analizador {
     private Map<String,TablaDirecciones> tablaD ;
-    private Map<String,String> tablaIP;
+    private Map<String,TablaIp> tablaIP;
     private String miIp;
 
-    public Analizador(Map<String, TablaDirecciones> tablaD, Map<String, String> tablaIP, String miIp) {
+    public Analizador(Map<String, TablaDirecciones> tablaD, Map<String, TablaIp> tablaIP, String miIp) {
         this.tablaD = tablaD;
         this.tablaIP = tablaIP;
         this.miIp = miIp;
@@ -15,9 +15,10 @@ public class Analizador {
 
     // Crea el paquete físico usando el mensaje creado con los valores de red.
     public Paquete empaquetar(Mensaje mensaje){
-        TablaDirecciones tabla=tablaD.get(mensaje.getIpDestino());
-        String ipFuturo = tablaIP.get(tabla.getaTraves());
-        Paquete paquete = new Paquete(mensaje,miIp,ipFuturo); //La tercera es a ip de destino
+        String ipDestino = this.getIpDestino(mensaje.getIpDestino());
+        //TablaDirecciones tabla=tablaD.get(ipDestino);
+        //String ipFuturo = tablaIP.get(ipDestino);
+        Paquete paquete = new Paquete(mensaje,miIp,ipDestino); //La tercera es a ip de destino
         return paquete;
     }
 
@@ -51,7 +52,7 @@ public class Analizador {
         String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
             default:
-                ipDestino = tablaD.get("165.8.2.0").getaTraves();
+                ipDestino = tablaD.get("165.8.0.0").getaTraves();
                 break;
             case 12:
                 ipDestino = ipInicial;
@@ -70,5 +71,31 @@ public class Analizador {
                 break;
         }
         return ipDestino;
+    }
+
+    public int getPuertoDestino(String ipInicial){
+        int puertoDestino=0;
+        String cadena[] = ipInicial.split("\\.");
+        switch (Integer.parseInt(cadena[0])){
+            default:
+                puertoDestino = tablaIP.get("165.8.0.0").getPuerto();
+                break;
+            case 12:
+                puertoDestino = tablaIP.get(ipInicial).getPuerto();
+                break;
+            case 200:
+                puertoDestino = tablaIP.get("200.5.0.2").getPuerto();
+                break;
+            case 25:
+                puertoDestino = tablaIP.get("25.0.0.0").getPuerto();
+                break;
+            case 201:
+                puertoDestino = tablaIP.get("201.6.0.0").getPuerto();
+                break;
+            case 140:
+                puertoDestino = tablaIP.get("140.90.0.0").getPuerto();
+                break;
+        }
+        return puertoDestino;
     }
 }

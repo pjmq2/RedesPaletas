@@ -4,13 +4,11 @@ public class TablaDirecciones {
     private String direccionFisica;
     private String aTraves;
     private int distancia;
-    private int puerto;
 
-    public TablaDirecciones(String direccionFisica, String aTraves, int distancia, int puerto) {
+    public TablaDirecciones(String direccionFisica, String aTraves, int distancia) {
         this.direccionFisica = direccionFisica;
         this.aTraves = aTraves;
         this.distancia = distancia;
-        this.puerto = puerto;
     }
 
     public String getDireccionFisica() {
@@ -25,7 +23,4 @@ public class TablaDirecciones {
         return distancia;
     }
 
-    public int getPuerto() {
-        return puerto;
-    }
 }

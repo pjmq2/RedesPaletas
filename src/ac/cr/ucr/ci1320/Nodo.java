@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class Nodo {
     private Map<String,TablaDirecciones> tablaD ;
-    private Map<String,String> tablaIP;
+    private Map<String,TablaIp> tablaIP;
     private String miIp;
     public int miPuerto;
     private Analizador analisis;
 
-    public Nodo(Map<String, TablaDirecciones> tablaD, String miIp, int miPuerto, Map<String,String>tablaIP) {
+    public Nodo(Map<String, TablaDirecciones> tablaD, String miIp, int miPuerto, Map<String,TablaIp>tablaIP) {
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;
@@ -42,9 +42,10 @@ public class Nodo {
                 if(array.length == 2)
                 {
                     String ipDestino = tablaD.get(array[0]).getaTraves();
-                    String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional
+                    String direccionReal = tablaIP.get(ipDestino).getIpVerdadera(); //Hacer un condicional
                     TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
-                    solicitante.sendMessage(array[1], direccionReal, tabla.getPuerto(), miIp, analisis); // Address Port Menssage
+                    int puerto = tablaIP.get(ipDestino).getPuerto();
+                    solicitante.sendMessage(array[1], direccionReal, puerto, miIp, analisis); // Address Port Menssage
                 }
             }
         }
@@ -68,9 +69,10 @@ public class Nodo {
             {
                 paquete = analiza.empaquetar(mensaje);
                 String ipFalsa = analiza.getIpDestino(paquete.getIpDestinPaquete());
-                String ipReal = tablaIP.get(ipFalsa);
+                int puerto = analiza.getPuertoDestino(paquete.getIpDestinPaquete());
+                String ipReal = tablaIP.get(ipFalsa).getIpVerdadera();
                 Solicitante solicitante = new Solicitante();
-                solicitante.sendMessage(paquete.toString(),ipReal,tablaD.get(paquete.getIpDestinPaquete()).getPuerto(),miIp,analisis);
+                solicitante.sendMessage(paquete.toString(),ipReal,puerto,miIp,analisis);
             }
         }
     }
@@ -91,19 +93,19 @@ public class Nodo {
                 Paquete paquete2=analiza.empaquetar(paquete.getMensaje());
                 if(paquete.getMensaje().getIpDestino().equals(miIp)) imprimirMensaje(paquete.getMensaje());
                 else{
-                    solicitante.sendMessage(paquete2.toString(),paquete2.getIpDestinPaquete(),tablaD.get(paquete2.getIpDestinPaquete()).getPuerto(),miIp,analisis);
+                    solicitante.sendMessage(paquete2.toString(),paquete2.getIpDestinPaquete(),tablaIP.get(paquete2.getIpDestinPaquete()).getPuerto(),miIp,analisis);
                 }
 
                 break;
             case 1:
                 if(paquete.getMensaje().getIpMensaje().equals(miIp)){
                     Paquete paquete1 = analiza.responder3(paquete.getMensaje().getIpFuente());
-                    solicitante.sendMessage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaD.get(paquete1.getIpDestinPaquete()).getPuerto(),miIp,analisis);
+                    solicitante.sendMessage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaIP.get(paquete1.getIpDestinPaquete()).getPuerto(),miIp,analisis);
                 }
                 break;
             case 2:
                 Paquete paquete1 = analiza.responder4(paquete.getMensaje().getIpFuente());
-                solicitante.sendMessage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaD.get(paquete1.getIpDestinPaquete()).getPuerto(),miIp,analisis);
+                solicitante.sendMessage(paquete1.toString(),paquete1.getIpDestinPaquete(),tablaIP.get(paquete1.getIpDestinPaquete()).getPuerto(),miIp,analisis);
                 break;
         }
     }
