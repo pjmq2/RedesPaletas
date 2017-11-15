@@ -38,9 +38,8 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            Dispatcher dispatcher = new Dispatcher("12.0.0.7", IP, "12.0.20.2", "000.000.0.000", "12.0.0.8", "000.000.0.000", 9999);
-            tablaIP=dispatcher.getTablaIP();
-            nodoPablo = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
+            tablaIP=getIPtable("12.0.0.7", IP, "12.0.20.2", "000.000.0.000", "12.0.0.8", "000.000.0.000");
+            nodoPablo = new Nodo(tablaD,IP,7777, tablaIP);
             return nodoPablo;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
@@ -72,9 +71,8 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            Dispatcher dispatcher = new Dispatcher("12.0.0.7", "000.000.0.000", "12.0.20.2", "000.000.0.000", "12.0.0.8", IP, 9999);
-            tablaIP=dispatcher.getTablaIP();
-            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
+            tablaIP=getIPtable("12.0.0.7", "000.000.0.000", "12.0.20.2", "000.000.0.000", "12.0.0.8", IP);
+            nodoJulian = new Nodo(tablaD,IP,7777, tablaIP);
             return nodoJulian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
@@ -107,13 +105,21 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            Dispatcher dispatcher = new Dispatcher("12.0.0.7", "000.000.0.000", "12.0.20.2", IP, "12.0.0.8", "000.000.0.000", 9999);
-            tablaIP=dispatcher.getTablaIP();
-            nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
+            tablaIP=getIPtable("12.0.0.7", "000.000.0.000", "12.0.20.2", IP, "12.0.0.8", "000.000.0.000");
+            nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP);
             return nodoSebastian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    public static HashMap<String, String> getIPtable(String fake1, String real1, String fake2, String real2, String fake3, String real3)
+    {
+        HashMap<String,String> tablonIP = new HashMap<>();
+        tablonIP.put(fake1,real1); // P
+        tablonIP.put(fake2,real2); // S
+        tablonIP.put(fake3,real3); // J
+        return tablonIP;
     }
 }
