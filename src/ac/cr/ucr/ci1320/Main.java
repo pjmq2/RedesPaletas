@@ -37,8 +37,8 @@ public class Main {
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            HashMap<String,String> tablaIP = new HashMap<>();
-            Dispatcher dispatcher = new Dispatcher(IP, 9999);
+            HashMap<String,String> tablaIP;
+            Dispatcher dispatcher = new Dispatcher("12.0.0.7", IP, "12.0.20.2", "000.000.0.000", "12.0.0.8", "000.000.0.000", 9999);
             tablaIP=dispatcher.getTablaIP();
             nodoPablo = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
             return nodoPablo;
@@ -71,8 +71,8 @@ public class Main {
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            HashMap<String,String> tablaIP = new HashMap<>();
-            Dispatcher dispatcher = new Dispatcher(IP, 9999);
+            HashMap<String,String> tablaIP;
+            Dispatcher dispatcher = new Dispatcher("12.0.0.7", "000.000.0.000", "12.0.20.2", "000.000.0.000", "12.0.0.8", IP, 9999);
             tablaIP=dispatcher.getTablaIP();
             nodoJulian = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
             return nodoJulian;
@@ -106,8 +106,8 @@ public class Main {
         try {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            HashMap<String,String> tablaIP = new HashMap<>();
-            Dispatcher dispatcher = new Dispatcher(IP, 9999);
+            HashMap<String,String> tablaIP;
+            Dispatcher dispatcher = new Dispatcher("12.0.0.7", "000.000.0.000", "12.0.20.2", IP, "12.0.0.8", "000.000.0.000", 9999);
             tablaIP=dispatcher.getTablaIP();
             nodoSebastian = new Nodo(tablaD,IP,7777, tablaIP, dispatcher);
             return nodoSebastian;
@@ -117,5 +117,3 @@ public class Main {
         }
     }
 }
-
-
