@@ -12,10 +12,7 @@ public class Main {
 
 
     public static Nodo pablo(){
-        Dispatcher dispatcher = new Dispatcher();
-        Map<String,TablaIp> tablaIP;
-        tablaIP=dispatcher.getTablaIP();
-        Nodo nodoPablo = new Nodo(tablaIP,"192.168.0.115");
+        Nodo nodoPablo = new Nodo("192.168.0.115");
         return nodoPablo;
     }
 }

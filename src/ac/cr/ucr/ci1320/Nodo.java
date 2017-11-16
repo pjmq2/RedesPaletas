@@ -11,10 +11,10 @@ public class Nodo {
     private Analizador analisis;
     private String ipDispatcher;
 
-    public Nodo(Map<String,TablaIp>tablaIP, String ipDispatcher) {
+    public Nodo(String ipDispatcher) {
         this.miIp = "12.0.0.7";
         this.miPuerto = 7777;
-        this.tablaIP = tablaIP;
+        this.tablaIP = new HashMap<>();
         this.tablaD = new HashMap<>();
         this.ipDispatcher = ipDispatcher;
         this.iniciar();
@@ -26,11 +26,12 @@ public class Nodo {
     {
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0);
         TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0);
-        TablaDirecciones tabla3 = new TablaDirecciones("Carrito","165.8.6.25",0);
-        TablaDirecciones tabla4 = new TablaDirecciones("Paletas","165.8.6.25",1);
-        TablaDirecciones tabla5 = new TablaDirecciones("Luces","165.8.6.25",2);
+        TablaDirecciones tabla3 = new TablaDirecciones("Carrito","165.8.0.0",0);
+        TablaDirecciones tabla4 = new TablaDirecciones("Paletas","165.8.0.0",1);
+        TablaDirecciones tabla5 = new TablaDirecciones("Luces","165.8.0.0",2);
         TablaDirecciones tabla6 = new TablaDirecciones("Legos","12.0.20.2",2);
         TablaDirecciones tabla7 = new TablaDirecciones("Bolinchas","12.0.20.2",1);
+        TablaDirecciones tabla8 = new TablaDirecciones("Alonso","12.0.0.3",0);
         tablaD.put("12.0.0.8",tabla1);
         tablaD.put("12.0.20.2",tabla2);
         tablaD.put("165.8.0.0",tabla3);
@@ -38,9 +39,21 @@ public class Nodo {
         tablaD.put("25.0.0.0",tabla5);
         tablaD.put("201.6.0.0",tabla6);
         tablaD.put("140.90.0.0",tabla7);
-        Mensaje pedirCosas = new Mensaje("12.0.0.7","12.0.0.0",7,"7777");
-        Cliente cliente = new Cliente();
-        cliente.sendMessage(pedirCosas.toString(),ipDispatcher,5000);
+        tablaD.put("12.0.0.3",tabla8);
+        //Mensaje pedirCosas = new Mensaje("12.0.0.7","12.0.0.0",7,"7777");
+        //Cliente cliente = new Cliente();
+        //cliente.sendMessage(pedirCosas.toString(),ipDispatcher,5000);
+        falseDispatcher();
+    }
+
+    //Dispatcher Falso
+    public void falseDispatcher(){
+        TablaIp tabla1 = new TablaIp("localhost",9999);
+        TablaIp tabla2 = new TablaIp("localhost",9999);
+        TablaIp tabla3 = new TablaIp("192.168.0.11",5555);
+        tablaIP.put("12.0.0.8",tabla1);
+        tablaIP.put("12.0.0.3",tabla2);
+        tablaIP.put("165.8.0.0",tabla3);
     }
 
     // Procesa el mensaje
@@ -71,26 +84,30 @@ public class Nodo {
                     else {
                         Paquete paquete = analisis.empaquetar(mensaje);
                         int puerto = analisis.getPuertoDestino(paquete.getIpDestinPaquete());
-                        String ipReal = tablaIP.get(paquete.getIpDestinPaquete()).getIpVerdadera();
-                        cliente.sendMessage(paquete.toString(), ipReal, puerto);
+                        String ipTemp = analisis.getIpDestino(paquete.getIpDestinPaquete());
+                        String ipReal = tablaIP.get(ipTemp).getIpVerdadera();
+                        cliente.sendMessage(mensaje.toString(), ipReal, puerto);
                     }
                     break;
                 case 1:
                     if (mensaje.getIpMensaje().equals(miIp)) {
                         Paquete paquete = analisis.responder3(mensaje.getIpFuente());
                         int puerto = analisis.getPuertoDestino(paquete.getIpDestinPaquete());
-                        String ipReal = tablaIP.get(paquete.getIpDestinPaquete()).getIpVerdadera();
+                        String ipTemp = analisis.getIpDestino(paquete.getIpDestinPaquete());
+                        String ipReal = tablaIP.get(ipTemp).getIpVerdadera();
                         cliente.sendMessage(paquete.toString(), ipReal, puerto);
                     }
                     break;
                 case 2:
                     Paquete paquete = analisis.responder4(mensaje.getIpFuente(), mensaje.getIpMensaje());
                     int puerto = analisis.getPuertoDestino(paquete.getIpDestinPaquete());
-                    String ipReal = tablaIP.get(paquete.getIpDestinPaquete()).getIpVerdadera();
+                    String ipTemp = analisis.getIpDestino(paquete.getIpDestinPaquete());
+                    String ipReal = tablaIP.get(ipTemp).getIpVerdadera();
                     cliente.sendMessage(paquete.toString(), ipReal, puerto);
                     break;
                 case 7:
                     HashMap<String, TablaIp> tablaTemp;
+                    imprimirMensaje(mensaje);
                     tablaTemp = this.parseFromDispatcher(mensaje.getIpMensaje());
                     tablaIP = tablaTemp;
                     this.analisis = new Analizador(tablaD, tablaIP, miIp);
@@ -143,6 +160,7 @@ public class Nodo {
     private void imprimirMensaje(Mensaje mensaje){
         System.out.println(mensaje.getIpMensaje());
     }
+
 
     public HashMap<String,TablaIp> parseFromDispatcher(String dispatcherInput){
         String[] computador = dispatcherInput.split("#");

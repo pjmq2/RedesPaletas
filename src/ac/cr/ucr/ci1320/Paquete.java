@@ -28,12 +28,7 @@ public class Paquete {
     }
 
     public String toString() {
-        String result = "";
-        result.concat(ipDestinPaquete);
-        result.concat("\n");
-        result.concat(ipFuentePaquete);
-        result.concat("\n");
-        result.concat(mensaje.toString());
+        String result =ipDestinPaquete+"\n"+ipFuentePaquete+"\n"+mensaje.toString();
         return result;
     }
 }
