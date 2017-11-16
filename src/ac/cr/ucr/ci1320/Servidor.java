@@ -95,7 +95,7 @@ public class Servidor
                         String entradas[] = mensaje.split("|");
                         int longitud = entradas.length;
                         for (int i = 0; i < longitud; ++i) {
-                            String resultado[] = entradas[i].split(",");
+                            String resultado[] = entradas[i].split("\n");
                             if (isNumeric(resultado[2]) == true) {
                                 int porte = Integer.parseInt(resultado[2]);
                                 boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
