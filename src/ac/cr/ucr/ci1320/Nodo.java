@@ -80,14 +80,14 @@ public class Nodo {
 
     public String getTablaIPString() {
         String returnValue = new String();
-        if(!(tablaIP.get("12.0.0.7").equalsIgnoreCase("0"))) {
-            returnValue = returnValue + "12.0.0.7" + "," + tablaIP.get("12.0.0.7") + "," + tablaD.get("12.0.0.7").getPuerto();
+        if(!(tablaIP.get(miIpFalsa).equalsIgnoreCase("0"))) {
+            returnValue = returnValue  + miIpFalsa + "," + tablaIP.get("12.0.0.8") + "," + tablaD.get("12.0.0.8").getPuerto();
         }
         if(!(tablaIP.get("12.0.20.2").equalsIgnoreCase("0"))) {
             returnValue = returnValue + "|" + "12.0.20.2" + "," + tablaIP.get("12.0.20.2") + "," + tablaD.get("12.0.20.2").getPuerto();
         }
-        if(!(tablaIP.get("12.0.0.8").equalsIgnoreCase("0"))) {
-            returnValue = returnValue  + "|" + "12.0.0.8" + "," + tablaIP.get("12.0.0.8") + "," + tablaD.get("12.0.0.8").getPuerto();
+        if(!(tablaIP.get("12.0.0.7").equalsIgnoreCase("0"))) {
+            returnValue = returnValue + "|" + "12.0.0.7" + "," + tablaIP.get("12.0.0.7") + "," + tablaD.get("12.0.0.7").getPuerto();
         }
         if(!(tablaIP.get("12.0.0.3").equalsIgnoreCase("0"))) {
             returnValue = returnValue  + "|" + "12.0.0.3" + "," + tablaIP.get("12.0.0.3") + "," + tablaD.get("12.0.0.3").getPuerto();

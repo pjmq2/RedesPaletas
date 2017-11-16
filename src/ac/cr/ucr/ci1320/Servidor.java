@@ -92,22 +92,20 @@ public class Servidor
 
                 if (envio.getAccion() == 7) {
                     if(envio.getIpMensaje().contains("|") == true) {
-                        String entradas[] = envio.getIpMensaje().split("\\|");
+                        String entradas[] = envio.getIpMensaje().split("\\|", -1);
                         int longitud = entradas.length;
                         for (int i = 0; i < longitud; ++i) {
-                            if(entradas[i] != "") {
-                                String resultado[] = entradas[i].split("\n");
-                                if (isNumeric(resultado[2]) == true) {
-                                    int porte = Integer.parseInt(resultado[2]);
-                                    boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
-                                    if (success == true) {
-                                        System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
-                                    } else {
-                                        System.out.println("ERROR! Dirección falsa otorgada no existe");
-                                    }
+                            String resultado[] = entradas[i].split("\n");
+                            if (isNumeric(resultado[2]) == true) {
+                                int porte = Integer.parseInt(resultado[2]);
+                                boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                if (success == true) {
+                                    System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                                 } else {
-                                    System.out.println("ERROR! El puerto debe ser un número");
+                                    System.out.println("ERROR! Dirección falsa otorgada no existe");
                                 }
+                            } else {
+                                System.out.println("ERROR! El puerto debe ser un número");
                             }
                         }
                     }
