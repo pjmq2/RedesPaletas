@@ -92,7 +92,7 @@ public class Servidor
 
                 if (envio.getAccion() == 7) {
                     if(envio.getIpMensaje().contains("|") == true) {
-                        String entradas[] = mensaje.split("\\|");
+                        String entradas[] = envio.getIpMensaje().split("\\|");
                         int longitud = entradas.length;
                         for (int i = 0; i < longitud; ++i) {
                             String resultado[] = entradas[i].split("\n");
