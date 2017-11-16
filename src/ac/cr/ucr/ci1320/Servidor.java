@@ -98,9 +98,9 @@ public class Servidor
                             String resultado[] = entradas[i].split(",");
                             if (isNumeric(resultado[2]) == true) {
                                 int porte = Integer.parseInt(resultado[2]);
-                                boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                boolean success = nodo.modifyIPTableEntry(resultado[0], resultado[1], porte);
                                 if (success == true) {
-                                    System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                                    System.out.println("Se ha guardado " + resultado[0] + " con " + resultado[1]);
                                 } else {
                                     System.out.println("ERROR! Dirección falsa otorgada no existe");
                                 }
