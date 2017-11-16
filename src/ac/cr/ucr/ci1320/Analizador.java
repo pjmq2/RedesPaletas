@@ -41,8 +41,8 @@ public class Analizador {
         return paquete;
     }
 
-    public Paquete responder4(String ipDestino){
-        Mensaje mensaje = new Mensaje(miIp,ipDestino,4,Integer.toString(tablaD.get(ipDestino).getDistancia()));
+    public Paquete responder4(String ipDestino, String otroIp){
+        Mensaje mensaje = new Mensaje(miIp,ipDestino,4,Integer.toString(tablaD.get(otroIp).getDistancia()));
         Paquete paquete = new Paquete(mensaje,miIp,ipDestino);
         return paquete;
     }
