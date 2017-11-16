@@ -13,88 +13,76 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.DataOutputStream;
 
-public class Solicitante {
+public class Solicitante extends Thread {
 
-    String[] address;
-    int port[];
-    Boolean isConnected = false;
+    String address;
+    int port;
     Socket sock;
     BufferedReader reader;
     DataOutputStream writer;
-    String response[];
-    Analizador analizador;
+    String response;
     Nodo nodo;
     String miIP;
+    String message;
+    Boolean isConnected = false;
+    Analizador analizador;
 
-    public Solicitante(Nodo node) {
+    public Solicitante(Nodo node, String message, String addr, int por, String IP, Analizador analisis){
         this.nodo = node;
+        this.port=por;
+        this.address=addr;
+        this.miIP = IP;
+        this.message = message;
     }
 
-    public void iniciar(String addr[], int por[], String message, String IP, Analizador analisis){
-        port = por;
-        address = addr;
-        response = new String[addr.length];
-        analizador = analisis;
-        miIP = IP;
+    public void run(){
         try
         {
-            for(int i = 0; i < address.length; ++i)
+            sock = new Socket(address, port);
+            InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
+            reader = new BufferedReader(streamreader);
+            writer = new DataOutputStream(sock.getOutputStream());
+            String envio;
+
+            if(message.equalsIgnoreCase("DISPATCH"))
             {
-                Thread writer = new Thread(new Writer(message, i,analizador));
-                writer.start();
+                envio = Integer.toString(nodo.getPort()) + "," + nodo.getFake();
             }
-        }
-        catch (Exception ex)
-        {
-            System.out.println("\nCannot Connect!");
-        }
-    }
+            else {
+                Mensaje mensaje = new Mensaje(miIP, address, 0, message);
+                envio = mensaje.toString();
+            }
 
-    public void sendMessage(String message,String addr, int por, String IP, Analizador analisis){
-        port = new int[1];
-        port[0]=por;
-        address = new String[1];
-        address[0]=addr;
-        miIP = IP;
-        try{
-            Thread writer = new Thread(new Writer(message, 0, analisis));
-            writer.start();
-        }
-        catch (Exception ex)
-        {
-            System.out.println("\nCannot Connect!");
-        }
-    }
-
-    public class Writer extends Thread {
-        String message;
-        int integer;
-        Analizador analizador;
-
-        public Writer(String text, int number, Analizador analisis) {
-            message = text;
-            integer = number;
-            analizador = analisis;
-        }
-
-        public void run(){
-            try
-            {
-                sock = new Socket(address[integer], port[integer]);
-                InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
-                reader = new BufferedReader(streamreader);
-                writer = new DataOutputStream(sock.getOutputStream());
-                Mensaje mensaje = new Mensaje(miIP, address[integer], 0, message);
-                String envio = mensaje.toString();
-                writer.writeUTF(envio);
-                writer.flush();
-                if (message.equalsIgnoreCase("Dispatch")){
-                    response[integer] = reader.readLine();
+            writer.writeUTF(envio);
+            writer.flush();
+            if (envio.equalsIgnoreCase("DISPATCH")) {
+                response = reader.readLine();
+                String entradas[] = response.split("|");
+                int longitud = entradas.length;
+                for(int i = 0; i < longitud; ++i) {
+                    String resultado[] = entradas[i].split(",");
+                    if(isNumeric(resultado[2]) == true) {
+                        int porte = Integer.parseInt(resultado[2]);
+                        boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                        if (success == true) {
+                            System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                        } else {
+                            System.out.println("ERROR! Dirección falsa otorgada no existe");
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("ERROR! El puerto debe ser un número");
+                    }
                 }
             }
-            catch (Exception ex) {
-                System.out.println("Message was not sent.\n");
-            }
         }
+        catch (Exception ex) {
+            System.out.println("Message was not sent.\n");
+        }
+    }
+
+    public static boolean isNumeric(String s) {
+        return s != null && s.matches("[-+]?\\d*\\.?\\d+");
     }
 }

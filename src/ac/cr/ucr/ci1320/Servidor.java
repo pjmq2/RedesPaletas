@@ -17,7 +17,7 @@ public class Servidor
     int portz;
     Nodo nodo;
     public Servidor(Nodo node) {
-        portz = node.miPuerto;
+        portz = node.getPort();
         this.nodo = node;
     }
 
@@ -31,7 +31,7 @@ public class Servidor
     {
         int puerto;
         public Starter(Nodo node) {
-            puerto = node.miPuerto;
+            puerto = node.getPort();
         }
 
         public void run(){
@@ -86,7 +86,7 @@ public class Servidor
                 outClient = new DataInputStream(sock.getInputStream());
                 String mensaje = outClient.readUTF();
                 System.out.println(mensaje);
-                nodo.recibirTransmicion(mensaje);
+                // nodo.recibirTransmicion(mensaje);
             }
             catch (Exception ex)
             {

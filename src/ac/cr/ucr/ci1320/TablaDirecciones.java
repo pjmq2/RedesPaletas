@@ -35,4 +35,8 @@ public class TablaDirecciones {
     public int getBackPuerto() {
         return backpuerto;
     }
+
+    public void modifyPort(int port){
+        this.puerto = port;
+    }
 }

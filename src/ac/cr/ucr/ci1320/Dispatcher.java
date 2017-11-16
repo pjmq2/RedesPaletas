@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.io.DataOutputStream;
 
 import static java.lang.Integer.signum;
 import static java.lang.Integer.valueOf;
@@ -23,30 +24,24 @@ public class Dispatcher {
     int port;
     Nodo nodo;
 
-    public Dispatcher(String fake1, String real1, String fake2, String real2, String fake3, String miIP, int backport, Nodo node) {
+    public Dispatcher(String fake1, String real1, String fake2, String real2, String fake3, String miIP, String fake4, String real4, int backport, Nodo node) {
         this.tablaIP = new HashMap<>();
         this.tablaIP.put(fake1,real1); // P
         this.tablaIP.put(fake2,real2); // S
         this.tablaIP.put(fake3,miIP); // J
+        this.tablaIP.put(fake4,real4); // A
         this.localIP = miIP;
         this.port = backport;
         this.nodo = node;
     }
 
-    public HashMap<String,String> BuildIPTable(String fake1, String real1, String fake2, String real2, String fake3, String real3) {
+    public HashMap<String,String> BuildIPTable(String fake1, String real1, String fake2, String real2, String fake3, String real3, String fake4, String real4) {
         HashMap<String,String> tablonIP = new HashMap<>();
         tablonIP.put(fake1,real1); // P
         tablonIP.put(fake2,real2); // S
         tablonIP.put(fake3,real3); // J
+        tablonIP.put(fake4,real4); // A
         return tablonIP;
-    }
-
-    public String getTablaIPString() {
-        String returnValue = new String();
-        returnValue = returnValue + "12.0.0.7=" + tablaIP.get("12.0.0.7") + "\n";
-        returnValue = returnValue + "12.0.20.2=" + tablaIP.get("12.0.0.7") + "\n";
-        returnValue = returnValue + "12.0.0.8=" + tablaIP.get("12.0.0.7");
-        return returnValue;
     }
 
     public HashMap<String,String> getTablaIP() {
@@ -91,7 +86,7 @@ public class Dispatcher {
     public class Manejador implements Runnable
     {
         BufferedReader reader;
-        PrintWriter writer;
+        DataOutputStream writer;
         Socket sock;
         String lastClientRealIP;
 
@@ -102,7 +97,7 @@ public class Dispatcher {
                 sock = clientSocket;
                 InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(isReader);
-                writer = new PrintWriter(sock.getOutputStream());
+                writer = new DataOutputStream(sock.getOutputStream());
                 lastClientRealIP = clientFakeIP;
             }
             catch (Exception ex)
@@ -123,16 +118,12 @@ public class Dispatcher {
 
                 // El mensaje debe ser el IP FALSO!!!
 
-                String[] mensajeSeparado = mensaje.split("\\n");
-                Mensaje objmensaje = new Mensaje(mensajeSeparado[0],mensajeSeparado[1],valueOf(mensajeSeparado[2]),mensajeSeparado[4]);
-                String mensajeDespejado = objmensaje.getIpMensaje();
-                String[] mensajeCantidad = mensajeDespejado.split("\\.");
-                int numfin = mensajeCantidad.length;
-                if(numfin == 4) {
-                    boolean success = nodo.modifyIPTableEntry(mensajeDespejado, lastClientRealIP);
-
+                String[] mensajeSeparado = mensaje.split("\n");
+                int numfin = mensajeSeparado.length;
+                if(numfin == 2 && isNumeric(mensajeSeparado[1]) == true) {
+                    boolean success = nodo.modifyIPTableEntry(mensajeSeparado[0], lastClientRealIP, Integer.parseInt(mensajeSeparado[1]));
                     if (success == true) {
-                        System.out.println("Se ha guardado " + mensajeDespejado + " con " + lastClientRealIP);
+                        System.out.println("Se ha guardado " + mensajeSeparado[0] + " con " + lastClientRealIP);
                     }
                     else
                     {
@@ -143,6 +134,12 @@ public class Dispatcher {
                 {
                     System.out.println("La dirección falsa asignada no sigue el formato adecuado");
                 }
+
+                // Enviar tabla completa
+
+                String finale = nodo.getTablaIPString();
+                writer.writeUTF(finale);
+                writer.flush();
                 lastClientRealIP = null;
             }
             catch (Exception ex)
@@ -150,5 +147,9 @@ public class Dispatcher {
                 System.out.println("Fallo envio");
             }
         }
+    }
+
+    public static boolean isNumeric(String s) {
+        return s != null && s.matches("[-+]?\\d*\\.?\\d+");
     }
 }
