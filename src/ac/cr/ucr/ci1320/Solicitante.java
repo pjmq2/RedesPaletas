@@ -18,6 +18,7 @@ public class Solicitante extends Thread {
 
     String address;
     int port;
+    int accion;
     Socket sock;
     BufferedReader reader;
     DataOutputStream writer;
@@ -28,12 +29,13 @@ public class Solicitante extends Thread {
     Boolean isConnected = false;
     Analizador analizador;
 
-    public Solicitante(Nodo node, String message, String addr, int por, String IP, Analizador analisis){
+    public Solicitante(Nodo node, String message, String addr, int por, String IP, Analizador analisis, int accion){
         this.nodo = node;
         this.port=por;
         this.address=addr;
         this.miIP = IP;
         this.message = message;
+        this.accion = accion;
     }
 
     public void run(){
@@ -44,17 +46,8 @@ public class Solicitante extends Thread {
             reader = new BufferedReader(streamreader);
             writer = new DataOutputStream(sock.getOutputStream());
             String envio;
-
-            if(message.equalsIgnoreCase("DISPATCH"))
-            {
-                Mensaje mensaje = new Mensaje(nodo.getFake(), address, 7, Integer.toString(nodo.getPort()));
-                envio = mensaje.toString();
-            }
-            else {
-                Mensaje mensaje = new Mensaje(nodo.getFake(), address, 0, message);
-                envio = mensaje.toString();
-            }
-
+            Mensaje mensaje = new Mensaje(nodo.getFake(), address, accion, Integer.toString(nodo.getPort()));
+            envio = mensaje.toString();
             writer.writeUTF(envio);
             writer.flush();
 

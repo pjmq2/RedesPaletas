@@ -117,7 +117,7 @@ public class Servidor
                             System.out.println("ERROR! Dirección falsa otorgada no existe");
                         }
                         String mensajeAEnviar = nodo.getTablaIPString();
-                        Solicitante solicitante = new Solicitante(this.nodo, mensajeAEnviar, lastClientRealIP, Integer.parseInt(envio.getIpMensaje()), nodo.getIP(), nodo.getAnalizer()); // Address Port Menssage
+                        Solicitante solicitante = new Solicitante(this.nodo, mensajeAEnviar, lastClientRealIP, Integer.parseInt(envio.getIpMensaje()), nodo.getIP(), nodo.getAnalizer(), 7); // Address Port Menssage
                         solicitante.run();
                     }
                     else{

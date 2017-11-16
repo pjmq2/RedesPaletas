@@ -120,14 +120,14 @@ public class Nodo {
                         TablaDirecciones tabla2 = tablaD.get(ipDestino);
                         porte = tabla2.getPuerto();
                         String mensajeAEnviar = array[1];
-                        solicitante = new Solicitante(this, mensajeAEnviar, direccionReal, porte, miIp, analisis); // Address Port Menssage
+                        solicitante = new Solicitante(this, mensajeAEnviar, direccionReal, porte, miIp, analisis, 7); // Address Port Menssage
                         solicitante.run();
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     String direccionReal = tablaIP.get(Alonso);
                     TablaDirecciones tabla = tablaD.get(Alonso);
                     int porte = tabla.getPuerto();
-                    solicitante = new Solicitante(this, entrada, direccionReal, porte, miIp, analisis); // Address Port Menssage
+                    solicitante = new Solicitante(this, entrada, direccionReal, porte, miIp, analisis, 7); // Address Port Menssage
                     solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");
