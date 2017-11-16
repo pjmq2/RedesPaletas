@@ -87,7 +87,7 @@ public class Nodo {
         for(int i = 0; i < array.length; ++i) {
             if (!(tablaIP.get(array[i]).equalsIgnoreCase("0"))) {
                 if(!(returnValue.equals(""))) { returnValue = returnValue + "|"; }
-                returnValue = returnValue + "|" + array[i] + "," + tablaIP.get(array[i]) + "," + tablaD.get(array[i]).getPuerto();
+                returnValue = returnValue + array[i] + "," + tablaIP.get(array[i]) + "," + tablaD.get(array[i]).getPuerto();
             }
         }
         return returnValue;
