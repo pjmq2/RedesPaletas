@@ -45,7 +45,7 @@ public class Main {
             String fake2 = "12.0.20.2";
             String fake3 = "12.0.0.8";
             String fake4 = "12.0.0.3";
-            tablaIP=getIPtable(fake1, "192.168.0.121", fake2, "0", fake3, IP, fake4, "192.168.0.151"); // La última es la real de Alonso
+            tablaIP=getIPtable(fake1, "0", fake2, "0", fake3, IP, fake4, "192.168.0.151"); // La última es la real de Alonso
             nodoJulian = new Nodo(tablaD,IP,tabla1.getPuerto(), tablaIP, fake1, fake2, fake3, fake4,tabla1.getBackPuerto());
             return nodoJulian;
         } catch (UnknownHostException ex) {

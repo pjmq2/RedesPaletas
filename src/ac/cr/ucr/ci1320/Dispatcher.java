@@ -88,9 +88,10 @@ public class Dispatcher {
         BufferedReader reader;
         DataOutputStream writer;
         Socket sock;
+        String lastClientFakeIP;
         String lastClientRealIP;
 
-        public Manejador(Socket clientSocket, String clientFakeIP)
+        public Manejador(Socket clientSocket, String clientRealIP)
         {
             try
             {
@@ -98,7 +99,7 @@ public class Dispatcher {
                 InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(isReader);
                 writer = new DataOutputStream(sock.getOutputStream());
-                lastClientRealIP = clientFakeIP;
+                lastClientRealIP = clientRealIP;
             }
             catch (Exception ex)
             {
@@ -120,7 +121,7 @@ public class Dispatcher {
 
                 String[] mensajeOriginalSeparado = mensaje.split("\n");
                 if(mensajeOriginalSeparado.length == 4) {
-                    String[] mensajeSeparado = mensajeOriginalSeparado[4].split("\n");
+                    String[] mensajeSeparado = mensajeOriginalSeparado[3].split("\n");
                     int numfin = mensajeSeparado.length;
                     if (numfin == 2 && isNumeric(mensajeSeparado[1]) == true) {
                         boolean success = nodo.modifyIPTableEntry(mensajeSeparado[0], lastClientRealIP, Integer.parseInt(mensajeSeparado[1]));

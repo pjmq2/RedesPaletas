@@ -40,7 +40,9 @@ public class Servidor
                 ServerSocket servidor = new ServerSocket(puerto);
                 while (true){
                     Socket cliente = servidor.accept();
-                    Thread listener = new Thread(new Manejador(cliente, nodo));
+                    String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
+                    String clientIPRevealed = clientIP.split("/")[1];
+                    Thread listener = new Thread(new Manejador(cliente, nodo, clientIPRevealed));
                     listener.start();
                     System.out.println("Conexión recibida, Servidor");
                 }
@@ -58,8 +60,9 @@ public class Servidor
         PrintWriter writer;
         Socket sock;
         Nodo nodo;
+        String lastClientRealIP;
 
-        public Manejador(Socket clientSocket, Nodo node)
+        public Manejador(Socket clientSocket, Nodo node, String clientRealIP)
         {
             nodo = node;
             try
@@ -68,6 +71,7 @@ public class Servidor
                 InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(isReader);
                 writer = new PrintWriter(sock.getOutputStream());
+                lastClientRealIP = clientRealIP;
             }
             catch (Exception ex)
             {
@@ -87,25 +91,37 @@ public class Servidor
                 Mensaje envio = new Mensaje(mensaje);
 
                 if (envio.getAccion() == 7) {
-                    String response = reader.readLine();
-                    Mensaje paquete = new Mensaje(response);
-                    String entradas[] = paquete.getIpMensaje().split("|");
-                    int longitud = entradas.length;
-                    for(int i = 0; i < longitud; ++i) {
-                        String resultado[] = entradas[i].split(",");
-                        if(isNumeric(resultado[2]) == true) {
-                            int porte = Integer.parseInt(resultado[2]);
-                            boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
-                            if (success == true) {
-                                System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                    if(envio.getIpMensaje().contains("|") == true) {
+                        String entradas[] = mensaje.split("|");
+                        int longitud = entradas.length;
+                        for (int i = 0; i < longitud; ++i) {
+                            String resultado[] = entradas[i].split(",");
+                            if (isNumeric(resultado[2]) == true) {
+                                int porte = Integer.parseInt(resultado[2]);
+                                boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                if (success == true) {
+                                    System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                                } else {
+                                    System.out.println("ERROR! Dirección falsa otorgada no existe");
+                                }
                             } else {
-                                System.out.println("ERROR! Dirección falsa otorgada no existe");
+                                System.out.println("ERROR! El puerto debe ser un número");
                             }
                         }
-                        else
-                        {
-                            System.out.println("ERROR! El puerto debe ser un número");
+                    }
+                    else if(isNumeric(envio.getIpMensaje()) == true) {
+                        boolean success = nodo.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
+                        if (success == true) {
+                            System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
+                        } else {
+                            System.out.println("ERROR! Dirección falsa otorgada no existe");
                         }
+                        String mensajeAEnviar = nodo.getTablaIPString();
+                        Solicitante solicitante = new Solicitante(this.nodo, mensajeAEnviar, lastClientRealIP, Integer.parseInt(envio.getIpMensaje()), nodo.getIP(), nodo.getAnalizer()); // Address Port Menssage
+                        solicitante.run();
+                    }
+                    else{
+                        System.out.println("Este mensaje no debe ser manejado por el dispatcher");
                     }
                 }
                 // nodo.recibirTransmicion(mensaje);

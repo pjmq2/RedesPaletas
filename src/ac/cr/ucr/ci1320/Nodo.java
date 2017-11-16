@@ -45,6 +45,8 @@ public class Nodo {
         return this.miIpFalsa;
     }
 
+    public Analizador getAnalizer() { return this.analisis; }
+
     public boolean modifyIPTableEntry(String fake, String real, int port)
     {
         String faker = tablaIP.get(fake);
@@ -79,16 +81,16 @@ public class Nodo {
     public String getTablaIPString() {
         String returnValue = new String();
         if(!(tablaIP.get("12.0.0.7").equalsIgnoreCase("0"))) {
-            returnValue = returnValue + "12.0.0.7," + tablaIP.get("12.0.0.7") + tablaD.get("12.0.0.7").getPuerto() + "|";
+            returnValue = returnValue + "12.0.0.7," + tablaIP.get("12.0.0.7") + tablaD.get("12.0.0.7").getPuerto();
         }
         if(!(tablaIP.get("12.0.20.2").equalsIgnoreCase("0"))) {
-            returnValue = returnValue + "12.0.20.2," + tablaIP.get("12.0.20.2") + tablaD.get("12.0.20.2").getPuerto() + "|";
+            returnValue = returnValue + "|" + "12.0.20.2," + tablaIP.get("12.0.20.2") + tablaD.get("12.0.20.2").getPuerto() + "|";
         }
         if(!(tablaIP.get("12.0.0.8").equalsIgnoreCase("0"))) {
-            returnValue = returnValue + "12.0.0.8," + tablaIP.get("12.0.0.8") + tablaD.get("12.0.0.8").getPuerto() + "|";
+            returnValue = returnValue  + "|" + "12.0.0.8," + tablaIP.get("12.0.0.8") + tablaD.get("12.0.0.8").getPuerto() + "|";
         }
         if(!(tablaIP.get("12.0.0.3").equalsIgnoreCase("0"))) {
-            returnValue = returnValue + "12.0.0.3," + tablaIP.get("12.0.0.3") + tablaD.get("12.0.0.3").getPuerto();
+            returnValue = returnValue  + "|" + "12.0.0.3," + tablaIP.get("12.0.0.3") + tablaD.get("12.0.0.3").getPuerto();
         }
         return returnValue;
     }
@@ -117,7 +119,8 @@ public class Nodo {
                         int porte = 0000;
                         TablaDirecciones tabla2 = tablaD.get(ipDestino);
                         porte = tabla2.getPuerto();
-                        solicitante = new Solicitante(this, array[1], direccionReal, porte, miIp, analisis); // Address Port Menssage
+                        String mensajeAEnviar = array[1];
+                        solicitante = new Solicitante(this, mensajeAEnviar, direccionReal, porte, miIp, analisis); // Address Port Menssage
                         solicitante.run();
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
