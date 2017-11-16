@@ -127,7 +127,7 @@ public class Nodo {
                     String direccionReal = tablaIP.get(Alonso);
                     TablaDirecciones tabla = tablaD.get(Alonso);
                     int porte = tabla.getPuerto();
-                    solicitante = new Solicitante(this, entrada, Integer.toString(miPuerto), porte, miIp, analisis, 7); // Address Port Menssage
+                    solicitante = new Solicitante(this, Integer.toString(miPuerto), direccionReal, porte, miIp, analisis, 7); // Address Port Menssage
                     solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");
