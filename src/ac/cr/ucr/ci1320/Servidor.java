@@ -24,7 +24,7 @@ public class Servidor
     public void iniciar() {
         Thread starter = new Thread(new Starter(nodo));
         starter.start();
-        System.out.println("\nServidor esperando...");
+        System.out.println("Servidor esperando...");
     }
 
     public class Starter implements Runnable
@@ -40,15 +40,14 @@ public class Servidor
                 ServerSocket servidor = new ServerSocket(puerto);
                 while (true){
                     Socket cliente = servidor.accept();
-                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
                     Thread listener = new Thread(new Manejador(cliente, nodo));
                     listener.start();
-                    System.out.println("\nConexión recibida, Servidor");
+                    System.out.println("Conexión recibida, Servidor");
                 }
             }
             catch (Exception ex)
             {
-                System.out.println("\nERROR!!! Socket no pudo ser creado");
+                System.out.println("ERROR!!! Socket no pudo ser creado");
             }
         }
     }
@@ -85,7 +84,30 @@ public class Servidor
                 DataInputStream outClient;
                 outClient = new DataInputStream(sock.getInputStream());
                 String mensaje = outClient.readUTF();
-                System.out.println(mensaje);
+                Mensaje envio = new Mensaje(mensaje);
+
+                if (envio.getAccion() == 7) {
+                    String response = reader.readLine();
+                    Mensaje paquete = new Mensaje(response);
+                    String entradas[] = paquete.getIpMensaje().split("|");
+                    int longitud = entradas.length;
+                    for(int i = 0; i < longitud; ++i) {
+                        String resultado[] = entradas[i].split(",");
+                        if(isNumeric(resultado[2]) == true) {
+                            int porte = Integer.parseInt(resultado[2]);
+                            boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                            if (success == true) {
+                                System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                            } else {
+                                System.out.println("ERROR! Dirección falsa otorgada no existe");
+                            }
+                        }
+                        else
+                        {
+                            System.out.println("ERROR! El puerto debe ser un número");
+                        }
+                    }
+                }
                 // nodo.recibirTransmicion(mensaje);
             }
             catch (Exception ex)
@@ -93,5 +115,9 @@ public class Servidor
                 System.out.println("Fallo envio");
             }
         }
+    }
+
+    public static boolean isNumeric(String s) {
+        return s != null && s.matches("[-+]?\\d*\\.?\\d+");
     }
 }

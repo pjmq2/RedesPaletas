@@ -5,14 +5,23 @@ public class Mensaje {
     private String ipDestino;
     private int accion;
     private String ipMensaje;
-    private int tamano;
 
     public Mensaje(String ipFuente, String ipDestino, int accion, String ipMensaje) {
         this.ipFuente = ipFuente;
         this.ipDestino = ipDestino;
         this.accion = accion;
         this.ipMensaje = ipMensaje;
-        tamano = ipMensaje.length();
+    }
+
+    public Mensaje(String TODO) {
+        String completo[] = TODO.split("\n");
+        if(completo.length == 4)
+        {
+            this.ipFuente = completo[0];
+            this.ipDestino = completo[1];
+            this.accion = Integer.parseInt(completo[2]);
+            this.ipMensaje = completo[3];
+        }
     }
 
     public String getIpFuente() {
@@ -31,8 +40,6 @@ public class Mensaje {
         return ipMensaje;
     }
 
-    public int getTamano() { return tamano; }
-
     public String toString(){
         String result = "";
         result = result.concat(ipFuente);
@@ -40,8 +47,6 @@ public class Mensaje {
         result = result.concat(ipDestino);
         result = result.concat("\n");
         result = result.concat(Integer.toString(accion));
-        result = result.concat("\n");
-        result = result.concat(Integer.toString(tamano));
         result = result.concat("\n");
         result = result.concat(ipMensaje);
         return result;

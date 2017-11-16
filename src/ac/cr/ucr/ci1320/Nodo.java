@@ -30,6 +30,11 @@ public class Nodo {
         this.Alonso = fake4;
     }
 
+    public String getIP()
+    {
+        return this.miIp;
+    }
+
     public int getPort()
     {
         return this.miPuerto;
@@ -104,19 +109,22 @@ public class Nodo {
                     if (tdir == null) {
                         System.out.println("Dirección IP inválida");
                     } else {
+                        // FALTA HACER QUE ELIJA LA DIRECCIÓN ADECUADA, Y QUE HAGA LO QUE OCUPE SI NO LA TIENE.
+
                         String ipDestino = tdir.getaTraves();
                         String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
                         TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
                         int porte = 0000;
-                        porte = tabla.getPuerto();
+                        TablaDirecciones tabla2 = tablaD.get(ipDestino);
+                        porte = tabla2.getPuerto();
                         solicitante = new Solicitante(this, array[1], direccionReal, porte, miIp, analisis); // Address Port Menssage
                         solicitante.run();
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     String direccionReal = tablaIP.get(Alonso);
                     TablaDirecciones tabla = tablaD.get(Alonso);
-                    int porte = tabla.getBackPuerto();
-                    solicitante = new Solicitante(this, array[1], direccionReal, porte, miIp, analisis); // Address Port Menssage
+                    int porte = tabla.getPuerto();
+                    solicitante = new Solicitante(this, entrada, direccionReal, porte, miIp, analisis); // Address Port Menssage
                     solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");

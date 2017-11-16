@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class Solicitante extends Thread {
 
@@ -46,39 +47,32 @@ public class Solicitante extends Thread {
 
             if(message.equalsIgnoreCase("DISPATCH"))
             {
-                envio = Integer.toString(nodo.getPort()) + "," + nodo.getFake();
+                Mensaje mensaje = new Mensaje(nodo.getFake(), address, 7, Integer.toString(nodo.getPort()));
+                envio = mensaje.toString();
             }
             else {
-                Mensaje mensaje = new Mensaje(miIP, address, 0, message);
+                Mensaje mensaje = new Mensaje(nodo.getFake(), address, 0, message);
                 envio = mensaje.toString();
             }
 
             writer.writeUTF(envio);
             writer.flush();
-            if (envio.equalsIgnoreCase("DISPATCH")) {
-                response = reader.readLine();
-                String entradas[] = response.split("|");
-                int longitud = entradas.length;
-                for(int i = 0; i < longitud; ++i) {
-                    String resultado[] = entradas[i].split(",");
-                    if(isNumeric(resultado[2]) == true) {
-                        int porte = Integer.parseInt(resultado[2]);
-                        boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
-                        if (success == true) {
-                            System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
-                        } else {
-                            System.out.println("ERROR! Dirección falsa otorgada no existe");
-                        }
-                    }
-                    else
-                    {
-                        System.out.println("ERROR! El puerto debe ser un número");
-                    }
-                }
-            }
+
+            try {
+                sock.close();
+                System.out.println("Client Socket Closed.");
+            } catch (IOException e) { /* failed */ }
         }
         catch (Exception ex) {
             System.out.println("Message was not sent.\n");
+            try {
+                if(sock != null) {
+                    sock.close();
+                    System.out.println("Client Socket Closed.");
+                }
+            }
+            catch (IOException e)
+            { /* failed */ }
         }
     }
 

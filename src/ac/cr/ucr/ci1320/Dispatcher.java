@@ -51,7 +51,7 @@ public class Dispatcher {
     public void iniciar() {
         Thread starter = new Thread(new Dispatcher.Starter(port));
         starter.start();
-        System.out.println("\nDispatcher esperando...");
+        System.out.println("Dispatcher esperando...");
     }
 
     public class Starter implements Runnable
@@ -73,12 +73,12 @@ public class Dispatcher {
                     PrintWriter writer = new PrintWriter(cliente.getOutputStream());
                     Thread listener = new Thread(new Dispatcher.Manejador(cliente, clientIPRevealed));
                     listener.start();
-                    System.out.println("\nConexión recibida, Dispatcher");
+                    System.out.println("Conexión recibida, Dispatcher");
                 }
             }
             catch (Exception ex)
             {
-                System.out.println("\nERROR!!! Socket no pudo ser creado");
+                System.out.println("ERROR!!! Socket no pudo ser creado");
             }
         }
     }
@@ -118,28 +118,34 @@ public class Dispatcher {
 
                 // El mensaje debe ser el IP FALSO!!!
 
-                String[] mensajeSeparado = mensaje.split("\n");
-                int numfin = mensajeSeparado.length;
-                if(numfin == 2 && isNumeric(mensajeSeparado[1]) == true) {
-                    boolean success = nodo.modifyIPTableEntry(mensajeSeparado[0], lastClientRealIP, Integer.parseInt(mensajeSeparado[1]));
-                    if (success == true) {
-                        System.out.println("Se ha guardado " + mensajeSeparado[0] + " con " + lastClientRealIP);
+                String[] mensajeOriginalSeparado = mensaje.split("\n");
+                if(mensajeOriginalSeparado.length == 4) {
+                    String[] mensajeSeparado = mensajeOriginalSeparado[4].split("\n");
+                    int numfin = mensajeSeparado.length;
+                    if (numfin == 2 && isNumeric(mensajeSeparado[1]) == true) {
+                        boolean success = nodo.modifyIPTableEntry(mensajeSeparado[0], lastClientRealIP, Integer.parseInt(mensajeSeparado[1]));
+                        if (success == true) {
+                            System.out.println("Se ha guardado " + mensajeSeparado[0] + " con " + lastClientRealIP);
+                        } else {
+                            System.out.println("ERROR! Dirección falsa otorgada no existe");
+                        }
+                    } else {
+                        System.out.println("La dirección falsa asignada no sigue el formato adecuado");
                     }
-                    else
-                    {
-                        System.out.println("ERROR! Dirección falsa otorgada no existe");
-                    }
+
+                    // Enviar tabla completa
+
+                    String finale = nodo.getTablaIPString();
+                    Mensaje ultimate = new Mensaje(nodo.getFake(), mensajeSeparado[0], 7, finale);
+                    String envio = ultimate.toString();
+                    writer.writeUTF(envio);
+                    writer.flush();
                 }
                 else
                 {
-                    System.out.println("La dirección falsa asignada no sigue el formato adecuado");
+                    System.out.println("Mensaje recibido por el DISPATCHER es inválido");
                 }
 
-                // Enviar tabla completa
-
-                String finale = nodo.getTablaIPString();
-                writer.writeUTF(finale);
-                writer.flush();
                 lastClientRealIP = null;
             }
             catch (Exception ex)
