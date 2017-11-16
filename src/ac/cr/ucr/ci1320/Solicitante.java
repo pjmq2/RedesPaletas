@@ -46,7 +46,7 @@ public class Solicitante extends Thread {
             reader = new BufferedReader(streamreader);
             writer = new DataOutputStream(sock.getOutputStream());
             String envio;
-            Mensaje mensaje = new Mensaje(nodo.getFake(), address, accion, Integer.toString(nodo.getPort()));
+            Mensaje mensaje = new Mensaje(nodo.getFake(), address, accion, message);
             envio = mensaje.toString();
             writer.writeUTF(envio);
             writer.flush();
