@@ -53,15 +53,15 @@ public class Solicitante extends Thread {
 
             try {
                 sock.close();
-                System.out.println("Client Socket Closed.");
+                System.out.println("Socket Cliente Cerrado.");
             } catch (IOException e) { /* failed */ }
         }
         catch (Exception ex) {
-            System.out.println("Message was not sent.\n");
+            System.out.println("Mensaje no fue enviado.");
             try {
                 if(sock != null) {
                     sock.close();
-                    System.out.println("Client Socket Closed.");
+                    System.out.println("Socket Cliente Cerrado.");
                 }
             }
             catch (IOException e)
