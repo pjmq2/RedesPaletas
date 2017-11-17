@@ -27,12 +27,23 @@ public class TablaDirecciones {
         return distancia;
     }
 
-    public int getBackPuerto() {
-        return backpuerto;
-    }
+    public int getBackPuerto() { return backpuerto; }
 
     public int getPuerto() {
         return puerto;
+    }
+
+    public boolean setNew(String fake, int distance) {
+        if(distance < distancia || distancia == -1)
+        {
+            this.aTraves = fake;
+            this.distancia = distance;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void modifyPort(int port){

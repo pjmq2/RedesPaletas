@@ -113,26 +113,36 @@ public class Nodo {
 
                         if(tdir.getDistancia() == -1)
                         {
-                            try {
-                                Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, array[0]);
+                            Set<String> keys = tablaIP.keySet();
+                            String[] fakes = keys.toArray(new String[keys.size()]); // Arreglo de las falsas de J, P, A y S
+                            for(int i = 0; i < fakes.length; ++i) {
+                                Mensaje mensaje = new Mensaje(this.getFake(), fakes[i], 2, array[0]);
                                 String envio = mensaje.toString();
-                                solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage
-                                solicitante.run();
-                                solicitante.join();    // Wait for it to finish.
+                                String trueaddress = tablaIP.get(fakes[i]);
+                                if(!(trueaddress.equals("0"))) {
+                                    solicitante = new Solicitante(this, envio, fakes[i], 2); // Address Port Menssage
+                                    solicitante.run();
+                                }
+                                else
+                                {
+                                    // No puedo enviarle la pregunta porque no tengo el IP...
+                                }
                             }
-                            catch (InterruptedException e)
-                            { System.out.println("Socket Cliente Cerrado."); }
+                        }
+
+                        while(tdir.getDistancia() == -1)
+                        {
+                            // Espera a que alguien responda, esta parte debería ser mejor hecha en un futuro
                         }
                         String mensajeAEnviar = array[1];
                         Mensaje mensaje = new Mensaje(this.getFake(), array[0], 0, mensajeAEnviar);
                         Paquete paquete = analizer.empaquetar(mensaje);
                         String envio = paquete.toString();
-                        solicitante = new Solicitante(this, envio, array[0], 7); // ESE ARRAY[0] CÁMBIELO POR EL
+                        String imd = tdir.getaTraves();
+                        solicitante = new Solicitante(this, envio, imd, 0); // ESE ARRAY[0] CÁMBIELO POR EL
                         solicitante.run();
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
-                    String direccionReal = tablaIP.get(Alonso);
-                    TablaDirecciones tabla = tablaD.get(Alonso);
                     Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, Integer.toString(miPuerto));
                     String envio = mensaje.toString();
                     solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage

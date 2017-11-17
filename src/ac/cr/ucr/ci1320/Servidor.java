@@ -149,13 +149,31 @@ public class Servidor
 
             Solicitante solicitante; // Cliente
             switch (accion) {
-                default:
+                case 0:
                     String recivido = envio.getIpMensaje();
                     System.out.println(recivido);
                     break;
                 // Distancia recivida;
                 case 4:
-
+                    if (isNumeric(envio.getIpMensaje()) == true)
+                    {
+                        int distancia = Integer.parseInt(envio.getIpMensaje());
+                        String fakeR = envio.getIpFuente(); // Esto va a fallar porque esta es la direccion del que me está respondiendo, no el de la ruta en cuestión.
+                        TablaDirecciones TD = nodo.getDTable().get(fakeR);
+                        boolean success = TD.setNew(fakeR, distancia);
+                        if(success == true)
+                        {
+                            System.out.println("Mensajes ahora se enviarán por " + fakeR + ".");
+                        }
+                        else
+                        {
+                            System.out.println("Distancia por " + fakeR + " no era mejor que la ya establecida.");
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("ERROR! El puerto debe ser un número");
+                    }
                     break;
                 case 7:
                     if (envio.getIpMensaje().contains("#") == true) {
@@ -192,6 +210,7 @@ public class Servidor
                     } else {
                         System.out.println("Este mensaje no debe ser manejado por el dispatcher");
                     }
+                    break;
             }
         }
         else
