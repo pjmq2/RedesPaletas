@@ -58,7 +58,7 @@ public class Solicitante extends Thread {
             try {
                 sock.close();
                 System.out.println("Socket Cliente Cerrado.");
-            } catch (IOException e) { /* failed */ }
+            } catch (IOException e) { System.out.println("ERROR"); }
         }
         catch (Exception ex) {
             System.out.println("Mensaje no fue enviado.");
@@ -69,7 +69,7 @@ public class Solicitante extends Thread {
                 }
             }
             catch (IOException e)
-            { /* failed */ }
+            { System.out.println("Socket Cliente Cerrado."); }
         }
     }
 

@@ -1,5 +1,6 @@
 package ac.cr.ucr.ci1320;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
@@ -112,10 +113,15 @@ public class Nodo {
 
                         if(tdir.getDistancia() == -1)
                         {
-                            Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, array[0]);
-                            String envio = mensaje.toString();
-                            solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage
-                            solicitante.run();
+                            try {
+                                Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, array[0]);
+                                String envio = mensaje.toString();
+                                solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage
+                                solicitante.run();
+                                solicitante.join();    // Wait for it to finish.
+                            }
+                            catch (InterruptedException e)
+                            { System.out.println("Socket Cliente Cerrado."); }
                         }
                         String mensajeAEnviar = array[1];
                         Mensaje mensaje = new Mensaje(this.getFake(), array[0], 0, mensajeAEnviar);
