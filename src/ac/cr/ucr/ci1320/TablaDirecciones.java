@@ -5,8 +5,7 @@ public class TablaDirecciones {
     private String aTraves;
     private int distancia;
     private int puerto;
-    private  int backpuerto;
-
+    private int backpuerto;
 
     public TablaDirecciones(String direccionFisica, String aTraves, int distancia, int puerto, int backpuerto) {
         this.direccionFisica = direccionFisica;
@@ -28,12 +27,12 @@ public class TablaDirecciones {
         return distancia;
     }
 
-    public int getPuerto() {
-        return puerto;
-    }
-
     public int getBackPuerto() {
         return backpuerto;
+    }
+
+    public int getPuerto() {
+        return puerto;
     }
 
     public void modifyPort(int port){

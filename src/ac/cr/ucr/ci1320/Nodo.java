@@ -12,19 +12,17 @@ public class Nodo {
     private String miIp;
     private String miIpFalsa;
     private int miPuerto;
-    private int backlogport;
     private Analizador analizer;
     private Servidor server;
     private String Alonso;
 
-    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4, int backport) {
+    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4) {
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
         this.analizer = new Analizador(tablaD, tablaIP, miIp);
         this.server = new Servidor(this, this.analizer);
-        this.backlogport = backport;
         this.miIpFalsa = fake3;
         this.Alonso = fake4;
     }
@@ -50,6 +48,8 @@ public class Nodo {
     {
         return this.tablaIP;
     }
+
+    public HashMap<String,TablaDirecciones> getDTable() { return  this.tablaD; }
 
     public boolean modifyIPTableEntry(String fake, String real, int port)
     {
@@ -85,8 +85,8 @@ public class Nodo {
 
         for(int i = 0; i < array.length; ++i) {
             if (!(tablaIP.get(array[i]).equalsIgnoreCase("0"))) {
-                if(!(returnValue.equals(""))) { returnValue = returnValue + "|"; }
-                returnValue = returnValue + array[i] + "," + tablaIP.get(array[i]) + "," + tablaD.get(array[i]).getPuerto();
+                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
+                returnValue = returnValue + tablaIP.get(array[i]) + "," + array[i] + "," + tablaD.get(array[i]).getPuerto();
             }
         }
         return returnValue;
@@ -110,21 +110,26 @@ public class Nodo {
                     } else {
                         // FALTA HACER QUE ELIJA LA DIRECCIÓN ADECUADA, Y QUE HAGA LO QUE OCUPE SI NO LA TIENE.
 
-                        String ipDestino = tdir.getaTraves();
-                        String direccionReal = tablaIP.get(ipDestino); //Hacer un condicional para que revize si ipDestino existe en la tabla, si no, abajo podría dar null pointer
-                        TablaDirecciones tabla = tablaD.get(array[0]); // FALTA EXCEPCION!!! [RED ALARM]
-                        int porte = 0000;
-                        TablaDirecciones tabla2 = tablaD.get(ipDestino);
-                        porte = tabla2.getPuerto();
+                        if(tdir.getDistancia() == -1)
+                        {
+                            Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, array[0]);
+                            String envio = mensaje.toString();
+                            solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage
+                            solicitante.run();
+                        }
                         String mensajeAEnviar = array[1];
-                        solicitante = new Solicitante(this, mensajeAEnviar, direccionReal, porte, miIp, analizer, 7); // Address Port Menssage
+                        Mensaje mensaje = new Mensaje(this.getFake(), array[0], 0, mensajeAEnviar);
+                        Paquete paquete = analizer.empaquetar(mensaje);
+                        String envio = paquete.toString();
+                        solicitante = new Solicitante(this, envio, array[0], 7); // ESE ARRAY[0] CÁMBIELO POR EL
                         solicitante.run();
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     String direccionReal = tablaIP.get(Alonso);
                     TablaDirecciones tabla = tablaD.get(Alonso);
-                    int porte = tabla.getPuerto();
-                    solicitante = new Solicitante(this, Integer.toString(miPuerto), direccionReal, porte, miIp, analizer, 7); // Address Port Menssage
+                    Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, Integer.toString(miPuerto));
+                    String envio = mensaje.toString();
+                    solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage
                     solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");

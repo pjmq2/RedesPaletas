@@ -20,7 +20,7 @@ public class DEMO {
         BufferedReader reader = new BufferedReader(streamreader);
         DataOutputStream writer = new DataOutputStream(sock.getOutputStream());
         String envio = "Hola";
-        writer.writeUTF(envio);
+        writer.writeUTF(envio); // 200.5.0.0\nHola
         writer.flush();
         }
         catch (Exception ex) {
