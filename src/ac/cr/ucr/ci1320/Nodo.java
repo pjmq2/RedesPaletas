@@ -1,14 +1,15 @@
 package ac.cr.ucr.ci1320;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
 import static java.lang.Integer.valueOf;
 
 public class Nodo {
-    private HashMap<String,TablaDirecciones> tablaD ;
-    private HashMap<String,String> tablaIP;
+    private Map<String,TablaDirecciones> tablaD ;
+    private TablaIp tablaIP;
     private Dispatcher dispon;
     private String miIp;
     private String miIpFalsa;
@@ -18,7 +19,7 @@ public class Nodo {
     private Servidor server;
     private String Alonso;
 
-    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4, int backport) {
+    public Nodo(Map<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4, int backport) {
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;

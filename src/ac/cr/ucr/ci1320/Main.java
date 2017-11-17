@@ -3,6 +3,7 @@ package ac.cr.ucr.ci1320;
 import java.util.HashMap;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Map;
 
 public class Main {
     public static void main(String args[])
@@ -14,7 +15,7 @@ public class Main {
     }
 
     public static Nodo sebastian(){
-        HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,8888, 9999);
         TablaDirecciones tabla2 = new TablaDirecciones("Carrito","12.0.0.7",1,5555, 9999);
         TablaDirecciones tabla3 = new TablaDirecciones("Luces","12.0.0.7",2,5555, 9999);
@@ -40,7 +41,7 @@ public class Main {
             InetAddress ipAddr;
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
-            HashMap<String,String> tablaIP;
+            Map<String,String> tablaIP;
             String fake1 = "12.0.0.7";
             String fake2 = "12.0.20.2";
             String fake3 = "12.0.0.8";
@@ -54,9 +55,9 @@ public class Main {
         }
     }
 
-    public static HashMap<String, String> getIPtable(String fake1, String real1, String fake2, String real2, String fake3, String real3, String fake4, String real4)
+    public static Map<String, String> getIPtable(String fake1, String real1, String fake2, String real2, String fake3, String real3, String fake4, String real4)
     {
-        HashMap<String,String> tablonIP = new HashMap<>();
+        Map<String,String> tablonIP = new HashMap<>();
         tablonIP.put(fake1,real1); // P
         tablonIP.put(fake2,real2); // S
         tablonIP.put(fake3,real3); // J
