@@ -9,12 +9,11 @@ import static java.lang.Integer.valueOf;
 public class Nodo {
     private HashMap<String,TablaDirecciones> tablaD ;
     private HashMap<String,String> tablaIP;
-    private Dispatcher dispon;
     private String miIp;
     private String miIpFalsa;
     private int miPuerto;
     private int backlogport;
-    private Analizador analisis;
+    private Analizador analizer;
     private Servidor server;
     private String Alonso;
 
@@ -23,9 +22,8 @@ public class Nodo {
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
-        this.analisis = new Analizador(tablaD, tablaIP, miIp);
-        this.server = new Servidor(this);
-        this.dispon = new Dispatcher(fake1, this.tablaIP.get(fake1), fake2, this.tablaIP.get(fake2), fake3, this.tablaIP.get(fake3), fake4, this.tablaIP.get(fake4), backport, this);
+        this.analizer = new Analizador(tablaD, tablaIP, miIp);
+        this.server = new Servidor(this, this.analizer);
         this.backlogport = backport;
         this.miIpFalsa = fake3;
         this.Alonso = fake4;
@@ -46,7 +44,12 @@ public class Nodo {
         return this.miIpFalsa;
     }
 
-    public Analizador getAnalizer() { return this.analisis; }
+    public Analizador getAnalizer() { return this.analizer; }
+
+    public HashMap<String, String> getIPTable()
+    {
+        return this.tablaIP;
+    }
 
     public boolean modifyIPTableEntry(String fake, String real, int port)
     {
@@ -69,10 +72,6 @@ public class Nodo {
         // Abrir Servidor
 
         server.iniciar();
-
-        // Abrir el Dispatcher
-
-        dispon.iniciar();
 
         // Leer línea de la terminal.
 
@@ -118,24 +117,19 @@ public class Nodo {
                         TablaDirecciones tabla2 = tablaD.get(ipDestino);
                         porte = tabla2.getPuerto();
                         String mensajeAEnviar = array[1];
-                        solicitante = new Solicitante(this, mensajeAEnviar, direccionReal, porte, miIp, analisis, 7); // Address Port Menssage
+                        solicitante = new Solicitante(this, mensajeAEnviar, direccionReal, porte, miIp, analizer, 7); // Address Port Menssage
                         solicitante.run();
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     String direccionReal = tablaIP.get(Alonso);
                     TablaDirecciones tabla = tablaD.get(Alonso);
                     int porte = tabla.getPuerto();
-                    solicitante = new Solicitante(this, Integer.toString(miPuerto), direccionReal, porte, miIp, analisis, 7); // Address Port Menssage
+                    solicitante = new Solicitante(this, Integer.toString(miPuerto), direccionReal, porte, miIp, analizer, 7); // Address Port Menssage
                     solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");
                 }
             }
         }
-    }
-
-    // Imprime el mensaje en la terminal.
-    private void imprimirMensaje(Mensaje mensaje){
-        System.out.println(mensaje.getIpMensaje());
     }
 }

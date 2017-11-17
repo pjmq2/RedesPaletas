@@ -16,9 +16,11 @@ public class Servidor
 {
     int portz;
     Nodo nodo;
-    public Servidor(Nodo node) {
-        portz = node.getPort();
+    Analizador analizer;
+    public Servidor(Nodo node, Analizador analizer) {
+        this.portz = node.getPort();
         this.nodo = node;
+        this.analizer = analizer;
     }
 
     public void iniciar() {
@@ -88,43 +90,8 @@ public class Servidor
                 DataInputStream outClient;
                 outClient = new DataInputStream(sock.getInputStream());
                 String mensaje = outClient.readUTF();
-                Mensaje envio = new Mensaje(mensaje);
-
-                if (envio.getAccion() == 7) {
-                    if(envio.getIpMensaje().contains("|") == true) {
-                        String entradas[] = envio.getIpMensaje().split("\\|", -1);
-                        int longitud = entradas.length;
-                        for (int i = 0; i < longitud; ++i) {
-                            String resultado[] = entradas[i].split(",");
-                            if (isNumeric(resultado[2]) == true) {
-                                int porte = Integer.parseInt(resultado[2]);
-                                boolean success = nodo.modifyIPTableEntry(resultado[0], resultado[1], porte);
-                                if (success == true) {
-                                    System.out.println("Se ha guardado " + resultado[0] + " con " + resultado[1]);
-                                } else {
-                                    System.out.println("ERROR! Dirección falsa otorgada no existe");
-                                }
-                            } else {
-                                System.out.println("ERROR! El puerto debe ser un número");
-                            }
-                        }
-                    }
-                    else if(isNumeric(envio.getIpMensaje()) == true) {
-                        boolean success = nodo.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
-                        if (success == true) {
-                            System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
-                        } else {
-                            System.out.println("ERROR! Dirección falsa otorgada no existe");
-                        }
-                        String mensajeAEnviar = nodo.getTablaIPString();
-                        Solicitante solicitante = new Solicitante(this.nodo, mensajeAEnviar, lastClientRealIP, Integer.parseInt(envio.getIpMensaje()), nodo.getIP(), nodo.getAnalizer(), 7); // Address Port Menssage
-                        solicitante.run();
-                    }
-                    else{
-                        System.out.println("Este mensaje no debe ser manejado por el dispatcher");
-                    }
-                }
-                // nodo.recibirTransmicion(mensaje);
+                Paquete paquete = analizer.stringToPaquete(mensaje);
+                casosDePaquetes(paquete, lastClientRealIP);
             }
             catch (Exception ex)
             {
@@ -133,7 +100,93 @@ public class Servidor
         }
     }
 
+    // Dependiendo de la acción:
+    // 0 - Acción específica
+    // 1 - Pregunta de ¿Conoce esta dirección IP?
+    // 2 - Pregunta de ¿Conoce un camino hacia esta dirección IP?
+    // OJO: Para las acciones 1 y 2 , el campo (D) debe contener la dirección IP a la que se refieren las preguntas.
+    // 3 - Respuesta: Sí, conozco esa dirección IP, soy YO.
+    // 4 - Respuesta: Sí, conozco un camino hacia esa dirección IP.
+    private void casosDePaquetes(Paquete paquete, String lastClientRealIP){
+        int accion = paquete.getMensaje().getAccion();
+        Analizador analizer = nodo.getAnalizer(); //
+        Mensaje envio = paquete.getMensaje();
+        Solicitante solicitante; // Cliente
+        switch (accion){
+            default:
+                Paquete paquete2=analizer.empaquetar(paquete.getMensaje());
+                if(paquete.getMensaje().getIpDestino().equals(nodo.getIP())) imprimirMensaje(paquete.getMensaje());
+                else{
+                    String puertoz = nodo.getIPTable().get(paquete2.getIpDestinPaquete());
+                    int puerto = Integer.parseInt(puertoz);
+                    String ipReal = nodo.getIPTable().get(paquete2.getIpDestinPaquete());
+                    solicitante = new Solicitante(this.nodo, paquete2.toString(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()), nodo.getIP(), nodo.getAnalizer(), 0);
+                    solicitante.run();
+                }
+
+                break;
+            case 1:
+                if(paquete.getMensaje().getIpMensaje().equals(nodo.getIP())){
+                    Paquete paquete1 = analizer.responder3(paquete.getMensaje().getIpFuente());
+                    String puertoz = nodo.getIPTable().get(paquete1.getIpDestinPaquete());
+                    int puerto = Integer.parseInt(puertoz); // ...
+                    String ipReal = nodo.getIPTable().get(paquete1.getIpDestinPaquete());
+                    solicitante = new Solicitante(this.nodo, paquete1.toString(), ipReal, puerto, nodo.getIP(), nodo.getAnalizer(), 1);
+                    solicitante.run();
+                }
+                break;
+            case 2:
+                Paquete paquete1 = analizer.responder4(paquete.getMensaje().getIpFuente());
+
+                String puertoz = nodo.getIPTable().get(paquete1.getIpDestinPaquete());
+                int puerto = Integer.parseInt(puertoz); // ...
+
+                String ipReal = nodo.getIPTable().get(paquete1.getIpDestinPaquete());
+                solicitante = new Solicitante(this.nodo, paquete1.toString(), ipReal, puerto, nodo.getIP(), nodo.getAnalizer(), 7);
+                solicitante.run();
+                break;
+            case 7:
+                if(envio.getIpMensaje().contains("|") == true) {
+                    String entradas[] = envio.getIpMensaje().split("\\|", -1);
+                    int longitud = entradas.length;
+                    for (int i = 0; i < longitud; ++i) {
+                        String resultado[] = entradas[i].split(",");
+                        if (isNumeric(resultado[2]) == true) {
+                            int porte = Integer.parseInt(resultado[2]);
+                            boolean success = nodo.modifyIPTableEntry(resultado[0], resultado[1], porte);
+                            if (success == true) {
+                                System.out.println("Se ha guardado " + resultado[0] + " con " + resultado[1]);
+                            } else {
+                                System.out.println("ERROR! Dirección falsa otorgada no existe");
+                            }
+                        } else {
+                            System.out.println("ERROR! El puerto debe ser un número");
+                        }
+                    }
+                }
+                else if(isNumeric(envio.getIpMensaje()) == true) {
+                    boolean success = nodo.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
+                    if (success == true) {
+                        System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
+                    } else {
+                        System.out.println("ERROR! Dirección falsa otorgada no existe");
+                    }
+                    String mensajeAEnviar = nodo.getTablaIPString();
+                    solicitante = new Solicitante(this.nodo, mensajeAEnviar, lastClientRealIP, Integer.parseInt(envio.getIpMensaje()), nodo.getIP(), nodo.getAnalizer(), 7); // Address Port Menssage
+                    solicitante.run();
+                }
+                else{
+                    System.out.println("Este mensaje no debe ser manejado por el dispatcher");
+                }
+        }
+    }
+
     public static boolean isNumeric(String s) {
         return s != null && s.matches("[-+]?\\d*\\.?\\d+");
+    }
+
+    // Imprime el mensaje en la terminal.
+    private void imprimirMensaje(Mensaje mensaje){
+        System.out.println(mensaje.getIpMensaje());
     }
 }

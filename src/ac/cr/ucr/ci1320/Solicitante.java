@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class Solicitante extends Thread {
 
-    String address;
+    String address; // FAKE
     int port;
     int accion;
     Socket sock;
@@ -47,7 +47,8 @@ public class Solicitante extends Thread {
             writer = new DataOutputStream(sock.getOutputStream());
             String envio;
             Mensaje mensaje = new Mensaje(nodo.getFake(), address, accion, message);
-            envio = mensaje.toString();
+            Paquete paquete = analizador.empaquetar(mensaje);
+            envio = paquete.toString();
             writer.writeUTF(envio);
             writer.flush();
 
