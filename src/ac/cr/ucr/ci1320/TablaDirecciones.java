@@ -5,15 +5,13 @@ public class TablaDirecciones {
     private String aTraves;
     private int distancia;
     private int puerto;
-    private  int backpuerto;
 
 
-    public TablaDirecciones(String direccionFisica, String aTraves, int distancia, int puerto, int backpuerto) {
+    public TablaDirecciones(String direccionFisica, String aTraves, int distancia, int puerto) {
         this.direccionFisica = direccionFisica;
         this.aTraves = aTraves;
         this.distancia = distancia;
         this.puerto = puerto;
-        this.backpuerto = backpuerto;
     }
 
     public String getDireccionFisica() {
@@ -30,10 +28,6 @@ public class TablaDirecciones {
 
     public int getPuerto() {
         return puerto;
-    }
-
-    public int getBackPuerto() {
-        return backpuerto;
     }
 
     public void modifyPort(int port){

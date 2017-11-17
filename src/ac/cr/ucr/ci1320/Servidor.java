@@ -17,7 +17,7 @@ public class Servidor
     int portz;
     Nodo nodo;
     public Servidor(Nodo node) {
-        portz = node.getPort();
+        portz = node.miPuerto;
         this.nodo = node;
     }
 
@@ -31,7 +31,7 @@ public class Servidor
     {
         int puerto;
         public Starter(Nodo node) {
-            puerto = node.getPort();
+            puerto = node.miPuerto;
         }
 
         public void run(){

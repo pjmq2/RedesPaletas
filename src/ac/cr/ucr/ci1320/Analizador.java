@@ -1,13 +1,15 @@
 package ac.cr.ucr.ci1320;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Analizador {
-    private HashMap<String,TablaDirecciones> tablaD ;
-    private HashMap<String,TablaIp> tablaIP;
+    private Map<String,TablaDirecciones> tablaD ;
+    private Map<String,String> tablaIP;
     private String miIp;
 
-    public Analizador(HashMap<String, TablaDirecciones> tablaD, HashMap<String, TablaIp> tablaIP, String miIp) {
+
+    public Analizador(Map<String, TablaDirecciones> tablaD, Map<String, String> tablaIP, String miIp) {
         this.tablaD = tablaD;
         this.tablaIP = tablaIP;
         this.miIp = miIp;
@@ -76,22 +78,22 @@ public class Analizador {
         String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
             default:
-                puertoDestino = tablaIP.get("200.5.0.2").getPuerto();
+                puertoDestino = tablaD.get("200.5.0.2").getPuerto();
                 break;
             case 12:
-                puertoDestino = tablaIP.get(ipInicial).getPuerto();
+                puertoDestino = tablaD.get(ipInicial).getPuerto();
                 break;
             case 165:
-                puertoDestino = tablaIP.get("165.8.2.0").getPuerto();
+                puertoDestino = tablaD.get("165.8.2.0").getPuerto();
                 break;
             case 25:
-                puertoDestino = tablaIP.get("25.0.0.0").getPuerto();
+                puertoDestino = tablaD.get("25.0.0.0").getPuerto();
                 break;
             case 201:
-                puertoDestino = tablaIP.get("201.6.0.0").getPuerto();
+                puertoDestino = tablaD.get("201.6.0.0").getPuerto();
                 break;
             case 140:
-                puertoDestino = tablaIP.get("140.90.0.0").getPuerto();
+                puertoDestino = tablaD.get("140.90.0.0").getPuerto();
                 break;
         }
         return puertoDestino;
