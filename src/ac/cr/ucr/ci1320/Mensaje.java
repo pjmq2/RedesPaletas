@@ -13,6 +13,7 @@ public class Mensaje {
         this.ipMensaje = ipMensaje;
     }
 
+    /*
     public Mensaje(String TODO) {
         String completo[] = TODO.split("\n");
         if(completo.length == 4)
@@ -23,6 +24,7 @@ public class Mensaje {
             this.ipMensaje = completo[3];
         }
     }
+    */
 
     public String getIpFuente() {
         return ipFuente;
