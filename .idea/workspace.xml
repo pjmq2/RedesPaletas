@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/TablaDirecciones.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/TablaDirecciones.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,12 +24,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Nodo.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java">
+      <file leaf-file-name="Servidor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="336">
+              <caret line="171" column="123" lean-forward="false" selection-start-line="171" selection-start-column="123" selection-end-line="171" selection-end-column="123" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -782,11 +783,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510945305475</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="agregar Servidor">
+      <created>1510949614918</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1510949614918</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81629000" />
+    <option name="totallyTimeSpent" value="83349000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1191,16 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="160" column="167" lean-forward="false" selection-start-line="160" selection-start-column="167" selection-end-line="160" selection-end-column="167" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/TablaDirecciones.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -1211,9 +1209,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="420">
+          <caret line="157" column="50" lean-forward="false" selection-start-line="157" selection-start-column="50" selection-end-line="157" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="171" column="123" lean-forward="false" selection-start-line="171" selection-start-column="123" selection-end-line="171" selection-end-column="123" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

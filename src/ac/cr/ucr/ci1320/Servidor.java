@@ -158,16 +158,18 @@ public class Servidor
                     if (isNumeric(envio.getIpMensaje()) == true)
                     {
                         int distancia = Integer.parseInt(envio.getIpMensaje());
-                        String fakeR = envio.getIpFuente(); // Esto va a fallar porque esta es la direccion del que me está respondiendo, no el de la ruta en cuestión.
-                        TablaDirecciones TD = nodo.getDTable().get(fakeR);
-                        boolean success = TD.setNew(fakeR, distancia);
-                        if(success == true)
-                        {
-                            System.out.println("Mensajes ahora se enviarán por " + fakeR + ".");
+                        String fakeR = nodo.getWished(); // Indeciso
+                        if(!(fakeR.equals(""))) {
+                            TablaDirecciones TD = nodo.getDTable().get(fakeR);
+                            boolean success = TD.setNew(fakeR, distancia);
+                            if (success == true) {
+                                System.out.println("Mensajes ahora se enviarán por " + fakeR + ".");
+                            } else {
+                                System.out.println("Distancia por " + fakeR + " no era mejor que la ya establecida.");
+                            }
                         }
-                        else
-                        {
-                            System.out.println("Distancia por " + fakeR + " no era mejor que la ya establecida.");
+                        else{
+                            System.out.println("Respuesta accion 4 diatancia " + envio.getIpMensaje() + " ha sido ignarada.");
                         }
                     }
                     else

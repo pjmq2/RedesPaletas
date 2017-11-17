@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
-
+import java.util.concurrent.TimeUnit;
 import static java.lang.Integer.valueOf;
+
 
 public class Nodo {
     private HashMap<String,TablaDirecciones> tablaD ;
@@ -16,6 +17,7 @@ public class Nodo {
     private Analizador analizer;
     private Servidor server;
     private String Alonso;
+    private String wishedFaker;
 
     public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4) {
         this.tablaD = tablaD;
@@ -26,6 +28,7 @@ public class Nodo {
         this.server = new Servidor(this, this.analizer);
         this.miIpFalsa = fake3;
         this.Alonso = fake4;
+        this.wishedFaker = "";
     }
 
     public String getIP()
@@ -49,6 +52,8 @@ public class Nodo {
     {
         return this.tablaIP;
     }
+
+    public  String getWished () { return  this.wishedFaker; }
 
     public HashMap<String,TablaDirecciones> getDTable() { return  this.tablaD; }
 
@@ -113,6 +118,7 @@ public class Nodo {
 
                         if(tdir.getDistancia() == -1)
                         {
+                            this.wishedFaker = array[0];
                             Set<String> keys = tablaIP.keySet();
                             String[] fakes = keys.toArray(new String[keys.size()]); // Arreglo de las falsas de J, P, A y S
                             for(int i = 0; i < fakes.length; ++i) {
@@ -130,17 +136,28 @@ public class Nodo {
                             }
                         }
 
-                        while(tdir.getDistancia() == -1)
-                        {
-                            // Espera a que alguien responda, esta parte debería ser mejor hecha en un futuro
+                        try {
+                            TimeUnit.SECONDS.sleep(1);
                         }
-                        String mensajeAEnviar = array[1];
-                        Mensaje mensaje = new Mensaje(this.getFake(), array[0], 0, mensajeAEnviar);
-                        Paquete paquete = analizer.empaquetar(mensaje);
-                        String envio = paquete.toString();
-                        String imd = tdir.getaTraves();
-                        solicitante = new Solicitante(this, envio, imd, 0); // ESE ARRAY[0] CÁMBIELO POR EL
-                        solicitante.run();
+                        catch (InterruptedException e)
+                        {
+                            System.out.println("El cronometro ha sido interrumpido, el mensaje no se enviara");
+                        }
+
+                        if (tdir.getDistancia() == -1)
+                        {
+                            System.out.println("No hay ningun router conectado a la ruta " + array[0]);
+                        }
+                        else {
+                            String mensajeAEnviar = array[1];
+                            Mensaje mensaje = new Mensaje(this.getFake(), array[0], 0, mensajeAEnviar);
+                            Paquete paquete = analizer.empaquetar(mensaje);
+                            String envio = paquete.toString();
+                            String imd = tdir.getaTraves();
+                            solicitante = new Solicitante(this, envio, imd, 0); // ESE ARRAY[0] CÁMBIELO POR EL
+                            this.wishedFaker = "";
+                            solicitante.run();
+                        }
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, Integer.toString(miPuerto));
