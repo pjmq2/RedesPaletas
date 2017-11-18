@@ -10,21 +10,22 @@ public class Main {
     {
         //Nodo nodo = julian();
         //nodo.iniciar();
-        Servidor servidor = new Servidor(sebastian());
+        Analizador anal = new Analizador();
+        Servidor servidor = new Servidor(sebastian(), anal);
         servidor.iniciar();
     }
 
     public static Nodo sebastian(){
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,8888);
-        TablaDirecciones tabla2 = new TablaDirecciones("Carrito","12.0.0.7",1,5555);
-        TablaDirecciones tabla3 = new TablaDirecciones("Luces","12.0.0.7",2,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Legos","200.5.0.1",2,2222);
-        TablaDirecciones tabla5 = new TablaDirecciones("Bolinchas","200.5.0.1",1,2222);
-        TablaDirecciones tabla6 = new TablaDirecciones("Pablo","12.0.0.7",0,2222);
-        TablaDirecciones tabla7 = new TablaDirecciones("Paletas","200.5.0.1",0,2222);
-        TablaDirecciones tabla8 = new TablaDirecciones("Alonso","12.0.0.3",0,2222);
-        TablaDirecciones tabla9 = new TablaDirecciones("Sebastian","12.0.20.2",0,2222);
+        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,8888, 0000);
+        TablaDirecciones tabla2 = new TablaDirecciones("Carrito","12.0.0.7",1,5555, 0000);
+        TablaDirecciones tabla3 = new TablaDirecciones("Luces","12.0.0.7",2,5555, 0000);
+        TablaDirecciones tabla4 = new TablaDirecciones("Legos","200.5.0.1",2,2222, 0000);
+        TablaDirecciones tabla5 = new TablaDirecciones("Bolinchas","200.5.0.1",1,2222, 0000);
+        TablaDirecciones tabla6 = new TablaDirecciones("Pablo","12.0.0.7",0,2222, 0000);
+        TablaDirecciones tabla7 = new TablaDirecciones("Paletas","200.5.0.1",0,9999, 0000);
+        TablaDirecciones tabla8 = new TablaDirecciones("Alonso","12.0.0.3",0,2222, 5000);
+        TablaDirecciones tabla9 = new TablaDirecciones("Sebastian","12.0.20.2",0,7777, 0000);
         tablaD.put("12.0.0.8",tabla1);
         tablaD.put("165.8.2.0",tabla2);
         tablaD.put("25.0.2.5",tabla3);
@@ -46,8 +47,8 @@ public class Main {
             String fake2 = "12.0.20.2";
             String fake3 = "12.0.0.8";
             String fake4 = "12.0.0.3";
-            tablaIP=getIPtable(fake1, "0", fake2, IP, fake3, "0", fake4, "0"); // La última es la real de Alonso
-            nodoSebastian = new Nodo(tablaD,IP,tabla9.getPuerto(), tablaIP);
+            tablaIP=getIPtable(fake1, "0", fake2, IP, fake3, "0", fake4, IP); // La última es la real de Alonso
+            nodoSebastian = new Nodo(tablaD,IP,tabla9.getPuerto(), tablaIP, fake1, fake2, fake3, fake4);
             return nodoSebastian;
         } catch (UnknownHostException ex) {
             ex.printStackTrace();

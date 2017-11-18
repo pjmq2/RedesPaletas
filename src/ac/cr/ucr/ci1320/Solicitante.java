@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ac.cr.ucr.ci1320;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -17,6 +11,7 @@ import java.io.IOException;
 public class Solicitante extends Thread {
 
     String address;
+    String fakeaddress;
     int port;
     int accion;
     Socket sock;
@@ -26,16 +21,22 @@ public class Solicitante extends Thread {
     Nodo nodo;
     String miIP;
     String message;
-    Boolean isConnected = false;
-    Analizador analizador;
 
-    public Solicitante(Nodo node, String message, String addr, int por, String IP, Analizador analisis, int accion){
+    public Solicitante(Nodo node, String message, String fakeaddr, int accion){
         this.nodo = node;
-        this.port=por;
-        this.address=addr;
-        this.miIP = IP;
+        this.miIP = nodo.getIP();
         this.message = message;
         this.accion = accion;
+        this.fakeaddress = fakeaddr;
+        address = nodo.getIPTable().get(fakeaddr);
+        TablaDirecciones tabla = nodo.getDTable().get(fakeaddr);
+        if(accion == 7) {
+            this.port = tabla.getBackPuerto();
+        }
+        else
+        {
+            this.port =  tabla.getPuerto();
+        }
     }
 
     public void run(){
@@ -45,16 +46,13 @@ public class Solicitante extends Thread {
             InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
             reader = new BufferedReader(streamreader);
             writer = new DataOutputStream(sock.getOutputStream());
-            String envio;
-            Mensaje mensaje = new Mensaje(nodo.getFake(), address, accion, message);
-            envio = mensaje.toString();
-            writer.writeUTF(envio);
+            writer.writeUTF(message);
             writer.flush();
 
             try {
                 sock.close();
                 System.out.println("Socket Cliente Cerrado.");
-            } catch (IOException e) { /* failed */ }
+            } catch (IOException e) { System.out.println("ERROR"); }
         }
         catch (Exception ex) {
             System.out.println("Mensaje no fue enviado.");
@@ -65,7 +63,7 @@ public class Solicitante extends Thread {
                 }
             }
             catch (IOException e)
-            { /* failed */ }
+            { System.out.println("Socket Cliente Cerrado."); }
         }
     }
 
