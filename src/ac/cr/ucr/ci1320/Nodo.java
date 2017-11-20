@@ -1,4 +1,3 @@
-
 package ac.cr.ucr.ci1320;
 
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class Nodo {
         this.tablaIP = tablaIP;
         this.analizer = new Analizador(tablaD, tablaIP, miIp);
         this.server = new Servidor(this, this.analizer);
-        this.miIpFalsa = fake3;
+        this.miIpFalsa = fake2;
         this.Alonso = fake4;
         this.wishedFaker = "";
     }
@@ -70,6 +69,10 @@ public class Nodo {
             tablaIP.put(fake, real);
             TablaDirecciones tabla = tablaD.get(fake);
             tabla.modifyPort(port);
+            if(!(fake.equals(Alonso)))
+            {
+                tabla.modifyBackPort(port);
+            }
             return true;
         }
     }
