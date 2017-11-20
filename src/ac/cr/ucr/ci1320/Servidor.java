@@ -95,7 +95,7 @@ public class Servidor
                     Mensaje mensajer = new Mensaje(mensaje);
                     if(mensajer != null) {
                         String finale = mensajer.toString();
-                        casosDePaquetes(finale, lastClientRealIP);
+                        casosDePaquetes(finale, lastClientRealIP, true);
                     }
                     else
                     {
@@ -107,7 +107,7 @@ public class Servidor
                     Paquete paquete = new Paquete(mensaje);
                     if(paquete != null) {
                         String finale = paquete.toString();
-                        casosDePaquetes(finale, lastClientRealIP);
+                        casosDePaquetes(finale, lastClientRealIP, false);
                     }
                     else
                     {
@@ -129,16 +129,17 @@ public class Servidor
     // OJO: Para las acciones 1 y 2 , el campo (D) debe contener la dirección IP a la que se refieren las preguntas.
     // 3 - Respuesta: Sí, conozco esa dirección IP, soy YO.
     // 4 - Respuesta: Sí, conozco un camino hacia esa dirección IP.
-    private void casosDePaquetes(String stringpaquete, String lastClientRealIP){
+    // packmess : False = Paquete - True = Mensaje
+    private void casosDePaquetes(String stringpaquete, String lastClientRealIP, boolean packmess){
         Paquete paquete;
         Mensaje envio = null;
         int accion = -1;
-        if(stringpaquete.split("\\n").length == 4)
+        if(stringpaquete.split("\\n").length >= 4 && packmess == true)
         {
             envio = new Mensaje(stringpaquete);
             accion = envio.getAccion();
         }
-        else if(stringpaquete.split("\\n").length == 3)
+        else if(stringpaquete.split("\\n").length >= 3 && packmess == false)
         {
             paquete = new Paquete(stringpaquete);
             envio = paquete.getMensaje();
@@ -198,7 +199,7 @@ public class Servidor
                             }
                         }
                     } else if (isNumeric(envio.getIpMensaje()) == true) {
-                        boolean success = nodo.modifyIPTableEntry(lastClientRealIP, envio.getIpFuente(), Integer.parseInt(envio.getIpMensaje()));
+                        boolean success = nodo.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
                         if (success == true) {
                             System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
                         } else {
