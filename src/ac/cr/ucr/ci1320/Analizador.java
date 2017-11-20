@@ -3,21 +3,22 @@ package ac.cr.ucr.ci1320;
 import java.util.HashMap;
 
 public class Analizador {
-    private HashMap<String,TablaDirecciones> tablaD ;
-    private HashMap<String,String> tablaIP;
-    private String miIp;
+    //private HashMap<String,TablaDirecciones> tablaD ;
+    //private HashMap<String,String> tablaIP;
+    //private String miIp;
+    private Nodo nodo;
 
-    public Analizador(HashMap<String, TablaDirecciones> tablaD, HashMap<String, String> tablaIP, String miIp) {
-        this.tablaD = tablaD;
-        this.tablaIP = tablaIP;
-        this.miIp = miIp;
+    public Analizador(Nodo nodo) {
+        this.nodo = nodo;
     }
 
     // Crea el paquete físico usando el mensaje creado con los valores de red.
     public Paquete empaquetar(Mensaje mensaje){
-        TablaDirecciones tabla=tablaD.get(mensaje.getIpDestino());
-        String ipFuturo = tablaIP.get(tabla.getaTraves());
-        Paquete paquete = new Paquete(mensaje,miIp,ipFuturo); //La tercera es a ip de destino
+        HashMap<String,TablaDirecciones> tablaD = nodo.getDTable();
+        TablaDirecciones tabla = tablaD.get(mensaje.getIpDestino());
+        String miFake = nodo.getFake();
+        String ipFuturo = tabla.getaTraves();
+        Paquete paquete = new Paquete(mensaje,miFake,ipFuturo); //La tercera es a ip de destino
         return paquete;
     }
 
@@ -35,18 +36,22 @@ public class Analizador {
     }
 
     public Paquete responder3(String ipDestino){
-        Mensaje mensaje = new Mensaje(miIp,ipDestino,3,miIp);
-        Paquete paquete = new Paquete(mensaje,miIp,ipDestino);
+        String miFake = nodo.getFake();
+        Mensaje mensaje = new Mensaje(miFake,ipDestino,3,miFake);
+        Paquete paquete = new Paquete(mensaje,miFake,ipDestino);
         return paquete;
     }
 
     public Paquete responder4(String ipDestino){
-        Mensaje mensaje = new Mensaje(miIp,ipDestino,4,Integer.toString(tablaD.get(ipDestino).getDistancia()));
-        Paquete paquete = new Paquete(mensaje,miIp,ipDestino);
+        HashMap<String,TablaDirecciones> tablaD = nodo.getDTable();
+        String miFake = nodo.getFake();
+        Mensaje mensaje = new Mensaje(miFake,ipDestino,4,Integer.toString(tablaD.get(ipDestino).getDistancia()));
+        Paquete paquete = new Paquete(mensaje,miFake,ipDestino);
         return paquete;
     }
 
     public String getIpDestino(String ipInicial){
+        HashMap<String,TablaDirecciones> tablaD = nodo.getDTable();
         String ipDestino="";
         String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
