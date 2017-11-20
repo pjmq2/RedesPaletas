@@ -33,7 +33,7 @@ public class Nodo {
         this.tablaIP = tablaIP;
         this.analizer = new Analizador(tablaD, tablaIP, miIp);
         this.server = new Servidor(this, this.analizer);
-        this.miIpFalsa = fake3;
+        this.miIpFalsa = fake2;
         this.Alonso = fake4;
         this.wishedFaker = "";
     }

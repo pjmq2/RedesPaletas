@@ -17,7 +17,8 @@ public class Analizador {
 
     // Crea el paquete físico usando el mensaje creado con los valores de red.
     public Paquete empaquetar(Mensaje mensaje){
-        String ipDestino = this.getIpDestino(mensaje.getIpDestino());
+        //String ipDestino = this.getIpDestino(mensaje.getIpDestino()); //Si el ipDestino en el mensaje es el falso
+        String ipDestino = mensaje.getIpDestino(); //Si el ipDestino en el mensaje es el real
         return new Paquete(mensaje,miIp,ipDestino);
     }
 
@@ -73,6 +74,7 @@ public class Analizador {
 
 
 
+    /*
     public int getPuertoDestino(String ipInicial){
         int puertoDestino=0;
         String cadena[] = ipInicial.split("\\.");
@@ -98,4 +100,5 @@ public class Analizador {
         }
         return puertoDestino;
     }
+    */
 }

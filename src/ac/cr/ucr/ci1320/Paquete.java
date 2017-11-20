@@ -38,11 +38,11 @@ public class Paquete {
 
     public String toString() {
         String result = "";
-        result.concat(ipDestinPaquete);
-        result.concat("\n");
-        result.concat(ipFuentePaquete);
-        result.concat("\n");
-        result.concat(mensaje.toString());
+        result = result.concat(ipDestinPaquete);
+        result = result.concat("\n");
+        result = result.concat(ipFuentePaquete);
+        result = result.concat("\n");
+        result = result.concat(mensaje.toString());
         return result;
     }
 }

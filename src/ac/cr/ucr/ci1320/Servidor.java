@@ -90,6 +90,7 @@ public class Servidor
                 DataInputStream outClient;
                 outClient = new DataInputStream(sock.getInputStream());
                 String mensaje = outClient.readUTF();
+                System.out.println(mensaje);
                 if(mensaje.split("\\n").length == 4)
                 {
                     Mensaje mensajer = new Mensaje(mensaje);
@@ -151,11 +152,11 @@ public class Servidor
             switch (accion) {
                 default:
                     Paquete paquete2=analiza.empaquetar(envio);
-                    if(envio.getIpDestino().equals(nodo.getIP())) imprimirMensaje(envio);
-                    else{
-                        solicitante = new Solicitante(this.nodo, paquete2.toString(), envio.getIpFuente(), 2); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                    //if(envio.getIpDestino().equals(nodo.getIP())) {imprimirMensaje(envio);} //Si es para el router siempre lo imprimiría
+                    //else{ //envio.getIpFuente() //nodo.getFake()
+                        solicitante = new Solicitante(this.nodo, paquete2.toString(), "200.5.0.2", 2); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
                         solicitante.run();
-                    }
+                    //}
                     break;
                 case 1:
                     if(envio.getIpMensaje().equals(nodo.getIP())){

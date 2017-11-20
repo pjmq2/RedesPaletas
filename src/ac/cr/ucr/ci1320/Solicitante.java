@@ -29,13 +29,16 @@ public class Solicitante extends Thread {
         this.accion = accion;
         this.fakeaddress = fakeaddr;
         address = nodo.getIPTable().get(fakeaddr);
+        //address = fakeaddr;
         TablaDirecciones tabla = nodo.getDTable().get(fakeaddr);
         if(accion == 7) {
             this.port = tabla.getBackPuerto();
+            //System.out.println("BackPuerto");
         }
         else
         {
             this.port =  tabla.getPuerto();
+            //this.port = nodo.getPort();
         }
     }
 
