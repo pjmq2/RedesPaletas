@@ -102,7 +102,7 @@ public class Servidor
                         System.out.println("Mensaje no valido");
                     }
                 }
-                else if(mensaje.split("\\n").length == 3)
+                else if(mensaje.split("\\n").length >= 3)
                 {
                     Paquete paquete = new Paquete(mensaje);
                     if(paquete != null) {
