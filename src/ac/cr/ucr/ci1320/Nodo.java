@@ -24,7 +24,7 @@ public class Nodo {
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
-        this.analizer = new Analizador(tablaD, tablaIP, miIp);
+        this.analizer = new Analizador(this);
         this.server = new Servidor(this, this.analizer);
         this.miIpFalsa = fake2;
         this.Alonso = fake4;
