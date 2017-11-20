@@ -38,9 +38,9 @@ public class Paquete {
 
     public String toString() {
         String result = "";
-        result = result.concat(ipDestinPaquete);
-        result = result.concat("\n");
         result = result.concat(ipFuentePaquete);
+        result = result.concat("\n");
+        result = result.concat(ipDestinPaquete);
         result = result.concat("\n");
         result = result.concat(mensaje.toString());
         return result;
