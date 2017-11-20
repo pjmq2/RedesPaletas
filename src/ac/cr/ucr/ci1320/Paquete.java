@@ -13,7 +13,7 @@ public class Paquete {
 
     public Paquete(String TODO) {
         String completo[] = TODO.split("\n");
-        if(completo.length == 3) {
+        if(completo.length >= 3) {
             this.mensaje = new Mensaje(completo[0]);
             this.ipFuentePaquete = completo[1];
             this.ipDestinPaquete = completo[2];
