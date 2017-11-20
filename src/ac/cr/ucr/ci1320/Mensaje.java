@@ -15,7 +15,7 @@ public class Mensaje {
 
     public Mensaje(String TODO) {
         String completo[] = TODO.split("\n");
-        if(completo.length == 4)
+        if(completo.length >= 4)
         {
             this.ipFuente = completo[0];
             this.ipDestino = completo[1];
