@@ -188,6 +188,9 @@ public class Servidor
                                 if (isNumeric(resultado[2]) == true) {
                                     int porte = Integer.parseInt(resultado[2]);
                                     boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                    if(success == true) {
+                                        success = nodo.getDTable().get(resultado[1]).setNew(resultado[1], 0);
+                                    }
                                     if (success == true) {
                                         System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                                     } else {
