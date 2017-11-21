@@ -25,6 +25,10 @@ public class Mensaje {
             for(int i = 3; i < completo.length; ++i)
             {
                 stringmensaje = stringmensaje.concat(completo[i]);
+                if(i < (completo.length - 1))
+                {
+                    stringmensaje = stringmensaje + "\n";
+                }
             }
 
             this.ipMensaje = stringmensaje;
