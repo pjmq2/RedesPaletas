@@ -21,6 +21,10 @@ public class Paquete {
             for(int i = 2; i < completo.length; ++i)
             {
                 stringmensaje = stringmensaje.concat(completo[i]);
+                if(i < (completo.length - 1))
+                {
+                    stringmensaje = stringmensaje + "\n";
+                }
             }
             
             this.mensaje = new Mensaje(stringmensaje);
