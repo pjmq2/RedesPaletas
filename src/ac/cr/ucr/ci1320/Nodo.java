@@ -138,14 +138,14 @@ public class Nodo {
                                     // No puedo enviarle la pregunta porque no tengo el IP...
                                 }
                             }
-                        }
-
-                        try {
-                            TimeUnit.SECONDS.sleep(1);
-                        }
-                        catch (InterruptedException e)
-                        {
-                            System.out.println("El cronometro ha sido interrumpido, el mensaje no se enviara");
+                            
+                            try {
+                                TimeUnit.SECONDS.sleep(1);
+                            }
+                            catch (InterruptedException e)
+                            {
+                                System.out.println("El cronometro ha sido interrumpido, el mensaje no se enviara");
+                            }
                         }
 
                         if (tdir.getDistancia() == -1)
