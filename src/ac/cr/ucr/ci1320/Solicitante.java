@@ -51,8 +51,8 @@ public class Solicitante extends Thread {
             sock = new Socket(address, port);
             InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
             reader = new BufferedReader(streamreader);
-            writer = new DataOutputStream(sock.getOutputStream());
-            writer.writeUTF(message);
+            writer = new PrintWriter(sock.getOutputStream(), true);
+            writer.print(message);
             writer.flush();
 
             try {
