@@ -26,7 +26,7 @@ public class Nodo {
         this.tablaIP = tablaIP;
         this.analizer = new Analizador(this);
         this.server = new Servidor(this, this.analizer);
-        this.miIpFalsa = fake2;
+        this.miIpFalsa = fake3;
         this.Alonso = fake4;
         this.wishedFaker = "";
     }
