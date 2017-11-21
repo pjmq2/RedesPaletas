@@ -56,13 +56,13 @@ public class Analizador {
         String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
             default:
-                ipDestino = tablaD.get("165.8.2.0").getaTraves();
+                ipDestino = tablaD.get("165.8.6.25").getaTraves();
                 break;
             case 12:
                 ipDestino = ipInicial;
                 break;
             case 200:
-                ipDestino = tablaD.get("200.5.0.2").getaTraves();
+                ipDestino = tablaD.get("200.5.0.0").getaTraves();
                 break;
             case 25:
                 ipDestino = tablaD.get("25.0.0.0").getaTraves();
