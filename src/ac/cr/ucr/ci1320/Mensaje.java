@@ -17,10 +17,17 @@ public class Mensaje {
         String completo[] = TODO.split("\n");
         if(completo.length >= 4)
         {
+            String stringmensaje = "";
             this.ipFuente = completo[0];
             this.ipDestino = completo[1];
             this.accion = Integer.parseInt(completo[2]);
-            this.ipMensaje = completo[3];
+
+            for(int i = 3; i < completo.length; ++i)
+            {
+                stringmensaje = stringmensaje.concat(completo[i]);
+            }
+
+            this.ipMensaje = stringmensaje;
         }
     }
 
