@@ -14,9 +14,16 @@ public class Paquete {
     public Paquete(String TODO) {
         String completo[] = TODO.split("\n");
         if(completo.length >= 3) {
-            this.mensaje = new Mensaje(completo[0]);
-            this.ipFuentePaquete = completo[1];
-            this.ipDestinPaquete = completo[2];
+            String stringmensaje = "";
+            this.ipFuentePaquete = completo[0];
+            this.ipDestinPaquete = completo[1];
+            
+            for(int i = 2; i < completo.length; ++i)
+            {
+                stringmensaje = stringmensaje.concat(completo[i]);
+            }
+            
+            this.mensaje = new Mensaje(stringmensaje);
         }
     }
 
