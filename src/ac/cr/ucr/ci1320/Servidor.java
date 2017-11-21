@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class Servidor
 {
@@ -87,9 +89,20 @@ public class Servidor
         {
             try
             {
-                DataInputStream outClient;
-                outClient = new DataInputStream(sock.getInputStream());
-                String mensaje = outClient.readUTF();
+                BufferedReader stdIn = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                String linea;
+                String mensaje = "";
+                int lines = 0;
+                while((linea = stdIn.readLine()) != null)
+                {
+                    if(lines > 0)
+                    {
+                        linea = "\n" + linea;
+                    }
+                    mensaje = mensaje.concat(linea);
+                    ++lines;
+                }
+                System.out.println(mensaje);
                 if(mensaje.split("\\n").length == 4)
                 {
                     Mensaje mensajer = new Mensaje(mensaje);
@@ -188,9 +201,6 @@ public class Servidor
                                 if (isNumeric(resultado[2]) == true) {
                                     int porte = Integer.parseInt(resultado[2]);
                                     boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
-                                    if(success == true) {
-                                        success = nodo.getDTable().get(resultado[1]).setNew(resultado[1], 0);
-                                    }
                                     if (success == true) {
                                         System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                                     } else {
