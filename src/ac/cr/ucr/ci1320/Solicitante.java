@@ -22,7 +22,7 @@ public class Solicitante extends Thread {
     int accion;
     Socket sock;
     BufferedReader reader;
-    DataOutputStream writer;
+    PrintWriter writer;
     String response;
     Nodo nodo;
     String miIP;
