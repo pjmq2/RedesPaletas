@@ -18,6 +18,8 @@ public class Nodo {
     private Servidor server;
     private String Alonso;
     private String wishedFaker;
+    Scanner scanner;
+    private Enrutador enrutador;
 
     public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4) {
         this.tablaD = tablaD;
@@ -25,7 +27,6 @@ public class Nodo {
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
         this.analizer = new Analizador(this);
-        this.server = new Servidor(this, this.analizer);
         this.miIpFalsa = fake3;
         this.Alonso = fake4;
         this.wishedFaker = "";
@@ -79,6 +80,28 @@ public class Nodo {
 
     public void iniciar()
     {
+        // Configurar número de Enrutadores y Ventanas
+
+        String entrada[] = new String[3];
+        String[] mensajes = {"¿Cuantas Interfaces se debe usar?", "ERROR: El número de interfaces debe ser un entero.", "¿Cuantos Buffer se deben usar?", "ERROR: El número de bufferes debe ser un entero."};
+        int[] valores = new int[3];
+
+        for(int i = 0; i < 3; i+=2) {
+            System.out.println(mensajes[i]);
+            scanner = new Scanner(System.in);
+            entrada[(i/2)] = scanner.nextLine();
+            if(entrada[(i/2)] != null && entrada[(i/2)].matches("[-+]?\\d*\\.?\\d+")) {
+                valores[(i/2)] = Integer.parseInt(entrada[(i/2)]);
+            }
+            else{
+                System.out.println(mensajes[(i+1)]);
+                i-=2;
+            }
+        }
+
+        this.enrutador = new Enrutador(this, valores[0], valores[1]);
+        this.server = new Servidor(this, this.analizer, this.enrutador);
+
         // Abrir Servidor
 
         server.iniciar();
@@ -104,7 +127,7 @@ public class Nodo {
 
     public void terminal() {
         System.out.println("Mensaje -> IPDESTINO \\n MENSAJE / Dispatcher -> DISPATCH"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         String entrada = "";
         while (!(entrada.equals("BYE"))) {
             entrada = scanner.nextLine();

@@ -19,10 +19,12 @@ public class Servidor
     int portz;
     Nodo nodo;
     Analizador analizer;
-    public Servidor(Nodo node, Analizador analizer) {
+    Enrutador enrutador;
+    public Servidor(Nodo node, Analizador analizer, Enrutador enrutador) {
         this.portz = node.getPort();
         this.nodo = node;
         this.analizer = analizer;
+        this.enrutador = enrutador;
     }
 
     public void iniciar() {
