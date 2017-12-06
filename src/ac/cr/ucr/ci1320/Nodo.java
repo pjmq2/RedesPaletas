@@ -18,10 +18,10 @@ public class Nodo {
     private Servidor server;
     private String Alonso;
     private String wishedFaker;
-    Scanner scanner;
     private Enrutador enrutadores[];
+    private Terminal terminal;
 
-    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4) {
+    public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4) { // El fake 4 debe ser el IP del Dispatcher
         this.tablaD = tablaD;
         this.miIp = miIp;
         this.miPuerto = miPuerto;
@@ -30,6 +30,7 @@ public class Nodo {
         this.miIpFalsa = fake3;
         this.Alonso = fake4;
         this.wishedFaker = "";
+        this.terminal = new Terminal(this, fake4);
     }
 
     public String getIP()
@@ -55,6 +56,8 @@ public class Nodo {
     }
 
     public  String getWished () { return  this.wishedFaker; }
+
+    public  void setWished (String wish) { this.wishedFaker = wish; }
 
     public HashMap<String,TablaDirecciones> getDTable() { return  this.tablaD; }
 
@@ -86,7 +89,7 @@ public class Nodo {
         String[] mensajes = {"¿Cuantos Enrutadores se deben usar?", "ERROR: El número de enrutadores debe ser un entero.", "¿Cuantas Interfaces se debe usar?", "ERROR: El número de interfaces debe ser un entero.", "¿Cuantos Buffer se deben usar?", "ERROR: El número de bufferes debe ser un entero."};
         int[] valores = new int[3];
 
-        scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         for(int i = 0; i < mensajes.length; i+=2) {
             System.out.println(mensajes[i]);
@@ -100,6 +103,7 @@ public class Nodo {
             }
         }
 
+        scanner = null;
         this.enrutadores = new Enrutador[valores[0]];
         this.server = new Servidor(this, this.analizer);
 
@@ -109,7 +113,7 @@ public class Nodo {
 
         // Leer línea de la terminal.
 
-        this.terminal();
+        this.terminal.terminal();
     }
 
     public String getTablaIPString() {
@@ -124,78 +128,5 @@ public class Nodo {
             }
         }
         return returnValue;
-    }
-
-    public void terminal() {
-        System.out.println("Mensaje -> IPDESTINO \\n MENSAJE / Dispatcher -> DISPATCH"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
-        scanner = new Scanner(System.in);
-        String entrada = "";
-        while (!(entrada.equals("BYE"))) {
-            entrada = scanner.nextLine();
-            if (!(entrada.equals("BYE"))) {
-                String[] array = entrada.split("\\\\n");
-                // Enviar el mensaje
-                Solicitante solicitante;
-
-                if (array.length == 2) {
-                    TablaDirecciones tdir = tablaD.get(array[0]);
-                    if (tdir == null) {
-                        System.out.println("Dirección IP inválida");
-                    } else {
-                        // FALTA HACER QUE ELIJA LA DIRECCIÓN ADECUADA, Y QUE HAGA LO QUE OCUPE SI NO LA TIENE.
-
-                        if(tdir.getDistancia() == -1)
-                        {
-                            this.wishedFaker = array[0];
-                            Set<String> keys = tablaIP.keySet();
-                            String[] fakes = keys.toArray(new String[keys.size()]); // Arreglo de las falsas de J, P, A y S
-                            for(int i = 0; i < fakes.length; ++i) {
-                                Mensaje mensaje = new Mensaje(this.getFake(), fakes[i], 2, array[0]);
-                                String envio = mensaje.toString();
-                                String trueaddress = tablaIP.get(fakes[i]);
-                                if(!(trueaddress.equals("0"))) {
-                                    solicitante = new Solicitante(this, envio, fakes[i], 2); // Address Port Menssage
-                                    solicitante.run();
-                                }
-                                else
-                                {
-                                    // No puedo enviarle la pregunta porque no tengo el IP...
-                                }
-                            }
-                            
-                            try {
-                                TimeUnit.SECONDS.sleep(1);
-                            }
-                            catch (InterruptedException e)
-                            {
-                                System.out.println("El cronometro ha sido interrumpido, el mensaje no se enviara");
-                            }
-                        }
-
-                        if (tdir.getDistancia() == -1)
-                        {
-                            System.out.println("No hay ningun router conectado a la ruta " + array[0]);
-                        }
-                        else {
-                            String mensajeAEnviar = array[1];
-                            Mensaje mensaje = new Mensaje(this.getFake(), array[0], 0, mensajeAEnviar);
-                            Paquete paquete = analizer.empaquetar(mensaje);
-                            String envio = paquete.toString();
-                            String imd = tdir.getaTraves();
-                            solicitante = new Solicitante(this, envio, imd, 0); // ESE ARRAY[0] CÁMBIELO POR EL
-                            this.wishedFaker = "";
-                            solicitante.run();
-                        }
-                    }
-                } else if (entrada.equalsIgnoreCase("DISPATCH")) {
-                    Mensaje mensaje = new Mensaje(this.getFake(), Alonso, 7, Integer.toString(miPuerto));
-                    String envio = mensaje.toString();
-                    solicitante = new Solicitante(this, envio, Alonso, 7); // Address Port Menssage
-                    solicitante.run();
-                } else {
-                    System.out.println("Mensaje Inválido");
-                }
-            }
-        }
     }
 }

@@ -48,6 +48,9 @@ public class Solicitante extends Thread {
     public void run(){
         try
         {
+
+            // Debería checkear si hay enrutadores disponibles.
+
             sock = new Socket(address, port);
             InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
             reader = new BufferedReader(streamreader);
