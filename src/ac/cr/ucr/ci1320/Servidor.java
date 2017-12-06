@@ -5,26 +5,19 @@
  */
 package ac.cr.ucr.ci1320;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class Servidor
 {
     int portz;
     Nodo nodo;
     Analizador analizer;
-    Enrutador enrutador;
-    public Servidor(Nodo node, Analizador analizer, Enrutador enrutador) {
+
+    public Servidor(Nodo node, Analizador analizer) {
         this.portz = node.getPort();
         this.nodo = node;
         this.analizer = analizer;
-        this.enrutador = enrutador;
     }
 
     public void iniciar() {
@@ -48,17 +41,14 @@ public class Servidor
                     Socket cliente = servidor.accept();
                     String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
                     String clientIPRevealed = clientIP.split("/")[1];
-                    int i = enrutador.getaInter();
-                    if (i < 0) {
-                        Interfaz inter = enrutador.getInters(i);
-                        inter.set(cliente, nodo, clientIPRevealed);
-                        Thread listener = new Thread(inter);
-                        listener.start();
-                        System.out.println("Conexión recibida, Servidor");
-                    }
-                    else {
-                        System.out.println("No hay interfaces disponibles");
-                    }
+
+                    // Checkear si hay espacio disponible
+
+                    Enviador sender = new Enviador();
+                    sender.set(cliente, nodo, clientIPRevealed);
+                    Thread listener = new Thread(sender);
+                    listener.start();
+                    System.out.println("Conexión recibida, Servidor");
                 }
             }
             catch (Exception ex)

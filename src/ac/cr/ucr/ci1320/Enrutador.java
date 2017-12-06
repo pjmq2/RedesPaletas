@@ -1,7 +1,5 @@
 package ac.cr.ucr.ci1320;
 
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.concurrent.Semaphore;
 import java.util.Random;
 
@@ -12,7 +10,7 @@ public class Enrutador{
     Nodo nodo;
     int Itotal = 5;
     int bufferNumber = 0;
-    Interfaz[] myInters;
+    Enviador[] myInters;
     String[] físicas = {"Interfaz1", "Interfaz2", "Interfaz3", "Interfaz4", "Interfaz5"};
     String[] IPs = {"12.1.0.1", "12.1.0.2", "12.1.0.3", "12.1.0.4", "12.1.0.5"};
     String[] Masks = {"12.2.0.1", "12.2.0.2", "12.2.0.3", "12.2.0.4", "12.2.0.5"};
@@ -24,7 +22,7 @@ public class Enrutador{
         this.Itotal = Itotal;
         available = new Semaphore(Itotal, true);
         this.nodo = nodo;
-        myInters = new Interfaz[Itotal];
+        myInters = new Enviador[Itotal];
         this.bufferNumber = bufferNumber;
     }
 
@@ -39,7 +37,8 @@ public class Enrutador{
                 {
                     success = true;
                     freeOne = i;
-                    myInters[i] = new Interfaz(IPs[i], Masks[i], this.físicas[i], Tickets[i], this.bufferNumber); // String IP, String mask, String physicalDirection, String interfaceTicket, int bufferNumber
+
+                    // freeOne sería la interfaz libre
                 }
             }
             available.release();
@@ -58,7 +57,7 @@ public class Enrutador{
         }
     }
 
-    public Interfaz getInters(int i) {
+    public Enviador getInters(int i) {
         if(i < 0 || 4 < i){
             return null;
         }

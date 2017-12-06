@@ -6,13 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Interfaz implements Runnable {
-    String IP;
-    String mask;
-    String physicalDirection; // Banderas
-    String interfaceTicket;
-    int bufferNumber = 0;
-    Buffer buffer[];
+public class Enviador implements Runnable {
     boolean set = false;
 
     BufferedReader reader;
@@ -21,13 +15,7 @@ public class Interfaz implements Runnable {
     Nodo nodo;
     String lastClientRealIP;
 
-    public Interfaz(String IP, String mask, String physicalDirection, String interfaceTicket, int bufferNumber) {
-        this.IP = IP;
-        this.mask = mask;
-        this.physicalDirection = physicalDirection;
-        this.interfaceTicket = interfaceTicket;
-        this.bufferNumber = bufferNumber;
-        this.buffer = new Buffer[bufferNumber];
+    public Enviador() {
     }
 
     public void set(Socket clientSocket, Nodo node, String clientRealIP) {

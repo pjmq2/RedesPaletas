@@ -19,7 +19,7 @@ public class Nodo {
     private String Alonso;
     private String wishedFaker;
     Scanner scanner;
-    private Enrutador enrutador;
+    private Enrutador enrutadores[];
 
     public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String,String>tablaIP, String fake1, String fake2, String fake3, String fake4) {
         this.tablaD = tablaD;
@@ -100,8 +100,8 @@ public class Nodo {
             }
         }
 
-        this.enrutador = new Enrutador(this, valores[0], valores[1]);
-        this.server = new Servidor(this, this.analizer, this.enrutador);
+        this.enrutadores = new Enrutador[valores[0]];
+        this.server = new Servidor(this, this.analizer);
 
         // Abrir Servidor
 
