@@ -41,7 +41,7 @@ public class Enrutador{
                     // Generación de IP
 
                     for(int y = 0; y < 4; ++y) {
-                        int  n = rand.nextInt(256) + 1;
+                        int  n = rand.nextInt(256);
                         IP = IP + Integer.toString(n);
                         if(y < 3) {
                             IP = IP + ".";
