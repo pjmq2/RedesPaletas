@@ -49,9 +49,16 @@ public class Servidor
                     String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
                     String clientIPRevealed = clientIP.split("/")[1];
                     int i = enrutador.getaInter();
-                    Thread listener = new Thread(enrutador.getInters(i));
-                    listener.start();
-                    System.out.println("Conexión recibida, Servidor");
+                    if (i < 0) {
+                        Interfaz inter = enrutador.getInters(i);
+                        inter.set(cliente, nodo, clientIPRevealed);
+                        Thread listener = new Thread(inter);
+                        listener.start();
+                        System.out.println("Conexión recibida, Servidor");
+                    }
+                    else {
+                        System.out.println("No hay interfaces disponibles");
+                    }
                 }
             }
             catch (Exception ex)
