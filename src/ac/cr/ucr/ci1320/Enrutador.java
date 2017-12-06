@@ -14,6 +14,9 @@ public class Enrutador{
     int bufferNumber = 0;
     Interfaz[] myInters;
     String[] físicas = {"Interfaz1", "Interfaz2", "Interfaz3", "Interfaz4", "Interfaz5"};
+    String[] IPs = {"12.1.0.1", "12.1.0.2", "12.1.0.3", "12.1.0.4", "12.1.0.5"};
+    String[] Masks = {"12.2.0.1", "12.2.0.2", "12.2.0.3", "12.2.0.4", "12.2.0.5"};
+    String[] Tickets = {"Primero", "Segundo", "Tercero", "Cuarto", "Quinto"};
     private Semaphore available;
     Random rand = new Random();
 
@@ -36,31 +39,7 @@ public class Enrutador{
                 {
                     success = true;
                     freeOne = i;
-                    String IP = "";
-
-                    // Generación de IP
-
-                    for(int y = 0; y < 4; ++y) {
-                        int  n = rand.nextInt(256);
-                        IP = IP + Integer.toString(n);
-                        if(y < 3) {
-                            IP = IP + ".";
-                        }
-                    }
-
-                    // Generación de Tiquete
-
-                    final String alphabet = "0123456789ABCDE";
-                    final int N = alphabet.length();
-                    String tiquete = "";
-
-                    Random r = new Random();
-
-                    for (int z = 0; z < 6; z++) {
-                        tiquete = tiquete + (alphabet.charAt(r.nextInt(N)));
-                    }
-
-                    myInters[i] = new Interfaz(IP, "FALTA ESTO!!!", this.físicas[i], tiquete, this.bufferNumber); // String IP, String mask, String physicalDirection, String interfaceTicket, int bufferNumber
+                    myInters[i] = new Interfaz(IPs[i], Masks[i], this.físicas[i], Tickets[i], this.bufferNumber); // String IP, String mask, String physicalDirection, String interfaceTicket, int bufferNumber
                 }
             }
             available.release();

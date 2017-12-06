@@ -22,7 +22,7 @@ public class Solicitante extends Thread {
     int accion;
     Socket sock;
     BufferedReader reader;
-    PrintWriter writer;
+    DataOutputStream writer;
     String response;
     Nodo nodo;
     String miIP;
@@ -51,8 +51,8 @@ public class Solicitante extends Thread {
             sock = new Socket(address, port);
             InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
             reader = new BufferedReader(streamreader);
-            writer = new PrintWriter(sock.getOutputStream(), true);
-            writer.print(message);
+            writer = new DataOutputStream(sock.getOutputStream());
+            writer.writeUTF(message);
             writer.flush();
 
             try {

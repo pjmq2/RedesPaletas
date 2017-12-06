@@ -1,6 +1,7 @@
 package ac.cr.ucr.ci1320;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -52,17 +53,9 @@ public class Interfaz implements Runnable {
     {
         if(set == true) {
             try {
-                BufferedReader stdIn = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-                String linea;
-                String mensaje = "";
-                int lines = 0;
-                while ((linea = stdIn.readLine()) != null) {
-                    if (lines > 0) {
-                        linea = "\n" + linea;
-                    }
-                    mensaje = mensaje.concat(linea);
-                    ++lines;
-                }
+                DataInputStream outClient;
+                outClient = new DataInputStream(sock.getInputStream());
+                String mensaje = outClient.readUTF();
                 System.out.println(mensaje);
                 if (mensaje.split("\\n").length == 4) {
                     Mensaje mensajer = new Mensaje(mensaje);

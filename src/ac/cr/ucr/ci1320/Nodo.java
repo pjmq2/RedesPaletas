@@ -83,12 +83,13 @@ public class Nodo {
         // Configurar número de Enrutadores y Ventanas
 
         String entrada[] = new String[3];
-        String[] mensajes = {"¿Cuantas Interfaces se debe usar?", "ERROR: El número de interfaces debe ser un entero.", "¿Cuantos Buffer se deben usar?", "ERROR: El número de bufferes debe ser un entero."};
+        String[] mensajes = {"¿Cuantos Enrutadores se deben usar?", "ERROR: El número de enrutadores debe ser un entero.", "¿Cuantas Interfaces se debe usar?", "ERROR: El número de interfaces debe ser un entero.", "¿Cuantos Buffer se deben usar?", "ERROR: El número de bufferes debe ser un entero."};
         int[] valores = new int[3];
 
-        for(int i = 0; i < 3; i+=2) {
+        scanner = new Scanner(System.in);
+
+        for(int i = 0; i < mensajes.length; i+=2) {
             System.out.println(mensajes[i]);
-            scanner = new Scanner(System.in);
             entrada[(i/2)] = scanner.nextLine();
             if(entrada[(i/2)] != null && entrada[(i/2)].matches("[-+]?\\d*\\.?\\d+")) {
                 valores[(i/2)] = Integer.parseInt(entrada[(i/2)]);
