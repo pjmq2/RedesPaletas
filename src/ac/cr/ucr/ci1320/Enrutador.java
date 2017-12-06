@@ -32,7 +32,7 @@ public class Enrutador{
         try {
             available.acquire();
             for(int i = 3; i < Itotal; ++i) {
-                if(myInters[i] != null)
+                if(myInters[i] == null)
                 {
                     success = true;
                     freeOne = i;
