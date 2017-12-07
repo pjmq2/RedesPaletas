@@ -1,10 +1,4 @@
-/*
-
-Aun no funciona
-
- */
-
-package ac.cr.ucr.ci1320;
+package ac.cr.ucr.ci1320.NodoP;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
