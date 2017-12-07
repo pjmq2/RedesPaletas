@@ -160,6 +160,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ci1320" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RedesPaletas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RedesPaletas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1320" type="462c0819:PsiDirectoryNode" />
+              <item name="NodoS" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -441,13 +448,6 @@
       <workItem from="1510820863004" duration="1370000" />
       <workItem from="1510860452430" duration="25000" />
       <workItem from="1510932685959" duration="406000" />
-    </task>
-    <task id="LOCAL-00001" summary="Cambios iniciales">
-      <created>1510096362686</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1510096362686</updated>
     </task>
     <task id="LOCAL-00002" summary="Creacion de Mensaje, Paquete, Etc">
       <created>1510097167170</created>
@@ -785,7 +785,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512669116453</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="agregar Servidor">
+      <created>1512670016987</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1512670016987</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
