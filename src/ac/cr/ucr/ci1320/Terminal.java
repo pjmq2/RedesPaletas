@@ -30,14 +30,12 @@ public class Terminal {
                 if (array.length == 2) {
                     String mensajeAEnviar = array[1];
                     Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
-                    String envio = mensaje.toString();
 
-                    solicitante = new Solicitante(nodo, envio, array[0], 0); // ESE ARRAY[0] CÁMBIELO POR EL
+                    solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
                     solicitante.run();
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), dispatcherFIP, 7, Integer.toString(nodo.getmyPort()));
-                    String envio = mensaje.toString();
-                    solicitante = new Solicitante(nodo, envio, dispatcherFIP, 7); // Address Port Menssage
+                    solicitante = new Solicitante(nodo, mensaje); // Address Port Menssage
                     solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");

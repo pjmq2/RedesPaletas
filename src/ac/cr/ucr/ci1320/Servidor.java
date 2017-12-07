@@ -12,12 +12,10 @@ public class Servidor
 {
     int portz;
     Nodo nodo;
-    Analizador analizer;
 
-    public Servidor(Nodo node, int port, Analizador analizer) {
-        this.portz = port;
+    public Servidor(Nodo node) {
+        this.portz = node.getmyPort();
         this.nodo = node;
-        this.analizer = analizer;
     }
 
     public void iniciar() {

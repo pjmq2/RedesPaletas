@@ -22,18 +22,19 @@ public class Solicitante extends Thread {
     Socket sock;
     BufferedReader reader;
     DataOutputStream writer;
-    String response;
     Nodo nodo;
     String miIP;
     Mensaje message;
 
-    public Solicitante(Nodo node, Mensaje message, String targetfakeaddr, int accion){
+    public Solicitante(Nodo node, Mensaje message){
         this.nodo = node;
         this.miIP = nodo.getmyRealIP();
         this.message = message;
-        this.accion = accion;
-        this.targetfakeaddress = targetfakeaddr;
-        TablaDirecciones tabla = nodo.getDTable().get(targetfakeaddr);
+        if(message != null) {
+            this.accion = message.getAccion();
+            this.targetfakeaddress = message.getIpDestino();
+        }
+        TablaDirecciones tabla = nodo.getDTable().get(this.targetfakeaddress);
         if(accion == 7) {
             this.port = tabla.getBackPuerto();
         }
@@ -70,7 +71,7 @@ public class Solicitante extends Thread {
                     if(!(routerTrueaddress.equals("0"))) {
                         // Enviar la pregunta
 
-                        Solicitante solicitante = new Solicitante(nodo, mensaje, fakes[i], 2); // Address Port Menssage
+                        Solicitante solicitante = new Solicitante(nodo, mensaje); // Address Port Menssage
                         solicitante.run();
                     }
                     else

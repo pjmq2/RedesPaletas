@@ -142,7 +142,7 @@ public class Recividor implements Runnable {
                         }
                         String mensajeAEnviar = nodo.getTablaIPString();
                         Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), envio.getIpFuente(), 7, mensajeAEnviar);
-                        solicitante = new Solicitante(this.nodo, mensaje, envio.getIpFuente(), 7); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                        solicitante = new Solicitante(this.nodo, mensaje); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
                         solicitante.run();
                     } else {
                         System.out.println("Este mensaje no debe ser manejado por el dispatcher");

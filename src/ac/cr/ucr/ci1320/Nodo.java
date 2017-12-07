@@ -14,8 +14,8 @@ public class Nodo {
     private HashMap<String, String> tablaIP;
     private String miIp;
     private String miIpFalsa;
+    private Servidor server;
     private int miPuerto;
-    private Analizador analizer;
     private String Alonso;
     private String wishedFaker;
     private Terminal terminal;
@@ -31,11 +31,11 @@ public class Nodo {
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
-        this.analizer = new Analizador(this);
         this.miIpFalsa = fake3;
         this.Alonso = fake4;
         this.wishedFaker = "";
         this.terminal = new Terminal(this, fake4);
+        this.server = new Servidor(this);
     }
 
     public HashMap<String,TablaDirecciones> getDTable() { return  this.tablaD; }
@@ -80,13 +80,14 @@ public class Nodo {
     }
 
     public void nominateWish (int distance, String nominee) {
-        ++this.comparedWishes;
         int number = 0;
-        if(distance < bestWishValue){
-            this.bestWish = nominee;
-        }
         try {
             nomineeTurn.acquire();
+            ++this.comparedWishes;
+            if(distance < bestWishValue){
+                this.bestWish = nominee;
+                this.bestWishValue = distance;
+            }
             number = comparedWishes;
             nomineeTurn.release();
         }
@@ -145,6 +146,12 @@ public class Nodo {
     }
 
     public void iniciar() {
+        // Abrir Servidor
 
+        server.iniciar();
+
+        // Leer línea de la terminal.
+
+        this.terminal.terminal();
     }
 }
