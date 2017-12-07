@@ -19,7 +19,6 @@ public class Nodo {
         this.ipDispatcher = ipDispatcher;
         this.iniciar();
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
-
     }
 
     public void iniciar()
