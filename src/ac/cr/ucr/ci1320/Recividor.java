@@ -92,8 +92,6 @@ public class Recividor implements Runnable {
             accion = envio.getAccion();
         }
         if(envio != null) {
-            Analizador analizer = nodo.getAnalizer(); //
-
             Solicitante solicitante; // Cliente
             switch (accion) {
                 case 0:
@@ -105,19 +103,10 @@ public class Recividor implements Runnable {
                     if ((envio.getIpMensaje()) != null && (envio.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+"))
                     {
                         int distancia = Integer.parseInt(envio.getIpMensaje());
-                        String fakeR = nodo.getWished(); // Indeciso
-                        if(!(fakeR.equals(""))) {
-                            TablaDirecciones TD = nodo.getDTable().get(fakeR);
-                            boolean success = TD.setNew(fakeR, distancia);
-                            if (success == true) {
-                                System.out.println("Mensajes ahora se enviarán por " + fakeR + ".");
-                            } else {
-                                System.out.println("Distancia por " + fakeR + " no era mejor que la ya establecida.");
-                            }
-                        }
-                        else{
-                            System.out.println("Respuesta accion 4 diatancia " + envio.getIpMensaje() + " ha sido ignarada.");
-                        }
+
+                        // Determinar si la distancia es la mejor, y si la es, cambiar el atravez del wished
+
+                        nodo.nominateWish(distancia, envio.getIpFuente());
                     }
                     else
                     {
@@ -152,9 +141,8 @@ public class Recividor implements Runnable {
                             System.out.println("ERROR! Dirección falsa otorgada no existe");
                         }
                         String mensajeAEnviar = nodo.getTablaIPString();
-                        Mensaje mensaje = new Mensaje(nodo.getFake(), envio.getIpFuente(), 7, mensajeAEnviar);
-                        String envioFinal = mensaje.toString();
-                        solicitante = new Solicitante(this.nodo, envioFinal, envio.getIpFuente(), 7); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), envio.getIpFuente(), 7, mensajeAEnviar);
+                        solicitante = new Solicitante(this.nodo, mensaje, envio.getIpFuente(), 7); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
                         solicitante.run();
                     } else {
                         System.out.println("Este mensaje no debe ser manejado por el dispatcher");

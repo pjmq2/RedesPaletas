@@ -19,8 +19,12 @@ public class Nodo {
     private String Alonso;
     private String wishedFaker;
     private Terminal terminal;
+    private String bestWish;
+    private int bestWishValue;
+    private int comparedWishes;
     private Semaphore canWish = new Semaphore(1, true);
     private Semaphore getWish = new Semaphore(0, true);
+    private Semaphore nomineeTurn = new Semaphore(1, true);
 
     public Nodo(HashMap<String, TablaDirecciones> tablaD, String miIp, int miPuerto, HashMap<String, String> tablaIP, String fake1, String fake2, String fake3, String fake4) { // El fake 4 debe ser el IP del Dispatcher
         this.tablaD = tablaD;
@@ -44,6 +48,8 @@ public class Nodo {
 
     public String getmyRealIP() { return this.miIp; }
 
+    public  String getWishedFaker() { return this.wishedFaker; }
+
     public void wish (String wish) {
         try {
             canWish.acquire();
@@ -54,12 +60,12 @@ public class Nodo {
         }
     }
 
-    public void giveWish (String wish) {
+    public void giveWish () {
         try {
             // Dejar el "a travez del wished como la respuesta"
             TablaDirecciones tabla = tablaD.get(this.wishedFaker);
             if(tabla != null) {
-                tabla.modifyaTravez(wish);
+                tabla.modifyaTravez(this.bestWish);
             }
             else {
                 System.out.println("Error el deseo no se cumplió.");
@@ -73,6 +79,25 @@ public class Nodo {
         }
     }
 
+    public void nominateWish (int distance, String nominee) {
+        ++this.comparedWishes;
+        int number = 0;
+        if(distance < bestWishValue){
+            this.bestWish = nominee;
+        }
+        try {
+            nomineeTurn.acquire();
+            number = comparedWishes;
+            nomineeTurn.release();
+        }
+        catch(Exception ex){
+            System.out.println("Error al recivir un deseo.");
+        }
+        if(number == tablaIP.size()){
+            this.giveWish();
+        }
+    }
+
     public String getWish () {
         try {
             getWish.acquire();
@@ -82,6 +107,20 @@ public class Nodo {
             System.out.println("Error al recivir un deseo.");
             return "";
         }
+    }
+
+    public String getTablaIPString() {
+        String returnValue = new String();
+        Set<String> keys = tablaIP.keySet();
+        String[] array = keys.toArray(new String[keys.size()]);
+
+        for(int i = 0; i < array.length; ++i) {
+            if (!(tablaIP.get(array[i]).equalsIgnoreCase("0"))) {
+                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
+                returnValue = returnValue + tablaIP.get(array[i]) + "," + array[i] + "," + tablaD.get(array[i]).getPuerto();
+            }
+        }
+        return returnValue;
     }
 
     public boolean modifyIPTableEntry(String fake, String real, int port)
