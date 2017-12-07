@@ -1,4 +1,4 @@
-package ac.cr.ucr.ci1320;
+package ac.cr.ucr.ci1320.NodoP;
 
 public class Mensaje {
     private String ipFuente;
