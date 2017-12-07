@@ -13,11 +13,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Set;
 
 public class Solicitante extends Thread {
-
-    String address;
-    String fakeaddress;
+    String targetfakeaddress;
     int port;
     int accion;
     Socket sock;
@@ -26,16 +25,15 @@ public class Solicitante extends Thread {
     String response;
     Nodo nodo;
     String miIP;
-    String message;
+    Mensaje message;
 
-    public Solicitante(Nodo node, String message, String fakeaddr, int accion){
+    public Solicitante(Nodo node, Mensaje message, String targetfakeaddr, int accion){
         this.nodo = node;
         this.miIP = nodo.getmyRealIP();
         this.message = message;
         this.accion = accion;
-        this.fakeaddress = fakeaddr;
-        address = nodo.getIPTable().get(fakeaddr);
-        TablaDirecciones tabla = nodo.getDTable().get(fakeaddr);
+        this.targetfakeaddress = targetfakeaddr;
+        TablaDirecciones tabla = nodo.getDTable().get(targetfakeaddr);
         if(accion == 7) {
             this.port = tabla.getBackPuerto();
         }
@@ -46,30 +44,76 @@ public class Solicitante extends Thread {
     }
 
     public void run(){
-        try
-        {
-            sock = new Socket(address, port);
-            InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
-            reader = new BufferedReader(streamreader);
-            writer = new DataOutputStream(sock.getOutputStream());
-            writer.writeUTF(message);
-            writer.flush();
 
-            try {
-                sock.close();
-                System.out.println("Socket Cliente Cerrado.");
-            } catch (IOException e) { System.out.println("ERROR"); }
+        // Obtener el "ATravez"
+
+        boolean success = true;
+
+        TablaDirecciones tdir = nodo.getDTable().get(targetfakeaddress);
+        if (tdir == null) {
+            System.out.println("Dirección IP inválida");
+        } else {
+            // FALTA HACER QUE ELIJA LA DIRECCIÓN ADECUADA, Y QUE HAGA LO QUE OCUPE SI NO LA TIENE.
+            // El solicitante del solicitante debería intentar a un enrutador, dirección que ya recibió vía broadcast.
+
+            if(tdir.getDistancia() == -1)
+            {
+                this.nodo.wish(targetfakeaddress);
+                Set<String> keys = nodo.getIPTable().keySet();
+                String[] fakes = keys.toArray(new String[keys.size()]); // Arreglo de las falsas de J, P, A y S
+                for(int i = 0; i < fakes.length; ++i) {
+                    // Preguntar la distancia a cada uno.
+
+                    Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), fakes[i], 2, targetfakeaddress);
+                    String routerTrueaddress = nodo.getIPTable().get(fakes[i]);
+
+                    if(!(routerTrueaddress.equals("0"))) {
+                        // Enviar la pregunta
+
+                        Solicitante solicitante = new Solicitante(nodo, mensaje, fakes[i], 2); // Address Port Menssage
+                        solicitante.run();
+                    }
+                    else
+                    {
+                        // No puedo enviarle la pregunta porque no tengo el IP...
+                        success = false;
+                    }
+                }
+
+                // Espera hasta que el servidor reciba la respuesta y la guarde.
+                String wish = nodo.getWish();
+            }
         }
-        catch (Exception ex) {
-            System.out.println("Mensaje no fue enviado.");
+
+        if((success == true) && (-1 < tdir.getDistancia())) {
             try {
-                if(sock != null) {
+                // Empaqueta
+                Paquete pack = new Paquete(message, nodo.getmyFakeAddress(), tdir.getaTraves());
+                String address = nodo.getIPTable().get(tdir.getaTraves());
+                sock = new Socket(address, port);
+                InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
+                reader = new BufferedReader(streamreader);
+                writer = new DataOutputStream(sock.getOutputStream());
+                writer.writeUTF(pack.toString());
+                writer.flush();
+
+                try {
                     sock.close();
+                    System.out.println("Socket Cliente Cerrado.");
+                } catch (IOException e) {
+                    System.out.println("ERROR");
+                }
+            } catch (Exception ex) {
+                System.out.println("Mensaje no fue enviado.");
+                try {
+                    if (sock != null) {
+                        sock.close();
+                        System.out.println("Socket Cliente Cerrado.");
+                    }
+                } catch (IOException e) {
                     System.out.println("Socket Cliente Cerrado.");
                 }
             }
-            catch (IOException e)
-            { System.out.println("Socket Cliente Cerrado."); }
         }
     }
 
