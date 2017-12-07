@@ -49,4 +49,8 @@ public class TablaDirecciones {
     public void modifyPort(int port){
         this.puerto = port;
     }
+
+    public void modifyBackPort(int port){
+        this.backpuerto = port;
+    }
 }

@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class Servidor
 {
@@ -87,28 +89,38 @@ public class Servidor
         {
             try
             {
-                DataInputStream outClient;
-                outClient = new DataInputStream(sock.getInputStream());
-                String mensaje = outClient.readUTF();
+                BufferedReader stdIn = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                String linea;
+                String mensaje = "";
+                int lines = 0;
+                while((linea = stdIn.readLine()) != null)
+                {
+                    if(lines > 0)
+                    {
+                        linea = "\n" + linea;
+                    }
+                    mensaje = mensaje.concat(linea);
+                    ++lines;
+                }
                 System.out.println(mensaje);
                 if(mensaje.split("\\n").length == 4)
                 {
                     Mensaje mensajer = new Mensaje(mensaje);
                     if(mensajer != null) {
                         String finale = mensajer.toString();
-                        casosDePaquetes(finale, lastClientRealIP);
+                        casosDePaquetes(finale, lastClientRealIP, true);
                     }
                     else
                     {
                         System.out.println("Mensaje no valido");
                     }
                 }
-                else if(mensaje.split("\\n").length == 3)
+                else if(mensaje.split("\\n").length >= 3)
                 {
                     Paquete paquete = new Paquete(mensaje);
                     if(paquete != null) {
                         String finale = paquete.toString();
-                        casosDePaquetes(finale, lastClientRealIP);
+                        casosDePaquetes(finale, lastClientRealIP, false);
                     }
                     else
                     {
@@ -130,46 +142,38 @@ public class Servidor
     // OJO: Para las acciones 1 y 2 , el campo (D) debe contener la dirección IP a la que se refieren las preguntas.
     // 3 - Respuesta: Sí, conozco esa dirección IP, soy YO.
     // 4 - Respuesta: Sí, conozco un camino hacia esa dirección IP.
-    private void casosDePaquetes(String stringpaquete, String lastClientRealIP){
+    // packmess : False = Paquete - True = Mensaje
+    private void casosDePaquetes(String stringpaquete, String lastClientRealIP, boolean packmess){
         Paquete paquete;
         Mensaje envio = null;
         int accion = -1;
-        if(stringpaquete.split("\\n").length == 4)
+        if(stringpaquete.split("\\n").length >= 4 && packmess == true)
         {
             envio = new Mensaje(stringpaquete);
             accion = envio.getAccion();
         }
-        else if(stringpaquete.split("\\n").length == 3)
+        else if(stringpaquete.split("\\n").length >= 3 && packmess == false)
         {
             paquete = new Paquete(stringpaquete);
             envio = paquete.getMensaje();
             accion = envio.getAccion();
         }
         if(envio != null) {
-            Analizador analiza = nodo.getAnalizer(); //
+            Analizador analizer = nodo.getAnalizer(); //
 
             Solicitante solicitante; // Cliente
             switch (accion) {
-                default:
-                    Paquete paquete2=analiza.empaquetar(envio);
-                    //if(envio.getIpDestino().equals(nodo.getIP())) {imprimirMensaje(envio);} //Si es para el router siempre lo imprimiría
-                    //else{ //envio.getIpFuente() //nodo.getFake()
-                        solicitante = new Solicitante(this.nodo, paquete2.toString(), "200.5.0.2", 2); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
-                        solicitante.run();
-                    //}
-                    break;
                 case 1:
                     if(envio.getIpMensaje().equals(nodo.getIP())){
-                        Paquete paquete1 = analiza.responder3(envio.getIpFuente());
-                        solicitante = new Solicitante(this.nodo, paquete1.toString(), envio.getIpFuente(), 1); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                        Paquete paquete1 = analizer.responder3(envio.getIpFuente());
+                        solicitante = new Solicitante(this.nodo, paquete1.toString(), envio.getIpFuente(), 1); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S Ã³ P VA A EXPLOTAR!!!
                         solicitante.run();
                     }
                     break;
                 case 2:
-                    Paquete paquete1 = analiza.responder4(envio.getIpFuente());
-                    solicitante = new Solicitante(this.nodo, paquete1.toString(), envio.getIpFuente(), 2); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                    Paquete paquete1 = analizer.responder4(envio.getIpFuente());
+                    solicitante = new Solicitante(this.nodo, paquete1.toString(), envio.getIpFuente(), 2); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S Ã³ P VA A EXPLOTAR!!!
                     solicitante.run();
-                    break;
                 case 7:
                     if (envio.getIpMensaje().contains("#") == true) {
                         String entradas[] = envio.getIpMensaje().split("#", -1);
@@ -191,7 +195,7 @@ public class Servidor
                             }
                         }
                     } else if (isNumeric(envio.getIpMensaje()) == true) {
-                        boolean success = nodo.modifyIPTableEntry(lastClientRealIP, envio.getIpFuente(), Integer.parseInt(envio.getIpMensaje()));
+                        boolean success = nodo.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
                         if (success == true) {
                             System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
                         } else {
@@ -204,6 +208,60 @@ public class Servidor
                         solicitante.run();
                     } else {
                         System.out.println("Este mensaje no debe ser manejado por el dispatcher");
+                    }
+                    break;
+                default:
+                    Paquete paquete2=analizer.empaquetar(envio);
+                    if(nodo.getFake().equals(envio.getIpDestino()))
+                    {
+                        imprimirMensaje(envio);
+                    }
+                    else
+                    {
+                        // SIN TERMINAR
+
+                        if(nodo.getDTable().get(envio.getIpDestino()).getDistancia() == -1)
+                        {
+                            nodo.changeWish(envio.getIpDestino());
+                            Set<String> keys = nodo.getIPTable().keySet();
+                            String[] fakes = keys.toArray(new String[keys.size()]); // Arreglo de las falsas de J, P, A y S
+                            for(int i = 0; i < fakes.length; ++i) {
+                                Mensaje mensaje = new Mensaje(nodo.getFake(), fakes[i], 2, envio.getIpDestino());
+                                String enviofinal = mensaje.toString();
+                                String trueaddress = nodo.getIPTable().get(fakes[i]);
+                                if(!(trueaddress.equals("0"))) {
+                                    solicitante = new Solicitante(nodo, enviofinal, fakes[i], 2); // Address Port Menssage
+                                    solicitante.run();
+                                }
+                                else
+                                {
+                                    // No puedo enviarle la pregunta porque no tengo el IP...
+                                }
+                            }
+
+                            try {
+                                TimeUnit.SECONDS.sleep(1);
+                            }
+                            catch (InterruptedException e)
+                            {
+                                System.out.println("El cronometro ha sido interrumpido, el mensaje no se enviara");
+                            }
+                        }
+
+                        if (nodo.getDTable().get(envio.getIpDestino()).getDistancia() == -1)
+                        {
+                            System.out.println("No hay ningun router conectado a la ruta " + envio.getIpDestino());
+                        }
+                        else {
+                            String mensajeAEnviar = envio.getIpMensaje();
+                            Mensaje mensaje = new Mensaje(nodo.getFake(), envio.getIpDestino(), 0, mensajeAEnviar);
+                            Paquete paquetefinal = analizer.empaquetar(mensaje);
+                            String enviofinal = paquetefinal.toString();
+                            String imd = nodo.getDTable().get(envio.getIpDestino()).getaTraves();
+                            solicitante = new Solicitante(nodo, enviofinal, imd, 0);
+                            nodo.changeWish("");
+                            solicitante.run();
+                        }
                     }
                     break;
             }

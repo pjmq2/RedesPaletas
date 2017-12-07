@@ -13,18 +13,27 @@ public class Mensaje {
         this.ipMensaje = ipMensaje;
     }
 
-
     public Mensaje(String TODO) {
         String completo[] = TODO.split("\n");
-        if(completo.length == 4)
+        if(completo.length >= 4)
         {
+            String stringmensaje = "";
             this.ipFuente = completo[0];
             this.ipDestino = completo[1];
             this.accion = Integer.parseInt(completo[2]);
-            this.ipMensaje = completo[3];
+
+            for(int i = 3; i < completo.length; ++i)
+            {
+                stringmensaje = stringmensaje.concat(completo[i]);
+                if(i < (completo.length - 1))
+                {
+                    stringmensaje = stringmensaje + "\n";
+                }
+            }
+
+            this.ipMensaje = stringmensaje;
         }
     }
-
 
     public String getIpFuente() {
         return ipFuente;
