@@ -1,4 +1,4 @@
-package ac.cr.ucr.ci1320;
+package ac.cr.ucr.ci1320.NodoJ;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;

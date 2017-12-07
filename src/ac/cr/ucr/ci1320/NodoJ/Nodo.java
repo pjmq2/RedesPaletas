@@ -1,4 +1,4 @@
-package ac.cr.ucr.ci1320;
+package ac.cr.ucr.ci1320.NodoJ;
 
 import java.io.IOException;
 import java.util.HashMap;
