@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="be8a4902-41c4-4d27-a134-3814427debc3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Solicitante.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Solicitante.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Terminal.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Terminal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,16 +56,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Solicitante.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Solicitante.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Solicitante.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2275">
+            <state relative-caret-position="950">
               <caret line="91" column="65" lean-forward="false" selection-start-line="91" selection-start-column="65" selection-end-line="91" selection-end-column="65" />
               <folding>
                 <element signature="e#0#4380#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#4311#4312#0" expanded="true" />
                 <element signature="e#4377#4378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Servidor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#1947#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#828#829#0" expanded="true" />
+                <element signature="e#1726#1727#0" expanded="true" />
+                <element signature="e#1792#1793#0" expanded="true" />
+                <element signature="e#1886#1887#0" expanded="true" />
+                <element signature="e#1944#1945#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recividor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4225">
+              <caret line="169" column="1" lean-forward="false" selection-start-line="169" selection-start-column="1" selection-end-line="169" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,8 +168,6 @@
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Interface.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Buffer.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Enviador.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Interfaz.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Enrutador.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/DEMO.java" />
@@ -149,6 +178,8 @@
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Terminal.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Solicitante.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java" />
       </list>
     </option>
   </component>
@@ -787,7 +818,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512663944851</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="agregar Servidor">
+      <created>1512665326846</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1512665326846</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1068,14 +1106,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Dispatcher.java" />
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Interfaz.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1116,14 +1146,6 @@
             <element signature="e#266#267#0" expanded="true" />
             <element signature="e#298#299#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1188,13 +1210,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Solicitante.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2275">
+        <state relative-caret-position="950">
           <caret line="91" column="65" lean-forward="false" selection-start-line="91" selection-start-column="65" selection-end-line="91" selection-end-column="65" />
           <folding>
             <element signature="e#0#4380#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#4311#4312#0" expanded="true" />
             <element signature="e#4377#4378#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#1947#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#828#829#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+            <element signature="e#1792#1793#0" expanded="true" />
+            <element signature="e#1886#1887#0" expanded="true" />
+            <element signature="e#1944#1945#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4225">
+          <caret line="169" column="1" lean-forward="false" selection-start-line="169" selection-start-column="1" selection-end-line="169" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
