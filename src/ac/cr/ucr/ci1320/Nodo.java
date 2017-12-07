@@ -15,7 +15,6 @@ public class Nodo {
     private String miIpFalsa;
     private int miPuerto;
     private Analizador analizer;
-    private Servidor server;
     private String Alonso;
     private String wishedFaker;
     private Enrutador enrutadores[];
@@ -87,7 +86,7 @@ public class Nodo {
 
         String entrada[] = new String[3];
         String[] mensajes = {"¿Cuantos Enrutadores se deben usar?", "ERROR: El número de enrutadores debe ser un entero.", "¿Cuantas Interfaces se debe usar?", "ERROR: El número de interfaces debe ser un entero.", "¿Cuantos Buffer se deben usar?", "ERROR: El número de bufferes debe ser un entero."};
-        int[] valores = new int[3];
+        int[] valores = new int[3]; // enrutadores, interfaces, bufferes
 
         Scanner scanner = new Scanner(System.in);
 
@@ -105,11 +104,10 @@ public class Nodo {
 
         scanner = null;
         this.enrutadores = new Enrutador[valores[0]];
-        this.server = new Servidor(this, this.analizer);
 
-        // Abrir Servidor
-
-        server.iniciar();
+        for(int i = 0; i < valores[0]; ++i){
+            enrutadores[i] = new Enrutador(this, valores[1], valores[2], i); // Nodo nodo, int Itotal, int bufferNumber, int number
+        }
 
         // Leer línea de la terminal.
 

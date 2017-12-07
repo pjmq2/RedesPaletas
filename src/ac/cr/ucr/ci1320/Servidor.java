@@ -14,8 +14,8 @@ public class Servidor
     Nodo nodo;
     Analizador analizer;
 
-    public Servidor(Nodo node, Analizador analizer) {
-        this.portz = node.getPort();
+    public Servidor(Nodo node, int port, Analizador analizer) {
+        this.portz = port;
         this.nodo = node;
         this.analizer = analizer;
     }
@@ -44,7 +44,7 @@ public class Servidor
 
                     // Checkear si hay espacio disponible
 
-                    Enviador sender = new Enviador();
+                    Recividor sender = new Recividor();
                     sender.set(cliente, nodo, clientIPRevealed);
                     Thread listener = new Thread(sender);
                     listener.start();

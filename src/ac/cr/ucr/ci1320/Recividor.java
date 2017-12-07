@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Enviador implements Runnable {
+public class Recividor implements Runnable {
     boolean set = false;
 
     BufferedReader reader;
@@ -15,7 +15,7 @@ public class Enviador implements Runnable {
     Nodo nodo;
     String lastClientRealIP;
 
-    public Enviador() {
+    public Recividor() {
     }
 
     public void set(Socket clientSocket, Nodo node, String clientRealIP) {
