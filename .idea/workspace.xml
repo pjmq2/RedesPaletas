@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="be8a4902-41c4-4d27-a134-3814427debc3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Analizador.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Analizador.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Cliente.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Cliente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Dispatcher.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Dispatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Main.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Mensaje.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Mensaje.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Nodo.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Nodo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Paquete.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Paquete.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Servidor.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Servidor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaDirecciones.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaDirecciones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaIp.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaIp.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -542,13 +532,6 @@
       <workItem from="1510860452430" duration="25000" />
       <workItem from="1510932685959" duration="406000" />
     </task>
-    <task id="LOCAL-00004" summary="Trabajo en Nodos, mensajes, etc">
-      <created>1510114078746</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1510114078746</updated>
-    </task>
     <task id="LOCAL-00005" summary="Agregado el cliente y servidor">
       <created>1510126109054</created>
       <option name="number" value="00005" />
@@ -885,7 +868,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512670249221</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="NodoP">
+      <created>1512670321159</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1512670321159</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
