@@ -19,8 +19,10 @@ public class Terminal {
         scanner = new Scanner(System.in);
         String entrada = "";
         while (!(entrada.equals("BYE"))) {
+
             entrada = scanner.nextLine();
             if (!(entrada.equals("BYE"))) {
+
                 String[] array = entrada.split("\\\\n");
                 // Enviar el mensaje
                 Solicitante solicitante;
@@ -34,13 +36,17 @@ public class Terminal {
 
                         if(tdir.getDistancia() == -1)
                         {
-                            this.nodo.setWished(array[0]);
+                            this.nodo.wish(array[0]);
                             Set<String> keys = nodo.getIPTable().keySet();
                             String[] fakes = keys.toArray(new String[keys.size()]); // Arreglo de las falsas de J, P, A y S
                             for(int i = 0; i < fakes.length; ++i) {
-                                Mensaje mensaje = new Mensaje(nodo.getFake(), fakes[i], 2, array[0]);
-                                String envio = mensaje.toString();
+                                // Preguntar la distancia a cada uno.
+
+                                Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), fakes[i], 2, array[0]);
+                                Paquete paquete = new Paquete(mensaje, nodo.getmyFakeAddress(), fakes[i]);
+                                String envio = paquete.toString();
                                 String trueaddress = nodo.getIPTable().get(fakes[i]);
+
                                 if(!(trueaddress.equals("0"))) {
                                     solicitante = new Solicitante(nodo, envio, fakes[i], 2); // Address Port Menssage
                                     solicitante.run();
@@ -51,13 +57,8 @@ public class Terminal {
                                 }
                             }
 
-                            try {
-                                TimeUnit.SECONDS.sleep(1);
-                            }
-                            catch (InterruptedException e)
-                            {
-                                System.out.println("El cronometro ha sido interrumpido, el mensaje no se enviara");
-                            }
+                            // Espera hasta que el servidor reciba la respuesta y la guarde.
+                            String wish = nodo.getWish();
                         }
 
                         if (tdir.getDistancia() == -1)
@@ -66,17 +67,17 @@ public class Terminal {
                         }
                         else {
                             String mensajeAEnviar = array[1];
-                            Mensaje mensaje = new Mensaje(nodo.getFake(), array[0], 0, mensajeAEnviar);
-                            Paquete paquete = nodo.getAnalizer().empaquetar(mensaje);
-                            String envio = paquete.toString();
                             String imd = tdir.getaTraves();
+                            Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
+                            Paquete paquete = new Paquete(mensaje, nodo.getmyFakeAddress(), imd);
+                            String envio = paquete.toString();
                             solicitante = new Solicitante(nodo, envio, imd, 0); // ESE ARRAY[0] CÁMBIELO POR EL
-                            nodo.setWished("");
+                            nodo.wish("");
                             solicitante.run();
                         }
                     }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
-                    Mensaje mensaje = new Mensaje(nodo.getFake(), dispatcherFIP, 7, Integer.toString(nodo.getPort()));
+                    Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), dispatcherFIP, 7, Integer.toString(nodo.getmyPort()));
                     String envio = mensaje.toString();
                     solicitante = new Solicitante(nodo, envio, dispatcherFIP, 7); // Address Port Menssage
                     solicitante.run();

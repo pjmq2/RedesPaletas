@@ -53,4 +53,8 @@ public class TablaDirecciones {
     public void modifyBackPort(int port){
         this.backpuerto = port;
     }
+
+    public void modifyaTravez(String atravez){
+        this.aTraves = atravez;
+    }
 }

@@ -16,7 +16,7 @@ public class Analizador {
     public Paquete empaquetar(Mensaje mensaje){
         HashMap<String,TablaDirecciones> tablaD = nodo.getDTable();
         TablaDirecciones tabla = tablaD.get(mensaje.getIpDestino());
-        String miFake = nodo.getFake();
+        String miFake = nodo.getmyFakeAddress();
         String ipFuturo = tabla.getaTraves();
         Paquete paquete = new Paquete(mensaje,miFake,ipFuturo); //La tercera es a ip de destino
         return paquete;
@@ -36,7 +36,7 @@ public class Analizador {
     }
 
     public Paquete responder3(String ipDestino){
-        String miFake = nodo.getFake();
+        String miFake = nodo.getmyFakeAddress();
         Mensaje mensaje = new Mensaje(miFake,ipDestino,3,miFake);
         Paquete paquete = new Paquete(mensaje,miFake,ipDestino);
         return paquete;
@@ -44,7 +44,7 @@ public class Analizador {
 
     public Paquete responder4(String ipDestino){
         HashMap<String,TablaDirecciones> tablaD = nodo.getDTable();
-        String miFake = nodo.getFake();
+        String miFake = nodo.getmyFakeAddress();
         Mensaje mensaje = new Mensaje(miFake,ipDestino,4,Integer.toString(tablaD.get(ipDestino).getDistancia()));
         Paquete paquete = new Paquete(mensaje,miFake,ipDestino);
         return paquete;

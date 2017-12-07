@@ -30,7 +30,7 @@ public class Solicitante extends Thread {
 
     public Solicitante(Nodo node, String message, String fakeaddr, int accion){
         this.nodo = node;
-        this.miIP = nodo.getIP();
+        this.miIP = nodo.getmyRealIP();
         this.message = message;
         this.accion = accion;
         this.fakeaddress = fakeaddr;
@@ -48,9 +48,6 @@ public class Solicitante extends Thread {
     public void run(){
         try
         {
-
-            // Debería checkear si hay enrutadores disponibles.
-
             sock = new Socket(address, port);
             InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
             reader = new BufferedReader(streamreader);

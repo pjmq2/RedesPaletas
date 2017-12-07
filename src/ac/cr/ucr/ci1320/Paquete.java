@@ -17,7 +17,7 @@ public class Paquete {
             String stringmensaje = "";
             this.ipFuentePaquete = completo[0];
             this.ipDestinPaquete = completo[1];
-            
+
             for(int i = 2; i < completo.length; ++i)
             {
                 stringmensaje = stringmensaje.concat(completo[i]);
@@ -26,7 +26,7 @@ public class Paquete {
                     stringmensaje = stringmensaje + "\n";
                 }
             }
-            
+
             this.mensaje = new Mensaje(stringmensaje);
         }
     }
