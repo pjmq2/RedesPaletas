@@ -1,4 +1,4 @@
-package ac.cr.ucr.ci1320;
+package ac.cr.ucr.ci1320.Etapa3;
 
 import java.util.Map;
 
