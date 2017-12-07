@@ -20,14 +20,14 @@ import java.net.Socket;
 public class Servidor
 {
     int portz;
-    Nodo nodo;
-    public Servidor(Nodo node) {
-        portz = node.miPuerto;
-        this.nodo = node;
+    Interfaz inter;
+    public Servidor(Interfaz inter) {
+        portz = inter.miPuerto;
+        this.inter = inter;
     }
 
     public void iniciar() {
-        Thread starter = new Thread(new Starter(nodo));
+        Thread starter = new Thread(new Starter(inter));
         starter.start();
         System.out.println("\nServidor esperando...");
     }
@@ -35,8 +35,8 @@ public class Servidor
     public class Starter implements Runnable
     {
         int puerto;
-        public Starter(Nodo node) {
-            puerto = node.miPuerto;
+        public Starter(Interfaz inter) {
+            puerto = inter.miPuerto;
         }
 
         public void run(){
@@ -46,7 +46,7 @@ public class Servidor
                 while (true){
                     Socket cliente = servidor.accept();
                     PrintWriter writer = new PrintWriter(cliente.getOutputStream());
-                    Thread listener = new Thread(new Manejador(cliente, nodo));
+                    Thread listener = new Thread(new Manejador(cliente, inter));
                     listener.start();
                     System.out.println("\nConexión recibida");
                 }
@@ -63,11 +63,11 @@ public class Servidor
         BufferedReader reader;
         PrintWriter writer;
         Socket sock;
-        Nodo nodo;
+        Interfaz inter;
 
-        public Manejador(Socket clientSocket, Nodo node)
+        public Manejador(Socket clientSocket, Interfaz inter)
         {
-            nodo = node;
+            this.inter = inter;
             try
             {
                 sock = clientSocket;
@@ -89,9 +89,11 @@ public class Servidor
             {
                 DataInputStream outClient;
                 outClient = new DataInputStream(sock.getInputStream());
-                String mensaje = outClient.readUTF();
+                String mensaje = outClient.readUTF(); //Lee los recibidos
                 System.out.println(mensaje);
-                nodo.recibirTransmicion(mensaje);
+                //nodo.recibirTransmicion(mensaje); //Esto ya no
+                //Interfaz siempre tiene un puntero al inicio de la cola
+                //Guarda el String en dicha direccion
             }
             catch (Exception ex)
             {
