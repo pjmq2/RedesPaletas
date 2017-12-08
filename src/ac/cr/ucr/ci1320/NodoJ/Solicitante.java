@@ -80,13 +80,17 @@ public class Solicitante extends Thread {
         if((success == true) && (-1 < tdir.getDistancia())) {
             try {
                 // Empaqueta
-                Paquete pack = new Paquete(message, nodo.getmyFakeAddress(), tdir.getaTraves());
                 String address = nodo.getIPTable().get(tdir.getaTraves());
                 sock = new Socket(address, port);
                 InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
                 reader = new BufferedReader(streamreader);
                 writer = new DataOutputStream(sock.getOutputStream());
-                writer.writeUTF(pack.toString());
+                if(message.getAccion() == 7){
+                    writer.writeUTF(message.toString());
+                } else {
+                    Paquete pack = new Paquete(message, nodo.getmyFakeAddress(), tdir.getaTraves());
+                    writer.writeUTF(pack.toString());
+                }
                 writer.flush();
 
                 // Si la acción es 8 escucha
