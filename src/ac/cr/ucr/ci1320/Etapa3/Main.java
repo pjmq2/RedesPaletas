@@ -6,8 +6,8 @@ import java.util.Map;
 public class Main {
     public static void main(String args[])
     {
-        Servidor servidor = new Servidor(pablo());
-        servidor.iniciar();
+        //Servidor servidor = new Servidor(pablo());
+        //servidor.iniciar();
     }
 
 

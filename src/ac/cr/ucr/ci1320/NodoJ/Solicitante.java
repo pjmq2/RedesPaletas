@@ -1,13 +1,9 @@
 package ac.cr.ucr.ci1320.NodoJ;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.Set;
 
 public class Solicitante extends Thread {
@@ -92,6 +88,18 @@ public class Solicitante extends Thread {
                 writer = new DataOutputStream(sock.getOutputStream());
                 writer.writeUTF(pack.toString());
                 writer.flush();
+
+                // Si la acción es 8 escucha
+                if(message.getAccion() == 8) {
+                    // play soundfile from server
+                    System.out.println("Reading from " + address + ":" + port);
+                    if (sock.isConnected()) {
+                        InputStream in = new BufferedInputStream(sock.getInputStream());
+                        AudioUtil.play(in);
+                    }
+
+                    System.out.println("Client: end");
+                }
 
                 try {
                     sock.close();

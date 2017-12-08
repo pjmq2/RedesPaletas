@@ -28,11 +28,19 @@ public class Terminal {
                 Solicitante solicitante;
 
                 if (array.length == 2) {
-                    String mensajeAEnviar = array[1];
-                    Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
+                    if(!(array[1].equals("AUDIOTST"))) {
+                        String mensajeAEnviar = array[1];
+                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
 
-                    solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
-                    solicitante.run();
+                        solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
+                        solicitante.run();
+                    } else {
+                        String mensajeAEnviar = "StudiopolisZone";
+                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 8, mensajeAEnviar);
+
+                        solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
+                        solicitante.run();
+                    }
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), dispatcherFIP, 7, Integer.toString(nodo.getmyPort()));
                     solicitante = new Solicitante(nodo, mensaje); // Address Port Menssage
