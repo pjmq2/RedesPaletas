@@ -47,9 +47,13 @@ public class Analizador {
         return paquete;
     }
 
-    public String getIpDestino(String ipInicial){
-        String ipDestino="";
-        String cadena[] = ipInicial.split("\\.");
+    public String getIpDestino(String ipInicial) //Recibe a quien se lo va a mandar, devuelve a traves de quien
+    {
+        String ipDestino = tablaD.get(ipInicial).getEtiqueta();
+        return ipDestino;
+        /*
+        String cadena[] = ipInicial.split("\\."); //Saca el primer numero de la direccion falsa (antes del primer punto)
+        int primVal = Integer.parseInt(cadena[0]);
         switch (Integer.parseInt(cadena[0])){
             default:
                 ipDestino = tablaD.get("165.8.0.0").getEtiqueta();
@@ -69,12 +73,14 @@ public class Analizador {
             case 140:
                 ipDestino = tablaD.get("140.90.0.0").getEtiqueta();
                 break;
-        }
-        return ipDestino;
+        }*/
     }
 
-    public int getPuertoDestino(String ipInicial){
-        int puertoDestino=0;
+    public int getPuertoDestino(String ipInicial) //Devuelve el puerto del destino
+    {
+        int puertoDestino = tablaIP.get(ipInicial).getPuerto();
+        return puertoDestino;
+        /*
         String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
             default:
@@ -96,6 +102,6 @@ public class Analizador {
                 puertoDestino = tablaIP.get("140.90.0.0").getPuerto();
                 break;
         }
-        return puertoDestino;
+        */
     }
 }
