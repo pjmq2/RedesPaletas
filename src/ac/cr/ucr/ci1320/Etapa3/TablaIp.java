@@ -16,4 +16,8 @@ public class TablaIp {
     public int getPuerto() {
         return puerto;
     }
+
+    public void modifyipVerdadera(String entrada) { this.ipVerdadera = entrada; }
+
+    public void modifypuerto(int entrada) { this.puerto = entrada; }
 }
