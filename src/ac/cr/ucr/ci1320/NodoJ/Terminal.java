@@ -35,7 +35,7 @@ public class Terminal {
                         solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
                         solicitante.run();
                     } else {
-                        String mensajeAEnviar = "StudiopolisZone";
+                        String mensajeAEnviar = "LOTR";
                         Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 8, mensajeAEnviar);
 
                         solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL

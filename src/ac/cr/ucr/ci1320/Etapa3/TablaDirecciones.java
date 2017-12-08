@@ -1,22 +1,22 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
 public class TablaDirecciones {
-    private String direccionFisica;
     private String aTraves;
+    private String etiqueta;
     private int distancia;
 
-    public TablaDirecciones(String direccionFisica, String aTraves, int distancia) {
-        this.direccionFisica = direccionFisica;
+    public TablaDirecciones(String aTraves, String etiqueta, int distancia) {
         this.aTraves = aTraves;
+        this.etiqueta = etiqueta;
         this.distancia = distancia;
-    }
-
-    public String getDireccionFisica() {
-        return direccionFisica;
     }
 
     public String getaTraves() {
         return aTraves;
+    }
+
+    public String getEtiqueta() {
+        return etiqueta;
     }
 
     public int getDistancia() {

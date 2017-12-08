@@ -49,7 +49,7 @@ public class Interfaz implements Runnable{
         TablaDirecciones tabla6 = new TablaDirecciones("Legos","12.0.20.2",2);
         TablaDirecciones tabla7 = new TablaDirecciones("Bolinchas","12.0.20.2",1);
         TablaDirecciones tabla8 = new TablaDirecciones("Alonso","12.0.0.3",0);
-        tablaD.put("12.0.0.8",tabla1);
+        tablaD.put("200.6.0.0",tabla1);
         tablaD.put("12.0.20.2",tabla2);
         tablaD.put("165.8.0.0",tabla3);
         tablaD.put("200.5.0.0",tabla4);
