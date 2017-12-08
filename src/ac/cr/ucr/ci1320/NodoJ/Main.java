@@ -15,9 +15,9 @@ public class Main {
     public static Nodo julian(){
         HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,5555);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",-1,8888);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",-1,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",-1,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Alonso","12.0.0.3", -1,3333);
+        TablaDirecciones tabla4 = new TablaDirecciones("Alonso","12.0.0.3", 0,5555);
         TablaDirecciones tabla5 = new TablaDirecciones("Carrito","0",-1,0000);
         TablaDirecciones tabla6 = new TablaDirecciones("Paletas","0",-1,0000);
         TablaDirecciones tabla7 = new TablaDirecciones("Luces","0",-1,0000);
@@ -41,11 +41,11 @@ public class Main {
             ipAddr = InetAddress.getLocalHost();
             String IP = ipAddr.getHostAddress();
             HashMap<String,String> tablaIP;
-            String fake1 = "12.0.0.7";
+            String fake1 = "12.0.0.8";
             String fake2 = "12.0.20.2";
-            String fake3 = "12.0.0.8";
+            String fake3 = "12.0.0.7";
             String fake4 = "12.0.0.3";
-            tablaIP=getIPtable(fake1, "0", fake2, "0", fake3, IP, fake4, "10.1.130.30"); // La última es la real de Alonso
+            tablaIP=getIPtable(fake1, "0", fake2, "0", fake3, IP, fake4, "10.1.130.151"); // La última es la real de Alonso
             nodoJulian = new Nodo(tablaD,IP,tabla1.getPuerto(), tablaIP, fake1, fake2, fake3, fake4);
             return nodoJulian;
         } catch (UnknownHostException ex) {
