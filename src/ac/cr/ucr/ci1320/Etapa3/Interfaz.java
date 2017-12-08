@@ -18,8 +18,8 @@ public class Interfaz implements Runnable{
 
     ///
 
-    DataStructures dataStructures;
-    Servidor server;
+    private DataStructures dataStructures;
+    private Servidor server;
     private String nombreFisico;
     //*PunteroAlBuffer ptrBuff;
     private final AtomicInteger permits = new AtomicInteger(0);
@@ -28,7 +28,8 @@ public class Interfaz implements Runnable{
     public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher, String dirFisica)
     {
         this.tablaD = tablaD;               //Tabla de direcciones
-        this.miIp = miIp;                   //Direccion falsa
+        this.miIp = miIp;                   //Direccion falsa                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
+
         this.miPuerto = miPuerto;           //Puerto
         this.ipDispatcher = ipDispatcher;   //Direccion real
         this.dirFisica = dirFisica;         //Direccion fisica
@@ -221,5 +222,12 @@ public class Interfaz implements Runnable{
         }
     }
 
+    public DataStructures getDataStructures() {
+        return dataStructures;
+    }
+
+    public void setDataStructures(DataStructures dataStructures) {
+        this.dataStructures = dataStructures;
+    }
 }
 

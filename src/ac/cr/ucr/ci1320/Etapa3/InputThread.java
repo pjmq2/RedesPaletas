@@ -5,42 +5,40 @@ import java.util.Random;
 public class InputThread implements Runnable {
     public DataStructures dataStructures;
     private Random random;
+    private String data;
 
-    public InputThread(DataStructures inputStructures){
+    public InputThread(DataStructures inputStructures, String inputData){
         this.dataStructures = inputStructures;
         random = new Random();
+        this.data = inputData;
     }
 
     @Override
     public void run(){
-        for (int i = 0; i < 30; i++) {
-            try {
-                Integer index = dataStructures.getEmptyPositions().poll();                  //Get new position
-                if (index != null) {
-                    BufferEntry bufferReference = dataStructures.getMainBuffers()[i];       //Get a reference to that position
-
-                    bufferReference.getLock().lock();                                       //Lock that position
-                    BufferEntry newBuffer = new BufferEntry(Thread.currentThread().getName() + " number: " + i, index);          //Create a new bufferEntry
-                    dataStructures.getMainBuffers()[i] = newBuffer;                         //Store it on mainBuffers
-                    System.out.println("Thread: " + Thread.currentThread().getName() +
+        try {
+            Integer index = dataStructures.getEmptyPositions().poll();                  //Get new position
+            if (index != null) {
+                BufferEntry bufferReference = dataStructures.getMainBuffers()[index];       //Get a reference to that position
+                bufferReference.getLock().lock();                                       //Lock that position
+                BufferEntry newBuffer = new BufferEntry(this.data, index);          //Create a new bufferEntry
+                dataStructures.getMainBuffers()[index] = newBuffer;                         //Store it on mainBuffers
+                System.out.println("Thread: " + Thread.currentThread().getName() +
                             " is modifying entry --> " + index);
 
-                    this.sleepTimer(random.nextInt(10) * 100);
-                    bufferReference.getLock().unlock();                                     //Unlock that mainBuffers position
+                bufferReference.getLock().unlock();                                     //Unlock that mainBuffers position
 
-
-                    dataStructures.getpQueue().put(newBuffer);                          //Add that new buffer entry to pQueue
+                dataStructures.getpQueue().put(newBuffer);                          //Add that new buffer entry to pQueue
                                                                                         //No need to sync cause its object type
-                } else {
-                    System.out.println("There's no empty positions".toUpperCase());
-                    Thread.sleep(300);
-                }
+            } else {
+                System.out.println("There's no empty positions".toUpperCase());
+                Thread.sleep(300);
+            }
             }catch (InterruptedException e){
                 e.printStackTrace();
                 System.out.println(e.getMessage());
             }
 
-        }
+
         System.out.println("                            TERMINA --> " + Thread.currentThread().getName());
     }
 

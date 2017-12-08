@@ -32,8 +32,7 @@ public class Servidor
         System.out.println("\nServidor esperando...");
     }
 
-    public class Starter implements Runnable
-    {
+    public class Starter implements Runnable{
         int puerto;
         public Starter(Interfaz inter) {
             puerto = inter.miPuerto;
