@@ -47,56 +47,27 @@ public class Servidor
                     String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
                     String clientIPRevealed = clientIP.split("/")[1];
 
-                    Thread listener = new Thread(new Manejador(cliente, inter, clientIPRevealed));
-                    listener.start();
-                    System.out.println("\nConexión recibida");
+                    try
+                    {
+                        DataInputStream outClient;
+                        outClient = new DataInputStream(cliente.getInputStream());
+                        String mensaje = outClient.readUTF(); //Lee los recibidos
+                        System.out.println(mensaje);
+
+                        Thread buffing = new Thread(new InputThread(inter.getDataStructures(), mensaje));
+                        buffing.start();
+
+                        System.out.println("\nConexión recibida");
+                    }
+                    catch (Exception ex)
+                    {
+                        System.out.println("Fallo envio");
+                    }
                 }
             }
             catch (Exception ex)
             {
                 System.out.println("\nERROR!!! Socket no pudo ser creado");
-            }
-        }
-    }
-
-    public class Manejador implements Runnable
-    {
-        BufferedReader reader;
-        PrintWriter writer;
-        Socket sock;
-        Interfaz inter;
-
-        public Manejador(Socket clientSocket, Interfaz inter, String clientRealIP)
-        {
-            this.inter = inter;
-            try
-            {
-                sock = clientSocket;
-                InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
-                reader = new BufferedReader(isReader);
-                writer = new PrintWriter(sock.getOutputStream());
-            }
-            catch (Exception ex)
-            {
-                System.out.println("ERROR!!!");
-            }
-
-        }
-
-        @Override
-        public void run()
-        {
-            try
-            {
-                DataInputStream outClient;
-                outClient = new DataInputStream(sock.getInputStream());
-                String mensaje = outClient.readUTF(); //Lee los recibidos
-                System.out.println(mensaje);
-                //Thread buffing = new Thread(new InputThread(inter.dataStructures, mensaje));
-            }
-            catch (Exception ex)
-            {
-                System.out.println("Fallo envio");
             }
         }
     }

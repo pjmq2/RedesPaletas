@@ -16,19 +16,19 @@ public class InputThread implements Runnable {
     @Override
     public void run(){
         try {
-            Integer index = dataStructures.getEmptyPositions().poll();                  //Get new position
+            Integer index = dataStructures.getEmptyPositions().poll();                      //Get new position
             if (index != null) {
                 BufferEntry bufferReference = dataStructures.getMainBuffers()[index];       //Get a reference to that position
-                bufferReference.getLock().lock();                                       //Lock that position
-                BufferEntry newBuffer = new BufferEntry(this.data, index);          //Create a new bufferEntry
+                bufferReference.getLock().lock();                                           //Lock that position
+                BufferEntry newBuffer = new BufferEntry(this.data, index );   //Create a new bufferEntry
                 dataStructures.getMainBuffers()[index] = newBuffer;                         //Store it on mainBuffers
                 System.out.println("Thread: " + Thread.currentThread().getName() +
                             " is modifying entry --> " + index);
 
-                bufferReference.getLock().unlock();                                     //Unlock that mainBuffers position
+                bufferReference.getLock().unlock();                                         //Unlock that mainBuffers position
 
-                dataStructures.getpQueue().put(newBuffer);                          //Add that new buffer entry to pQueue
-                                                                                        //No need to sync cause its object type
+                dataStructures.getpQueue().put(newBuffer);                                  //Add that new buffer entry to pQueue
+                                                                                            //No need to sync cause its object type
             } else {
                 System.out.println("There's no empty positions".toUpperCase());
                 Thread.sleep(300);

@@ -10,7 +10,7 @@ public class Interfaz implements Runnable{
     //Se pasa toodo lo de Nodo a Interfaz
     private Map<String,TablaDirecciones> tablaD ;
     private Map<String,TablaIp> tablaIP;
-    private String miIp;
+    private String miIp; // Falsa
     public int miPuerto;
     private Analizador analisis;
     private String ipDispatcher;
@@ -18,7 +18,7 @@ public class Interfaz implements Runnable{
 
     ///
 
-    private DataStructures dataStructures;
+    private DataStructures dataStructure;
     private Servidor server;
     //*PunteroAlBuffer ptrBuff;
     private final AtomicInteger permits = new AtomicInteger(0);
@@ -157,7 +157,7 @@ public class Interfaz implements Runnable{
                     cliente.sendMessage(paquete.toString(), ipReal, puerto);
                     break;
                 case 7:
-                    if (mensaje.getIpMensaje().contains("#") == true) {
+                    if (mensaje.getIpMensaje().contains("#")) {
                         String entradas[] = mensaje.getIpMensaje().split("#", -1);
                         int longitud = entradas.length;
                         for (int i = 0; i < longitud; ++i) {
@@ -176,27 +176,6 @@ public class Interfaz implements Runnable{
                                 }
                             }
                         }
-                    } else if ((mensaje.getIpMensaje()) != null && (mensaje.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
-                        boolean success = this.modifyIPTableEntry(mensaje.getIpFuente(), lastClientRealIP, Integer.parseInt(mensaje.getIpMensaje()));
-                        if (success == true) {
-                            System.out.println("Se ha guardado " + mensaje.getIpFuente() + " con " + lastClientRealIP);
-                        } else {
-                            System.out.println("ERROR! Dirección falsa otorgada no existe");
-                        }
-                        String mensajeAEnviar = this.getTablaIPString();
-
-                        // Se lo manda a todos los que conoce
-                        Set<String> keys = tablaIP.keySet();
-                        String[] array = keys.toArray(new String[keys.size()]);
-                        for(int w = 0; w < array.length; ++w) {
-                            if(-1 < tablaD.get(array[w]).getDistancia()) {
-                                Mensaje menssage = new Mensaje(nodo.getmyFakeAddress(), array[w], 7, mensajeAEnviar);
-                                solicitante = new Solicitante(this.nodo, mensaje); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
-                                solicitante.run();
-                            }
-                        }
-                    } else {
-                        System.out.println("Este mensaje no debe ser manejado por el dispatcher");
                     }
                     break;
             }
@@ -290,11 +269,11 @@ public class Interfaz implements Runnable{
     }
 
     public DataStructures getDataStructures() {
-        return dataStructures;
+        return dataStructure;
     }
 
     public void setDataStructures(DataStructures dataStructures) {
-        this.dataStructures = dataStructures;
+        this.dataStructure = dataStructures;
     }
 }
 

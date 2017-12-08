@@ -11,8 +11,4 @@ public class Main {
     }
 
 
-    public static Nodo pablo(){
-        Nodo nodoPablo = new Nodo("192.168.0.115");
-        return nodoPablo;
-    }
 }
