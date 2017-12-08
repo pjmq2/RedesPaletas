@@ -26,13 +26,7 @@ public class Solicitante extends Thread {
             this.targetfakeaddress = message.getIpDestino();
         }
         TablaDirecciones tabla = nodo.getDTable().get(this.targetfakeaddress);
-        if(accion == 7) {
-            this.port = tabla.getBackPuerto();
-        }
-        else
-        {
-            this.port =  tabla.getPuerto();
-        }
+        this.port =  tabla.getPuerto();
     }
 
     public void run(){
