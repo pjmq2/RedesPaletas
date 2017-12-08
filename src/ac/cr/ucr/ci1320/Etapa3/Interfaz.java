@@ -20,7 +20,6 @@ public class Interfaz implements Runnable{
 
     private DataStructures dataStructures;
     private Servidor server;
-    private String nombreFisico;
     //*PunteroAlBuffer ptrBuff;
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
@@ -90,6 +89,38 @@ public class Interfaz implements Runnable{
         }
     }
 
+    public boolean modifyIPTableEntry(String fake, String real, int port)
+    {
+        TablaIp faker = tablaIP.get(fake);
+        if(faker == null)
+        {
+            return false;
+        }
+        else
+        {
+            faker.modifyipVerdadera(real);
+            TablaDirecciones tabla = tablaD.get(fake);
+            faker.modifypuerto(port);
+            tabla.modifyaTravez(fake);
+            tabla.modifyDistance(0);
+            return true;
+        }
+    }
+
+    public String getTablaIPString() {
+        String returnValue = new String();
+        Set<String> keys = tablaIP.keySet();
+        String[] array = keys.toArray(new String[keys.size()]);
+
+        for(int i = 0; i < array.length; ++i) {
+            if (!(tablaIP.get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
+                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
+                returnValue = returnValue + tablaIP.get(array[i]) + "," + array[i] + "," + tablaIP.get(array[i]).getPuerto();
+            }
+        }
+        return returnValue;
+    }
+
     private void casosDeMensajes(Mensaje mensaje){
         if(mensaje.getIpDestino().equals(miIp)){
             imprimirMensaje(mensaje);
@@ -126,11 +157,47 @@ public class Interfaz implements Runnable{
                     cliente.sendMessage(paquete.toString(), ipReal, puerto);
                     break;
                 case 7:
-                    HashMap<String, TablaIp> tablaTemp;
-                    imprimirMensaje(mensaje);
-                    tablaTemp = this.parseFromDispatcher(mensaje.getIpMensaje());
-                    tablaIP = tablaTemp;
-                    this.analisis = new Analizador(tablaD, tablaIP, miIp);
+                    if (mensaje.getIpMensaje().contains("#") == true) {
+                        String entradas[] = mensaje.getIpMensaje().split("#", -1);
+                        int longitud = entradas.length;
+                        for (int i = 0; i < longitud; ++i) {
+                            if(!(entradas[i].equals(""))) {
+                                String resultado[] = entradas[i].split(",");
+                                if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
+                                    int porte = Integer.parseInt(resultado[2]);
+                                    boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                    if (success == true) {
+                                        System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                                    } else {
+                                        System.out.println("ERROR! Dirección falsa otorgada no existe");
+                                    }
+                                } else {
+                                    System.out.println("ERROR! El puerto debe ser un número");
+                                }
+                            }
+                        }
+                    } else if ((mensaje.getIpMensaje()) != null && (mensaje.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
+                        boolean success = this.modifyIPTableEntry(mensaje.getIpFuente(), lastClientRealIP, Integer.parseInt(mensaje.getIpMensaje()));
+                        if (success == true) {
+                            System.out.println("Se ha guardado " + mensaje.getIpFuente() + " con " + lastClientRealIP);
+                        } else {
+                            System.out.println("ERROR! Dirección falsa otorgada no existe");
+                        }
+                        String mensajeAEnviar = this.getTablaIPString();
+
+                        // Se lo manda a todos los que conoce
+                        Set<String> keys = tablaIP.keySet();
+                        String[] array = keys.toArray(new String[keys.size()]);
+                        for(int w = 0; w < array.length; ++w) {
+                            if(-1 < tablaD.get(array[w]).getDistancia()) {
+                                Mensaje menssage = new Mensaje(nodo.getmyFakeAddress(), array[w], 7, mensajeAEnviar);
+                                solicitante = new Solicitante(this.nodo, mensaje); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                                solicitante.run();
+                            }
+                        }
+                    } else {
+                        System.out.println("Este mensaje no debe ser manejado por el dispatcher");
+                    }
                     break;
             }
         }

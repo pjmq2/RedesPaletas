@@ -44,8 +44,10 @@ public class Servidor
                 ServerSocket servidor = new ServerSocket(puerto);
                 while (true){
                     Socket cliente = servidor.accept();
-                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
-                    Thread listener = new Thread(new Manejador(cliente, inter));
+                    String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
+                    String clientIPRevealed = clientIP.split("/")[1];
+
+                    Thread listener = new Thread(new Manejador(cliente, inter, clientIPRevealed));
                     listener.start();
                     System.out.println("\nConexión recibida");
                 }
@@ -64,7 +66,7 @@ public class Servidor
         Socket sock;
         Interfaz inter;
 
-        public Manejador(Socket clientSocket, Interfaz inter)
+        public Manejador(Socket clientSocket, Interfaz inter, String clientRealIP)
         {
             this.inter = inter;
             try
