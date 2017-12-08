@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Interfaz implements Runnable{
     //Se pasa toodo lo de Nodo a Interfaz
@@ -13,14 +14,20 @@ public class Interfaz implements Runnable{
     public int miPuerto;
     private Analizador analisis;
     private String ipDispatcher;
+
     ///
+
     //Buffer buffer;
     Servidor server;
+    private String nombreFisico;
     //*PunteroAlBuffer ptrBuff;
+    private final AtomicInteger permits = new AtomicInteger(0);
+    private final Semaphore semaphore = new Semaphore(1, true);
 
-    public Interfaz(String ipDispatcher) {
-        this.miIp = "12.0.0.7";
-        this.miPuerto = 7777;
+    public Interfaz(String ipDispatcher, String miIp, int miPuerto)
+    {
+        this.miIp = miIp;
+        this.miPuerto = miPuerto;
         this.tablaIP = new HashMap<>();
         this.tablaD = new HashMap<>();
         this.ipDispatcher = ipDispatcher;
@@ -179,27 +186,33 @@ public class Interfaz implements Runnable{
         return tablita;
     }
 
-    public void enviarPaquete()
-    {
-
+    /*
+    public void putToSleep() {
+        semaphore.acquireUninterruptibly();
     }
 
-    public void enviarMensaje()
-    {
-
+    public void resume() {
+        semaphore.release(permits.getAndSet(0));
     }
+    */
+
 
     @Override
     public void run()
     {
-
         server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
 
-        //El Buffer va a devolver el String por el que va
-        String devuelto = "";
-        recibirTransmicion(devuelto);
-
+        while(true)
+        {
+            /*
+            semaphore.acquireUninterruptibly(Integer.MAX_VALUE);
+            semaphore.release(Integer.MAX_VALUE);
+            */
+            //El Buffer va a devolver el String por el que va
+            String devuelto = "";
+            recibirTransmicion(devuelto);
+        }
     }
 
 }
