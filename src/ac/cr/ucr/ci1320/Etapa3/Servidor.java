@@ -89,9 +89,9 @@ public class Servidor
             {
                 DataInputStream outClient;
                 outClient = new DataInputStream(sock.getInputStream());
-                String mensaje = outClient.readUTF(); //Lee los recibidos
+                String mensaje = outClient.readUTF();
                 System.out.println(mensaje);
-                Thread buffing = new Thread(new InputThread(inter.dataStructures, mensaje));
+                inter.recibirTransmicion(mensaje);
             }
             catch (Exception ex)
             {

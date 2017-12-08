@@ -24,7 +24,6 @@ public class ProcessingThread implements  Runnable {
                 System.out.println("Position: " + bufferReference.getArrayPosition() + " Logically erased");
             }catch (InterruptedException e){
                 e.printStackTrace();
-
             }
         }
 

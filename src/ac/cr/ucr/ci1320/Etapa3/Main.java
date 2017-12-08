@@ -10,9 +10,25 @@ public class Main {
         //servidor.iniciar();
     }
 
+    /*
+    Enrutador 1
+            TablaDirecciones tabla1 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
+            tablaD.put("192.118.1.0",tabla1);
+            TablaDirecciones tabla2 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
+            tablaD.put("06.0.28.0",tabla2);
+            TablaDirecciones tabla3 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
+            tablaD.put("25.0.0.0",tabla3);
+            TablaDirecciones tabla4 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
+            tablaD.put("10.8.0.0",tabla4);
+     */
 
-    public static Nodo pablo(){
-        Nodo nodoPablo = new Nodo("192.168.0.115");
-        return nodoPablo;
-    }
+    /*
+    Enrutador 2
+            TablaDirecciones tabla1 = new TablaDirecciones("168.5.0.0","RouterHobbit2",1);
+            tablaD.put("200.6.0.0",tabla1);
+            TablaDirecciones tabla2 = new TablaDirecciones("168.5.0.0","RouterHobbit2",1);
+            tablaD.put("178.8.60.0",tabla2);
+            TablaDirecciones tabla3 = new TablaDirecciones("168.5.0.0","RouterHobbit2",1);
+            tablaD.put("123.45.67.0",tabla3);
+     */
 }

@@ -25,54 +25,15 @@ public class Interfaz implements Runnable{
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
 
-    public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher, String dirFisica)
+    public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher, String dirFisica, Map<String,TablaIp> tablaIP)
     {
         this.tablaD = tablaD;               //Tabla de direcciones
         this.miIp = miIp;                   //Direccion falsa
         this.miPuerto = miPuerto;           //Puerto
         this.ipDispatcher = ipDispatcher;   //Direccion real
         this.dirFisica = dirFisica;         //Direccion fisica
-        this.tablaIP = new HashMap<>();     //Tabla con las direcciones verdaderas
-
-        this.iniciar();
-
+        this.tablaIP = tablaIP;     //Tabla con las direcciones verdaderas
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
-    }
-
-    public void iniciar()
-    {
-        /*
-        TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0);
-        TablaDirecciones tabla3 = new TablaDirecciones("Carrito","165.8.0.0",0);
-        TablaDirecciones tabla4 = new TablaDirecciones("Paletas","165.8.0.0",1);
-        TablaDirecciones tabla5 = new TablaDirecciones("Luces","165.8.0.0",2);
-        TablaDirecciones tabla6 = new TablaDirecciones("Legos","12.0.20.2",2);
-        TablaDirecciones tabla7 = new TablaDirecciones("Bolinchas","12.0.20.2",1);
-        TablaDirecciones tabla8 = new TablaDirecciones("Alonso","12.0.0.3",0);
-        tablaD.put("200.6.0.0",tabla1);
-        tablaD.put("12.0.20.2",tabla2);
-        tablaD.put("165.8.0.0",tabla3);
-        tablaD.put("200.5.0.0",tabla4);
-        tablaD.put("25.0.0.0",tabla5);
-        tablaD.put("201.6.0.0",tabla6);
-        tablaD.put("140.90.0.0",tabla7);
-        tablaD.put("12.0.0.3",tabla8);
-        */
-        //Mensaje pedirCosas = new Mensaje("12.0.0.7","12.0.0.0",7,"7777");
-        //Cliente cliente = new Cliente();
-        //cliente.sendMessage(pedirCosas.toString(),ipDispatcher,5000);
-        falseDispatcher();
-    }
-
-    //Dispatcher Falso
-    public void falseDispatcher(){
-        TablaIp tabla1 = new TablaIp("localhost",9999);
-        TablaIp tabla2 = new TablaIp("localhost",9999);
-        TablaIp tabla3 = new TablaIp("192.168.0.11",5555);
-        tablaIP.put("12.0.0.8",tabla1);
-        tablaIP.put("12.0.0.3",tabla2);
-        tablaIP.put("165.8.0.0",tabla3);
     }
 
     // Procesa el mensaje
