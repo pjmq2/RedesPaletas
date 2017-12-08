@@ -28,15 +28,15 @@ public class Terminal {
                 Solicitante solicitante;
 
                 if (array.length == 2) {
-                    if(!(array[1].equals("AUDIOTST"))) {
-                        String mensajeAEnviar = array[1];
-                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
+                    if((array[1].substring(0, 9).equals("AUDIOTST/")) && (8 < array[1].length())) {
+                        String mensajeAEnviar = array[1].split("/")[1];
+                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 8, mensajeAEnviar);
 
                         solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
                         solicitante.run();
                     } else {
-                        String mensajeAEnviar = "StudiopolisZone";
-                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 8, mensajeAEnviar);
+                        String mensajeAEnviar = array[1];
+                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
 
                         solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
                         solicitante.run();
