@@ -1,3 +1,5 @@
+package ac.cr.ucr.ci1320.Etapa3;
+
 import java.time.LocalTime;
 import java.util.concurrent.locks.ReentrantLock;
 

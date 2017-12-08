@@ -1,3 +1,5 @@
+package ac.cr.ucr.ci1320.Etapa3;
+
 import java.util.Random;
 
 public class ProcessingThread implements  Runnable {

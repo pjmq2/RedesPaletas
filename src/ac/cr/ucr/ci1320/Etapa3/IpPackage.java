@@ -1,3 +1,5 @@
+package ac.cr.ucr.ci1320.Etapa3;
+
 public class IpPackage {
     private String realIP;
     private String fakeIP;
