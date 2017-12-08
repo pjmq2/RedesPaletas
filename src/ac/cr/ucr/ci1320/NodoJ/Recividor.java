@@ -149,7 +149,8 @@ public class Recividor implements Runnable {
                 case 8:
                     try {
                         String filename = envio.getIpMensaje();
-                        File soundFile = AudioUtil.getSoundFile(System.getProperty("user.dir") + ("/src/Music/" + filename + ".wav"));
+                        String path =System.getProperty("user.dir") + ("\\src\\ac\\cr\\ucr\\ci1320\\NodoJ\\Music\\" + filename + ".wav");
+                        File soundFile = AudioUtil.getSoundFile(path);
 
                         System.out.println("server: " + soundFile);
 
