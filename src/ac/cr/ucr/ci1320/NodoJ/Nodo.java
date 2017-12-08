@@ -31,7 +31,7 @@ public class Nodo {
         this.miIp = miIp;
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
-        this.miIpFalsa = fake3;
+        this.miIpFalsa = fake1;
         this.Alonso = fake4;
         this.wishedFaker = "";
         this.terminal = new Terminal(this, fake4);

@@ -23,4 +23,24 @@ public class TablaDirecciones {
         return distancia;
     }
 
+    public boolean setNew(String fake, int distance) {
+        if(distance < distancia || distancia == -1)
+        {
+            this.aTraves = fake;
+            this.distancia = distance;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void modifyaTravez(String atravez){
+        this.aTraves = atravez;
+    }
+
+    public void modifyDistance(int distance){
+        this.distancia = distance;
+    }
 }

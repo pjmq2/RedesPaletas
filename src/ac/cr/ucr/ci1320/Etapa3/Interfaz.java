@@ -10,7 +10,7 @@ public class Interfaz implements Runnable{
     //Se pasa toodo lo de Nodo a Interfaz
     private Map<String,TablaDirecciones> tablaD ;
     private Map<String,TablaIp> tablaIP;
-    private String miIp;
+    private String miIp; // Falsa
     public int miPuerto;
     private Analizador analisis;
     private String ipDispatcher;
@@ -18,9 +18,8 @@ public class Interfaz implements Runnable{
 
     ///
 
-    DataStructures dataStructures;
-    Servidor server;
-    private String nombreFisico;
+    private DataStructures dataStructure;
+    private Servidor server;
     //*PunteroAlBuffer ptrBuff;
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
@@ -28,7 +27,8 @@ public class Interfaz implements Runnable{
     public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher, String dirFisica, Map<String,TablaIp> tablaIP)
     {
         this.tablaD = tablaD;               //Tabla de direcciones
-        this.miIp = miIp;                   //Direccion falsa
+        this.miIp = miIp;                   //Direccion falsa                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
+
         this.miPuerto = miPuerto;           //Puerto
         this.ipDispatcher = ipDispatcher;   //Direccion real
         this.dirFisica = dirFisica;         //Direccion fisica
@@ -48,6 +48,38 @@ public class Interfaz implements Runnable{
             mensaje = analisis.stringToMensaje(entrada);
             casosDeMensajes(mensaje);
         }
+    }
+
+    public boolean modifyIPTableEntry(String fake, String real, int port)
+    {
+        TablaIp faker = tablaIP.get(fake);
+        if(faker == null)
+        {
+            return false;
+        }
+        else
+        {
+            faker.modifyipVerdadera(real);
+            TablaDirecciones tabla = tablaD.get(fake);
+            faker.modifypuerto(port);
+            tabla.modifyaTravez(fake);
+            tabla.modifyDistance(0);
+            return true;
+        }
+    }
+
+    public String getTablaIPString() {
+        String returnValue = new String();
+        Set<String> keys = tablaIP.keySet();
+        String[] array = keys.toArray(new String[keys.size()]);
+
+        for(int i = 0; i < array.length; ++i) {
+            if (!(tablaIP.get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
+                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
+                returnValue = returnValue + tablaIP.get(array[i]) + "," + array[i] + "," + tablaIP.get(array[i]).getPuerto();
+            }
+        }
+        return returnValue;
     }
 
     private void casosDeMensajes(Mensaje mensaje){
@@ -86,11 +118,26 @@ public class Interfaz implements Runnable{
                     cliente.sendMessage(paquete.toString(), ipReal, puerto);
                     break;
                 case 7:
-                    HashMap<String, TablaIp> tablaTemp;
-                    imprimirMensaje(mensaje);
-                    tablaTemp = this.parseFromDispatcher(mensaje.getIpMensaje());
-                    tablaIP = tablaTemp;
-                    this.analisis = new Analizador(tablaD, tablaIP, miIp);
+                    if (mensaje.getIpMensaje().contains("#")) {
+                        String entradas[] = mensaje.getIpMensaje().split("#", -1);
+                        int longitud = entradas.length;
+                        for (int i = 0; i < longitud; ++i) {
+                            if(!(entradas[i].equals(""))) {
+                                String resultado[] = entradas[i].split(",");
+                                if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
+                                    int porte = Integer.parseInt(resultado[2]);
+                                    boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                    if (success == true) {
+                                        System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                                    } else {
+                                        System.out.println("ERROR! Dirección falsa otorgada no existe");
+                                    }
+                                } else {
+                                    System.out.println("ERROR! El puerto debe ser un número");
+                                }
+                            }
+                        }
+                    }
                     break;
             }
         }
@@ -182,5 +229,12 @@ public class Interfaz implements Runnable{
         }
     }
 
+    public DataStructures getDataStructures() {
+        return dataStructure;
+    }
+
+    public void setDataStructures(DataStructures dataStructures) {
+        this.dataStructure = dataStructures;
+    }
 }
 

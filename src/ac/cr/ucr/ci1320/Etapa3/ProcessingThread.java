@@ -3,11 +3,11 @@ package ac.cr.ucr.ci1320.Etapa3;
 import java.util.Random;
 
 public class ProcessingThread implements  Runnable {
-    public DataStructures dataStructures;
+    public Interfaz localInterface;
     private Random random;
 
-    public ProcessingThread(DataStructures inputStructures){
-        this.dataStructures = inputStructures;
+    public ProcessingThread(Interfaz inputInterface){
+        this.localInterface = inputInterface;
         random = new Random();
     }
 
@@ -17,10 +17,11 @@ public class ProcessingThread implements  Runnable {
 
         for(;;){
             try {
-                BufferEntry bufferReference = dataStructures.getpQueue().take();  //Get next item from pQueue, wait if theres none
-                System.out.println("Processing data from " + bufferReference.getIpPackage().getMessage());
+                BufferEntry bufferReference = localInterface.getDataStructures().getpQueue().take();  //Get next item from pQueue, wait if theres none
+                System.out.println("Processing data" + bufferReference.getData());
+                localInterface.recibirTransmicion(bufferReference.getData());
                 Thread.sleep(random.nextInt(10) * 100);   //Process it
-                dataStructures.getEmptyPositions().put(bufferReference.getArrayPosition());
+                localInterface.getDataStructures().getEmptyPositions().put(bufferReference.getArrayPosition());
                 System.out.println("Position: " + bufferReference.getArrayPosition() + " Logically erased");
             }catch (InterruptedException e){
                 e.printStackTrace();
