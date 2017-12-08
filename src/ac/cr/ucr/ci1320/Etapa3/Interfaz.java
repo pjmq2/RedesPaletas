@@ -18,7 +18,7 @@ public class Interfaz implements Runnable{
 
     ///
 
-    //Buffer buffer;
+    DataStructures dataStructures;
     Servidor server;
     private String nombreFisico;
     //*PunteroAlBuffer ptrBuff;
@@ -41,6 +41,7 @@ public class Interfaz implements Runnable{
 
     public void iniciar()
     {
+        /*
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0);
         TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",0);
         TablaDirecciones tabla3 = new TablaDirecciones("Carrito","165.8.0.0",0);
@@ -49,7 +50,7 @@ public class Interfaz implements Runnable{
         TablaDirecciones tabla6 = new TablaDirecciones("Legos","12.0.20.2",2);
         TablaDirecciones tabla7 = new TablaDirecciones("Bolinchas","12.0.20.2",1);
         TablaDirecciones tabla8 = new TablaDirecciones("Alonso","12.0.0.3",0);
-        tablaD.put("12.0.0.8",tabla1);
+        tablaD.put("200.6.0.0",tabla1);
         tablaD.put("12.0.20.2",tabla2);
         tablaD.put("165.8.0.0",tabla3);
         tablaD.put("200.5.0.0",tabla4);
@@ -57,6 +58,7 @@ public class Interfaz implements Runnable{
         tablaD.put("201.6.0.0",tabla6);
         tablaD.put("140.90.0.0",tabla7);
         tablaD.put("12.0.0.3",tabla8);
+        */
         //Mensaje pedirCosas = new Mensaje("12.0.0.7","12.0.0.0",7,"7777");
         //Cliente cliente = new Cliente();
         //cliente.sendMessage(pedirCosas.toString(),ipDispatcher,5000);

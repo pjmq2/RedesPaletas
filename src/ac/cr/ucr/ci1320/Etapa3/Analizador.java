@@ -52,22 +52,22 @@ public class Analizador {
         String cadena[] = ipInicial.split("\\.");
         switch (Integer.parseInt(cadena[0])){
             default:
-                ipDestino = tablaD.get("165.8.0.0").getaTraves();
+                ipDestino = tablaD.get("165.8.0.0").getEtiqueta();
                 break;
             case 12:
                 ipDestino = ipInicial;
                 break;
             case 200:
-                ipDestino = tablaD.get("200.5.0.2").getaTraves();
+                ipDestino = tablaD.get("200.5.0.2").getEtiqueta();
                 break;
             case 25:
-                ipDestino = tablaD.get("25.0.0.0").getaTraves();
+                ipDestino = tablaD.get("25.0.0.0").getEtiqueta();
                 break;
             case 201:
-                ipDestino = tablaD.get("201.6.0.0").getaTraves();
+                ipDestino = tablaD.get("201.6.0.0").getEtiqueta();
                 break;
             case 140:
-                ipDestino = tablaD.get("140.90.0.0").getaTraves();
+                ipDestino = tablaD.get("140.90.0.0").getEtiqueta();
                 break;
         }
         return ipDestino;
