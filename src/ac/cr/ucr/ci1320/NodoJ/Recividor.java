@@ -153,7 +153,7 @@ public class Recividor implements Runnable {
                         path = path.replace('\\', '/');
                         File soundFile = AudioUtil.getSoundFile(path);
 
-                        System.out.println("server: " + soundFile);
+                        System.out.println("servidor: " + soundFile);
 
                         try {
                             FileInputStream in = new FileInputStream(soundFile);
@@ -166,13 +166,13 @@ public class Recividor implements Runnable {
                         }
                         catch (Exception ex)
                         {
-                            System.out.println("Error stablishing audio conection");
+                            System.out.println("Error estableciendo conexion de audio");
                         }
 
-                        System.out.println("Audio has ended");
+                        System.out.println("El envio ha terminado");
                     }
                     catch(Exception ex) {
-                        System.out.println("Error sending audio");
+                        System.out.println("Error enviando audio");
                     }
                 break;
             }
