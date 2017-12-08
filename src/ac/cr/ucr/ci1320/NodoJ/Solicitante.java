@@ -26,13 +26,7 @@ public class Solicitante extends Thread {
             this.targetfakeaddress = message.getIpDestino();
         }
         TablaDirecciones tabla = nodo.getDTable().get(this.targetfakeaddress);
-        if(accion == 7) {
-            this.port = tabla.getBackPuerto();
-        }
-        else
-        {
-            this.port =  tabla.getPuerto();
-        }
+        this.port =  tabla.getPuerto();
     }
 
     public void run(){
@@ -96,13 +90,15 @@ public class Solicitante extends Thread {
                 // Si la acción es 8 escucha
                 if(message.getAccion() == 8) {
                     // play soundfile from server
-                    System.out.println("Reading from " + address + ":" + port);
+                    System.out.println("Leyendo de " + address + ":" + port);
                     if (sock.isConnected()) {
                         InputStream in = new BufferedInputStream(sock.getInputStream());
                         AudioUtil.play(in);
+                    } else{
+                        System.out.println("Recivido Fallido");
                     }
 
-                    System.out.println("Client: end");
+                    System.out.println("Conexion Finalizada");
                 }
 
                 try {

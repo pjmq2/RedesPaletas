@@ -3,6 +3,7 @@ package ac.cr.ucr.ci1320.NodoJ;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Set;
 
 public class Recividor implements Runnable {
     boolean set = false;
@@ -139,9 +140,17 @@ public class Recividor implements Runnable {
                             System.out.println("ERROR! Dirección falsa otorgada no existe");
                         }
                         String mensajeAEnviar = nodo.getTablaIPString();
-                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), envio.getIpFuente(), 7, mensajeAEnviar);
-                        solicitante = new Solicitante(this.nodo, mensaje); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
-                        solicitante.run();
+
+                        // Se lo manda a todos los que conoce
+                        Set<String> keys = nodo.getIPTable().keySet();
+                        String[] array = keys.toArray(new String[keys.size()]);
+                        for(int w = 0; w < array.length; ++w) {
+                            if(-1 < nodo.getDTable().get(array[w]).getDistancia()) {
+                                Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[w], 7, mensajeAEnviar);
+                                solicitante = new Solicitante(this.nodo, mensaje); // OJO QUE SI LLEGA AQUI CON UN FAKE QUE NO SEA J, A, S ó P VA A EXPLOTAR!!!
+                                solicitante.run();
+                            }
+                        }
                     } else {
                         System.out.println("Este mensaje no debe ser manejado por el dispatcher");
                     }
@@ -153,7 +162,7 @@ public class Recividor implements Runnable {
                         path = path.replace('\\', '/');
                         File soundFile = AudioUtil.getSoundFile(path);
 
-                        System.out.println("server: " + soundFile);
+                        System.out.println("servidor: " + soundFile);
 
                         try {
                             FileInputStream in = new FileInputStream(soundFile);
@@ -166,13 +175,13 @@ public class Recividor implements Runnable {
                         }
                         catch (Exception ex)
                         {
-                            System.out.println("Error stablishing audio conection");
+                            System.out.println("Error estableciendo conexion de audio");
                         }
 
-                        System.out.println("Audio has ended");
+                        System.out.println("El envio ha terminado");
                     }
                     catch(Exception ex) {
-                        System.out.println("Error sending audio");
+                        System.out.println("Error enviando audio");
                     }
                 break;
             }

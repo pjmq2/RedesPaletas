@@ -137,10 +137,7 @@ public class Nodo {
             TablaDirecciones tabla = tablaD.get(fake);
             tabla.modifyPort(port);
             tabla.modifyaTravez(fake);
-            if(!(fake.equals(Alonso)))
-            {
-                tabla.modifyBackPort(port);
-            }
+            tabla.modifyDistance(0);
             return true;
         }
     }
