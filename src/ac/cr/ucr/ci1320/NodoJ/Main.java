@@ -15,9 +15,9 @@ public class Main {
     public static Nodo julian(){
         HashMap<String,TablaDirecciones> tablaD= new HashMap<>();
         TablaDirecciones tabla1 = new TablaDirecciones("Julian","12.0.0.8",0,5555);
-        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",-1,8888);
+        TablaDirecciones tabla2 = new TablaDirecciones("Sebastian","12.0.20.2",-1,5555);
         TablaDirecciones tabla3 = new TablaDirecciones("Pablo","12.0.0.7",-1,5555);
-        TablaDirecciones tabla4 = new TablaDirecciones("Alonso","12.0.0.3", -1,3333);
+        TablaDirecciones tabla4 = new TablaDirecciones("Alonso","12.0.0.3", 0,5555);
         TablaDirecciones tabla5 = new TablaDirecciones("Carrito","0",-1,0000);
         TablaDirecciones tabla6 = new TablaDirecciones("Paletas","0",-1,0000);
         TablaDirecciones tabla7 = new TablaDirecciones("Luces","0",-1,0000);
