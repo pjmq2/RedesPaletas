@@ -1,3 +1,5 @@
+package ac.cr.ucr.ci1320.Etapa3;
+
 import java.util.Arrays;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

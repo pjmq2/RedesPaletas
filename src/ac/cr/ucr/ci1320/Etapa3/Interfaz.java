@@ -14,6 +14,7 @@ public class Interfaz implements Runnable{
     public int miPuerto;
     private Analizador analisis;
     private String ipDispatcher;
+    private String dirFisica;
 
     ///
 
@@ -24,14 +25,17 @@ public class Interfaz implements Runnable{
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
 
-    public Interfaz(String ipDispatcher, String miIp, int miPuerto)
+    public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher, String dirFisica)
     {
-        this.miIp = miIp;
-        this.miPuerto = miPuerto;
-        this.tablaIP = new HashMap<>();
-        this.tablaD = new HashMap<>();
-        this.ipDispatcher = ipDispatcher;
+        this.tablaD = tablaD;               //Tabla de direcciones
+        this.miIp = miIp;                   //Direccion falsa
+        this.miPuerto = miPuerto;           //Puerto
+        this.ipDispatcher = ipDispatcher;   //Direccion real
+        this.dirFisica = dirFisica;         //Direccion fisica
+        this.tablaIP = new HashMap<>();     //Tabla con las direcciones verdaderas
+
         this.iniciar();
+
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
     }
 
@@ -206,7 +210,7 @@ public class Interfaz implements Runnable{
         while(true)
         {
             /*
-            semaphore.acquireUninterruptibly(Integer.MAX_VALUE);
+            semaphore.acquireUninterruptibly(Integer.MAX_VALUE); //Que se detenga hasta que hayan datos disponibles
             semaphore.release(Integer.MAX_VALUE);
             */
             //El Buffer va a devolver el String por el que va
