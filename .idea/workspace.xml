@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3685b07-d143-4b32-89b4-0c4606d20b2e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Music/FFVII.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Music/FFVII.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Recividor.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Recividor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Solicitante.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Solicitante.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,6 +40,7 @@
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Solicitante.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Recividor.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java" />
       </list>
     </option>
   </component>
@@ -75,7 +73,6 @@
     <panes>
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -86,13 +83,27 @@
             <path>
               <item name="RedesPaletas" type="b2602c69:ProjectViewProjectNode" />
               <item name="RedesPaletas" type="462c0819:PsiDirectoryNode" />
-              <item name="Music" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RedesPaletas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RedesPaletas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1320" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RedesPaletas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RedesPaletas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1320" type="462c0819:PsiDirectoryNode" />
+              <item name="NodoJ" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512756362231</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cambios en nodo terminal para audio">
+      <created>1512756554287</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1512756554287</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -318,7 +336,6 @@
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Interfaz.java" />
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Mensaje.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Paquete.java" />
@@ -327,7 +344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -356,13 +372,6 @@
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaDirecciones.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaIp.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Nodo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
@@ -404,13 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Analizador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
@@ -422,7 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1317">
           <caret line="157" column="29" lean-forward="true" selection-start-line="157" selection-start-column="29" selection-end-line="157" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -430,7 +431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1975">
           <caret line="98" column="50" lean-forward="false" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -438,6 +438,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-108">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Analizador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1369">
+          <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
           <folding />
         </state>
       </provider>
