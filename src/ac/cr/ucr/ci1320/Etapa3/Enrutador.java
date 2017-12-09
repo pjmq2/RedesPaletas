@@ -22,7 +22,7 @@ public class Enrutador{
             this.julian = true;
         }
         //Crea los routers necesarios
-        int[] puertos = new int[cantInterfaces];
+        int[] puertos = new int[cantInterfaces + 1];
         Map<String,TablaIp> tablaIP = new HashMap<>();
 
         int i = 0;
@@ -35,8 +35,8 @@ public class Enrutador{
         }
         TablaDirecciones tablaDisp = new TablaDirecciones("Directo",fipDispatcher,0);
         TablaIp tablaDisp1 = new TablaIp(ripDispatcher,4444);
-        tablaIP.put(ips[i],tablaDisp1);
-        tablaD.put(ips[i],tablaDisp);
+        tablaIP.put(fipDispatcher,tablaDisp1);
+        tablaD.put(fipDispatcher,tablaDisp);
         puertos[i]=4444;
         for (int y=0; y<cantInterfaces; y++){
             Thread interfaz = new Thread(new Interfaz(tablaD,ips[y],puertos[y],fipDispatcher,fisicos[y],tablaIP, cantBuf, julian));
