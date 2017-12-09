@@ -115,27 +115,31 @@ public class Main {
         enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, cantBuf);
     }
 
-    /*
-    private static void prueba()
+
+    private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 3; //La cantidad de interfaces
+        int cantInterfaces = 1; //La cantidad de interfaces
         int cantBuf = 10;
-        int tipoEnrutador = 1;
-        String ipDispatcher = "12.0.0.8"; //El ip del dispatcher
+        String ipDispatcher = "11.101.6.8"; //El ip del dispatcher
+        String ripDispatcher = "10.100.2.4";
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        tablaD = Enrutador1();
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
 
         for(int i = 0; i<cantInterfaces; i++)
         {
-
+            ips[i] = "12.0.0."+i;
+            fisicos[i] = "Kareok"+i;
         }
-        //ips[0]
+        Enrutador enrutador = new Enrutador();
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, cantBuf);
     }
-    */
+
 
     public static void main(String args[]){
-        correr();
+        //correr();
+        prueba();
     }
 }
