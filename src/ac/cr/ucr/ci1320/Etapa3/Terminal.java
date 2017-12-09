@@ -7,8 +7,7 @@ public class Terminal implements Runnable{
     String myFakeAddress;
     Interfaz interfaz;
 
-    String dispatcherFIP = "0";
-    int dispatcherPORT = 0000;
+    String dispatcherFIP = "165.8.6.25";
 
     public Terminal(Interfaz interfaz){
         this.interfaz = interfaz;
@@ -43,9 +42,10 @@ public class Terminal implements Runnable{
                         SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                         sender.start();
                     }
-                } else if (entrada.equalsIgnoreCase("DISPATCH")) {
+                } else if (entrada.equalsIgnoreCase("DISPATCH") && interfaz.getisTerminal()) {
                     Mensaje mensaje = new Mensaje(myFakeAddress, dispatcherFIP, 7, Integer.toString(interfaz.getMiPuerto()));
-                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), this.dispatcherFIP, this.dispatcherPORT);
+                    TablaIp tabla = this.interfaz.getTablaIP().get(this.dispatcherFIP);
+                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                     sender.start();
                 } else {
                     System.out.println("Mensaje Inválido");

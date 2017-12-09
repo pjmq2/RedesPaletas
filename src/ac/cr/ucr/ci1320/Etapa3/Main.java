@@ -63,7 +63,8 @@ public class Main {
         int cantInterfaces = 0; //La cantidad de interfaces
         int cantBuf = 0;
         int tipoEnrutador = 0;
-        String ipDispatcher = "12.0.0.8"; //El ip del dispatcher
+        String ipDispatcher = "165.8.6.25"; //El ip del dispatcher
+        String ripDispatcher = "";
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
 
         System.out.print( "Digite la cantidad de interfaces (de 1 a 6): \n" );
@@ -90,6 +91,11 @@ public class Main {
             }
         }
 
+        if(cantInterfaces == 1) {
+            System.out.print("Digite la direccion real del Dispatcher: \n");
+            ripDispatcher = scanner.nextLine();
+        }
+
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
 
@@ -105,7 +111,7 @@ public class Main {
         {
             System.out.println( "Interfaz numero" + (j+1) + " = " + ips[j] + " _ " + fisicos[j] + "\n" );
         }
-        Enrutador enrutador = new Enrutador(cantInterfaces, ips, fisicos, ipDispatcher, tablaD, cantBuf);
+        Enrutador enrutador = new Enrutador(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, cantBuf);
     }
 
     /*

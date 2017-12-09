@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3685b07-d143-4b32-89b4-0c4606d20b2e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Analizador.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Analizador.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Cliente$Writer.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Cliente$Writer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Cliente.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Cliente.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Enrutador.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Enrutador.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Interfaz.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Interfaz.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Main.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Servidor$Starter.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Servidor$Starter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Servidor.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Servidor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,18 +35,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Terminal.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="48" column="35" lean-forward="false" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -62,22 +63,22 @@
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Recividor.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaDirecciones.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Mensaje.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Solicitante.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/SolicitanteLite.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Cliente.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/IpPackage.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/ProcessingThread.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/DataStructures.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Analizador.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Servidor.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java" />
       </list>
     </option>
@@ -677,7 +678,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512852990546</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1512853069129</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1512853069129</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -685,7 +693,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -702,7 +710,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282313" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16197917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16197917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -890,24 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -940,34 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="246" column="53" lean-forward="false" selection-start-line="246" selection-start-column="53" selection-end-line="246" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="107" column="81" lean-forward="false" selection-start-line="107" selection-start-column="81" selection-end-line="107" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="45" column="20" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/ProcessingThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -992,10 +954,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="45" column="60" lean-forward="true" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="48" column="35" lean-forward="false" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+        <state relative-caret-position="589">
+          <caret line="44" column="91" lean-forward="false" selection-start-line="44" selection-start-column="91" selection-end-line="44" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="245" column="11" lean-forward="false" selection-start-line="245" selection-start-column="10" selection-end-line="245" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="95" column="45" lean-forward="false" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
           <folding />
         </state>
       </provider>
