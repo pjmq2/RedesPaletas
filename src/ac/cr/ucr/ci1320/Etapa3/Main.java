@@ -37,12 +37,16 @@ public class Main {
     public static void main(String args[])
     {
         int cantInterfaces = 0; //La cantidad de interfaces
+        int cantBuf = 0;
         int tipoEnrutador = 0;
         String ipDispatcher = "12.0.0.8"; //El ip del dispatcher
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
 
-        System.out.print( "Digite la cantidad de interfaces: \n" );
+        System.out.print( "Digite la cantidad de interfaces (de 1 a 6): \n" );
         cantInterfaces = Integer.parseInt(scanner.nextLine());
+
+        System.out.print( "Digite la cantidad de buffers por interfaz (de 1 a 500): \n" );
+        cantBuf = Integer.parseInt(scanner.nextLine());
 
         while(tipoEnrutador != 1 && tipoEnrutador != 2)
         {
@@ -77,6 +81,6 @@ public class Main {
         {
             System.out.println( "Interfaz numero" + (j+1) + " = " + ips[j] + " _ " + fisicos[j] + "\n" );
         }
-        Enrutador enrutador = new Enrutador(cantInterfaces, ips, fisicos, ipDispatcher, tablaD);
+        Enrutador enrutador = new Enrutador(cantInterfaces, ips, fisicos, ipDispatcher, tablaD, cantBuf);
     }
 }
