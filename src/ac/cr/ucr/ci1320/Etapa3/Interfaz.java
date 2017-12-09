@@ -15,7 +15,8 @@ public class Interfaz implements Runnable{
     private Analizador analisis;
     private String ipDispatcher;
     private String dirFisica;
-
+    private Terminal terminal;
+    private Dispatcher dispatcher;
     ///
 
     private DataStructures dataStructure;
@@ -36,6 +37,10 @@ public class Interfaz implements Runnable{
         this.dirFisica = dirFisica;         //Direccion fisica
         this.tablaIP = tablaIP;     //Tabla con las direcciones verdaderas
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
+        Thread starter1 = new Thread(new Terminal(this));
+        starter1.start();
+        Thread starter2 = new Thread(new Dispatcher(this));
+        starter2.start();
     }
 
     // Procesa el mensaje

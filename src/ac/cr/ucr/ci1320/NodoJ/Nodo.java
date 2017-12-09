@@ -1,11 +1,9 @@
 package ac.cr.ucr.ci1320.NodoJ;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
+
 import static java.lang.Integer.valueOf;
 
 
@@ -14,9 +12,8 @@ public class Nodo {
     private HashMap<String, String> tablaIP;
     private String miIp;
     private String miIpFalsa;
-    private Servidor server;
     private int miPuerto;
-    private String Alonso;
+    private String dispatchPath;
     private String wishedFaker;
     private Terminal terminal;
     private String bestWish;
@@ -32,10 +29,9 @@ public class Nodo {
         this.miPuerto = miPuerto;
         this.tablaIP = tablaIP;
         this.miIpFalsa = fake1;
-        this.Alonso = fake4;
+        this.dispatchPath = fake4;
         this.wishedFaker = "";
         this.terminal = new Terminal(this, fake4);
-        this.server = new Servidor(this);
     }
 
     public HashMap<String,TablaDirecciones> getDTable() { return  this.tablaD; }
@@ -145,10 +141,12 @@ public class Nodo {
     public void iniciar() {
         // Abrir Servidor
 
-        server.iniciar();
+        Thread starter1 = new Thread(new Servidor(this));
+        starter1.start();
 
         // Leer línea de la terminal.
 
-        this.terminal.run();
+        Thread starter2 = new Thread(new Terminal(this, this.dispatchPath));
+        starter2.start();
     }
 }

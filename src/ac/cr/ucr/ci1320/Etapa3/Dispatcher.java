@@ -67,7 +67,7 @@ public class Dispatcher implements Runnable{
                     String resultado[] = entradas[i].split(",");
                     if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
                         int porte = Integer.parseInt(resultado[2]);
-                        boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                        boolean success = this.interfaz.modifyIPTableEntry(resultado[1], resultado[0], porte);
                         if (success == true) {
                             System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                         } else {
@@ -79,13 +79,13 @@ public class Dispatcher implements Runnable{
                 }
             }
         } else if ((envio.getIpMensaje()) != null && (envio.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
-            boolean success = this.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
+            boolean success = this.interfaz.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
             if (success == true) {
                 System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
             } else {
                 System.out.println("ERROR! Dirección falsa otorgada no existe");
             }
-            String mensajeAEnviar = this.getTablaIPString();
+            String mensajeAEnviar = this.interfaz.getTablaIPString();
 
             // Se lo manda a todos los que conoce
             Set<String> keys = this.interfaz.getTablaIP().keySet();
@@ -100,36 +100,6 @@ public class Dispatcher implements Runnable{
             }
         } else {
             System.out.println("Este mensaje no debe ser manejado por el dispatcher");
-        }
-    }
-
-    public String getTablaIPString() {
-        String returnValue = new String();
-        Set<String> keys = this.interfaz.getTablaIP().keySet();
-        String[] array = keys.toArray(new String[keys.size()]);
-
-        for(int i = 0; i < array.length; ++i) {
-            if (!(this.interfaz.getTablaIP().get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
-                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
-                TablaIp tabla = this.interfaz.getTablaIP().get(array[i]);
-                returnValue = returnValue + tabla.getIpVerdadera() + "," + array[i] + "," + tabla.getPuerto();
-            }
-        }
-        return returnValue;
-    }
-
-    public boolean modifyIPTableEntry(String fake, String real, int port)
-    {
-        TablaIp faker = this.interfaz.getTablaIP().get(fake);
-        if(faker == null)
-        {
-            return false;
-        }
-        else
-        {
-            faker.modifyipVerdadera(real);
-            faker.modifypuerto(port);
-            return true;
         }
     }
 }
