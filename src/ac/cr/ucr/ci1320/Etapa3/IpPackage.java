@@ -10,9 +10,6 @@ public class IpPackage {
         this.message = inputMessage;
     }
 
-
-
-
     public String getMessage() {
         return message;
     }
