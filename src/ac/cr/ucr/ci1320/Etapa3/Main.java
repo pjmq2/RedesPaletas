@@ -75,7 +75,7 @@ public class Main {
 
         while(tipoEnrutador != 1 && tipoEnrutador != 2)
         {
-            System.out.print( "Seleccione el tipo de interfaz (1 o 2): \n" );
+            System.out.print( "Seleccione el tipo de enrutador (1 o 2): \n" );
             tipoEnrutador = Integer.parseInt(scanner.nextLine());
             if(tipoEnrutador == 1)
             {

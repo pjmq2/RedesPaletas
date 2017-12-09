@@ -17,7 +17,7 @@ public class Servidor
     int portz;
     Interfaz inter;
     public Servidor(Interfaz inter) {
-        this.portz = inter.miPuerto;
+        this.portz = inter.getMiPuerto();
         this.inter = inter;
     }
 
@@ -25,7 +25,7 @@ public class Servidor
         //Thread starter = new Thread(new Starter(inter));
         //starter.start();
         try {
-            ServerSocket servidor = new ServerSocket(this.inter.miPuerto);
+            ServerSocket servidor = new ServerSocket(this.inter.getMiPuerto());
             while (true){
                 System.out.println("\nServidor esperando...");
 
