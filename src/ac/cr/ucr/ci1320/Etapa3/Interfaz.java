@@ -42,8 +42,6 @@ public class Interfaz implements Runnable{
             Thread starter1 = new Thread(new Terminal(this));
             starter1.start();
         }
-        Thread starter2 = new Thread(new Dispatcher(this));
-        starter2.start();
     }
 
     // Procesa el mensaje
@@ -60,7 +58,7 @@ public class Interfaz implements Runnable{
         }
     }
 
-    public boolean modifyIPTableEntry(String fake, String real, int port)
+    public boolean modifyIPTableEntry(String fake, String real, int portz)
     {
         TablaIp faker = tablaIP.get(fake);
         if(faker == null)
@@ -70,8 +68,9 @@ public class Interfaz implements Runnable{
         else
         {
             faker.modifyipVerdadera(real);
+            faker.modifypuerto(portz);
             TablaDirecciones tabla = tablaD.get(fake);
-            faker.modifypuerto(port);
+            faker.modifypuerto(portz);
             tabla.modifyaTravez(fake);
             tabla.modifyDistance(0);
             return true;

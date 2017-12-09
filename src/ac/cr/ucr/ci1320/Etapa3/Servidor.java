@@ -27,7 +27,7 @@ public class Servidor
         try {
             ServerSocket servidor = new ServerSocket(this.inter.getMiPuerto());
             while (true){
-                System.out.println("\nServidor esperando...");
+                System.out.println("\nServidor de " +  inter.getMyFakeAddress() + " esperando...");
 
                 Socket cliente = servidor.accept();
                 String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];

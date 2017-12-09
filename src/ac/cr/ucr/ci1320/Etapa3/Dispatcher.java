@@ -19,13 +19,13 @@ public class Dispatcher implements Runnable{
     private int port;
     private String myRealAddress;
     private String myFakeAddress;
-    private Interfaz interfaz;
+    private Map<String, TablaIp> tablaIp;
 
-    public Dispatcher(Interfaz interfaz) {
+    public Dispatcher(Map<String, TablaIp> tablaIp) {
         port = 4444;
         myRealAddress = "localhost";
         myFakeAddress = "165.8.6.25";
-        this.interfaz = interfaz;
+        this.tablaIp = tablaIp;
     }
 
     public void run(){
@@ -33,6 +33,8 @@ public class Dispatcher implements Runnable{
         {
             ServerSocket servidor = new ServerSocket(port);
             while (true){
+                System.out.println("\nDispatcher esperando...");
+
                 Socket cliente = servidor.accept();
                 String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
                 String clientIPRevealed = clientIP.split("/")[1];
@@ -67,7 +69,7 @@ public class Dispatcher implements Runnable{
                     String resultado[] = entradas[i].split(",");
                     if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
                         int porte = Integer.parseInt(resultado[2]);
-                        boolean success = this.interfaz.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                        boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
                         if (success == true) {
                             System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                         } else {
@@ -79,20 +81,20 @@ public class Dispatcher implements Runnable{
                 }
             }
         } else if ((envio.getIpMensaje()) != null && (envio.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
-            boolean success = this.interfaz.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
+            boolean success = this.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
             if (success == true) {
                 System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
             } else {
                 System.out.println("ERROR! Dirección falsa otorgada no existe");
             }
-            String mensajeAEnviar = this.interfaz.getTablaIPString();
+            String mensajeAEnviar = this.getTablaIPString();
 
             // Se lo manda a todos los que conoce
-            Set<String> keys = this.interfaz.getTablaIP().keySet();
+            Set<String> keys = this.tablaIp.keySet();
             String[] array = keys.toArray(new String[keys.size()]);
             for(int w = 0; w < array.length; ++w) {
-                if(!(this.interfaz.getTablaIP().get(array[w]).getIpVerdadera().equals("0"))) {
-                    TablaIp tabla = this.interfaz.getTablaIP().get(array[w]);
+                if(!(this.tablaIp.get(array[w]).getIpVerdadera().equals("0"))) {
+                    TablaIp tabla = this.tablaIp.get(array[w]);
                     Mensaje mensaje = new Mensaje(this.myFakeAddress, array[w], 7, mensajeAEnviar);
                     SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                     sender.start();
@@ -101,5 +103,34 @@ public class Dispatcher implements Runnable{
         } else {
             System.out.println("Este mensaje no debe ser manejado por el dispatcher");
         }
+    }
+
+    public boolean modifyIPTableEntry(String fake, String real, int portz)
+    {
+        TablaIp faker = tablaIp.get(fake);
+        if(faker == null)
+        {
+            return false;
+        }
+        else
+        {
+            faker.modifyipVerdadera(real);
+            faker.modifypuerto(portz);
+            return true;
+        }
+    }
+
+    public String getTablaIPString() {
+        String returnValue = new String();
+        Set<String> keys = tablaIp.keySet();
+        String[] array = keys.toArray(new String[keys.size()]);
+
+        for(int i = 0; i < array.length; ++i) {
+            if (!(tablaIp.get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
+                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
+                returnValue = returnValue + tablaIp.get(array[i]) + "," + array[i] + "," + tablaIp.get(array[i]).getPuerto();
+            }
+        }
+        return returnValue;
     }
 }

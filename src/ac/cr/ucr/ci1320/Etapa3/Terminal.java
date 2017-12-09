@@ -16,7 +16,7 @@ public class Terminal implements Runnable{
 
 
     public void run() {
-        System.out.println("Mensaje -> IPDESTINO \\n MENSAJE / Dispatcher -> DISPATCH"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
+        System.out.println("Mensaje -> IPDESTINO \\n MENSAJE / Dispatcher -> DISPATCH");
         scanner = new Scanner(System.in);
         String entrada = "";
         while (!(entrada.equals("BYE"))) {
