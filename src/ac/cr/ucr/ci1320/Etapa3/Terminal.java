@@ -1,18 +1,19 @@
-package ac.cr.ucr.ci1320.NodoJ;
+package ac.cr.ucr.ci1320.Etapa3;
+
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.Scanner;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class Terminal implements Runnable{
     Scanner scanner;
-    String dispatcherFIP;
-    Nodo nodo;
+    String myFakeAddress;
+    Interfaz interfaz;
 
-    public Terminal(Nodo nodo, String dispatcherFIP){
-        this.nodo = nodo;
-        this.dispatcherFIP = dispatcherFIP;
+    public Terminal(Interfaz interfaz){
+        this.interfaz = interfaz;
+        this.myFakeAddress = interfaz.getMyFakeAddress();
     }
+
 
     public void run() {
         System.out.println("Mensaje -> IPDESTINO \\n MENSAJE / Dispatcher -> DISPATCH"); // Hay que cambiar to.do esto para que en vez de ser IPDESTINO \n MENSAJE sea IPDESTINO \n PUERTO \n MENSAJE porque el dispatcher y el puerto correran en puertos distintos AÚN NO HE ACABADO, sigo a las 9 [Cuando llego a la casa]
@@ -24,27 +25,23 @@ public class Terminal implements Runnable{
             if (!(entrada.equals("BYE"))) {
 
                 String[] array = entrada.split("\\\\n");
+
                 // Enviar el mensaje
-                Solicitante solicitante;
 
                 if (array.length == 2) {
                     if((array[1].substring(0, 9).equals("AUDIOTST/")) && (8 < array[1].length())) {
                         String mensajeAEnviar = array[1].split("/")[1];
-                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 8, mensajeAEnviar);
-
-                        solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
-                        solicitante.run();
+                        Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 8, mensajeAEnviar);
+                        TablaIp tabla = this.interfaz.getTablaIP().get(array[0]);
+                        SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
+                        sender.start();
                     } else {
                         String mensajeAEnviar = array[1];
-                        Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), array[0], 0, mensajeAEnviar);
-
-                        solicitante = new Solicitante(nodo, mensaje); // ESE ARRAY[0] CÁMBIELO POR EL
-                        solicitante.run();
+                        Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 0, mensajeAEnviar);
+                        TablaIp tabla = this.interfaz.getTablaIP().get(array[0]);
+                        SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
+                        sender.start();
                     }
-                } else if (entrada.equalsIgnoreCase("DISPATCH")) {
-                    Mensaje mensaje = new Mensaje(nodo.getmyFakeAddress(), dispatcherFIP, 7, Integer.toString(nodo.getmyPort()));
-                    solicitante = new Solicitante(nodo, mensaje); // Address Port Menssage
-                    solicitante.run();
                 } else {
                     System.out.println("Mensaje Inválido");
                 }

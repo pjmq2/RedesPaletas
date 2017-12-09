@@ -16,25 +16,16 @@ import java.util.Map;
 import java.util.Set;
 
 public class Dispatcher implements Runnable{
-    int port;
-    String myRealAddress;
-    String myFakeAddress;
-    private Map<String,TablaIp> tablaIP;
+    private int port;
+    private String myRealAddress;
+    private String myFakeAddress;
+    private Interfaz interfaz;
 
-    public Dispatcher() {
+    public Dispatcher(Interfaz interfaz) {
         port = 5555;
         myRealAddress = "localhost";
         myFakeAddress = "165.8.6.25";
-        this.tablaIP = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("0",0000);
-        TablaIp tabla2 = new TablaIp("0",0000);
-        TablaIp tabla3 = new TablaIp(myRealAddress, port);
-
-        tablaIP.put("12.0.0.8",tabla1);
-        tablaIP.put("12.0.20.2",tabla2);
-        tablaIP.put(myFakeAddress,tabla3);
-
-        tablaIP.toString();
+        this.interfaz = interfaz;
     }
 
     public void run(){
@@ -97,12 +88,13 @@ public class Dispatcher implements Runnable{
             String mensajeAEnviar = this.getTablaIPString();
 
             // Se lo manda a todos los que conoce
-            Set<String> keys = this.tablaIP.keySet();
+            Set<String> keys = this.interfaz.getTablaIP().keySet();
             String[] array = keys.toArray(new String[keys.size()]);
             for(int w = 0; w < array.length; ++w) {
-                if(!(this.tablaIP.get(array[w]).getIpVerdadera().equals("0"))) {
+                if(!(this.interfaz.getTablaIP().get(array[w]).getIpVerdadera().equals("0"))) {
+                    TablaIp tabla = this.interfaz.getTablaIP().get(array[w]);
                     Mensaje mensaje = new Mensaje(this.myFakeAddress, array[w], 7, mensajeAEnviar);
-                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), array[w], this.tablaIP.get(array[w]).getPuerto());
+                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                     sender.start();
                 }
             }
@@ -113,13 +105,13 @@ public class Dispatcher implements Runnable{
 
     public String getTablaIPString() {
         String returnValue = new String();
-        Set<String> keys = tablaIP.keySet();
+        Set<String> keys = this.interfaz.getTablaIP().keySet();
         String[] array = keys.toArray(new String[keys.size()]);
 
         for(int i = 0; i < array.length; ++i) {
-            if (!(this.tablaIP.get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
+            if (!(this.interfaz.getTablaIP().get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
                 if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
-                TablaIp tabla = this.tablaIP.get(array[i]);
+                TablaIp tabla = this.interfaz.getTablaIP().get(array[i]);
                 returnValue = returnValue + tabla.getIpVerdadera() + "," + array[i] + "," + tabla.getPuerto();
             }
         }
@@ -128,7 +120,7 @@ public class Dispatcher implements Runnable{
 
     public boolean modifyIPTableEntry(String fake, String real, int port)
     {
-        TablaIp faker = tablaIP.get(fake);
+        TablaIp faker = this.interfaz.getTablaIP().get(fake);
         if(faker == null)
         {
             return false;

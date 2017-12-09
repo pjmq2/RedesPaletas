@@ -212,6 +212,9 @@ public class Interfaz implements Runnable{
     }
     */
 
+    public String getMyFakeAddress(){
+        return this.miIp;
+    }
 
     @Override
     public void run()
@@ -225,6 +228,8 @@ public class Interfaz implements Runnable{
     public DataStructures getDataStructures() {
         return dataStructure;
     }
+
+    public Map<String,TablaIp> getTablaIP() { return tablaIP; }
 
     public void setDataStructures(DataStructures dataStructures) {
         this.dataStructure = dataStructures;

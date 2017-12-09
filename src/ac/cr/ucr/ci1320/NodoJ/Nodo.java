@@ -149,6 +149,6 @@ public class Nodo {
 
         // Leer línea de la terminal.
 
-        this.terminal.terminal();
+        this.terminal.run();
     }
 }
