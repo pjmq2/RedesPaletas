@@ -11,7 +11,7 @@ public class Interfaz implements Runnable{
     private Map<String,TablaDirecciones> tablaD ;
     private Map<String,TablaIp> tablaIP;
     private String miIp; // Falsa
-    public int miPuerto;
+    private int miPuerto;
     private Analizador analisis;
     private String ipDispatcher;
     private String dirFisica;
@@ -243,5 +243,7 @@ public class Interfaz implements Runnable{
     public void setDataStructures(DataStructures dataStructures) {
         this.dataStructure = dataStructures;
     }
+
+    public int getMiPuerto() { return this.miPuerto; }
 }
 

@@ -17,7 +17,7 @@ public class Servidor
     int portz;
     Interfaz inter;
     public Servidor(Interfaz inter) {
-        portz = inter.miPuerto;
+        portz = inter.getMiPuerto();
         this.inter = inter;
     }
 
@@ -30,7 +30,7 @@ public class Servidor
     public class Starter implements Runnable{
         int puerto;
         public Starter(Interfaz inter) {
-            puerto = inter.miPuerto;
+            puerto = inter.getMiPuerto();
         }
 
         public void run(){
