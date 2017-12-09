@@ -12,11 +12,6 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- *
- * @author Selene
- */
-
 public class Servidor
 {
     int portz;

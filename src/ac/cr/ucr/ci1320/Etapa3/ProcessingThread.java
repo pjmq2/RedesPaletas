@@ -27,7 +27,6 @@ public class ProcessingThread implements  Runnable {
                 e.printStackTrace();
             }
         }
-
     }
 
     /**
