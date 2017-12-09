@@ -1,5 +1,6 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -103,7 +104,19 @@ public class Interfaz implements Runnable{
             int accion = mensaje.getAccion();
             switch (accion) {
                 default:
-                    if (mensaje.getIpDestino().equals(miIp)) imprimirMensaje(mensaje);
+                    if (mensaje.getIpDestino().equals(miIp))
+                    {
+                        imprimirMensaje(mensaje);
+                        try(  PrintWriter out = new PrintWriter( "registro.txt" )  ) //Guardar los valores recibidos
+                        {
+                            out.println( mensaje.getIpFuente() + "\n");
+                            out.println( mensaje.getIpMensaje() + "\n");
+                        }
+                        catch (java.io.FileNotFoundException c)
+                        {
+                            System.out.println("El documento al cual copiar los datos no existe");
+                        }
+                    }
                     else {
                         Paquete paquete = analisis.empaquetar(mensaje);
                         int puerto = analisis.getPuertoDestino(paquete.getIpDestinPaquete());
