@@ -22,8 +22,6 @@ public class Interfaz implements Runnable{
     private ProcessingThread procThread;
     private Servidor server;
     private boolean isTerminal;
-    private final AtomicInteger permits = new AtomicInteger(0);
-    private final Semaphore semaphore = new Semaphore(1, true);
 
     public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher,
                     String dirFisica, Map<String,TablaIp> tablaIP, int numBuf, boolean julian)
