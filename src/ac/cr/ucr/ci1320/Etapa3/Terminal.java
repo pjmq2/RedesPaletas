@@ -46,7 +46,7 @@ public class Terminal implements Runnable{
                 } else if (entrada.equalsIgnoreCase("DISPATCH")) {
                     Mensaje mensaje = new Mensaje(myFakeAddress, dispatcherFIP, 7, Integer.toString(interfaz.getMiPuerto()));
                     SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), this.dispatcherFIP, this.dispatcherPORT);
-                    sender.start();;
+                    sender.start();
                 } else {
                     System.out.println("Mensaje Inválido");
                 }
