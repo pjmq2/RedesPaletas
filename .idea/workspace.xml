@@ -4,7 +4,7 @@
     <list default="true" id="b3685b07-d143-4b32-89b4-0c4606d20b2e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Servidor.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Servidor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,11 +25,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Interfaz.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Interfaz.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,7 +121,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Enrutador.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Enrutador.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
@@ -170,10 +170,10 @@
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Cliente.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/IpPackage.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
       </list>
     </option>
   </component>
@@ -717,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512848712922</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1512849306378</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1512849306378</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -974,16 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/IpPackage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1039,6 +1036,16 @@
         <state relative-caret-position="527">
           <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

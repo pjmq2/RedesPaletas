@@ -15,8 +15,6 @@ public class Interfaz implements Runnable{
     private Analizador analisis;
     private String ipDispatcher;
     private String dirFisica;
-    private Terminal terminal;
-    private Dispatcher dispatcher;
     ///
 
     private DataStructures dataStructure;
