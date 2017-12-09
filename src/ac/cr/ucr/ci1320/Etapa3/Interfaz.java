@@ -231,8 +231,8 @@ public class Interfaz implements Runnable{
         server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
 
-        Thread process = new Thread(new ProcessingThread(this));
-
+        Thread bufferProcessor = new Thread(new ProcessingThread(this));
+        bufferProcessor.start();
         //Faltaría algo mas aca?
     }
 

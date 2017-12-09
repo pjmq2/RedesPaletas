@@ -23,10 +23,16 @@ public class BufferEntry implements Comparable<BufferEntry>{
         this.setArrayPosition(inputPosition);
     }
 
+
+    /*
     @Override
     public int compareTo(BufferEntry T){
         return this.getTime().compareTo(T.getTime());
     }
+    */
+
+    @Override
+    public int compareTo(BufferEntry T) { return this.data.length() - T.data.length(); }
 
     public LocalTime getTime() {
         return time;

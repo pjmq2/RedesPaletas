@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner scanner = new Scanner( System.in );
+    
 
     private static Map<String,TablaDirecciones> Enrutador1() //Aca solo se ponen los que no son directos
     {
@@ -60,8 +61,8 @@ public class Main {
 
     private static void correr()
     {
-        int cantInterfaces = 0; //La cantidad de interfaces
-        int cantBuf = 0;
+        int cantInterfaces; //La cantidad de interfaces
+        int cantBuf;
         int tipoEnrutador = 0;
         String ipDispatcher = "12.0.0.8"; //El ip del dispatcher
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
@@ -105,7 +106,8 @@ public class Main {
         {
             System.out.println( "Interfaz numero" + (j+1) + " = " + ips[j] + " _ " + fisicos[j] + "\n" );
         }
-        Enrutador enrutador = new Enrutador(cantInterfaces, ips, fisicos, ipDispatcher, tablaD, cantBuf);
+        Enrutador enrutador = new Enrutador();
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, tablaD, cantBuf);
     }
 
     /*
@@ -128,8 +130,7 @@ public class Main {
     }
     */
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]){
         correr();
     }
 }

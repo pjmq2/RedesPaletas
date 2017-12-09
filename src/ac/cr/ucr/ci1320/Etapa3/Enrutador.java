@@ -7,14 +7,18 @@ import java.util.concurrent.Semaphore;
 
 public class Enrutador{
 
+
     boolean julian = false;
 
-    public Enrutador(int cantInterfaces, String[] ips, String[] fisicos, String ipDispatcher,
+    public Enrutador(){
+
+    }
+
+    public void start(int cantInterfaces, String[] ips, String[] fisicos, String ipDispatcher,
                      Map<String,TablaDirecciones> tablaD, int cantBuf)
     {
 
-        if(cantInterfaces==1)
-        {
+        if(cantInterfaces==1){
             this.julian = true;
         }
         else{ //Crea los routers necesarios
