@@ -48,13 +48,4 @@ public class Servidor
             }
         }
     }
-
-    public static boolean isNumeric(String s) {
-        return s != null && s.matches("[-+]?\\d*\\.?\\d+");
-    }
-
-    // Imprime el mensaje en la terminal.
-    private void imprimirMensaje(Mensaje mensaje){
-        System.out.println(mensaje.getIpMensaje());
-    }
 }

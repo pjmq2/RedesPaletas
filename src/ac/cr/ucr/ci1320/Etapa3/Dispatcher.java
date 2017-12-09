@@ -6,100 +6,138 @@ Aun no funciona
 
 package ac.cr.ucr.ci1320.Etapa3;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import ac.cr.ucr.ci1320.NodoJ.Recividor;
+
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
-public class Dispatcher {
+public class Dispatcher implements Runnable{
+    int port;
+    String myRealAddress;
+    String myFakeAddress;
     private Map<String,TablaIp> tablaIP;
 
     public Dispatcher() {
+        port = 5555;
+        myRealAddress = "localhost";
+        myFakeAddress = "165.8.6.25";
         this.tablaIP = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("192.168.0.136",5555);
-        TablaIp tabla2 = new TablaIp("192.168.0.166",5555);
-        TablaIp tabla3 = new TablaIp("localhost",5555);
+        TablaIp tabla1 = new TablaIp("0",0000);
+        TablaIp tabla2 = new TablaIp("0",0000);
+        TablaIp tabla3 = new TablaIp(myRealAddress, port);
+
         tablaIP.put("12.0.0.8",tabla1);
         tablaIP.put("12.0.20.2",tabla2);
-        tablaIP.put("165.8.6.25",tabla3);
+        tablaIP.put(myFakeAddress,tabla3);
+
         tablaIP.toString();
     }
 
-    public Map<String, TablaIp> getTablaIP() {
-        return tablaIP;
+    public void run(){
+        try
+        {
+            ServerSocket servidor = new ServerSocket(port);
+            while (true){
+                Socket cliente = servidor.accept();
+                String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
+                String clientIPRevealed = clientIP.split("/")[1];
+                DataInputStream outClient;
+                outClient = new DataInputStream(cliente.getInputStream());
+                String mensaje = outClient.readUTF();
+                if (mensaje.split("\\n").length == 4) {
+                    Mensaje mensajer = new Mensaje(mensaje);
+                    if (mensajer != null) {
+                        dispatch(mensajer, clientIPRevealed);
+                    } else {
+                        System.out.println("Mensaje no valido");
+                    }
+                } else {
+                    System.out.println("Mensaje no valido");
+                }
+                System.out.println("Conexión recibida, Servidor");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR!!! Socket no pudo ser creado");
+        }
     }
 
-
-
-
-
-    public void iniciar() {
-        Thread starter = new Thread(new Dispatcher.Starter());
-        starter.start();
-        System.out.println("\nDispatcher esperando...");
-    }
-
-    public class Starter implements Runnable
-    {
-        public void run(){
-            try
-            {
-                ServerSocket servidor = new ServerSocket(7777);
-                while (true){
-                    Socket cliente = servidor.accept();
-                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
-                    Thread listener = new Thread(new Dispatcher.Manejador(cliente));
-                    listener.start();
-                    System.out.println("\nConexión recibida");
+    public void dispatch(Mensaje envio, String lastClientRealIP) {
+        if (envio.getIpMensaje().contains("#") == true) {
+            String entradas[] = envio.getIpMensaje().split("#", -1);
+            int longitud = entradas.length;
+            for (int i = 0; i < longitud; ++i) {
+                if(!(entradas[i].equals(""))) {
+                    String resultado[] = entradas[i].split(",");
+                    if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
+                        int porte = Integer.parseInt(resultado[2]);
+                        boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                        if (success == true) {
+                            System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                        } else {
+                            System.out.println("ERROR! Dirección falsa otorgada no existe");
+                        }
+                    } else {
+                        System.out.println("ERROR! El puerto debe ser un número");
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                System.out.println("\nERROR!!! Socket no pudo ser creado");
+        } else if ((envio.getIpMensaje()) != null && (envio.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
+            boolean success = this.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
+            if (success == true) {
+                System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
+            } else {
+                System.out.println("ERROR! Dirección falsa otorgada no existe");
             }
+            String mensajeAEnviar = this.getTablaIPString();
+
+            // Se lo manda a todos los que conoce
+            Set<String> keys = this.tablaIP.keySet();
+            String[] array = keys.toArray(new String[keys.size()]);
+            for(int w = 0; w < array.length; ++w) {
+                if(!(this.tablaIP.get(array[w]).getIpVerdadera().equals("0"))) {
+                    Mensaje mensaje = new Mensaje(this.myFakeAddress, array[w], 7, mensajeAEnviar);
+                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), array[w], this.tablaIP.get(array[w]).getPuerto());
+                    sender.start();
+                }
+            }
+        } else {
+            System.out.println("Este mensaje no debe ser manejado por el dispatcher");
         }
     }
 
-    public class Manejador implements Runnable
-    {
-        BufferedReader reader;
-        PrintWriter writer;
-        Socket sock;
+    public String getTablaIPString() {
+        String returnValue = new String();
+        Set<String> keys = tablaIP.keySet();
+        String[] array = keys.toArray(new String[keys.size()]);
 
-        public Manejador(Socket clientSocket)
-        {
-            try
-            {
-                sock = clientSocket;
-                InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
-                reader = new BufferedReader(isReader);
-                writer = new PrintWriter(sock.getOutputStream());
+        for(int i = 0; i < array.length; ++i) {
+            if (!(this.tablaIP.get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
+                if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
+                TablaIp tabla = this.tablaIP.get(array[i]);
+                returnValue = returnValue + tabla.getIpVerdadera() + "," + array[i] + "," + tabla.getPuerto();
             }
-            catch (Exception ex)
-            {
-                System.out.println("ERROR!!!");
-            }
-
         }
+        return returnValue;
+    }
 
-        @Override
-        public void run()
+    public boolean modifyIPTableEntry(String fake, String real, int port)
+    {
+        TablaIp faker = tablaIP.get(fake);
+        if(faker == null)
         {
-            try
-            {
-                DataInputStream outClient;
-                outClient = new DataInputStream(sock.getInputStream());
-                String mensaje = outClient.readUTF();
-                System.out.println(mensaje);
-            }
-            catch (Exception ex)
-            {
-                System.out.println("Fallo envio");
-            }
+            return false;
+        }
+        else
+        {
+            faker.modifyipVerdadera(real);
+            faker.modifypuerto(port);
+            return true;
         }
     }
 }
