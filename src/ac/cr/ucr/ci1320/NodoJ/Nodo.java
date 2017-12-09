@@ -15,7 +15,6 @@ public class Nodo {
     private int miPuerto;
     private String dispatchPath;
     private String wishedFaker;
-    private Terminal terminal;
     private String bestWish;
     private int bestWishValue;
     private int comparedWishes;
@@ -31,7 +30,6 @@ public class Nodo {
         this.miIpFalsa = fake1;
         this.dispatchPath = fake4;
         this.wishedFaker = "";
-        this.terminal = new Terminal(this, fake4);
     }
 
     public HashMap<String,TablaDirecciones> getDTable() { return  this.tablaD; }
@@ -44,7 +42,9 @@ public class Nodo {
 
     public String getmyRealIP() { return this.miIp; }
 
-    public  String getWishedFaker() { return this.wishedFaker; }
+    public String getWishedFaker() { return this.wishedFaker; }
+
+    public String getDispatchPath() { return  this.dispatchPath; }
 
     public void wish (String wish) {
         try {
@@ -146,7 +146,7 @@ public class Nodo {
 
         // Leer línea de la terminal.
 
-        Thread starter2 = new Thread(new Terminal(this, this.dispatchPath));
+        Thread starter2 = new Thread(new Terminal(this));
         starter2.start();
     }
 }

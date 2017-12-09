@@ -9,9 +9,9 @@ public class Terminal implements Runnable{
     String dispatcherFIP;
     Nodo nodo;
 
-    public Terminal(Nodo nodo, String dispatcherFIP){
+    public Terminal(Nodo nodo){
         this.nodo = nodo;
-        this.dispatcherFIP = dispatcherFIP;
+        this.dispatcherFIP = nodo.getDispatchPath();
     }
 
     public void run() {
