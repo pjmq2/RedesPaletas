@@ -12,11 +12,6 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- *
- * @author Selene
- */
-
 public class Servidor
 {
     int portz;
@@ -32,6 +27,8 @@ public class Servidor
         try {
             ServerSocket servidor = new ServerSocket(this.inter.miPuerto);
             while (true){
+                System.out.println("\nServidor esperando...");
+
                 Socket cliente = servidor.accept();
                 String clientIP = cliente.getRemoteSocketAddress().toString().split(":")[0];
                 String clientIPRevealed = clientIP.split("/")[1];
@@ -56,7 +53,5 @@ public class Servidor
         catch (Exception ex){
             System.out.println("\nERROR!!! Socket no pudo ser creado");
         }
-        System.out.println("\nServidor esperando...");
     }
-
 }

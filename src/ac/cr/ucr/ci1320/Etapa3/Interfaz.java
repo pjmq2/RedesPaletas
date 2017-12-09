@@ -11,17 +11,16 @@ public class Interfaz implements Runnable{
     private Map<String,TablaDirecciones> tablaD ;
     private Map<String,TablaIp> tablaIP;
     private String miIp; // Falsa
-    public int miPuerto;
+    private int miPuerto;
     private Analizador analisis;
     private String ipDispatcher;
     private String dirFisica;
-    private Terminal terminal;
-    private Dispatcher dispatcher;
     ///
 
     private DataStructures dataStructure;
     private ProcessingThread procThread;
     private Servidor server;
+    private boolean isTerminal;
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
 
@@ -38,6 +37,7 @@ public class Interfaz implements Runnable{
         this.dirFisica = dirFisica;         //Direccion fisica
         this.tablaIP = tablaIP;     //Tabla con las direcciones verdaderas
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
+        this.isTerminal = julian;
         if(julian)
         {
             Thread starter1 = new Thread(new Terminal(this));
@@ -245,5 +245,9 @@ public class Interfaz implements Runnable{
     public void setDataStructures(DataStructures dataStructures) {
         this.dataStructure = dataStructures;
     }
+
+    public int getMiPuerto() { return this.miPuerto; }
+
+    public boolean getisTerminal() { return this.isTerminal; }
 }
 

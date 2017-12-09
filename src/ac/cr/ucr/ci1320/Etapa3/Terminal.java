@@ -1,13 +1,13 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
-import org.omg.PortableInterceptor.INACTIVE;
-
 import java.util.Scanner;
 
 public class Terminal implements Runnable{
     Scanner scanner;
     String myFakeAddress;
     Interfaz interfaz;
+
+    String dispatcherFIP = "165.8.6.25";
 
     public Terminal(Interfaz interfaz){
         this.interfaz = interfaz;
@@ -42,6 +42,11 @@ public class Terminal implements Runnable{
                         SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                         sender.start();
                     }
+                } else if (entrada.equalsIgnoreCase("DISPATCH") && interfaz.getisTerminal()) {
+                    Mensaje mensaje = new Mensaje(myFakeAddress, dispatcherFIP, 7, Integer.toString(interfaz.getMiPuerto()));
+                    TablaIp tabla = this.interfaz.getTablaIP().get(this.dispatcherFIP);
+                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
+                    sender.start();
                 } else {
                     System.out.println("Mensaje Inválido");
                 }

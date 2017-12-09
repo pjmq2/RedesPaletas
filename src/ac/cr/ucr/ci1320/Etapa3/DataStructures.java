@@ -19,7 +19,6 @@ public class DataStructures {
         this.bufferCount = bufferCount;
 
        this.fillEmptyPositions();
-
     }
 
 
@@ -52,6 +51,4 @@ public class DataStructures {
             emptyPositions.offer(i);
         }
     }
-
-
 }

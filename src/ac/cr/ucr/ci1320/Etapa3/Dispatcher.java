@@ -22,7 +22,7 @@ public class Dispatcher implements Runnable{
     private Interfaz interfaz;
 
     public Dispatcher(Interfaz interfaz) {
-        port = 5555;
+        port = 4444;
         myRealAddress = "localhost";
         myFakeAddress = "165.8.6.25";
         this.interfaz = interfaz;
