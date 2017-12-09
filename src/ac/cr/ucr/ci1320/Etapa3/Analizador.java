@@ -49,59 +49,14 @@ public class Analizador {
 
     public String getIpDestino(String ipInicial) //Recibe a quien se lo va a mandar, devuelve a traves de quien
     {
-        String ipDestino = tablaD.get(ipInicial).getEtiqueta();
+        //String ipDestino = tablaD.get(ipInicial).getEtiqueta(); //Aun creo que lo que deberia devolver es el aTraves...
+        String ipDestino = tablaD.get(ipInicial).getaTraves();
         return ipDestino;
-        /*
-        String cadena[] = ipInicial.split("\\."); //Saca el primer numero de la direccion falsa (antes del primer punto)
-        int primVal = Integer.parseInt(cadena[0]);
-        switch (Integer.parseInt(cadena[0])){
-            default:
-                ipDestino = tablaD.get("165.8.0.0").getEtiqueta();
-                break;
-            case 12:
-                ipDestino = ipInicial;
-                break;
-            case 200:
-                ipDestino = tablaD.get("200.5.0.2").getEtiqueta();
-                break;
-            case 25:
-                ipDestino = tablaD.get("25.0.0.0").getEtiqueta();
-                break;
-            case 201:
-                ipDestino = tablaD.get("201.6.0.0").getEtiqueta();
-                break;
-            case 140:
-                ipDestino = tablaD.get("140.90.0.0").getEtiqueta();
-                break;
-        }*/
     }
 
     public int getPuertoDestino(String ipInicial) //Devuelve el puerto del destino
     {
         int puertoDestino = tablaIP.get(ipInicial).getPuerto();
         return puertoDestino;
-        /*
-        String cadena[] = ipInicial.split("\\.");
-        switch (Integer.parseInt(cadena[0])){
-            default:
-                puertoDestino = tablaIP.get("165.8.0.0").getPuerto();
-                break;
-            case 12:
-                puertoDestino = tablaIP.get(ipInicial).getPuerto();
-                break;
-            case 200:
-                puertoDestino = tablaIP.get("200.5.0.2").getPuerto();
-                break;
-            case 25:
-                puertoDestino = tablaIP.get("25.0.0.0").getPuerto();
-                break;
-            case 201:
-                puertoDestino = tablaIP.get("201.6.0.0").getPuerto();
-                break;
-            case 140:
-                puertoDestino = tablaIP.get("140.90.0.0").getPuerto();
-                break;
-        }
-        */
     }
 }
