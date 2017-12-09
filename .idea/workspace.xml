@@ -7,10 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Nodo.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Nodo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Terminal.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Terminal.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -646,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512844354935</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1512845768157</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1512845768157</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
