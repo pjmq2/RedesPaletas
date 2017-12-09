@@ -20,25 +20,29 @@ public class Interfaz implements Runnable{
     ///
 
     private DataStructures dataStructure;
+    private ProcessingThread procThread;
     private Servidor server;
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
 
     public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher,
-                    String dirFisica, Map<String,TablaIp> tablaIP, int numBuf)
+                    String dirFisica, Map<String,TablaIp> tablaIP, int numBuf, boolean julian)
     {
         this.tablaD = tablaD;               //Tabla de direcciones
         this.miIp = miIp;                   //Direccion falsa                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
 
-        dataStructure = new DataStructures(numBuf); //de donde viene el num de buffers?
+        dataStructure = new DataStructures(numBuf);
 
         this.miPuerto = miPuerto;           //Puerto
         this.ipDispatcher = ipDispatcher;   //Direccion real
         this.dirFisica = dirFisica;         //Direccion fisica
         this.tablaIP = tablaIP;     //Tabla con las direcciones verdaderas
         this.analisis = new Analizador(tablaD, tablaIP, miIp);
-        Thread starter1 = new Thread(new Terminal(this));
-        starter1.start();
+        if(julian)
+        {
+            Thread starter1 = new Thread(new Terminal(this));
+            starter1.start();
+        }
         Thread starter2 = new Thread(new Dispatcher(this));
         starter2.start();
     }
@@ -226,6 +230,8 @@ public class Interfaz implements Runnable{
     {
         server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
+
+        Thread process = new Thread(new ProcessingThread(this));
 
         //Faltaría algo mas aca?
     }
