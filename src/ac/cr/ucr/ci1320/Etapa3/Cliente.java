@@ -8,10 +8,6 @@ package ac.cr.ucr.ci1320.Etapa3;
 import java.net.Socket;
 import java.io.DataOutputStream;
 
-/**
- *
- * @author Selene
- */
 public class Cliente {
 
     String ipDestino;
