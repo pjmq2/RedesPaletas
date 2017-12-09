@@ -20,14 +20,16 @@ public class Interfaz implements Runnable{
 
     private DataStructures dataStructure;
     private Servidor server;
-    //*PunteroAlBuffer ptrBuff;
     private final AtomicInteger permits = new AtomicInteger(0);
     private final Semaphore semaphore = new Semaphore(1, true);
 
-    public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher, String dirFisica, Map<String,TablaIp> tablaIP)
+    public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher,
+                    String dirFisica, Map<String,TablaIp> tablaIP, int numBuf)
     {
         this.tablaD = tablaD;               //Tabla de direcciones
         this.miIp = miIp;                   //Direccion falsa                    PrintWriter writer = new PrintWriter(cliente.getOutputStream());
+
+        dataStructure = new DataStructures(numBuf); //de donde viene el num de buffers?
 
         this.miPuerto = miPuerto;           //Puerto
         this.ipDispatcher = ipDispatcher;   //Direccion real
@@ -217,16 +219,7 @@ public class Interfaz implements Runnable{
         server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
 
-        while(true)
-        {
-            /*
-            semaphore.acquireUninterruptibly(Integer.MAX_VALUE); //Que se detenga hasta que hayan datos disponibles
-            semaphore.release(Integer.MAX_VALUE);
-            */
-            //El Buffer va a devolver el String por el que va
-            String devuelto = "";
-            recibirTransmicion(devuelto);
-        }
+        //Faltaría algo mas aca?
     }
 
     public DataStructures getDataStructures() {
