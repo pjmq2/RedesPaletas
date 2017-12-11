@@ -77,8 +77,7 @@ public class Main {
         {
             System.out.print( "Seleccione el tipo de enrutador (1 o 2): \n" );
             tipoEnrutador = Integer.parseInt(scanner.nextLine());
-            if(tipoEnrutador == 1)
-            {
+            if(tipoEnrutador == 1){
                 tablaD = Enrutador1();
             }
             else if (tipoEnrutador == 2)

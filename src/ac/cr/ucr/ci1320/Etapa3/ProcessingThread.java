@@ -20,9 +20,7 @@ public class ProcessingThread implements  Runnable {
                 BufferEntry bufferReference = localInterface.getDataStructures().getpQueue().take();  //Get next item from pQueue, wait if theres none
                 System.out.println("Processing data" + bufferReference.getData());
                 localInterface.recibirTransmicion(bufferReference.getData());
-                Thread.sleep(random.nextInt(10) * 100);                                 //Process it
                 localInterface.getDataStructures().getEmptyPositions().put(bufferReference.getArrayPosition());
-                System.out.println("Position: " + bufferReference.getArrayPosition() + " Logically erased");
             }catch (InterruptedException e){
                 e.printStackTrace();
             }

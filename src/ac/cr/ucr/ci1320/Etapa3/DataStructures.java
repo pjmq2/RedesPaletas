@@ -12,15 +12,23 @@ public class DataStructures {
     private Integer bufferCount;
 
     public DataStructures(int bufferCount){
-        pQueue = new PriorityBlockingQueue<>(bufferCount);
-        this.mainBuffers = new BufferEntry[bufferCount];
+        setpQueue(new PriorityBlockingQueue<>(bufferCount));
+        this.setMainBuffers(new BufferEntry[bufferCount]);
         Arrays.fill(getMainBuffers(), new BufferEntry());
-        emptyPositions = new LinkedBlockingQueue<>(bufferCount);
-        this.bufferCount = bufferCount;
+        setEmptyPositions(new LinkedBlockingQueue<>(bufferCount));
+        this.setBufferCount(bufferCount);
 
        this.fillEmptyPositions();
     }
 
+
+
+
+    private void fillEmptyPositions(){
+        for (int i = 0; i < this.getBufferCount(); i++) {
+            getEmptyPositions().offer(i);
+        }
+    }
 
     public BlockingQueue<BufferEntry> getpQueue() {
         return pQueue;
@@ -46,9 +54,11 @@ public class DataStructures {
         this.emptyPositions = emptyPositions;
     }
 
-    private void fillEmptyPositions(){
-        for (int i = 0; i < this.bufferCount; i++) {
-            emptyPositions.offer(i);
-        }
+    public Integer getBufferCount() {
+        return bufferCount;
+    }
+
+    public void setBufferCount(Integer bufferCount) {
+        this.bufferCount = bufferCount;
     }
 }

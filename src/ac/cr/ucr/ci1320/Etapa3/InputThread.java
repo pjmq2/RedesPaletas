@@ -16,30 +16,22 @@ public class InputThread implements Runnable {
     @Override
     public void run(){
         try {
-            Integer index = dataStructures.getEmptyPositions().poll();                      //Get new position
-            if (index != null) {
-                BufferEntry bufferReference = dataStructures.getMainBuffers()[index];       //Get a reference to that position
-                bufferReference.getLock().lock();                                           //Lock that position
-                BufferEntry newBuffer = new BufferEntry(this.data, index );   //Create a new bufferEntry
-                dataStructures.getMainBuffers()[index] = newBuffer;                         //Store it on mainBuffers
-                System.out.println("Thread: " + Thread.currentThread().getName() +
-                            " is modifying entry --> " + index);
-
-                bufferReference.getLock().unlock();                                         //Unlock that mainBuffers position
-
-                dataStructures.getpQueue().put(newBuffer);                                  //Add that new buffer entry to pQueue
-                                                                                            //No need to sync cause its object type
-            } else {
-                System.out.println("There's no empty positions".toUpperCase());
-                Thread.sleep(300);
+            Integer index = dataStructures.getEmptyPositions().poll();
+            if(index == null){
+                BufferEntry bufferReference = dataStructures.getMainBuffers()[index];
+                bufferReference.getLock().lock();
+                bufferReference.setData(this.data);
+                bufferReference.setArrayPosition(index);
+                bufferReference.getLock().unlock();
+                dataStructures.getpQueue().put(bufferReference);
             }
-            }catch (InterruptedException e){
-                e.printStackTrace();
-                System.out.println(e.getMessage());
+            else{
+                System.out.println("Package lost, main buffers are all used");
             }
-
-
-        System.out.println("                            TERMINA --> " + Thread.currentThread().getName());
+        }catch (InterruptedException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
 /** La idea es
