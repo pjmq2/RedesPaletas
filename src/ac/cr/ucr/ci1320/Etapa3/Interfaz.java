@@ -1,11 +1,15 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+import java.io.File;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
 
 public class Interfaz implements Runnable{
     //Se pasa toodo lo de Nodo a Interfaz
@@ -22,6 +26,9 @@ public class Interfaz implements Runnable{
     private ProcessingThread procThread;
     private Servidor server;
     private boolean isTerminal;
+    private Analizador analizar;
+    private String dirArchivo;
+    private int contadorRecibidos;
 
     public Interfaz(Map<String,TablaDirecciones> tablaD, String miIp, int miPuerto, String ipDispatcher,
                     String dirFisica, Map<String,TablaIp> tablaIP, int numBuf, boolean julian)
@@ -42,6 +49,10 @@ public class Interfaz implements Runnable{
             Thread starter1 = new Thread(new Terminal(this, this.ipDispatcher));
             starter1.start();
         }
+        this.analizar = new Analizador(tablaD, tablaIP, miIp);
+        Path currentRelativePath = Paths.get("");
+        dirArchivo = currentRelativePath.toAbsolutePath().toString() + "Envios" + miIp +".txt";
+        this.contadorRecibidos = 0;
     }
 
     // Procesa el mensaje
@@ -104,10 +115,17 @@ public class Interfaz implements Runnable{
                     if (mensaje.getIpDestino().equals(miIp))
                     {
                         imprimirMensaje(mensaje);
-                        try(  PrintWriter out = new PrintWriter( "registro.txt" )  ) //Guardar los valores recibidos
+                        contadorRecibidos++;
+
+                        try(PrintWriter pw = new PrintWriter(new File(dirArchivo)) )
                         {
-                            out.println( mensaje.getIpFuente() + "\n");
-                            out.println( mensaje.getIpMensaje() + "\n");
+                            StringBuilder sb = new StringBuilder();
+                            sb.append(contadorRecibidos);
+                            sb.append(',');
+                            sb.append(mensaje.getIpFuente());
+                            sb.append(',');
+                            sb.append(mensaje.getIpDestino());
+                            sb.append('\n');
                         }
                         catch (java.io.FileNotFoundException c)
                         {
@@ -237,7 +255,7 @@ public class Interfaz implements Runnable{
 
     @Override
     public void run()    {
-        server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
+        server = new Servidor(this, analizar); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
 
         Thread bufferProcessor = new Thread(new ProcessingThread(this));
