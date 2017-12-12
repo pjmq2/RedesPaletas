@@ -36,7 +36,7 @@ public class Terminal implements Runnable{
                         TablaIp tabla = this.interfaz.getTablaIP().get(array[0]);
                         SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                         sender.start();
-                    } else {
+                    } else { //El caso normal
                         String mensajeAEnviar = array[1];
                         Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 0, mensajeAEnviar);
                         TablaIp tabla = this.interfaz.getTablaIP().get(array[0]);

@@ -95,12 +95,12 @@ public class Dispatcher implements Runnable{
             } else {
                 System.out.println("ERROR! Dirección falsa otorgada no existe");
             }
-            String mensajeAEnviar = this.getTablaIPString();
+            String mensajeAEnviar = this.getTablaIPString(); //Aca se pone lo raro
 
             // Se lo manda a todos los que conoce
             Set<String> keys = this.tablaIp.keySet();
-            String[] array = keys.toArray(new String[keys.size()]);
-            for(int w = 0; w < array.length; ++w) {
+            String[] array = keys.toArray(new String[keys.size()]); //Devuelve un array que contiene todos los elementos del set
+            for(int w = 0; w < array.length; ++w) { //Podria ponerle a array.length un -1 para que no se cuente a sí mismo
                 if(!(this.tablaIp.get(array[w]).getIpVerdadera().equals("0"))) {
                     TablaIp tabla = this.tablaIp.get(array[w]);
                     Mensaje mensaje = new Mensaje(this.myFakeAddress, array[w], 7, mensajeAEnviar);
@@ -118,7 +118,9 @@ public class Dispatcher implements Runnable{
         TablaIp faker = tablaIp.get(fake);
         if(faker == null)
         {
-            return false;
+            //return false;
+            tablaIp.put(fake, new TablaIp(real, portz));
+            return true;
         }
         else
         {
@@ -136,7 +138,7 @@ public class Dispatcher implements Runnable{
         for(int i = 0; i < array.length; ++i) {
             if (!(tablaIp.get(array[i]).getIpVerdadera().equalsIgnoreCase("0"))) {
                 if(!(returnValue.equals(""))) { returnValue = returnValue + "#"; }
-                returnValue = returnValue + tablaIp.get(array[i]) + "," + array[i] + "," + tablaIp.get(array[i]).getPuerto();
+                returnValue = returnValue + tablaIp.get(array[i]) + "," + array[i] + "," + tablaIp.get(array[i]).getPuerto(); //Aca esta el error!
             }
         }
         return returnValue;
