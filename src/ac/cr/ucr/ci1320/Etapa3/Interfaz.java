@@ -39,7 +39,7 @@ public class Interfaz implements Runnable{
         this.isTerminal = julian;
         if(julian)
         {
-            Thread starter1 = new Thread(new Terminal(this));
+            Thread starter1 = new Thread(new Terminal(this, this.ipDispatcher));
             starter1.start();
         }
     }

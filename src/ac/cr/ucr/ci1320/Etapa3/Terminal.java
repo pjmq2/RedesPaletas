@@ -9,9 +9,10 @@ public class Terminal implements Runnable{
 
     String dispatcherFIP = "165.8.6.25";
 
-    public Terminal(Interfaz interfaz){
+    public Terminal(Interfaz interfaz, String dispatcherFIP){
         this.interfaz = interfaz;
         this.myFakeAddress = interfaz.getMyFakeAddress();
+        this.dispatcherFIP = dispatcherFIP;
     }
 
 

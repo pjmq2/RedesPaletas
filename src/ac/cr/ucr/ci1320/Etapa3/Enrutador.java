@@ -42,7 +42,7 @@ public class Enrutador{
             Thread interfaz = new Thread(new Interfaz(tablaD,ips[y],puertos[y],fipDispatcher,fisicos[y],tablaIP, cantBuf, julian));
             interfaz.start();
         }
-        Thread starter2 = new Thread(new Dispatcher(tablaIP));
+        Thread starter2 = new Thread(new Dispatcher(tablaIP, fipDispatcher));
         starter2.start();
     }
 }

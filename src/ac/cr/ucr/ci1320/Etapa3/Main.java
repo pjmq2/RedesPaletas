@@ -120,7 +120,7 @@ public class Main {
         int cantInterfaces = 1; //La cantidad de interfaces
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //El ip del dispatcher
-        String ripDispatcher = "10.100.2.4";
+        String ripDispatcher = "localhost";
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
         tablaD = Enrutador1();
 

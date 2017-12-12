@@ -9,8 +9,10 @@ package ac.cr.ucr.ci1320.Etapa3;
 import ac.cr.ucr.ci1320.NodoJ.Recividor;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -21,10 +23,16 @@ public class Dispatcher implements Runnable{
     private String myFakeAddress;
     private Map<String, TablaIp> tablaIp;
 
-    public Dispatcher(Map<String, TablaIp> tablaIp) {
+    public Dispatcher(Map<String, TablaIp> tablaIp, String fip) {
         port = 4444;
-        myRealAddress = "localhost";
-        myFakeAddress = "165.8.6.25";
+        InetAddress ipAddr;
+        try {
+            ipAddr = InetAddress.getLocalHost();
+            myRealAddress = ipAddr.getHostAddress();
+            myFakeAddress = fip;
+        } catch (UnknownHostException ex) {
+            ex.printStackTrace();
+        }
         this.tablaIp = tablaIp;
     }
 
