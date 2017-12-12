@@ -8,123 +8,267 @@ public class Main {
 
     private static Scanner scanner = new Scanner( System.in );
 
-    private static Map<String,TablaDirecciones> Enrutador1() //Aca solo se ponen los que no son directos
+    private static Map<String,TablaDirecciones> Enrutador11TablaD() //Aca solo se ponen los que no son directos
     {
         Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","RouterHobbit1",1); //Se usan los nodos?
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","Terminal 1",1); //Se usan los nodos?
         tablaD.put("12.70.4.5",tabla1);
-        TablaDirecciones tabla2 = new TablaDirecciones("163.178.15.15","RouterHobbit1",1);
+        TablaDirecciones tabla2 = new TablaDirecciones("163.178.17.17","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
-        TablaDirecciones tabla3 = new TablaDirecciones("163.178.15.15","RouterHobbit1",1);
+        TablaDirecciones tabla3 = new TablaDirecciones("163.178.17.17","Terminal 6",1);
         tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("11.50.70.12","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("193.34.11.7","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("163.178.20.20","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("163.178.30.30","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Enrutador2()
+    private static Map<String,TablaDirecciones> Enrutador12TablaD() //Aca solo se ponen los que no son directos
     {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","RouterHobbit2",1);
-        tablaD.put("11.70.4.5",tabla1);
-        TablaDirecciones tabla2 = new TablaDirecciones("163.178.17.17","RouterHobbit2",1);
-        tablaD.put("193.34.11.22",tabla2);
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("163.178.15.15","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("163.178.15.15","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("11.70.4.5","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("193.34.11.7","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("163.178.15.15","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("163.178.15.15","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Terminal2TablaD()
+    private static Map<String,TablaDirecciones> Enrutador13TablaD() //Aca solo se ponen los que no son directos
     {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        //agrego este por si se hacen pruebas solo entre router y terminal
-        TablaDirecciones tabla1 = new TablaDirecciones("11.50.70.12","unoPuntoDos",0);
-        tablaD.put("11.50.70.12",tabla1);
-        TablaDirecciones tabla2 = new TablaDirecciones("193.34.11.7","Terminal3",0);
-        tablaD.put("193.34.11.22",tabla2);
-        TablaDirecciones tabla3 = new TablaDirecciones("163.178.15.15","Terminal4",0);
-        tablaD.put("12.0.0.6",tabla3);
-        TablaDirecciones tabla4 = new TablaDirecciones("163.178.15.15","Terminal7",0);
-        tablaD.put("163.178.30.30",tabla4);
-        TablaDirecciones tabla5 = new TablaDirecciones("163.178.15.15","Terminal1",1);
-        tablaD.put("12.70.4.5",tabla5);
-        TablaDirecciones tabla6 = new TablaDirecciones("163.178.15.15","Terminal4",1);
-        tablaD.put("12.0.0.6",tabla6);
-        TablaDirecciones tabla7 = new TablaDirecciones("163.178.15.15","Terminal6",1);
-        tablaD.put("12.0.0.7",tabla7);
-
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("163.178.15.15","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("163.178.15.15","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("11.50.70.12","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("193.34.11.22","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("163.178.15.15","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("163.178.15.15","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Terminal3TablaD()
+    private static Map<String,TablaDirecciones> Enrutador21TablaD() //Aca solo se ponen los que no son directos
     {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Los primeros 4 "deberian" decir "Directo"
-        //agrego este por si se hacen pruebas solo entre router y terminal
-        TablaDirecciones tabla1 = new TablaDirecciones("193.34.11.7","unoPuntoTres",0);
-        tablaD.put("193.34.11.7",tabla1);
-        TablaDirecciones tabla2 = new TablaDirecciones("11.50.70.12","Terminal2",0);
-        tablaD.put("11.70.4.5",tabla2);
-        TablaDirecciones tabla3 = new TablaDirecciones("163.178.15.15","Terminal4",0);
-        tablaD.put("12.0.0.6",tabla3);
-        TablaDirecciones tabla4 = new TablaDirecciones("163.178.15.15","Terminal7",0);
-        tablaD.put("163.178.30.30",tabla4);
-        TablaDirecciones tabla5 = new TablaDirecciones("163.178.15.15","Terminal1",1);
-        tablaD.put("12.70.4.5",tabla5);
-        TablaDirecciones tabla6 = new TablaDirecciones("163.178.15.15","Terminal4",1);
-        tablaD.put("12.0.0.6",tabla6);
-        TablaDirecciones tabla7 = new TablaDirecciones("163.178.15.15","Terminal6",1);
-        tablaD.put("12.0.0.7",tabla7);
-
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("12.0.9.8","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("12.0.9.8","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("12.0.9.8","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("163.178.15.15","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("163.178.15.15","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("163.178.20.20","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("163.178.30.30","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
 
-    private static Map<String,TablaIp> TerminalTablaIp() { //Intento hacerla para que funcione para todos
-        Map<String,TablaIp> tablaIP = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("10.1.130.107", 8889); //Interfaz 1.3 de router1
-        tablaIP.put("193.34.11.7",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.84", 8181); //Terminal 2
-        tablaIP.put("11.70.4.5",tabla2);
-        TablaIp tabla3 = new TablaIp("10.1.130.205", 8188); //Terminal 7
-        tablaIP.put("163.178.30.30",tabla3);
-        TablaIp tabla4 = new TablaIp("10.1.130.204", 8183); //Terminal 5
-        tablaIP.put("163.178.20.20",tabla4);
-        TablaIp tabla5 = new TablaIp("10.1.130.31", 8185); //Terminal 1
-        tablaIP.put("12.70.4.5",tabla5);
-        TablaIp tabla6 = new TablaIp("10.1.130.39", 8184); //Terminal 4
-        tablaIP.put("12.0.0.6",tabla6);
-        TablaIp tabla7 = new TablaIp("10.1.130.151", 8189); //Terminal 6
-        tablaIP.put("12.0.0.7",tabla7);
-        TablaIp tabla8 = new TablaIp("10.1.130.211", 8182); //Terminal 3
-        tablaIP.put("193.34.11.22",tabla8);
-
-        return tablaIP;
-    }
-
-
-
-    /*
-    private static Map<String,TablaDirecciones> Enrutador1()
+    private static Map<String,TablaDirecciones> Enrutador22TablaD() //Aca solo se ponen los que no son directos
     {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        TablaDirecciones tabla1 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
-        tablaD.put("192.118.1.0",tabla1);
-        TablaDirecciones tabla2 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
-        tablaD.put("16.0.28.0",tabla2);
-        TablaDirecciones tabla3 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
-        tablaD.put("25.0.0.0",tabla3);
-        TablaDirecciones tabla4 = new TablaDirecciones("168.5.0.0","RouterHobbit1",1);
-        tablaD.put("10.8.0.0",tabla4);
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("12.70.4.5","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("12.0.0.6","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("12.0.0.7","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("163.178.17.17","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("163.178.17.17","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("163.178.17.17","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("163.178.17.17","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Enrutador2()
+    private static Map<String,TablaDirecciones> Red12TablaD() //Aca solo se ponen los que no son directos
     {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        TablaDirecciones tabla1 = new TablaDirecciones("168.5.0.0","RouterHobbit2",1);
-        tablaD.put("200.6.0.0",tabla1);
-        TablaDirecciones tabla2 = new TablaDirecciones("168.5.0.0","RouterHobbit2",1);
-        tablaD.put("178.8.60.0",tabla2);
-        TablaDirecciones tabla3 = new TablaDirecciones("168.5.0.0","RouterHobbit2",1);
-        tablaD.put("123.45.67.0",tabla3);
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("12.70.4.5","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("12.0.0.6","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("12.0.0.7","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("12.0.9.8","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("12.0.9.8","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("12.0.9.8","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("12.0.9.8","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
-    */
+
+    private static Map<String,TablaDirecciones> Red163TablaD() //Aca solo se ponen los que no son directos
+    {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("163.178.17.17","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("163.178.17.17","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("163.178.15.15","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("163.178.15.15","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("163.178.20.20","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("163.178.30.30","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
+        return tablaD;
+    }
+
+    private static Map<String,TablaDirecciones> Red11TablaD() //Aca solo se ponen los que no son directos
+    {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("11.50.70.12","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("11.50.70.12","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("11.50.70.12","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("11.70.4.5","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("11.50.70.12","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("11.50.70.12","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("11.50.70.12","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
+        return tablaD;
+    }
+
+    private static Map<String,TablaDirecciones> Red193TablaD() //Aca solo se ponen los que no son directos
+    {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
+        TablaDirecciones tabla1 = new TablaDirecciones("193.34.11.7","Terminal 1",1); //Se usan los nodos?
+        tablaD.put("12.70.4.5",tabla1);
+        TablaDirecciones tabla2 = new TablaDirecciones("193.34.11.7","Terminal 4",1);
+        tablaD.put("12.0.0.6",tabla2);
+        TablaDirecciones tabla3 = new TablaDirecciones("193.34.11.7","Terminal 6",1);
+        tablaD.put("12.0.0.7",tabla3);
+        TablaDirecciones tabla4 = new TablaDirecciones("193.34.11.7","Terminal 2",0);
+        tablaD.put("11.70.4.5",tabla4);
+        TablaDirecciones tabla5 = new TablaDirecciones("193.34.11.22","Terminal 3",0);
+        tablaD.put("193.34.11.22",tabla5);
+        TablaDirecciones tabla6 = new TablaDirecciones("193.34.11.7","Terminal 5",0);
+        tablaD.put("163.178.20.20",tabla6);
+        TablaDirecciones tabla7 = new TablaDirecciones("193.34.11.7","Terminal 7",0);
+        tablaD.put("163.178.30.30",tabla7);
+        return tablaD;
+    }
+
+    private static Map<String,TablaIp> Enrutador1TablaIp(){
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        TablaIp tabla1 = new TablaIp("10.1.130.84",8181);
+        tablaIp.put("11.70.4.5",tabla1);
+        TablaIp tabla2 = new TablaIp("10.1.130.211",8182);
+        tablaIp.put("193.34.11.22",tabla2);
+        TablaIp tabla3 = new TablaIp("10.1.130.204",8183);
+        tablaIp.put("163.178.20.20",tabla3);
+        TablaIp tabla4 = new TablaIp("10.1.130.205",8188);
+        tablaIp.put("163.178.30.30",tabla4);
+        TablaIp tabla5 = new TablaIp("localhost",8889);
+        tablaIp.put("11.50.70.12",tabla5);
+        TablaIp tabla6 = new TablaIp("localhost",8888);
+        tablaIp.put("163.178.15.15",tabla6);
+        TablaIp tabla7 = new TablaIp("localhost",8887);
+        tablaIp.put("193.34.11.0",tabla7);
+        return tablaIp;
+    }
+
+    private static Map<String,TablaIp> Enrutador2TablaIp(){
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        TablaIp tabla1 = new TablaIp("10.1.130.39",8184);
+        tablaIp.put("12.0.0.6",tabla1);
+        TablaIp tabla2 = new TablaIp("10.1.130.151",8189);
+        tablaIp.put("12.0.0.7",tabla2);
+        TablaIp tabla3 = new TablaIp("10.1.130.31",8185);
+        tablaIp.put("12.70.4.5",tabla3);
+        TablaIp tabla4 = new TablaIp("10.1.130.205",8188);
+        tablaIp.put("163.178.30.30",tabla4);
+        TablaIp tabla5 = new TablaIp("10.1.130.204",8183);
+        tablaIp.put("163.178.20.20",tabla5);
+        TablaIp tabla6 = new TablaIp("localhost",9998);
+        tablaIp.put("12.0.9.8",tabla6);
+        TablaIp tabla7 = new TablaIp("localhost",9999);
+        tablaIp.put("163.178.17.17",tabla7);
+        return tablaIp;
+    }
+
+    private static Map<String,TablaIp> Red12TablaIp(){
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        TablaIp tabla1 = new TablaIp("10.1.130.39",8184);
+        tablaIp.put("12.0.0.6",tabla1);
+        TablaIp tabla2 = new TablaIp("10.1.130.151",8189);
+        tablaIp.put("12.0.0.7",tabla2);
+        TablaIp tabla3 = new TablaIp("10.1.130.31",8185);
+        tablaIp.put("12.70.4.5",tabla3);
+        TablaIp tabla4 = new TablaIp("10.1.130.83",9998);
+        tablaIp.put("12.0.9.8",tabla4);
+        return tablaIp;
+    }
+
+    private static Map<String,TablaIp> Red163TablaIp(){
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        TablaIp tabla1 = new TablaIp("10.1.130.205",8188);
+        tablaIp.put("163.178.30.30",tabla1);
+        TablaIp tabla2 = new TablaIp("10.1.130.204",8183);
+        tablaIp.put("163.178.20.20",tabla2);
+        TablaIp tabla6 = new TablaIp("10.1.130.107",8888);
+        tablaIp.put("163.178.15.15",tabla6);
+        TablaIp tabla7 = new TablaIp("10.1.130.83",9999);
+        tablaIp.put("163.178.17.17",tabla7);
+        return tablaIp;
+    }
+
+    private static Map<String,TablaIp> Red11TablaIp(){
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        TablaIp tabla1 = new TablaIp("10.1.130.84",8181);
+        tablaIp.put("11.70.4.5",tabla1);
+        TablaIp tabla2 = new TablaIp("10.1.130.107",88899);
+        tablaIp.put("11.50.70.12",tabla2);
+        return tablaIp;
+    }
+
+    private static Map<String,TablaIp> Red193TablaIp(){
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        TablaIp tabla1 = new TablaIp("10.1.130.211",8182);
+        tablaIp.put("193.34.11.22",tabla1);
+        TablaIp tabla2 = new TablaIp("10.1.130.107",8887);
+        tablaIp.put("193.34.11.0",tabla2);
+        return tablaIp;
+    }
 
     private static void correr()
     {
@@ -146,11 +290,11 @@ public class Main {
             System.out.print( "Seleccione el tipo de enrutador (1 o 2): \n" );
             tipoEnrutador = Integer.parseInt(scanner.nextLine());
             if(tipoEnrutador == 1){
-                tablaD = Enrutador1();
+                //tablaD = Enrutador1();
             }
             else if (tipoEnrutador == 2)
             {
-                tablaD = Enrutador2();
+                //tablaD = Enrutador2();
             }
             else
             {
@@ -191,7 +335,7 @@ public class Main {
         //String ipDispatcher = "163.178.20.20";
         String ripDispatcher = "localhost"; //Igual
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        tablaD = Enrutador1();
+        //tablaD = Enrutador1();
         //tablaD = Terminal3();
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
