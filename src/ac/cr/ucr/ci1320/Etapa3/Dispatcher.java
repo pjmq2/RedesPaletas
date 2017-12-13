@@ -41,6 +41,9 @@ public class Dispatcher implements Runnable{
             ex.printStackTrace();
         }
         this.tablaIp = tablaIp;
+
+
+        
     }
 
 
