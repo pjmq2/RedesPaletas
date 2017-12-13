@@ -407,7 +407,7 @@ public class Main {
 
     private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 1; //La cantidad de interfaces
+        int cantInterfaces = 3; //La cantidad de interfaces
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";

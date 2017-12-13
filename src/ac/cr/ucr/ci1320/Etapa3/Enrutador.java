@@ -93,6 +93,11 @@ public class Enrutador{
             interfaz.start();
         }
 
+        if(ripDispatcher.equals("localhost")) {
+            Thread interfaz = new Thread(new Dispatcher(tablaIp, fipDispatcher));
+            interfaz.start();
+        }
+
         //Thread starter2 = new Thread(new Dispatcher(tablaIP, fipDispatcher)); //COMENTAR PARA HACER PRUEBAS
         //starter2.start();
     }
