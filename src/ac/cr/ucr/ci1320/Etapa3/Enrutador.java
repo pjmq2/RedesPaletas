@@ -29,8 +29,6 @@ public class Enrutador{
 
 
         //Map<String,TablaDirecciones> tablaD= new HashMap<>();
-
-
         /*
         int i = 0;
         for(i=0; i<cantInterfaces; i++){

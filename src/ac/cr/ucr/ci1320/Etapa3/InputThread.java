@@ -23,6 +23,7 @@ public class InputThread implements Runnable {
                 bufferReference.setData(this.data);
                 bufferReference.setArrayPosition(index);
                 bufferReference.getLock().unlock();
+                System.out.println("Acabo de recibir un:" + this.data);
                 dataStructures.getpQueue().put(bufferReference);
             }
             else{

@@ -13,7 +13,6 @@ public class ProcessingThread implements  Runnable {
 
     @Override
     public void run(){
-        System.out.println("Processing thread starting");
 
         for(;;){
             try {

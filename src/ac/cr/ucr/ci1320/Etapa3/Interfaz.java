@@ -262,12 +262,13 @@ public class Interfaz implements Runnable{
     }
 
     @Override
-    public void run()    {
+    public void run(){
+        Thread bufferProcessor = new Thread(new ProcessingThread(this));
+        bufferProcessor.start();
+
         server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
 
-        Thread bufferProcessor = new Thread(new ProcessingThread(this));
-        bufferProcessor.start();
     }
 
     public DataStructures getDataStructures() {
