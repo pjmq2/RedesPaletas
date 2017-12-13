@@ -43,7 +43,26 @@ public class Servidor
                     String mensaje = outClient.readUTF(); //Lee los recibidos
                     System.out.println(mensaje);
 
-                    Thread buffing = new Thread(new InputThread(inter.getDataStructures(), mensaje));
+                    String[] array = mensaje.split("\n");
+
+                    int purpose = 0;
+
+                    if(array.length>4){
+                        Paquete paquete = new Paquete(mensaje); // Mete el mensaje en un paquete
+                        purpose = paquete.getMensaje().getAccion();
+                    }else {
+                        Mensaje mensajeX = new Mensaje(mensaje);
+                        purpose = mensajeX.getAccion();
+                    }
+
+                    Thread buffing;
+
+                    if(purpose != 8) {
+                        buffing = new Thread(new InputThread(inter.getDataStructures(), mensaje));
+                    }
+                    else{
+                        buffing = new Thread(new InputThread(inter.getDataStructures(), mensaje, cliente));
+                    }
                     buffing.start();
 
                     System.out.println("\nConexión recibida");

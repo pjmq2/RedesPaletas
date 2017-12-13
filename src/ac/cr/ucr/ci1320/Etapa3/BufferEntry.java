@@ -1,5 +1,6 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+import java.net.Socket;
 import java.time.LocalTime;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -9,6 +10,7 @@ public class BufferEntry implements Comparable<BufferEntry>{
     private Boolean valid;
     private ReentrantLock lock;
     private int arrayPosition;
+    private Socket sock;
 
     public BufferEntry() {
         this.time =  LocalTime.now();
@@ -23,6 +25,18 @@ public class BufferEntry implements Comparable<BufferEntry>{
         this.setArrayPosition(inputPosition);
     }
 
+    public void setSock(Socket sock) {
+        this.sock = sock;
+    }
+
+    public Socket getSock() {
+        if(this.sock != null) {
+            return this.sock;
+        }
+        else{
+            return null;
+        }
+    }
 
     /*
     @Override

@@ -1,16 +1,25 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+import java.net.Socket;
 import java.util.Random;
 
 public class InputThread implements Runnable {
     public DataStructures dataStructures;
     private Random random;
     private String data;
+    private Socket sock;
 
     public InputThread(DataStructures inputStructures, String inputData){
         this.dataStructures = inputStructures;
         random = new Random();
         this.data = inputData;
+    }
+
+    public InputThread(DataStructures inputStructures, String inputData, Socket sock){
+        this.dataStructures = inputStructures;
+        random = new Random();
+        this.data = inputData;
+        this.sock = sock;
     }
 
     @Override
@@ -19,6 +28,9 @@ public class InputThread implements Runnable {
             Integer index = dataStructures.getEmptyPositions().poll();
             if(index != null){
                 BufferEntry bufferReference = dataStructures.getMainBuffers()[index];
+                if(this.sock != null){
+                    bufferReference.setSock(this.sock);
+                }
                 bufferReference.getLock().lock();
                 bufferReference.setData(this.data);
                 bufferReference.setArrayPosition(index);

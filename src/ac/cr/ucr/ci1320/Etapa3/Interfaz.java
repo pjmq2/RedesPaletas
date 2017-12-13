@@ -123,7 +123,31 @@ public class Interfaz implements Runnable{
 
     private void casosDeMensajes(Mensaje mensaje){
         if(mensaje.getIpDestino().equals(miIp)){
-            imprimirMensaje(mensaje);
+            if(mensaje.getAccion() == 7){
+                if (mensaje.getIpMensaje().contains("#")) {
+                    String entradas[] = mensaje.getIpMensaje().split("#", -1);
+                    int longitud = entradas.length;
+                    for (int i = 0; i < longitud; ++i) {
+                        if (!(entradas[i].equals(""))) {
+                            String resultado[] = entradas[i].split(",");
+                            if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
+                                int porte = Integer.parseInt(resultado[2]);
+                                boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
+                                if (success == true) {
+                                    System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                                } else {
+                                    System.out.println("Se ha actualizado " + resultado[1] + " con " + resultado[0]);
+                                }
+                            } else {
+                                System.out.println("ERROR! El puerto debe ser un número");
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                imprimirMensaje(mensaje);
+            }
         }
         else
         {
@@ -174,28 +198,6 @@ public class Interfaz implements Runnable{
                     String ipTemp = analisis.getIpDestino(paquete.getIpDestinPaquete());
                     String ipReal = tablaIP.get(ipTemp).getIpVerdadera();
                     cliente.sendMessage(paquete.toString(), ipReal, puerto);
-                    break;
-                case 7:
-                    if (mensaje.getIpMensaje().contains("#")) {
-                        String entradas[] = mensaje.getIpMensaje().split("#", -1);
-                        int longitud = entradas.length;
-                        for (int i = 0; i < longitud; ++i) {
-                            if(!(entradas[i].equals(""))) {
-                                String resultado[] = entradas[i].split(",");
-                                if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
-                                    int porte = Integer.parseInt(resultado[2]);
-                                    boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
-                                    if (success == true) {
-                                        System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
-                                    } else {
-                                        System.out.println("ERROR! Dirección falsa otorgada no existe");
-                                    }
-                                } else {
-                                    System.out.println("ERROR! El puerto debe ser un número");
-                                }
-                            }
-                        }
-                    }
                     break;
             }
         }
@@ -250,7 +252,7 @@ public class Interfaz implements Runnable{
                                 if (success == true) {
                                     System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                                 } else {
-                                    System.out.println("ERROR! Dirección falsa otorgada no existe");
+                                    System.out.println("Se ha actualizado " + resultado[1] + " con " + resultado[0]);
                                 }
                             } else {
                                 System.out.println("ERROR! El puerto debe ser un número");

@@ -412,7 +412,7 @@ public class Main {
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
-        String ripDispatcher = "localhost"; //Igual
+        String ripDispatcher = "10.1.130.211"; //Igual
         int portDispatcher = 4444;
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
@@ -424,7 +424,7 @@ public class Main {
         */
 
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
-        tablaDTablasD.put("4", Red12TablaD());
+        tablaDTablasD.put("4", Red163TablaD());
 
         //tablaD = Terminal3();
 
@@ -443,8 +443,8 @@ public class Main {
             ips[i] = "12.70.4.5";
             fisicos[i] = "Terminal1";
         }*/
-        String[] Pips = {"12.0.0.6", "11.50.70.12", "193.34.11.7"};
-        String[] Pdf = {"Terminal.4", "Enrutador1.2", "Enrutador1.3"};
+        String[] Pips = {"163.178.20.20", "11.50.70.12", "193.34.11.7"};
+        String[] Pdf = {"Terminal.5", "Enrutador1.2", "Enrutador1.3"};
         for(int i = 0; i < ips.length; ++i){
             ips[i] = Pips[i];
         }
