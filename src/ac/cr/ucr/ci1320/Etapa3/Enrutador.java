@@ -98,7 +98,7 @@ public class Enrutador{
             interfaz.start();
         }
 
-        //Thread starter2 = new Thread(new Dispatcher(tablaIP, fipDispatcher)); //COMENTAR PARA HACER PRUEBAS
+        //Thread starter2 = new Thread(new Dispatcher(tablaIP, fipDispatcher)); //COMENTAR PARA HACER PRUEBAS.
         //starter2.start();
     }
 }
