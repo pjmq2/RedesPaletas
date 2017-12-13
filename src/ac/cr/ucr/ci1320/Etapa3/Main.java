@@ -1,5 +1,6 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -412,6 +413,7 @@ public class Main {
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
         String ripDispatcher = "10.1.130.204"; //Igual
+        int portDispatcher = 4444;
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
 
@@ -428,8 +430,11 @@ public class Main {
 
         //tablaD = Terminal3();
 
-        Map<String,TablaIp> tablaIp = new HashMap<>();
-        tablaIp = Enrutador1TablaIp();
+        Map<String,TablaIp> tablaIp = Enrutador1TablaIp();
+        tablaIp.put(ipDispatcher, new TablaIp(ripDispatcher, portDispatcher));
+        Map<String,TablaDirecciones> tablaDispatcher = new HashMap<>();
+        tablaDispatcher.put(ipDispatcher, new TablaDirecciones(ipDispatcher, "0.0.0.0", 0));
+        tablaDTablasD.put("D", tablaDispatcher);
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
