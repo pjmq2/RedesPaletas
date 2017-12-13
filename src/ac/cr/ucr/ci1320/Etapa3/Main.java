@@ -394,8 +394,11 @@ public class Main {
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
         String ripDispatcher = "localhost"; //Igual
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        tablaD = Red163TablaD();
+        //Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        //tablaD = Red163TablaD();
+
+        Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
+        tablaDTablasD.put("1", Red12TablaD());
 
         /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
@@ -406,18 +409,18 @@ public class Main {
         //tablaD = Terminal3();
 
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        tablaIp = Red163TablaIp();
+        tablaIp = Red12TablaIp();
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
 
         for(int i = 0; i<cantInterfaces; i++)
         {
-            ips[i] = "163.178.30.30";
-            fisicos[i] = "Terminal7";
+            ips[i] = "12.70.4.5";
+            fisicos[i] = "Terminal1";
         }
         Enrutador enrutador = new Enrutador();
-        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, tablaIp, cantBuf);
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
     }
 
 

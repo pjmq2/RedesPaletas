@@ -14,7 +14,7 @@ public class Enrutador{
     }
 
     public void start(int cantInterfaces, String[] ips, String[] fisicos, String fipDispatcher, String ripDispatcher,
-                      Map<String,TablaDirecciones> tablaD,  Map<String,TablaIp> tablaIp, int cantBuf)
+                      Map<String, Map<String,TablaDirecciones>> tablaDTablas,  Map<String,TablaIp> tablaIp, int cantBuf)
     {
 
         if(cantInterfaces==1)
@@ -56,7 +56,7 @@ public class Enrutador{
         puertos[i]=4444;
         */
 
-        /*
+
         if (cantInterfaces==3){
             Thread interfaz1 = new Thread(new Interfaz(tablaDTablas.get("1.1"),ips[0],puertos[0],fipDispatcher,fisicos[0],tablaIp, cantBuf, julian));
             interfaz1.start();
@@ -65,10 +65,17 @@ public class Enrutador{
             Thread interfaz3 = new Thread(new Interfaz(tablaDTablas.get("1.3"),ips[2],puertos[2],fipDispatcher,fisicos[2],tablaIp, cantBuf, julian));
             interfaz3.start();
         }
-        */
 
-        Thread interfaz = new Thread(new Interfaz(tablaD,ips[0],puertos[0],fipDispatcher,fisicos[0],tablaIp, cantBuf, julian));
-        interfaz.start();
+        if (cantInterfaces==2){
+            Thread interfaz1 = new Thread(new Interfaz(tablaDTablas.get("2.1"),ips[0],puertos[0],fipDispatcher,fisicos[0],tablaIp, cantBuf, julian));
+            interfaz1.start();
+            Thread interfaz2 = new Thread(new Interfaz(tablaDTablas.get("2.2"),ips[1],puertos[1],fipDispatcher,fisicos[1],tablaIp, cantBuf, julian));
+            interfaz2.start();
+        }
+
+
+        //Thread interfaz = new Thread(new Interfaz(tablaD,ips[0],puertos[0],fipDispatcher,fisicos[0],tablaIp, cantBuf, julian));
+        //interfaz.start();
 
         /*
         double value = 1;
@@ -79,6 +86,11 @@ public class Enrutador{
             interfaz.start();
         }
         */
+        if(cantInterfaces == 1)
+        {
+            Thread interfaz = new Thread(new Interfaz(tablaDTablas.get("1"),ips[0],puertos[0],fipDispatcher,fisicos[0],tablaIp, cantBuf, julian));
+            interfaz.start();
+        }
 
         //Thread starter2 = new Thread(new Dispatcher(tablaIP, fipDispatcher)); //COMENTAR PARA HACER PRUEBAS
         //starter2.start();
