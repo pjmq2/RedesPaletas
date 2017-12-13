@@ -88,6 +88,9 @@ public class Main {
         return tablaD;
     }
 
+
+
+
     private static Map<String,TablaDirecciones> Enrutador22TablaD() //Aca solo se ponen los que no son directos
     {
         Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
