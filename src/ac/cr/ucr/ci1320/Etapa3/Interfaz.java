@@ -86,7 +86,13 @@ public class Interfaz implements Runnable{
         {
             faker.modifyipVerdadera(real);
             faker.modifypuerto(portz);
-            TablaDirecciones tabla = tablaD.get(fake);
+            TablaDirecciones tabla = null;
+            if(tablaD != null) {
+                tabla = tablaD.get(fake);
+            }
+            else{
+                this.tablaD = new HashMap<>();
+            }
             if(tabla != null){
                 tabla.modifyaTravez(fake);
                 tabla.modifyDistance(0);

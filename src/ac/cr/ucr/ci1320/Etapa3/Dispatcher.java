@@ -119,7 +119,9 @@ public class Dispatcher implements Runnable{
                 if(!(this.tablaIp.get(array[w]).getIpVerdadera().equals("0"))) {
                     TablaIp tabla = this.tablaIp.get(array[w]);
                     Mensaje mensaje = new Mensaje(this.myFakeAddress, array[w], 7, mensajeAEnviar);
-                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
+                    String rip = tabla.getIpVerdadera();
+                    int port = tabla.getPuerto();
+                    SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), rip, port);
                     sender.start();
                 }
             }
