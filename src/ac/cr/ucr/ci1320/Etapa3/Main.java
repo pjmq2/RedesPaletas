@@ -8,10 +8,15 @@ public class Main {
 
     private static Scanner scanner = new Scanner( System.in );
 
-    private static Map<String,TablaDirecciones> Enrutador11TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","Terminal 1",1); //Se usan los nodos?
+
+    /**
+     * In this section we define all of the directional tables, and contain the information
+     * of how to get there from the perspective of the corresponding router
+    */
+
+    private static Map<String,TablaDirecciones> Enrutador11TablaD() {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("163.178.17.17","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -28,10 +33,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Enrutador12TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Enrutador12TablaD()  {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("163.178.15.15","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -48,10 +52,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Enrutador13TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Enrutador13TablaD(){
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.15.15","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("163.178.15.15","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -68,10 +71,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Enrutador21TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("12.0.9.8","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Enrutador21TablaD(){
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("12.0.9.8","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("12.0.9.8","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -88,10 +90,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Enrutador22TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("12.70.4.5","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Enrutador22TablaD() {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("12.70.4.5","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("12.0.0.6","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -108,10 +109,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Red12TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("12.70.4.5","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Red12TablaD() {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("12.70.4.5","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("12.0.0.6","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -128,10 +128,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Red163TablaD() //Aca solo se ponen los que no son directos
-    {
+    private static Map<String,TablaDirecciones> Red163TablaD() {
         Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","Terminal 1",1); //Se usan los nodos?
+        TablaDirecciones tabla1 = new TablaDirecciones("163.178.17.17","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("163.178.17.17","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -148,10 +147,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Red11TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("11.50.70.12","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Red11TablaD() {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("11.50.70.12","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("11.50.70.12","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -168,10 +166,9 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaDirecciones> Red193TablaD() //Aca solo se ponen los que no son directos
-    {
-        Map<String,TablaDirecciones> tablaD = new HashMap<>(); //Cambiar etiquetas despues
-        TablaDirecciones tabla1 = new TablaDirecciones("193.34.11.7","Terminal 1",1); //Se usan los nodos?
+    private static Map<String,TablaDirecciones> Red193TablaD() {
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        TablaDirecciones tabla1 = new TablaDirecciones("193.34.11.7","Terminal 1",1);
         tablaD.put("12.70.4.5",tabla1);
         TablaDirecciones tabla2 = new TablaDirecciones("193.34.11.7","Terminal 4",1);
         tablaD.put("12.0.0.6",tabla2);
@@ -187,6 +184,13 @@ public class Main {
         tablaD.put("163.178.30.30",tabla7);
         return tablaD;
     }
+
+    /**
+     * This section of tables describes a necessary mapping between fake ips for our network,
+     * and real ip's and their matching ports for the machines in which this
+     * network is being deployed
+     */
+
 
     private static Map<String,TablaIp> Enrutador1TablaIp(){
         Map<String,TablaIp> tablaIp = new HashMap<>();
@@ -270,8 +274,11 @@ public class Main {
         return tablaIp;
     }
 
-    private static void correr()
-    {
+
+    /**
+     * Main method used to startup the program, works by getting all of the user input and initializing all of the necessary objects
+     */
+    private static void correr(){
         int cantInterfaces; //La cantidad de interfaces
         int cantBuf;
         int tipoEnrutador = 0;

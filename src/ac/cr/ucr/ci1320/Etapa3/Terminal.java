@@ -15,6 +15,10 @@ public class Terminal implements Runnable{
         this.dispatcherFIP = dispatcherFIP;
     }
 
+    /**
+     * Main class method, called when previously created Terminal thread instance runs its start() method
+     */
+
 
     public void run() {
         System.out.println("Mensaje -> IPDESTINO \\n MENSAJE / Dispatcher -> DISPATCH");

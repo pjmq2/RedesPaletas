@@ -23,6 +23,13 @@ public class Dispatcher implements Runnable{
     private String myFakeAddress;
     private Map<String, TablaIp> tablaIp;
 
+
+    /**
+     * Dispatcher class for a particular network, works by listening other network components,
+     * storing their data and sharing it with other net components
+     * @param tablaIp data to be stored
+     * @param fip Fake dispatcher ip
+     */
     public Dispatcher(Map<String, TablaIp> tablaIp, String fip) {
         port = 4444;
         InetAddress ipAddr;
@@ -36,9 +43,13 @@ public class Dispatcher implements Runnable{
         this.tablaIp = tablaIp;
     }
 
+
+    /**
+     *  Method called when start() is called to the desired instance
+     */
+
     public void run(){
-        try
-        {
+        try{
             ServerSocket servidor = new ServerSocket(port);
             while (true){
                 System.out.println("\nDispatcher esperando...");
@@ -62,12 +73,16 @@ public class Dispatcher implements Runnable{
                 System.out.println("Conexión recibida, Servidor");
             }
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             System.out.println("ERROR!!! Socket no pudo ser creado");
         }
     }
 
+    /**
+     * If the input is an ipTable, update mine, if not then store that input and update everyone's ip table by sending them a message
+     * @param envio input message
+     * @param lastClientRealIP controIP needed in some cases
+     */
     public void dispatch(Mensaje envio, String lastClientRealIP) {
         if (envio.getIpMensaje().contains("#") == true) {
             String entradas[] = envio.getIpMensaje().split("#", -1);
@@ -78,10 +93,10 @@ public class Dispatcher implements Runnable{
                     if ((resultado[2]) != null && (resultado[2]).matches("[-+]?\\d*\\.?\\d+")) {
                         int porte = Integer.parseInt(resultado[2]);
                         boolean success = this.modifyIPTableEntry(resultado[1], resultado[0], porte);
-                        if (success == true) {
-                            System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                        if (success) {
+                            System.out.println("Se ha actualizado " + resultado[1] + " con " + resultado[0]);
                         } else {
-                            System.out.println("ERROR! Dirección falsa otorgada no existe");
+                            System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                         }
                     } else {
                         System.out.println("ERROR! El puerto debe ser un número");
@@ -91,9 +106,9 @@ public class Dispatcher implements Runnable{
         } else if ((envio.getIpMensaje()) != null && (envio.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
             boolean success = this.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
             if (success == true) {
-                System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
+                System.out.println("Se ha actualizado: " + envio.getIpFuente() + " con " + lastClientRealIP);
             } else {
-                System.out.println("ERROR! Dirección falsa otorgada no existe");
+                System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
             }
             String mensajeAEnviar = this.getTablaIPString(); //Aca se pone lo raro
 
@@ -113,23 +128,31 @@ public class Dispatcher implements Runnable{
         }
     }
 
-    public boolean modifyIPTableEntry(String fake, String real, int portz)
-    {
+    /**
+     * Takes a fake ip and modifies its entry on my own iptable
+     * @param fake fake input ip
+     * @param real real input ip
+     * @param portz real input port
+     * @return
+     */
+    public boolean modifyIPTableEntry(String fake, String real, int portz){
         TablaIp faker = tablaIp.get(fake);
-        if(faker == null)
-        {
+        if(faker == null){
             //return false;
             tablaIp.put(fake, new TablaIp(real, portz));
-            return true;
+            return false;
         }
-        else
-        {
+        else{
             faker.modifyipVerdadera(real);
             faker.modifypuerto(portz);
             return true;
         }
     }
 
+    /**
+     * Return
+     * @return
+     */
     public String getTablaIPString() {
         String returnValue = new String();
         Set<String> keys = tablaIp.keySet();

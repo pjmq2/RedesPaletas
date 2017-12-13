@@ -1,5 +1,8 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+/**
+ * Container class that represents a real ip and its corresponding port on a real machine
+ */
 public class TablaIp {
     private String ipVerdadera;
     private int puerto;

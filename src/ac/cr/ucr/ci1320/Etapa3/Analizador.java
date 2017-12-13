@@ -2,6 +2,10 @@ package ac.cr.ucr.ci1320.Etapa3;
 
 import java.util.Map;
 
+/**
+ * Class that handles functions to correctly analyze and turn strings received by
+ * interfaces and turn them into packages or messages when needed
+ */
 public class Analizador {
     private Map<String,TablaDirecciones> tablaD ;
     private Map<String,TablaIp> tablaIP;
@@ -22,12 +26,22 @@ public class Analizador {
         return paquete;
     }
 
+    /**
+     * Turns input string to a message object
+     * @param mensajeString string received via socket
+     * @return complete message object
+     */
     public Mensaje stringToMensaje(String mensajeString){
         String[] array = mensajeString.split("\n");
         Mensaje mensaje =new Mensaje(array[0],array[1],Integer.parseInt(array[2]),array[3]);
         return mensaje;
     }
 
+    /**
+     * Turns input string to paquete object
+     * @param paqueteString string received via socket
+     * @return
+     */
     public Paquete stringToPaquete(String paqueteString){
         String[] array = paqueteString.split("\n");
         Mensaje mensaje = new Mensaje(array[2],array[3],Integer.parseInt(array[4]),array[5]);

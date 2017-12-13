@@ -15,6 +15,13 @@ public class Cliente {
     Socket sock;
     DataOutputStream writer;
 
+
+    /**
+     * Sends a message to the specified ip/port combo
+      * @param message message to send
+     * @param ip recipient ip
+     * @param port corresponding port
+     */
     public void sendMessage(String message, String ip, int port){
         puerto = port;
         ipDestino=ip;
@@ -27,6 +34,10 @@ public class Cliente {
             System.out.println("\nCannot Connect!");
         }
     }
+
+    /**
+     * Public class that defines a thread to write on a socket
+     */
 
     public class Writer extends Thread {
         String messages;
