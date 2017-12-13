@@ -102,6 +102,10 @@ public class Interfaz implements Runnable{
         return returnValue;
     }
 
+    public String getATravez(String ipfake){
+        return this.analisis.getIpDestino(ipfake);
+    }
+
     private void casosDeMensajes(Mensaje mensaje){
         if(mensaje.getIpDestino().equals(miIp)){
             imprimirMensaje(mensaje);

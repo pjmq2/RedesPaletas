@@ -30,7 +30,7 @@ public class Terminal implements Runnable{
                 // Enviar el mensaje
 
                 if (array.length == 2) {
-                    if((array[1].substring(0, 9).equals("AUDIOTST/")) && (8 < array[1].length())) {
+                    if((8 < array[1].length())&&(array[1].substring(0, 9).equals("AUDIOTST/")) ) {
                         String mensajeAEnviar = array[1].split("/")[1];
                         Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 8, mensajeAEnviar);
                         TablaIp tabla = this.interfaz.getTablaIP().get(array[0]);
@@ -39,7 +39,8 @@ public class Terminal implements Runnable{
                     } else { //El caso normal
                         String mensajeAEnviar = array[1];
                         Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 0, mensajeAEnviar);
-                        TablaIp tabla = this.interfaz.getTablaIP().get(array[0]);
+                        String ipIntermedio = this.interfaz.getATravez(array[0]);
+                        TablaIp tabla = this.interfaz.getTablaIP().get(ipIntermedio);
                         SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
                         sender.start();
                     }

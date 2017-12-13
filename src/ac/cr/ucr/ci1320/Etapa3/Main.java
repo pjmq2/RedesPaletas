@@ -256,7 +256,7 @@ public class Main {
         Map<String,TablaIp> tablaIp = new HashMap<>();
         TablaIp tabla1 = new TablaIp("10.1.130.84",8181);
         tablaIp.put("11.70.4.5",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.107",88899);
+        TablaIp tabla2 = new TablaIp("10.1.130.107",8889);
         tablaIp.put("11.50.70.12",tabla2);
         return tablaIp;
     }
@@ -379,38 +379,42 @@ public class Main {
         {
             System.out.println( "Interfaz numero" + (j+1) + " = " + ips[j] + " _ " + fisicos[j] + "\n" );
         }
-        Enrutador enrutador = new Enrutador();
-        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
+        //Enrutador enrutador = new Enrutador();
+        //enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
     }
 
 
     private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 3; //La cantidad de interfaces
+        int cantInterfaces = 1; //La cantidad de interfaces
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
         String ripDispatcher = "localhost"; //Igual
-        //Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        tablaD = Red163TablaD();
+
+        /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
         tablaDTablasD.put("1.1", Enrutador11TablaD());
         tablaDTablasD.put("1.2", Enrutador12TablaD());
         tablaDTablasD.put("1.3", Enrutador13TablaD());
+        */
         //tablaD = Terminal3();
 
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        tablaIp = Enrutador1TablaIp();
+        tablaIp = Red163TablaIp();
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
 
         for(int i = 0; i<cantInterfaces; i++)
         {
-            //ips[i] = "193.34.11.22";
-            //fisicos[i] = "193_1";
+            ips[i] = "163.178.30.30";
+            fisicos[i] = "Terminal7";
         }
         Enrutador enrutador = new Enrutador();
-        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, tablaIp, cantBuf);
     }
 
 
