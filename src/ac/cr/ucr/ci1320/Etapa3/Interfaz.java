@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+
+/**
+ * Represent a routers interface
+ */
 public class Interfaz implements Runnable{
     //Se pasa toodo lo de Nodo a Interfaz
     private Map<String,TablaDirecciones> tablaD ;

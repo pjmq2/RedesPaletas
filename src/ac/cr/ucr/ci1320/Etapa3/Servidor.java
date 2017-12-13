@@ -12,6 +12,10 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+/**
+ * Represent a server that contains a socket that listents for incoming connections
+ */
 public class Servidor
 {
     int portz;

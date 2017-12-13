@@ -1,5 +1,8 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+/**
+ * Represents a message delivered via socket
+ */
 public class Mensaje {
     private String ipFuente;
     private String ipDestino;

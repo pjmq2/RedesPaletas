@@ -17,7 +17,7 @@ public class InputThread implements Runnable {
     public void run(){
         try {
             Integer index = dataStructures.getEmptyPositions().poll();
-            if(index == null){
+            if(index != null){
                 BufferEntry bufferReference = dataStructures.getMainBuffers()[index];
                 bufferReference.getLock().lock();
                 bufferReference.setData(this.data);

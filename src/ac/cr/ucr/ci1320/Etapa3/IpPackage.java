@@ -1,5 +1,9 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+
+/**
+ * Represents a message ip
+ */
 public class IpPackage {
     private String realIP;
     private String fakeIP;

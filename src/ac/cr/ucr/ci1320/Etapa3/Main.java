@@ -259,7 +259,7 @@ public class Main {
         Map<String,TablaIp> tablaIp = new HashMap<>();
         TablaIp tabla1 = new TablaIp("10.1.130.84",8181); //Terminal 1
         tablaIp.put("11.70.4.5",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.107",8889); //Router 1
+        TablaIp tabla2 = new TablaIp("192.168.0.117",8889); //Router 1
         tablaIp.put("11.50.70.12",tabla2);
         return tablaIp;
     }
@@ -398,7 +398,7 @@ public class Main {
         //tablaD = Red163TablaD();
 
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
-        tablaDTablasD.put("1", Red12TablaD());
+        tablaDTablasD.put("1", Red11TablaD());
 
         /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
@@ -409,18 +409,20 @@ public class Main {
         //tablaD = Terminal3();
 
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        tablaIp = Red12TablaIp();
+        tablaIp = Red11TablaIp();
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
+        int[] puertos = new int[cantInterfaces];
 
-        for(int i = 0; i<cantInterfaces; i++)
-        {
-            ips[i] = "12.70.4.5";
-            fisicos[i] = "Terminal1";
+        for(int i = 0; i<cantInterfaces; i++) {
+            ips[i] = "11.70.4.5";
+            fisicos[i] = "Terminal2";
+            puertos[i] = 8181;
         }
+
         Enrutador enrutador = new Enrutador();
-        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf,puertos);
     }
 
 

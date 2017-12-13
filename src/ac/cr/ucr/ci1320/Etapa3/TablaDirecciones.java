@@ -1,5 +1,9 @@
 package ac.cr.ucr.ci1320.Etapa3;
 
+
+/**
+ * Stores distance to another node to its label and the correct path to that destinations
+ */
 public class TablaDirecciones {
     private String aTraves;
     private String etiqueta;
