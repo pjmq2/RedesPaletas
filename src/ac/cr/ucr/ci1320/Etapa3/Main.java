@@ -329,14 +329,20 @@ public class Main {
 
     private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 1; //La cantidad de interfaces
+        int cantInterfaces = 3; //La cantidad de interfaces
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
         String ripDispatcher = "localhost"; //Igual
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-        //tablaD = Enrutador1();
+        //Map<String,TablaDirecciones> tablaD = new HashMap<>();
+        Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
+        tablaDTablasD.put("1.1", Enrutador11TablaD());
+        tablaDTablasD.put("1.2", Enrutador12TablaD());
+        tablaDTablasD.put("1.3", Enrutador13TablaD());
         //tablaD = Terminal3();
+
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        tablaIp = Enrutador1TablaIp();
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
@@ -347,7 +353,7 @@ public class Main {
             //fisicos[i] = "193_1";
         }
         Enrutador enrutador = new Enrutador();
-        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, cantBuf);
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
     }
 
 
