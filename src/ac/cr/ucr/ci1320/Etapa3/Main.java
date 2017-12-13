@@ -408,7 +408,7 @@ public class Main {
 
     private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 3; //La cantidad de interfaces
+        int cantInterfaces = 1; //La cantidad de interfaces
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
@@ -431,7 +431,7 @@ public class Main {
         //tablaD = Terminal3();
 
         Map<String,TablaIp> tablaIp = Enrutador1TablaIp();
-        tablaIp.put(ipDispatcher, new TablaIp(ripDispatcher, portDispatcher));
+        tablaIp.put(ipDispatcher, new TablaIp(ripDispatcher, portDispatcher)); // Incluir Dispatcher
         Map<String,TablaDirecciones> tablaDispatcher = new HashMap<>();
         tablaDispatcher.put(ipDispatcher, new TablaDirecciones(ipDispatcher, "0.0.0.0", 0));
         tablaDTablasD.put("D", tablaDispatcher);
