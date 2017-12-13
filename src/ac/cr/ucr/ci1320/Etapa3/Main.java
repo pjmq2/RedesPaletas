@@ -309,21 +309,78 @@ public class Main {
 
         String[] ips = new String[cantInterfaces]; //Los ips falsos de dichas interfaces
         String[] fisicos = new String[cantInterfaces]; //Las direcciones fisicas
-
-        for(int i=0; i<cantInterfaces; i++)
+        Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
+        Map<String,TablaIp> tablaIp = new HashMap<>();
+        int num = 0;
+        if(cantInterfaces == 1)
         {
-            System.out.print( "Para la interfaz numero " + (i+1) + ": \n" );
+            System.out.print( "Para la interfaz numero " + (1) + ": \n" );
             System.out.print( "Digite el ip falso: \n" );
-            ips[i] = scanner.nextLine();
+            ips[0] = scanner.nextLine();
             System.out.print( "Digite la direccion fisica: \n" );
-            fisicos[i] = scanner.nextLine();
+            fisicos[0] = scanner.nextLine();
+            System.out.print( "Digite la red (11, 12, 163 0 193): \n" );
+            switch(scanner.nextLine()) {
+                case "12":
+                    tablaDTablasD.put(fisicos[0], Red12TablaD());
+                    tablaIp = Red12TablaIp();
+                    break;
+                case "163":
+                    tablaDTablasD.put(fisicos[0], Red163TablaD());
+                    tablaIp = Red163TablaIp();
+                    break;
+                case "11":
+                    tablaDTablasD.put(fisicos[0], Red11TablaD());
+                    tablaIp = Red11TablaIp();
+                    break;
+                case "193":
+                    tablaDTablasD.put(fisicos[0], Red193TablaD());
+                    tablaIp = Red193TablaIp();
+                    break;
+            }
+            System.out.print( "Digite el tipo de tablaIP: \n" );
         }
+        else
+        {
+            for(int i=0; i<cantInterfaces; i++)
+            {
+                System.out.print( "Para la interfaz numero " + (i+1) + ": \n" );
+                System.out.print( "Digite el ip falso: \n" );
+                ips[i] = scanner.nextLine();
+                System.out.print( "Digite la direccion fisica: \n" );
+                fisicos[i] = scanner.nextLine();
+                System.out.print( "Digite el tipo de interfaz (11, 12, 13, 21, o 22): \n" );
+                switch(scanner.nextLine()) {
+                    case "11":
+                        tablaDTablasD.put(fisicos[i], Enrutador11TablaD());
+                        tablaIp = Enrutador1TablaIp();
+                        break;
+                    case "12":
+                        tablaDTablasD.put(fisicos[i], Enrutador12TablaD());
+                        tablaIp = Enrutador1TablaIp();
+                        break;
+                    case "13":
+                        tablaDTablasD.put(fisicos[i], Enrutador13TablaD());
+                        tablaIp = Enrutador1TablaIp();
+                        break;
+                    case "21":
+                        tablaDTablasD.put(fisicos[i], Enrutador21TablaD());
+                        tablaIp = Enrutador2TablaIp();
+                        break;
+                    case "22":
+                        tablaDTablasD.put(fisicos[i], Enrutador22TablaD());
+                        tablaIp = Enrutador2TablaIp();
+                        break;
+                }
+            }
+        }
+
         for(int j=0; j<cantInterfaces; j++)
         {
             System.out.println( "Interfaz numero" + (j+1) + " = " + ips[j] + " _ " + fisicos[j] + "\n" );
         }
         Enrutador enrutador = new Enrutador();
-        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaD, cantBuf);
+        enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf);
     }
 
 
