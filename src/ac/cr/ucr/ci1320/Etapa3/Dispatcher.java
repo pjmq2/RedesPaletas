@@ -164,6 +164,7 @@ public class Dispatcher implements Runnable{
                 returnValue = returnValue + tablaIp.get(array[i]) + "," + array[i] + "," + tablaIp.get(array[i]).getPuerto(); //Aca esta el error!
             }
         }
-        return returnValue;
+        return returnValue
+                ;
     }
 }
