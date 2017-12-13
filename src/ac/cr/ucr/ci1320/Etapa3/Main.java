@@ -411,7 +411,7 @@ public class Main {
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
-        String ripDispatcher = "localhost"; //Igual
+        String ripDispatcher = "10.1.130.204"; //Igual
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
 
