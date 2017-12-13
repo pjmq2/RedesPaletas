@@ -17,12 +17,13 @@ public class InputThread implements Runnable {
     public void run(){
         try {
             Integer index = dataStructures.getEmptyPositions().poll();
-            if(index == null){
+            if(index != null){
                 BufferEntry bufferReference = dataStructures.getMainBuffers()[index];
                 bufferReference.getLock().lock();
                 bufferReference.setData(this.data);
                 bufferReference.setArrayPosition(index);
                 bufferReference.getLock().unlock();
+                System.out.println("Acabo de recibir un:" + this.data);
                 dataStructures.getpQueue().put(bufferReference);
             }
             else{

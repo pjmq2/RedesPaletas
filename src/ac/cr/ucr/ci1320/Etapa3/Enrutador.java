@@ -14,7 +14,7 @@ public class Enrutador{
     }
 
     public void start(int cantInterfaces, String[] ips, String[] fisicos, String fipDispatcher, String ripDispatcher,
-                      Map<String, Map<String,TablaDirecciones>> tablaDTablas,  Map<String,TablaIp> tablaIp, int cantBuf)
+                      Map<String, Map<String,TablaDirecciones>> tablaDTablas,  Map<String,TablaIp> tablaIp, int cantBuf, int puertos[])
     {
 
         if(cantInterfaces==1)
@@ -22,12 +22,10 @@ public class Enrutador{
             this.julian = true;
         }
         //Crea los routers necesarios
-        int[] puertos = new int[cantInterfaces + 1];
+        //int[] puertos = new int[cantInterfaces + 1];
 
 
         //Map<String,TablaDirecciones> tablaD= new HashMap<>();
-
-
         /*
         int i = 0;
         for(i=0; i<cantInterfaces; i++){
