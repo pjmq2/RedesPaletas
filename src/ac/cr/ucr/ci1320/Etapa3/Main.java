@@ -407,7 +407,7 @@ public class Main {
 
     private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 3; //La cantidad de interfaces
+        int cantInterfaces = 1; //La cantidad de interfaces
         int cantBuf = 10;
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
@@ -440,12 +440,14 @@ public class Main {
             ips[i] = "12.70.4.5";
             fisicos[i] = "Terminal1";
         }*/
-        ips[0]="163.178.15.15";
-        ips[1]="11.50.70.12";
-        ips[2]="193.34.11.7";
-        fisicos[0] = "Enrutador1.1";
-        fisicos[1] = "Enrutador1.2";
-        fisicos[2] = "Enrutador1.3";
+        String[] Pips = {"163.178.15.15", "11.50.70.12", "193.34.11.7"};
+        String[] Pdf = {"Enrutador1.1", "Enrutador1.2", "Enrutador1.3"};
+        for(int i = 0; i < ips.length; ++i){
+            ips[i] = Pips[i];
+        }
+        for(int i = 0; i < fisicos.length; ++i){
+            fisicos[i] = Pdf[i];
+        }
         int[] puertos={8888,8889,8887};
         Enrutador enrutador = new Enrutador();
         enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf, puertos);

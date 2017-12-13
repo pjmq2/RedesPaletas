@@ -78,6 +78,8 @@ public class Interfaz implements Runnable{
         TablaIp faker = tablaIP.get(fake);
         if(faker == null)
         {
+            this.tablaIP.put(fake, new TablaIp(real, portz));
+            this.tablaD.put(fake, new TablaDirecciones(fake, "0.0.0.0", 0));
             return false;
         }
         else
