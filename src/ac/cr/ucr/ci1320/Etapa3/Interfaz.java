@@ -102,6 +102,10 @@ public class Interfaz implements Runnable{
         return returnValue;
     }
 
+    public String getATravez(String ipfake){
+        return this.analisis.getIpDestino(ipfake);
+    }
+
     private void casosDeMensajes(Mensaje mensaje){
         if(mensaje.getIpDestino().equals(miIp)){
             imprimirMensaje(mensaje);
@@ -255,7 +259,7 @@ public class Interfaz implements Runnable{
 
     @Override
     public void run()    {
-        server = new Servidor(this, analizar); //Se debe pasarle a Servidor un puntero al inicio de la cola
+        server = new Servidor(this); //Se debe pasarle a Servidor un puntero al inicio de la cola
         server.iniciar();
 
         Thread bufferProcessor = new Thread(new ProcessingThread(this));
