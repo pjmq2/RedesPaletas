@@ -297,12 +297,11 @@ public class Main {
         int cantInterfaces; //La cantidad de interfaces
         int cantBuf;
         int tipoEnrutador = 0;
-        String ipDispatcher = "165.8.6.25"; //El ip del dispatcher
-        String ripDispatcher = "";
-        Map<String,TablaDirecciones> tablaD = new HashMap<>();
-
         String [] dirReales =   {"localhost", "10.1.130.146", "10.1.130.210", "10.1.130.244", "10.1.131.82", "10.1.232.156", "10.1.131.37", "10.1.130.111",
                 "10.1.130.103", "10.1.130.55"};
+        String ipDispatcher = "165.8.6.25"; //El ip del dispatcher
+        String ripDispatcher = dirReales[3];
+        Map<String,TablaDirecciones> tablaD = new HashMap<>();
 
         System.out.print( "Digite la cantidad de interfaces (de 1 a 6): \n" );
         cantInterfaces = Integer.parseInt(scanner.nextLine());
