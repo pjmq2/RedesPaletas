@@ -45,7 +45,7 @@ public class Terminal implements Runnable{
                             sender.start();
                         }
                     }else{
-                        System.out.println("Error: La tercera entrada debe ser un número");
+                        System.out.println("Error: La tercera entrada debe ser un número"); //WAKAWAKA
                     }
                 }
                 else if (array.length == 2) {
