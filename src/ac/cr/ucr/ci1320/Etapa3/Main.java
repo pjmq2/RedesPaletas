@@ -210,84 +210,84 @@ public class Main {
         return tablaD;
     }
 
-    private static Map<String,TablaIp> Enrutador1TablaIp(){
+    private static Map<String,TablaIp> Enrutador1TablaIp(String [] dirReales ){
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("192.168.0.119",8181); //Terminal 2
+        TablaIp tabla1 = new TablaIp(dirReales[2],8181); //Terminal 2
         tablaIp.put("11.70.4.5",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.211",8182); //Terminal 3
+        TablaIp tabla2 = new TablaIp(dirReales[3],8182); //Terminal 3
         tablaIp.put("193.34.11.22",tabla2);
-        TablaIp tabla3 = new TablaIp("10.1.130.204",8183); //Terminal 5
+        TablaIp tabla3 = new TablaIp(dirReales[5],8183); //Terminal 5
         tablaIp.put("163.178.20.20",tabla3);
-        TablaIp tabla4 = new TablaIp("192.168.0.118",8188); //Terminal 7
+        TablaIp tabla4 = new TablaIp(dirReales[7],8188); //Terminal 7
         tablaIp.put("163.178.30.30",tabla4);
-        TablaIp tabla5 = new TablaIp("localhost",8889); //Router 1
+        TablaIp tabla5 = new TablaIp(dirReales[0],8889); //Router 1
         tablaIp.put("11.50.70.12",tabla5);
-        TablaIp tabla6 = new TablaIp("localhost",8888); //Router 1
+        TablaIp tabla6 = new TablaIp(dirReales[0],8888); //Router 1
         tablaIp.put("163.178.15.15",tabla6);
-        TablaIp tabla7 = new TablaIp("localhost",8887); //Router 1
+        TablaIp tabla7 = new TablaIp(dirReales[0],8887); //Router 1
         tablaIp.put("193.34.11.7",tabla7);
         return tablaIp;
     }
 
-    private static Map<String,TablaIp> Enrutador2TablaIp(){
+    private static Map<String,TablaIp> Enrutador2TablaIp(String [] dirReales ){
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("10.1.130.39",8184); //Terminal 4
+        TablaIp tabla1 = new TablaIp(dirReales[4],8184); //Terminal 4
         tablaIp.put("12.0.0.6",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.151",8189); //Terminal 6
+        TablaIp tabla2 = new TablaIp(dirReales[6],8189); //Terminal 6
         tablaIp.put("12.0.0.7",tabla2);
-        TablaIp tabla3 = new TablaIp("10.1.130.31",8185); //Terminal 2
+        TablaIp tabla3 = new TablaIp(dirReales[2],8185); //Terminal 2
         tablaIp.put("12.70.4.5",tabla3);
-        TablaIp tabla4 = new TablaIp("10.1.130.205",8188); //Terminal 7
+        TablaIp tabla4 = new TablaIp(dirReales[7],8188); //Terminal 7
         tablaIp.put("163.178.30.30",tabla4);
-        TablaIp tabla5 = new TablaIp("10.1.130.204",8183); //Terminal 5
+        TablaIp tabla5 = new TablaIp(dirReales[5],8183); //Terminal 5
         tablaIp.put("163.178.20.20",tabla5);
-        TablaIp tabla6 = new TablaIp("localhost",9998); //Router 2
+        TablaIp tabla6 = new TablaIp(dirReales[0],9998); //Router 2
         tablaIp.put("12.0.9.8",tabla6);
-        TablaIp tabla7 = new TablaIp("localhost",9999); //Router 2
+        TablaIp tabla7 = new TablaIp(dirReales[0],9999); //Router 2
         tablaIp.put("163.178.17.17",tabla7);
         return tablaIp;
     }
 
-    private static Map<String,TablaIp> Red12TablaIp(){
+    private static Map<String,TablaIp> Red12TablaIp(String [] dirReales ){
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("10.1.130.39",8184); //Terminal 4
+        TablaIp tabla1 = new TablaIp(dirReales[4],8184); //Terminal 4
         tablaIp.put("12.0.0.6",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.151",8189); //Terminal 6
+        TablaIp tabla2 = new TablaIp(dirReales[6],8189); //Terminal 6
         tablaIp.put("12.0.0.7",tabla2);
-        TablaIp tabla3 = new TablaIp("10.1.130.31",8185); //Terminal 1
+        TablaIp tabla3 = new TablaIp(dirReales[1],8185); //Terminal 1
         tablaIp.put("12.70.4.5",tabla3);
-        TablaIp tabla4 = new TablaIp("10.1.130.83",9998); //Router 2
+        TablaIp tabla4 = new TablaIp(dirReales[9],9998); //Router 2
         tablaIp.put("12.0.9.8",tabla4);
         return tablaIp;
     }
 
-    private static Map<String,TablaIp> Red163TablaIp(){
+    private static Map<String,TablaIp> Red163TablaIp(String [] dirReales ){
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("10.1.130.205",8188); //Terminal 7
+        TablaIp tabla1 = new TablaIp(dirReales[7],8188); //Terminal 7
         tablaIp.put("163.178.30.30",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.204",8183); //Terminal 5
+        TablaIp tabla2 = new TablaIp(dirReales[5],8183); //Terminal 5
         tablaIp.put("163.178.20.20",tabla2);
-        TablaIp tabla6 = new TablaIp("10.1.130.107",8888); //Router 1
+        TablaIp tabla6 = new TablaIp(dirReales[8],8888); //Router 1
         tablaIp.put("163.178.15.15",tabla6);
-        TablaIp tabla7 = new TablaIp("10.1.130.83",9999); //Router 2
+        TablaIp tabla7 = new TablaIp(dirReales[9],9999); //Router 2
         tablaIp.put("163.178.17.17",tabla7);
         return tablaIp;
     }
 
-    private static Map<String,TablaIp> Red11TablaIp(){
+    private static Map<String,TablaIp> Red11TablaIp(String [] dirReales ){
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("10.1.130.84",8181); //Terminal 1
+        TablaIp tabla1 = new TablaIp(dirReales[1],8181); //Terminal 1
         tablaIp.put("11.70.4.5",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.107",8889); //Router 1
+        TablaIp tabla2 = new TablaIp(dirReales[8],8889); //Router 1
         tablaIp.put("11.50.70.12",tabla2);
         return tablaIp;
     }
 
-    private static Map<String,TablaIp> Red193TablaIp(){
+    private static Map<String,TablaIp> Red193TablaIp(String [] dirReales ){
         Map<String,TablaIp> tablaIp = new HashMap<>();
-        TablaIp tabla1 = new TablaIp("10.1.130.211",8182); //Terminal 3
+        TablaIp tabla1 = new TablaIp(dirReales[3],8182); //Terminal 3
         tablaIp.put("193.34.11.22",tabla1);
-        TablaIp tabla2 = new TablaIp("10.1.130.107",8887); //Router 1
+        TablaIp tabla2 = new TablaIp(dirReales[8],8887); //Router 1
         tablaIp.put("193.34.11.7",tabla2);
         return tablaIp;
     }
@@ -300,6 +300,9 @@ public class Main {
         String ipDispatcher = "165.8.6.25"; //El ip del dispatcher
         String ripDispatcher = "";
         Map<String,TablaDirecciones> tablaD = new HashMap<>();
+
+        String [] dirReales =   {"localhost", "10.1.130.146", "10.1.130.210", "10.1.130.244", "10.1.131.82", "10.1.232.156", "10.1.131.37", "10.1.130.111",
+                "10.1.130.103", "10.1.130.55"};
 
         System.out.print( "Digite la cantidad de interfaces (de 1 a 6): \n" );
         cantInterfaces = Integer.parseInt(scanner.nextLine());
@@ -345,19 +348,19 @@ public class Main {
             switch(scanner.nextLine()) {
                 case "12":
                     tablaDTablasD.put(fisicos[0], Red12TablaD());
-                    tablaIp = Red12TablaIp();
+                    tablaIp = Red12TablaIp(dirReales);
                     break;
                 case "163":
                     tablaDTablasD.put(fisicos[0], Red163TablaD());
-                    tablaIp = Red163TablaIp();
+                    tablaIp = Red163TablaIp(dirReales);
                     break;
                 case "11":
                     tablaDTablasD.put(fisicos[0], Red11TablaD());
-                    tablaIp = Red11TablaIp();
+                    tablaIp = Red11TablaIp(dirReales);
                     break;
                 case "193":
                     tablaDTablasD.put(fisicos[0], Red193TablaD());
-                    tablaIp = Red193TablaIp();
+                    tablaIp = Red193TablaIp(dirReales);
                     break;
             }
             System.out.print( "Digite el tipo de tablaIP: \n" );
@@ -375,23 +378,23 @@ public class Main {
                 switch(scanner.nextLine()) {
                     case "11":
                         tablaDTablasD.put(fisicos[i], Enrutador11TablaD());
-                        tablaIp = Enrutador1TablaIp();
+                        tablaIp = Enrutador1TablaIp(dirReales);
                         break;
                     case "12":
                         tablaDTablasD.put(fisicos[i], Enrutador12TablaD());
-                        tablaIp = Enrutador1TablaIp();
+                        tablaIp = Enrutador1TablaIp(dirReales);
                         break;
                     case "13":
                         tablaDTablasD.put(fisicos[i], Enrutador13TablaD());
-                        tablaIp = Enrutador1TablaIp();
+                        tablaIp = Enrutador1TablaIp(dirReales);
                         break;
                     case "21":
                         tablaDTablasD.put(fisicos[i], Enrutador21TablaD());
-                        tablaIp = Enrutador2TablaIp();
+                        tablaIp = Enrutador2TablaIp(dirReales);
                         break;
                     case "22":
                         tablaDTablasD.put(fisicos[i], Enrutador22TablaD());
-                        tablaIp = Enrutador2TablaIp();
+                        tablaIp = Enrutador2TablaIp(dirReales);
                         break;
                 }
             }
@@ -417,6 +420,8 @@ public class Main {
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
 
+        String [] dirReales =   {"localhost", "10.1.130.146", "10.1.130.210", "10.1.130.244", "10.1.131.82", "10.1.232.156", "10.1.131.37", "10.1.130.111",
+                                "10.1.130.103", "10.1.130.55"};
 
         /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
@@ -428,7 +433,7 @@ public class Main {
 
         //tablaD = Terminal3();
 
-        Map<String,TablaIp> tablaIp = Enrutador1TablaIp();
+        Map<String,TablaIp> tablaIp = Enrutador1TablaIp(dirReales);
         tablaIp.put(ipDispatcher, new TablaIp(ripDispatcher, portDispatcher)); // Incluir Dispatcher
         Map<String,TablaDirecciones> tablaDispatcher = new HashMap<>();
         tablaDispatcher.put(ipDispatcher, new TablaDirecciones(ipDispatcher, "0.0.0.0", 0));
