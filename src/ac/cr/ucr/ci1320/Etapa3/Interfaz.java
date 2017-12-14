@@ -30,7 +30,6 @@ public class Interfaz implements Runnable{
     private ProcessingThread procThread;
     private Servidor server;
     private boolean isTerminal;
-    private Analizador analizar;
     private String dirArchivo;
     private int contadorRecibidos;
 
@@ -53,7 +52,6 @@ public class Interfaz implements Runnable{
             Thread starter1 = new Thread(new Terminal(this, this.ipDispatcher));
             starter1.start();
         }
-        this.analizar = new Analizador(tablaD, tablaIP, miIp);
         Path currentRelativePath = Paths.get("");
         dirArchivo = currentRelativePath.toAbsolutePath().toString() + "Envios" + miIp +".txt";
         this.contadorRecibidos = 0;
@@ -212,7 +210,7 @@ public class Interfaz implements Runnable{
     // 4 - Respuesta: Sí, conozco un camino hacia esa dirección IP.
     private void casosDePaquetes(Paquete paquete){
         int accion = paquete.getMensaje().getAccion();
-        Analizador analiza = new Analizador(tablaD,tablaIP,miIp); //
+        Analizador analiza = this.analisis; //
         Cliente cliente = new Cliente(); // Cliente
         switch (accion){
             default:
@@ -320,4 +318,3 @@ public class Interfaz implements Runnable{
 
     public boolean getisTerminal() { return this.isTerminal; }
 }
-
