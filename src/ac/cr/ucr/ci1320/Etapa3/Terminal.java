@@ -33,7 +33,22 @@ public class Terminal implements Runnable{
 
                 // Enviar el mensaje
 
-                if (array.length == 2) {
+                if(array.length == 3)
+                {
+                    if((array[2] != null && (array[2].matches("[-+]?\\d*\\.?\\d+")))) {
+                        for (int i = 0; i < Integer.parseInt(array[2]); i++) {
+                            String mensajeAEnviar = array[1] + Integer.toString(i);
+                            Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 0, mensajeAEnviar);
+                            String ipIntermedio = this.interfaz.getATravez(array[0]);
+                            TablaIp tabla = this.interfaz.getTablaIP().get(ipIntermedio);
+                            SolicitanteLite sender = new SolicitanteLite(mensaje.toString(), tabla.getIpVerdadera(), tabla.getPuerto());
+                            sender.start();
+                        }
+                    }else{
+                        System.out.println("Error: La tercera entrada debe ser un número");
+                    }
+                }
+                else if (array.length == 2) {
                     if((8 < array[1].length())&&(array[1].substring(0, 9).equals("AUDIOTST/")) ) {
                         String mensajeAEnviar = array[1].split("/")[1];
                         Mensaje mensaje = new Mensaje(myFakeAddress, array[0], 8, mensajeAEnviar);
