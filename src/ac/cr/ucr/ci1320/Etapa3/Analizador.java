@@ -64,13 +64,19 @@ public class Analizador {
     public String getIpDestino(String ipInicial) //Recibe a quien se lo va a mandar, devuelve a traves de quien
     {
         //String ipDestino = tablaD.get(ipInicial).getEtiqueta(); //Aun creo que lo que deberia devolver es el aTraves...
-        String ipDestino = tablaD.get(ipInicial).getaTraves();
+        String ipDestino = "";
+        if(tablaD.get(ipInicial) != null) {
+            ipDestino = tablaD.get(ipInicial).getaTraves();
+        }
         return ipDestino;
     }
 
     public int getPuertoDestino(String ipInicial) //Devuelve el puerto del destino
     {
-        int puertoDestino = tablaIP.get(ipInicial).getPuerto();
+        int puertoDestino = -1;
+        if(tablaIP.get(ipInicial) != null) {
+            puertoDestino = tablaIP.get(ipInicial).getPuerto();
+        }
         return puertoDestino;
     }
 }
