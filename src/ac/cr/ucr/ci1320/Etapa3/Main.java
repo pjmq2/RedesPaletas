@@ -421,7 +421,7 @@ public class Main {
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
 
-
+        int numeroTerminal = 3;
 
         /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
@@ -429,7 +429,7 @@ public class Main {
         */
 
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
-        tablaDTablasD.put("4", Red163TablaD());
+        tablaDTablasD.put(Integer.toString(numeroTerminal), Red193TablaD());
 
         //tablaD = Terminal3();
 
@@ -448,8 +448,8 @@ public class Main {
             ips[i] = "12.70.4.5";
             fisicos[i] = "Terminal1";
         }*/
-        String[] Pips = {"163.178.20.20", "11.50.70.12", "193.34.11.7"};
-        String[] Pdf = {"Terminal.5", "Enrutador1.2", "Enrutador1.3"};
+        String[] Pips = {"193.34.11.22", "...", "..."};
+        String[] Pdf = {"Terminal."+Integer.toString(numeroTerminal), "...", "..."};
         for(int i = 0; i < ips.length; ++i){
             ips[i] = Pips[i];
         }
