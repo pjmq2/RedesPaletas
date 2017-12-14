@@ -123,9 +123,9 @@ public class Recividor implements Runnable {
                                     int porte = Integer.parseInt(resultado[2]);
                                     boolean success = nodo.modifyIPTableEntry(resultado[1], resultado[0], porte);
                                     if (success == true) {
-                                        System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
+                                        System.out.println("Se ha actualizado " + envio.getIpFuente() + " con " + lastClientRealIP);
                                     } else {
-                                        System.out.println("ERROR! Dirección falsa otorgada no existe");
+                                        System.out.println("Se ha guardado " + resultado[1] + " con " + resultado[0]);
                                     }
                                 } else {
                                     System.out.println("ERROR! El puerto debe ser un número");
@@ -135,9 +135,9 @@ public class Recividor implements Runnable {
                     } else if ((envio.getIpMensaje()) != null && (envio.getIpMensaje()).matches("[-+]?\\d*\\.?\\d+")) {
                         boolean success = nodo.modifyIPTableEntry(envio.getIpFuente(), lastClientRealIP, Integer.parseInt(envio.getIpMensaje()));
                         if (success == true) {
-                            System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
+                            System.out.println("Se ha actualizado " + envio.getIpFuente() + " con " + lastClientRealIP);
                         } else {
-                            System.out.println("ERROR! Dirección falsa otorgada no existe");
+                            System.out.println("Se ha guardado " + envio.getIpFuente() + " con " + lastClientRealIP);
                         }
                         String mensajeAEnviar = nodo.getTablaIPString();
 
