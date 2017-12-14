@@ -413,15 +413,16 @@ public class Main {
     {
         int cantInterfaces = 1; //La cantidad de interfaces
         int cantBuf = 10;
+        String [] dirReales =   {"localhost", "10.1.130.146", "10.1.130.210", "10.1.130.244", "10.1.131.82", "10.1.232.156", "10.1.131.37", "10.1.130.111",
+                                "10.1.130.103", "10.1.130.55"};
         String ipDispatcher = "11.101.6.8"; //No importaria para hacer pruebas sin dispatcher supongo
         //String ipDispatcher = "163.178.20.20";
-        String ripDispatcher = "10.1.130.211"; //Igual
+        String ripDispatcher = dirReales[3]; //Igual
         int portDispatcher = 4444;
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
 
-        String [] dirReales =   {"localhost", "10.1.130.146", "10.1.130.210", "10.1.130.244", "10.1.131.82", "10.1.232.156", "10.1.131.37", "10.1.130.111",
-                                "10.1.130.103", "10.1.130.55"};
+
 
         /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
