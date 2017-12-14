@@ -125,6 +125,8 @@ public class Nodo {
         String faker = tablaIP.get(fake);
         if(faker == null)
         {
+            this.tablaIP.put(fake, real);
+            this.tablaD.put(fake, new TablaDirecciones(real, real, 0, port));
             return false;
         }
         else
