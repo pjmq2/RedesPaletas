@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3685b07-d143-4b32-89b4-0c4606d20b2e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Main.class" afterPath="$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" afterPath="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" />
     </list>
@@ -17,43 +18,20 @@
     <SUITE FILE_PATH="coverage/RedesPaletas$Main.coverage" NAME="Main Coverage Results" MODIFIED="1510806237276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ac.cr.ucr.ci1320.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/RedesPaletas$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1513139246643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ac.cr.ucr.ci1320.Etapa3.*</FILTER>
-    </SUITE>
-  </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1289">
-              <caret line="448" column="37" lean-forward="true" selection-start-line="448" selection-start-column="37" selection-end-line="448" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="617">
+              <caret line="430" column="82" lean-forward="false" selection-start-line="430" selection-start-column="82" selection-end-line="430" selection-end-column="82" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>mensajeAEnviar</find>
-      <find>red11ta</find>
-      <find>red11tablaip</find>
-      <find>getmipuert</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -62,7 +40,6 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -73,26 +50,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Recividor.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Solicitante.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/SolicitanteLite.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/ProcessingThread.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/DataStructures.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaIp.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Analizador.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Cliente.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/InputThread.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/IpPackage.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Mensaje.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Servidor.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Recividor.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaDirecciones.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java" />
-        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/ProcessingThread.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Servidor.java" />
+        <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java" />
         <option value="$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java" />
       </list>
     </option>
@@ -105,9 +69,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="976" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -126,6 +89,7 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -152,26 +116,23 @@
               <item name="ci1320" type="462c0819:PsiDirectoryNode" />
               <item name="Etapa3" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RedesPaletas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RedesPaletas" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1320" type="462c0819:PsiDirectoryNode" />
+              <item name="NodoP" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="SearchEverywhereHistoryKey" value="servidor&#9;FILE&#9;file:///home/agarita/IdeaProjects/RedesPaletas/src/ac/cr/ucr/ci1320/Etapa3/Servidor.java" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ac.cr.ucr.ci1320.Etapa3" />
-    </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -187,11 +148,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Interfaz.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/Etapa3/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Nodo.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Sockets/ac/cr/ucr/ci1320/NodoJ/Recividor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -419,123 +377,6 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Sockets" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main (1)" />
@@ -550,9 +391,6 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b3685b07-d143-4b32-89b4-0c4606d20b2e" name="Default" comment="" />
@@ -561,8 +399,10 @@
       <option name="presentableId" value="Default" />
       <updated>1512751280681</updated>
       <workItem from="1512751288474" duration="7354000" />
-      <workItem from="1512758823097" duration="3806000" />
-      <workItem from="1513124179882" duration="9407000" />
+      <workItem from="1512758823097" duration="4666000" />
+      <workItem from="1513017082309" duration="3421000" />
+      <workItem from="1513113611407" duration="735000" />
+      <workItem from="1513130689825" duration="968000" />
     </task>
     <task id="LOCAL-00001" summary="Cambios en nodo terminal para audio">
       <created>1512751813783</created>
@@ -585,179 +425,25 @@
       <option name="project" value="LOCAL" />
       <updated>1512760136224</updated>
     </task>
-    <task id="LOCAL-00004" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512841907605</created>
+    <task id="LOCAL-00004" summary="Crea las redes que ya habiamos planeado">
+      <created>1512771393659</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1512841907605</updated>
+      <updated>1512771393659</updated>
     </task>
-    <task id="LOCAL-00005" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512844354935</created>
+    <task id="LOCAL-00005" summary="Merge">
+      <created>1512771565217</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1512844354935</updated>
+      <updated>1512771565217</updated>
     </task>
-    <task id="LOCAL-00006" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512845768157</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1512845768157</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512845794040</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1512845794040</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512846004585</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1512846004585</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512848485505</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1512848485505</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512848712922</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1512848712922</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512849306378</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1512849306378</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512849390546</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1512849390546</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512849825960</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1512849825960</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512850551330</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1512850551330</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512852990546</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1512852990546</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512853069129</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1512853069129</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1512854453163</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1512854453163</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Comentario sobre eror en Dispatcher + &#10;Agrego Tabla de direcciones de Terminal 3">
-      <created>1513108354554</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1513108354554</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Agrego tablaIp que deberia funcionar con todos +&#10;Agrego tabla de direcciones de Terminal 2">
-      <created>1513114188926</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1513114188926</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Comentarios">
-      <created>1513133317925</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1513133317925</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Hola">
-      <created>1513133433251</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1513133433251</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Hola">
-      <created>1513135240243</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1513135240243</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Hola">
-      <created>1513201661831</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1513201661831</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Un ligero cambio en prueba.">
-      <created>1513202084083</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1513202084083</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Un ligero cambio en prueba.">
-      <created>1513203935116</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1513203935116</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Se hace que las funciones que crean las tablasIp reciban una lista de strings con todas las direcciones reales">
-      <created>1513269505523</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1513269505523</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Se hace que las funciones que crean las tablasIp reciban una lista de strings con todas las direcciones reales">
-      <created>1513270091083</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1513270091083</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20896000" />
+    <option name="totallyTimeSpent" value="17473000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="3862" height="2122" extended-state="6" />
@@ -765,26 +451,38 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32657418" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32687926" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32135308" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32991803" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32346243" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282313" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.091145836" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16640624" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43963555" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43763214" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32460135" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -792,27 +490,28 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43763214" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43963555" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32687926" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="3.125E-4" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32135308" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33029613" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32346243" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282313" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.091145836" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1621912" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32460135" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -824,13 +523,9 @@
     <MESSAGE value="Cambios en nodo terminal para audio" />
     <MESSAGE value="Cambios en enrutador" />
     <MESSAGE value="Merge branch 'master' of https://github.com/pjmq2/RedesPaletas&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <MESSAGE value="Comentario sobre eror en Dispatcher + &#10;Agrego Tabla de direcciones de Terminal 3" />
-    <MESSAGE value="Agrego tablaIp que deberia funcionar con todos +&#10;Agrego tabla de direcciones de Terminal 2" />
-    <MESSAGE value="Comentarios" />
-    <MESSAGE value="Hola" />
-    <MESSAGE value="Un ligero cambio en prueba." />
-    <MESSAGE value="Se hace que las funciones que crean las tablasIp reciban una lista de strings con todas las direcciones reales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se hace que las funciones que crean las tablasIp reciban una lista de strings con todas las direcciones reales" />
+    <MESSAGE value="Crea las redes que ya habiamos planeado" />
+    <MESSAGE value="Merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -847,35 +542,21 @@
           <properties />
           <option name="timeStamp" value="43" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java</url>
-          <line>165</line>
-          <properties />
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java</url>
-          <line>68</line>
-          <properties />
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/SolicitanteLite.java</url>
-          <line>19</line>
-          <properties />
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="58" />
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Recividor.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Nodo.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Servidor.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Interfaz.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Mensaje.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Paquete.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Solicitante.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/TablaDirecciones.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoS/Cliente.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoS/DEMO.java" />
@@ -900,6 +581,21 @@
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaDirecciones.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/TablaIp.java" />
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Nodo.java" />
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Mensaje.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -908,267 +604,126 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Nodo.java">
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Recividor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-987">
-          <caret line="54" column="40" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="54" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="84" column="16" lean-forward="false" selection-start-line="84" selection-start-column="16" selection-end-line="88" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Mensaje.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Solicitante.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Nodo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/BufferEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Terminal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="45" column="60" lean-forward="true" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Analizador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1189">
-          <caret line="41" column="54" lean-forward="false" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+        <state relative-caret-position="1761">
+          <caret line="149" column="25" lean-forward="true" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="38" column="62" lean-forward="false" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/DataStructures.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1131">
-          <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaIp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="3" column="89" lean-forward="false" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
+        <state relative-caret-position="-104">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/InputThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="83" lean-forward="false" selection-start-line="16" selection-start-column="83" selection-end-line="16" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaDirecciones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="89" lean-forward="false" selection-start-line="4" selection-start-column="89" selection-end-line="4" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/IpPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Mensaje.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+        <state relative-caret-position="84">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/ProcessingThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="315">
+          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java">
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaDirecciones.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="70" column="60" lean-forward="false" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
+        <state relative-caret-position="210">
+          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/SolicitanteLite.java">
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Nodo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="-987">
+          <caret line="54" column="40" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="54" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="64" column="18" lean-forward="false" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoP/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="84" column="16" lean-forward="false" selection-start-line="84" selection-start-column="16" selection-end-line="88" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/registro.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Analizador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="20" column="94" lean-forward="false" selection-start-line="20" selection-start-column="94" selection-end-line="20" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Interfaz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="65" column="24" lean-forward="true" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Dispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1513">
-          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/NodoJ/Recividor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-640">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Terminal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1568">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1289">
-          <caret line="448" column="37" lean-forward="true" selection-start-line="448" selection-start-column="37" selection-end-line="448" selection-end-column="37" />
+        <state relative-caret-position="21">
+          <caret line="92" column="27" lean-forward="false" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Sockets</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/TablaIp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Enrutador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ac/cr/ucr/ci1320/Etapa3/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="430" column="82" lean-forward="false" selection-start-line="430" selection-start-column="82" selection-end-line="430" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

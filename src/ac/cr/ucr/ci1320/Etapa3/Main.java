@@ -410,7 +410,7 @@ public class Main {
 
     private static void prueba() //Solo para hacer pruebas rapidas
     {
-        int cantInterfaces = 1; //La cantidad de interfaces
+        int cantInterfaces = 2; //La cantidad de interfaces
         int cantBuf = 10;
         String [] dirReales =   {"localhost", "10.1.130.146", "10.1.130.210", "10.1.130.244", "10.1.131.82", "10.1.232.156", "10.1.131.37", "10.1.130.111",
                                 "10.1.130.103", "10.1.130.55"};
@@ -421,7 +421,7 @@ public class Main {
         //Map<String,TablaDirecciones> tablaD = new HashMap<>();
         //tablaD = Red163TablaD();
 
-        int numeroTerminal = 3;
+
 
         /*
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
@@ -429,11 +429,12 @@ public class Main {
         */
 
         Map<String, Map<String,TablaDirecciones>> tablaDTablasD = new HashMap<>();
-        tablaDTablasD.put(Integer.toString(numeroTerminal), Red193TablaD());
+        tablaDTablasD.put("2.1", Enrutador21TablaD());
+        tablaDTablasD.put("2.2", Enrutador22TablaD());
 
         //tablaD = Terminal3();
 
-        Map<String,TablaIp> tablaIp = Enrutador1TablaIp(dirReales);
+        Map<String,TablaIp> tablaIp = Enrutador2TablaIp(dirReales);
         tablaIp.put(ipDispatcher, new TablaIp(ripDispatcher, portDispatcher)); // Incluir Dispatcher
         Map<String,TablaDirecciones> tablaDispatcher = new HashMap<>();
         tablaDispatcher.put(ipDispatcher, new TablaDirecciones(ipDispatcher, "0.0.0.0", 0));
@@ -448,15 +449,15 @@ public class Main {
             ips[i] = "12.70.4.5";
             fisicos[i] = "Terminal1";
         }*/
-        String[] Pips = {"193.34.11.22", "...", "..."};
-        String[] Pdf = {"Terminal."+Integer.toString(numeroTerminal), "...", "..."};
+        String[] Pips = {"163.178.17.17", "12.0.9.8"};
+        String[] Pdf = {"Enrutador2.1", "Enrutador2.2"};
         for(int i = 0; i < ips.length; ++i){
             ips[i] = Pips[i];
         }
         for(int i = 0; i < fisicos.length; ++i){
             fisicos[i] = Pdf[i];
         }
-        int[] puertos={8888,8889,8887};
+        int[] puertos={9999, 9998};
         Enrutador enrutador = new Enrutador();
         enrutador.start(cantInterfaces, ips, fisicos, ipDispatcher, ripDispatcher, tablaDTablasD, tablaIp, cantBuf, puertos);
     }
